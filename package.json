@@ -1,13 +1,16 @@
 {
-  "name": "vue-design-system",
+  "name": "swayable-design-system",
   "version": "3.5.7",
-  "description": "Vue Design System is an open-source tool for building Design Systems with Vue.js",
-  "author": "viljamis <me@viljamis.com>",
+  "description": "Design system for Swayable based on Vue Design System",
+  "authors": [
+    "viljamis <me@viljamis.com>",
+    "Tanner Welsh <tanner@swayable.com>"
+  ],
   "main": "dist/system/system.js",
   "files": [
     "dist/system"
   ],
-  "homepage": "https://vueds.com",
+  "homepage": "https://swayable.com",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -34,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viljamis/vue-design-system.git"
+    "url": "git+https://github.com/swayable/swayable-design-system.git"
   },
   "keywords": [
     "vue design system",
