@@ -1,7 +1,5 @@
 <template>
-  <component :is="level" class="heading">
-    <slot/>
-  </component>
+  <component :is="level" class="heading"> <slot /> </component>
 </template>
 
 <script>
@@ -36,7 +34,7 @@ export default {
   @include stack-space($space-m);
   font-family: $font-heading;
   line-height: $line-height-xs;
-  color: $color-rich-black;
+  color: $color-dark;
   @media #{$media-query-l} {
     // This is how you’d use design tokens with media queries
   }

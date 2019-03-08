@@ -1,5 +1,5 @@
 <template>
-  <component :is="wrapper" :class="['input', {'input-expand': width === 'expand'}]">
+  <component :is="wrapper" :class="['input', { 'input-expand': width === 'expand' }]">
     <label :for="id" v-if="label">{{ label }}</label>
     <input
       :id="id"
@@ -10,7 +10,7 @@
       :placeholder="placeholder"
       @input="onInput($event.target.value)"
       @focus="onFocus($event.target.value)"
-    >
+    />
   </component>
 </template>
 
@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 // Design Tokens with local scope
-$color-placeholder: tint($color-silver, 50%);
+$color-placeholder: tint($color-grey, 50%);
 
 .input {
   @include stack-space($space-s);
@@ -135,7 +135,7 @@ $color-placeholder: tint($color-silver, 50%);
     cursor: pointer;
     display: block;
     font-size: $size-s;
-    color: tint($color-rich-black, 20%);
+    color: tint($color-dark, 20%);
     @include stack-space($space-xs);
   }
   input {
@@ -148,12 +148,11 @@ $color-placeholder: tint($color-silver, 50%);
     font-family: $font-text;
     background: $color-white;
     border-radius: $radius-default;
-    color: set-text-color($color-rich-black, $color-white);
+    color: set-text-color($color-dark, $color-white);
     width: 100%;
     margin: 0;
     border: 0;
-    box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07),
-      0 0 0 1px tint($color-rich-black, 80%);
+    box-shadow: inset 0 1px 0 0 rgba($color-dark, 0.07), 0 0 0 1px tint($color-dark, 80%);
     &::-webkit-input-placeholder {
       -webkit-font-smoothing: antialiased;
       color: $color-placeholder;
@@ -168,18 +167,18 @@ $color-placeholder: tint($color-silver, 50%);
     }
     &:hover,
     &.hover {
-      box-shadow: 0 1px 5px 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 60%);
+      box-shadow: 0 1px 5px 0 rgba($color-dark, 0.07), 0 0 0 1px tint($color-dark, 60%);
     }
     &:focus,
     &.focus {
       transition: box-shadow 0.2s ease;
-      box-shadow: inset 0 0 0 1px $color-bleu-de-france, 0 0 0 1px $color-bleu-de-france;
+      box-shadow: inset 0 0 0 1px $color-primary-indigo, 0 0 0 1px $color-primary-indigo;
       outline: 0;
     }
     &[disabled] {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      box-shadow: 0 0 0 1px tint($color-rich-black, 80%);
+      box-shadow: 0 0 0 1px tint($color-dark, 80%);
       background: lighten($color-placeholder, 42%);
       color: tint($color-placeholder, 20%);
       cursor: not-allowed;
@@ -188,7 +187,6 @@ $color-placeholder: tint($color-silver, 50%);
   }
 }
 </style>
-
 
 <docs>
   ```jsx

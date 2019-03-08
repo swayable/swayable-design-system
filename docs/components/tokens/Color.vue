@@ -7,16 +7,10 @@
       :class="prop.category"
       v-if="prop.type === 'color'"
     >
-      <div class="swatch" :style="{ backgroundColor: prop.value }"/>
-      <h3>{{prop.name.replace(/_/g, " ").replace(/color/g, "")}}</h3>
-      <span>
-        <em>RGB:</em>
-        {{prop.value}}
-      </span>
-      <span>
-        <em>SCSS:</em>
-        ${{prop.name.replace(/_/g, "-")}}
-      </span>
+      <div class="swatch" :style="{ backgroundColor: prop.value }" />
+      <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
+      <span> <em>RGB:</em> {{ prop.value }} </span>
+      <span> <em>SCSS:</em> ${{ prop.name.replace(/_/g, "-") }} </span>
     </div>
   </div>
 </template>
@@ -121,7 +115,7 @@ h3 {
   box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
   font-size: $size-s;
   font-family: $font-text;
-  color: $color-rich-black;
+  color: $color-dark;
   border-radius: $radius-default;
   overflow: hidden;
   text-align: left;
@@ -134,16 +128,16 @@ h3 {
   }
   &:hover {
     span {
-      color: $color-rich-black;
+      color: $color-dark;
       em {
-        color: $color-silver;
+        color: $color-grey;
       }
     }
   }
   span {
     margin-bottom: $space-xs;
     line-height: 1.3;
-    color: $color-silver;
+    color: $color-grey;
     font-size: $size-s;
     width: 100%;
     float: left;

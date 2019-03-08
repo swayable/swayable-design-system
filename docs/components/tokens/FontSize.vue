@@ -7,8 +7,7 @@
       v-if="prop.category === 'font-size'"
       :style="{ fontSize: prop.value }"
     >
-      ${{prop.name.replace(/_/g, "-")}}
-      <span>({{prop.value}})</span>
+      ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
     </div>
   </div>
 </template>
@@ -55,14 +54,14 @@ export default {
   font-family: $font-heading;
   font-weight: $weight-bold;
   line-height: $line-height-xs;
-  color: $color-rich-black;
+  color: $color-dark;
   margin-bottom: $space-s;
   font-style: normal;
   span {
     letter-spacing: -0.02em;
     margin-left: 10px;
     font-weight: $weight-normal;
-    color: $color-silver;
+    color: $color-grey;
     user-select: none;
     font-style: normal;
   }

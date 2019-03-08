@@ -8,6 +8,12 @@ You’re looking at Vue Design System’s demo <code>design tokens</code>. Every
 <color />
 ```
 
+## Fonts
+
+```
+<fonts />
+```
+
 ## Font Sizes
 
 ```

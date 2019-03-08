@@ -5,17 +5,19 @@
 
 props:
   font_heading:
-    value: "'Fira Sans', Helvetica, Arial, sans-serif"
+    value: "'Trueno', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
   font_text:
-    value: "'Fira Sans', Helvetica, Arial, sans-serif"
+    value: "'Trueno', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
   weight_bold:
     value: "700"
   weight_semi_bold:
     value: "600"
-  weight_normal:
+  weight_medium:
     value: "400"
-  weight_light:
+  weight_normal:
     value: "300"
+  weight_light:
+    value: "200"
 global:
   type: ...
   category: font
