@@ -8,7 +8,7 @@
       ]"
     />
     <Wrapper>
-      <Heading>Vue Design System</Heading>
+      <Heading>Swayable Design System</Heading>
       <Paragraph>
         <a href="https://vueds.com">Vue Design System</a>is an open-source tool for building design
         systems with Vue.js. It provides you and your team a set of organized tools, patterns &amp;

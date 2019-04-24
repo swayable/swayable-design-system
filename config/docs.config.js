@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Name of your design system. Changes both page title and sidebar logo.
    */
-  title: "Vue Design System",
+  title: "Swayable Design System",
   /**
    * Most of the styles are defined in /docs/docs.styles.scss
    */
@@ -33,7 +33,7 @@ module.exports = {
    */
   assetsDir: path.join(__dirname, "../src/assets"),
   /**
-   * Enabling the below option will break things in Vue Design System!
+   * Enabling the below option will break things in Swayable Design System!
    */
   skipComponentsWithoutExample: false,
   /**
@@ -140,7 +140,7 @@ module.exports = {
    * Custom wrapper template for the documentation.
    */
   template: {
-    title: "Example — Vue Design System",
+    title: "Example — Swayable Design System",
     lang: "en",
     trimWhitespace: true,
     head: {
