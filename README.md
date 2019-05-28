@@ -1,6 +1,6 @@
 # Swayable Design System
 
-The Design System for Swayable.
+The Design System for Swayable: [design.swayable.com](http://design.swayable.com/)
 
 ## Development Progress
 
@@ -26,6 +26,10 @@ Other design systems that we like and can draw inspiration from.
 - [Duolingo](https://www.duolingo.com/design/) - simple, fun, clear
 
 [Adele](https://adele.uxpin.com/) is a good list of design systems to explore.
+
+## Deployment
+
+Deployed with [Netlify](https://www.netlify.com/) (via GitHub). To deploy, simply push to the `master` branch on GitHub.
 
 ## Authors and License
 
