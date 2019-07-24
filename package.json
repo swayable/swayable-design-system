@@ -119,6 +119,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-safe-parser": "^4.0.1",
     "postcss-url": "^8.0.0",
+    "tailwindcss": "^1.0.5",
     "tinycolor2": "^1.4.1",
     "vue": "^2.6.10",
     "vue-lodash": "^2.0.0",
