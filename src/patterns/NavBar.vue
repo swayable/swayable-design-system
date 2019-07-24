@@ -1,12 +1,53 @@
 <template>
-  <component :is="type" class="nav">
-    <a
-      v-for="(item, index) in navItems"
-      :key="index"
-      :href="item.href"
-      :class="{ active: localActive === item.component }"
-      v-html="item.name"
-    />
+  <component
+    :is="type"
+    class="flex items-center justify-between flex-wrap bg-blue-900 pl-3 text-gray-500"
+  >
+    <div class="flex items-center flex-shrink-0 mr-4 p-3">
+      <slot v-if="heading">
+        <span class="font-heading font-medium text-xl text-white" v-html="heading" />
+      </slot>
+      <svg v-else width="245" height="38" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient x1="101.402%" y1="-2.287%" x2="-1.056%" y2="102.473%" id="a">
+            <stop stop-color="#EB4380" offset="0%" />
+            <stop stop-color="#71459B" offset="100%" />
+          </linearGradient>
+        </defs>
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M66.139 10.214c2.08 0 4.213.667 5.703 1.67l-.873 1.926c-1.619-1.079-3.52-1.516-4.959-1.516-2.312 0-3.827.874-3.827 2.39 0 4.624 10.122 2.209 10.096 8.734 0 3.006-2.646 4.933-6.5 4.933-2.62 0-5.19-1.13-6.885-2.75l.925-1.849c1.67 1.619 3.956 2.544 5.986 2.544 2.595 0 4.213-1.054 4.213-2.775.026-4.727-10.096-2.21-10.096-8.658 0-2.825 2.492-4.65 6.217-4.65zm34.622 18.06h-2.107L93.8 13.117l-4.907 15.157h-2.107L80.774 10.29h2.21l4.932 15.594 4.88-15.569 2.056-.025 4.932 15.594 4.882-15.594h2.132l-6.037 17.983zm25.758-4.547h-9.813l-2.004 4.547h-2.184l8.067-17.983h2.132l8.041 17.983h-2.235l-2.004-4.547zm-.873-1.979l-4.06-9.12-4.007 9.12h8.067zm19.978.36v6.166h-2.03v-6.089l-6.961-11.894h2.132l5.832 9.377 5.754-9.377h2.107l-6.834 11.817zm26.735 1.619h-9.814l-2.003 4.547h-2.184l8.067-17.983h2.132l8.041 17.983h-2.235l-2.004-4.547zm-.873-1.979l-4.06-9.12-4.007 9.12h8.067zm14.789-11.457h7.578c3.623 0 5.806 1.67 5.806 4.495 0 2.107-1.207 3.623-3.314 4.06 2.595.385 4.11 2.08 4.11 4.547 0 3.057-2.414 4.88-6.473 4.88h-7.707V10.292zm2.055 1.978v5.78h5.42c2.415 0 3.828-1.053 3.828-2.929 0-1.824-1.413-2.851-3.828-2.851h-5.42zm0 7.732v6.32h5.42c2.93 0 4.625-1.156 4.625-3.211 0-1.952-1.696-3.109-4.625-3.109h-5.42zm25.245 6.32h7.887v1.953h-9.943V10.29h2.056v16.03zm30.28-14.052h-10.148v5.908h9.069v1.979h-9.069v6.165h10.482v1.953h-12.537V10.29h12.203v1.978z"
+            fill="#FFF"
+          />
+          <path
+            d="M41.8 1.017c-4.442 4.068-8.831 8.189-13.273 12.256 1.284 1.285 2.355 2.302 3.318 3.265 1.445 1.392 3.104 2.944 4.389 4.496 1.017 1.23 1.445 2.248 1.391 3.318-.053.963-.535 1.873-1.445 2.944-.856 1.017-2.14 2.194-3.853 3.746-1.231 1.124-2.623 2.462-4.335 4.121 0 .054.053.107.053.16.054.162.054.322.054.43 0 .534-.214 1.016-.59 1.39a1.943 1.943 0 0 1-2.461.268c-.268-.16-.428-.374-.589-.588H.43L13.754 24.62a190.965 190.965 0 0 0-3.372-3.265c-1.98-1.873-3.425-3.265-4.335-4.442-1.017-1.231-1.445-2.248-1.392-3.319.054-.963.536-1.873 1.445-2.943 1.124-1.338 2.57-2.623 3.854-3.8 1.23-1.178 2.73-2.516 4.496-4.282 0-.054-.054-.107-.054-.16 0-.108-.053-.322-.053-.429 0-.535.214-1.017.588-1.391A1.943 1.943 0 0 1 16.324 0c.428 0 .803.16 1.124.375.267.214.482.428.589.749 7.92-.107 15.842-.107 23.763-.107zM18.304 2.73l8.992 9.312L37.41 2.73H18.304zM4.817 35.163h19.428l-9.313-9.312-10.115 9.312zM15.842 3.8c-.053 0-.107-.054-.214-.054-.374.322-4.55 4.282-4.55 4.282-1.177 1.124-2.515 2.248-3.585 3.479-.75.856-1.178 1.499-1.178 2.14-.053.643.375 1.392 1.178 2.356.856 1.017 2.248 2.355 4.068 4.12 1.177 1.125 2.301 2.249 3.425 3.373l11.079-10.223-9.152-9.527c-.054 0-.107.054-.16.054-.161.054-.268.054-.43.054-.16 0-.32-.054-.48-.054zm.375 20.873l9.313 9.313c.053 0 .107-.054.16-.054.16-.053.321-.053.482-.053.16 0 .321 0 .482.053.053 0 .107.054.214.054 1.445-1.392 2.89-2.783 4.388-4.121 1.552-1.445 2.783-2.57 3.586-3.48.75-.855 1.178-1.498 1.178-2.14.053-.642-.375-1.391-1.178-2.355-.856-1.07-2.248-2.355-4.067-4.121a205.102 205.102 0 0 1-3.426-3.372L16.217 24.673z"
+            fill="url(#a)"
+          />
+        </g>
+      </svg>
+    </div>
+    <div class="block lg:hidden">
+      <button
+        @click="open = !open"
+        class="flex items-center px-3 py-2 rounded text-teal-200 border-teal-400 hover:text-white"
+      >
+        <Icon name="menu" />
+      </button>
+    </div>
+    <div
+      class="lg:flex flex-grow w-full lg:items-stretch lg:w-auto min-h-16"
+      :class="{
+        flex: open,
+        hidden: !open,
+      }"
+    >
+      <div class="flex flex-grow"><slot name="left"></slot></div>
+      <div class="flex">
+        <slot name="right">
+          <NavItem v-for="item in navItems" :key="item.name" v-bind="item" />
+        </slot>
+      </div>
+    </div>
   </component>
 </template>
 
@@ -23,81 +64,39 @@ export default {
   },
   props: {
     /**
-     * The html element name used for the nav bar.
+     * The html element used for the nav bar.
      */
     type: {
       type: String,
       default: "nav",
     },
     /**
-     * State which tab is active when initiated (using name of the component).
+     * The heading, defaults to Swayable logo (overriden by slot #heading)
      */
-    active: {
-      required: true,
+    heading: {
       type: String,
     },
     /**
-     * Menu items to be displayed on the nav bar.
+     * Navigation items (cannot be used with slots)
+     * `[{ name:String, href:String, active:Boolean, title:String }]`
      */
     navItems: {
-      required: true,
       type: Array,
+      default: () => [],
     },
   },
-  computed: {
-    localActive: {
-      get() {
-        return this.active
-      },
-      set(val) {
-        this.$emit("input", val)
-      },
-    },
+  data() {
+    return { open: false }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-// Design Tokens with local scope
-$color-nav-link: $color-primary-indigo;
-$color-nav-link-active: $color-primary-indigo;
-
-.nav {
-  @include stack-space($space-m);
-  font-family: $font-text;
-  font-size: $size-s;
-  line-height: $line-height-m;
-  color: $color-white;
-  text-align: center;
-  width: 100%;
-  @media #{$media-query-l} {
-    // This is how you’d use design tokens with media queries
-  }
-  a {
-    color: $color-nav-link;
-    padding: $space-xs 0;
-    margin: 0 $space-xs;
-    text-decoration: none;
-    display: inline-block;
-    &:hover {
-      color: $color-nav-link-active;
-    }
-    &.active {
-      border-bottom: 2px solid $color-nav-link;
-      font-weight: $weight-bold;
-      color: $color-nav-link;
-    }
-  }
-}
-</style>
-
 <docs>
   ```jsx
-  <NavBar active="Dashboard" :navItems="[
-    {name: 'Dashboard', component: 'Dashboard', href: '/example/'},
-    {name: 'Posts', component: 'Posts', href: '/example/'},
-    {name: 'Users', component: 'Users', href: '/example/'},
-    {name: 'Settings', component: 'Settings', href: '/example/'}
-  ]"/>
+  <NavBar navItems='[{ name: "Dashboard" }]'>
+    <template #right>
+      <NavItem name="Sign in" />
+    </template>
+  </NavBar>
   ```
 </docs>
