@@ -93,7 +93,10 @@ export default {
 
 <docs>
   ```jsx
-  <NavBar navItems='[{ name: "Dashboard" }]'>
+  <NavBar>
+    <template #left>
+      <NavItem name="Dashboard" />
+    </template>
     <template #right>
       <NavItem name="Sign in" />
     </template>
