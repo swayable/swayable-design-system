@@ -17,8 +17,9 @@ module.exports = {
     maxWidth: "100%",
     sidebarWidth: 240,
     fontFamily: {
-      base: ["Trueno", "Arial", "sans-serif"],
-      monospace: ["Consolas", "'Liberation Mono'", "Menlo", "monospace"],
+      base: '"roboto",sans-serif',
+      mono: '"roboto-mono",monospace',
+      title: '"azo-sans-web",sans-serif',
     },
   },
   renderRootJsx: path.join(__dirname, "../docs/components/Preview.js"),
