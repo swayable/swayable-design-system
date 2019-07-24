@@ -16,7 +16,6 @@
 </template>
 
 <script>
-//whitespace-no-wrap block hover:text-white px-4 py-2 align-right cursor-pointer
 /**
  * A specialized NavItem which opens a dropdown.
  */
