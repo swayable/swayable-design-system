@@ -5,9 +5,9 @@
 
 props:
   font_heading:
-    value: "'Trueno', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+    value: '"azo-sans-web",sans-serif'
   font_text:
-    value: "'Trueno', BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+    value: '"roboto",sans-serif'
   weight_bold:
     value: "700"
   weight_semi_bold:

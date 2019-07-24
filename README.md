@@ -2,6 +2,10 @@
 
 The Design System for Swayable: [design.swayable.com](http://design.swayable.com/)
 
+## Development Note
+
+- Must use npm (`yarn start` does not work)
+
 ## Development Progress
 
 - [x] Add colors
