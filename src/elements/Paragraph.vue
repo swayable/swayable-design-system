@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  name: "Paragraph",
-  status: "prototype",
-  release: "3.5.0",
+  name: 'Paragraph',
+  status: 'prototype',
+  release: '3.5.0',
   props: {
     /**
      * The html element used for the text.
@@ -14,7 +14,7 @@ export default {
      */
     type: {
       type: String,
-      default: "p",
+      default: 'p',
       validator: value => {
         return value.match(/(p|span)/)
       },
@@ -25,7 +25,7 @@ export default {
      */
     variation: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validator: value => {
         return value.match(/(medium|intro|large|small)/)
       },

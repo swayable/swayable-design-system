@@ -8,16 +8,16 @@
  * associated actions. Wrapper doesn’t provide customizable options.
  */
 export default {
-  name: "Wrapper",
-  status: "review",
-  release: "1.0.0",
+  name: 'Wrapper',
+  status: 'review',
+  release: '1.0.0',
   props: {
     /**
      * The html element name used for the wrapper.
      */
     type: {
       type: String,
-      default: "div",
+      default: 'div',
     },
   },
 }

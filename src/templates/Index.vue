@@ -22,13 +22,13 @@
  * Shows how to layout and structure a home page.
  */
 export default {
-  name: "Index",
-  status: "deprecated",
-  release: "1.0.0",
+  name: 'Index',
+  status: 'deprecated',
+  release: '1.0.0',
   metaInfo: {
-    title: "Swayable Design System",
+    title: 'Swayable Design System',
     htmlAttrs: {
-      lang: "en",
+      lang: 'en',
     },
   },
   props: {
@@ -37,7 +37,7 @@ export default {
      */
     type: {
       type: String,
-      default: "div",
+      default: 'div',
     },
   },
 }

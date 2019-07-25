@@ -20,9 +20,9 @@
  * use the `Input` element.
  */
 export default {
-  name: "Textarea",
-  status: "ready",
-  release: "3.5.0",
+  name: 'Textarea',
+  status: 'ready',
+  release: '3.5.0',
   props: {
     /**
      * Text value of the form textarea.
@@ -51,7 +51,7 @@ export default {
      */
     wrapper: {
       type: String,
-      default: "div",
+      default: 'div',
       validator: value => {
         return value.match(/(div|section)/)
       },
@@ -69,7 +69,7 @@ export default {
      */
     width: {
       type: String,
-      default: "expand",
+      default: 'expand',
       validator: value => {
         return value.match(/(auto|expand)/)
       },
@@ -96,10 +96,10 @@ export default {
   },
   methods: {
     onInput(value) {
-      this.$emit("change", value)
+      this.$emit('change', value)
     },
     onFocus(value) {
-      this.$emit("focus", value)
+      this.$emit('focus', value)
     },
   },
 }

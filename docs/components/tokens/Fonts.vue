@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import designTokens from "@/assets/tokens/tokens.raw.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import orderBy from 'lodash/orderBy'
 
 export default {
-  name: "Fonts",
+  name: 'Fonts',
   methods: {
     orderData: function(data) {
-      let order = orderBy(data, "value", "desc")
+      let order = orderBy(data, 'value', 'desc')
       return order
     },
   },
@@ -39,15 +39,15 @@ export default {
   },
   computed: {
     fontTokens() {
-      return this.tokens.filter(token => token.category === "font")
+      return this.tokens.filter(token => token.category === 'font')
     },
 
     fontWeights() {
-      return this.fontTokens.filter(token => token.name.startsWith("weight_"))
+      return this.fontTokens.filter(token => token.name.startsWith('weight_'))
     },
 
     fontTypes() {
-      return this.fontTokens.filter(token => token.name.startsWith("font_"))
+      return this.fontTokens.filter(token => token.name.startsWith('font_'))
     },
   },
 }

@@ -22,11 +22,11 @@
  * Shows how to layout and structure an error page.
  */
 export default {
-  name: "NotFound",
+  name: 'NotFound',
   metaInfo: {
-    title: "Page Not Found | Swayable Design System",
+    title: 'Page Not Found | Swayable Design System',
     htmlAttrs: {
-      lang: "en",
+      lang: 'en',
     },
   },
   props: {
@@ -35,7 +35,7 @@ export default {
      */
     type: {
       type: String,
-      default: "div",
+      default: 'div',
     },
   },
 }

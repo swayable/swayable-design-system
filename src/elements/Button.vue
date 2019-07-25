@@ -11,9 +11,9 @@
  * Primary style should be used only once per view for main call-to-action.
  */
 export default {
-  name: "Button",
-  status: "prototype",
-  release: "3.5.0",
+  name: 'Button',
+  status: 'prototype',
+  release: '3.5.0',
   props: {
     /**
      * The html element used for the button.
@@ -21,7 +21,7 @@ export default {
      */
     type: {
       type: String,
-      default: "button",
+      default: 'button',
       validator: value => {
         return value.match(/(button|a)/)
       },
@@ -32,7 +32,7 @@ export default {
      */
     size: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validator: value => {
         return value.match(/(small|medium|large)/)
       },

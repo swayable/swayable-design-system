@@ -72,15 +72,15 @@
 <script>
 // If you want to use your own tokens here, change the following line to:
 // import designTokens from "@/assets/tokens/tokens.raw.json"
-import designTokens from "../../docs.tokens.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '../../docs.tokens.json'
+import orderBy from 'lodash/orderBy'
 
 export default {
-  name: "Components",
+  name: 'Components',
   props: {
     show: {
       type: String,
-      default: "all",
+      default: 'all',
       validator: value => {
         return value.match(/(all|patterns|templates|elements)/)
       },
@@ -90,18 +90,18 @@ export default {
     getComponents: function() {
       let contexts
 
-      if (this.show === "all") {
+      if (this.show === 'all') {
         contexts = [
-          require.context("@/elements/", true, /\.vue$/),
-          require.context("@/patterns/", true, /\.vue$/),
-          require.context("@/templates/", true, /\.vue$/),
+          require.context('@/elements/', true, /\.vue$/),
+          require.context('@/patterns/', true, /\.vue$/),
+          require.context('@/templates/', true, /\.vue$/),
         ]
-      } else if (this.show === "elements") {
-        contexts = [require.context("@/elements/", true, /\.vue$/)]
-      } else if (this.show === "patterns") {
-        contexts = [require.context("@/patterns/", true, /\.vue$/)]
-      } else if (this.show === "templates") {
-        contexts = [require.context("@/templates/", true, /\.vue$/)]
+      } else if (this.show === 'elements') {
+        contexts = [require.context('@/elements/', true, /\.vue$/)]
+      } else if (this.show === 'patterns') {
+        contexts = [require.context('@/patterns/', true, /\.vue$/)]
+      } else if (this.show === 'templates') {
+        contexts = [require.context('@/templates/', true, /\.vue$/)]
       }
 
       const components = []
@@ -112,7 +112,7 @@ export default {
       return components
     },
     orderData: function(data) {
-      return orderBy(data, "name", "asc")
+      return orderBy(data, 'name', 'asc')
     },
   },
   data() {

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import designTokens from "@/assets/tokens/tokens.raw.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import orderBy from 'lodash/orderBy'
 
 /**
  * A framework for creating a predictable and harmonious spacing system. These
@@ -24,10 +24,10 @@ import orderBy from "lodash/orderBy"
  * [/src/tokens/spacing.yml](https://github.com/viljamis/vue-design-system/blob/master/src/tokens/spacing.yml).
  */
 export default {
-  name: "Spacing",
+  name: 'Spacing',
   methods: {
     orderData: function(data) {
-      let order = orderBy(data, "category", "asc")
+      let order = orderBy(data, 'category', 'asc')
       return order
     },
   },

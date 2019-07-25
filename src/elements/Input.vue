@@ -21,9 +21,9 @@
  * formats including numbers. For longer input, use the form `Textarea` element.
  */
 export default {
-  name: "Input",
-  status: "ready",
-  release: "1.0.0",
+  name: 'Input',
+  status: 'ready',
+  release: '1.0.0',
   props: {
     /**
      * The type of the form input field.
@@ -31,7 +31,7 @@ export default {
      */
     type: {
       type: String,
-      default: "text",
+      default: 'text',
       validator: value => {
         return value.match(/(text|number|email)/)
       },
@@ -63,7 +63,7 @@ export default {
      */
     wrapper: {
       type: String,
-      default: "div",
+      default: 'div',
       validator: value => {
         return value.match(/(div|section)/)
       },
@@ -81,7 +81,7 @@ export default {
      */
     width: {
       type: String,
-      default: "expand",
+      default: 'expand',
       validator: value => {
         return value.match(/(auto|expand)/)
       },
@@ -108,10 +108,10 @@ export default {
   },
   methods: {
     onInput(value) {
-      this.$emit("change", value)
+      this.$emit('change', value)
     },
     onFocus(value) {
-      this.$emit("focus", value)
+      this.$emit('focus', value)
     },
   },
 }

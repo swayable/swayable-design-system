@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import designTokens from "@/assets/tokens/tokens.raw.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import orderBy from 'lodash/orderBy'
 
 /**
  * A list of available tokens in Swayable Design System. Use these tokens in place
@@ -52,11 +52,11 @@ import orderBy from "lodash/orderBy"
  * [/src/tokens/](https://github.com/viljamis/vue-design-system/blob/master/src/tokens).
  */
 export default {
-  name: "All",
+  name: 'All',
   methods: {
     orderData: function(data) {
-      let byName = orderBy(data, "name", "asc")
-      let byCategoryAndName = orderBy(byName, "category")
+      let byName = orderBy(data, 'name', 'asc')
+      let byCategoryAndName = orderBy(byName, 'category')
       return byCategoryAndName
     },
   },

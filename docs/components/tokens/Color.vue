@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import designTokens from "@/assets/tokens/tokens.raw.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import orderBy from 'lodash/orderBy'
 
 /**
  * The color palette comes with 5 different weights for each hue. These hues
@@ -27,12 +27,12 @@ import orderBy from "lodash/orderBy"
  * [/src/tokens/color.yml](https://github.com/viljamis/vue-design-system/blob/master/src/tokens/color.yml).
  */
 export default {
-  name: "Color",
+  name: 'Color',
   methods: {
     orderData: function(data) {
       // let byValue = orderBy(data, "value", "asc")
-      let byName = orderBy(data, "name", "asc")
-      let byCategoryAndName = orderBy(byName, "category")
+      let byName = orderBy(data, 'name', 'asc')
+      let byCategoryAndName = orderBy(byName, 'category')
       return byCategoryAndName
     },
   },

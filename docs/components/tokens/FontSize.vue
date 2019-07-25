@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import designTokens from "@/assets/tokens/tokens.raw.json"
-import orderBy from "lodash/orderBy"
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import orderBy from 'lodash/orderBy'
 
 /**
  * This typographic scale makes it easier to achieve visual harmony in the
@@ -23,10 +23,10 @@ import orderBy from "lodash/orderBy"
  * [/src/tokens/font-size.yml](https://github.com/viljamis/vue-design-system/blob/master/src/tokens/font-size.yml).
  */
 export default {
-  name: "FontSize",
+  name: 'FontSize',
   methods: {
     orderData: function(data) {
-      let order = orderBy(data, "value", "desc")
+      let order = orderBy(data, 'value', 'desc')
       return order
     },
   },

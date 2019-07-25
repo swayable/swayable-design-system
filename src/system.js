@@ -7,9 +7,9 @@
 
 // Define contexts to require
 const contexts = [
-  require.context("@/elements/", true, /\.vue$/),
-  require.context("@/patterns/", true, /\.vue$/),
-  require.context("@/templates/", true, /\.vue$/),
+  require.context('@/elements/', true, /\.vue$/),
+  require.context('@/patterns/', true, /\.vue$/),
+  require.context('@/templates/', true, /\.vue$/),
 ]
 
 // Define components
@@ -26,7 +26,7 @@ const System = {
 }
 
 // Automatic installation if Vue has been added to the global scope
-if (typeof window !== "undefined" && window.Vue) {
+if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(System)
 }
 

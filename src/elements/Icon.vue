@@ -3,7 +3,7 @@
 </template>
 
 <script>
-const req = require.context("@/assets/icons/", true, /^\.\/.*\.svg$/)
+const req = require.context('@/assets/icons/', true, /^\.\/.*\.svg$/)
 
 /**
  * Icons are used to visually communicate core parts of the product and
@@ -11,37 +11,37 @@ const req = require.context("@/assets/icons/", true, /^\.\/.*\.svg$/)
  * easily understand where they are in the product.
  */
 export default {
-  name: "Icon",
-  status: "review",
-  release: "1.0.0",
+  name: 'Icon',
+  status: 'review',
+  release: '1.0.0',
   props: {
     /**
      * The name of the icon to display.
      */
     name: {
       required: true,
-      default: "settings",
+      default: 'settings',
     },
     /**
      * The fill color of the SVG icon.
      */
     fill: {
       type: String,
-      default: "currentColor",
+      default: 'currentColor',
     },
     /**
      * Descriptive text to be read to screenreaders.
      */
     ariaLabel: {
       type: String,
-      default: "icon",
+      default: 'icon',
     },
     /**
      * The html element name used for the icon.
      */
     type: {
       type: String,
-      default: "span",
+      default: 'span',
     },
     /**
      * The size of the icon. Defaults to medium.
@@ -49,7 +49,7 @@ export default {
      */
     size: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validator: value => {
         return value.match(/(small|medium|large)/)
       },
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      svg: req("./" + this.name + ".svg").replace(/^<svg /, `<svg style="fill: ${this.fill}" `),
+      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg style="fill: ${this.fill}" `),
     }
   },
 }

@@ -9,9 +9,9 @@
  * Heading element provides an option to change the level of the heading.
  */
 export default {
-  name: "Heading",
-  status: "prototype",
-  release: "1.0.0",
+  name: 'Heading',
+  status: 'prototype',
+  release: '1.0.0',
   props: {
     /**
      * The heading level used for the heading.
@@ -19,7 +19,7 @@ export default {
      */
     level: {
       type: String,
-      default: "h1",
+      default: 'h1',
       validator: value => {
         return value.match(/(h1|h2|h3|h4|h5|h6)/)
       },
