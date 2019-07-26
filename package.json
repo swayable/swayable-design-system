@@ -70,48 +70,6 @@
       }
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:vue/essential"
-    ],
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "rules": {
-      "indent": [
-        "error",
-        2
-      ],
-      "vue/no-unused-vars": "error",
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ],
-      "quotes": [
-        "error",
-        "single"
-      ],
-      "no-extra-semi": "off",
-      "semi": [
-        "error",
-        "never"
-      ],
-      "semi-style": [
-        "error",
-        "last"
-      ],
-      "no-console": "off"
-    },
-    "parserOptions": {
-      "sourceType": "module",
-      "ecmaVersion": 8,
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    }
-  },
   "dependencies": {
     "buefy": "^0.7.10",
     "lodash": "^4.17.15",
