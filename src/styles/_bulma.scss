@@ -1,30 +1,33 @@
 // Customized Bulma
 // More variables @ https://bulma.io/documentation/customize/variables/
 
-@import "~bulma/sass/utilities/initial-variables";
+// Include lines as needed when importing components from Swayable App
+
+
+// @import "~bulma/sass/utilities/initial-variables";
 
 // $navbar-breakpoint: 0;
-$family-sans-serif: $font-text;
-$family-monospace: $font-mono;
+// $family-sans-serif: $font-text;
+// $family-monospace: $font-mono;
 
-$primary: $color-brand;
-$primary-invert: $color-grey-light;
-$link: $color-secondary-blue;
-$info: $color-primary-cyan;
-$success: $color-primary-green;
-$warning: $color-primary-yellow;
-$danger: $color-primary-red;
-$dark: $color-dark;
-$text: $color-dark;
+// $primary: $color-brand;
+// $primary-invert: $color-grey-light;
+// $link: $color-secondary-blue;
+// $info: $color-primary-cyan;
+// $success: $color-primary-green;
+// $warning: $color-primary-yellow;
+// $danger: $color-primary-red;
+// $dark: $color-dark;
+// $text: $color-dark;
 
-@import "~bulma/sass/utilities/_all.sass";
-@import "~bulma/sass/base/_all.sass";
-@import "~bulma/sass/elements/button.sass";
-@import "~bulma/sass/elements/container.sass";
-@import "~bulma/sass/elements/title.sass";
-@import "~bulma/sass/form/_all.sass";
-@import "~bulma/sass/components/navbar.sass";
-@import "~bulma/sass/layout/hero.sass";
-@import "~bulma/sass/layout/section.sass";
+// @import "~bulma/sass/utilities/_all.sass";
+// @import "~bulma/sass/base/_all.sass";
+// @import "~bulma/sass/elements/button.sass";
+// @import "~bulma/sass/elements/container.sass";
+// @import "~bulma/sass/elements/title.sass";
+// @import "~bulma/sass/form/_all.sass";
+// @import "~bulma/sass/components/navbar.sass";
+// @import "~bulma/sass/layout/hero.sass";
+// @import "~bulma/sass/layout/section.sass";
 
 // @import "~bulma";

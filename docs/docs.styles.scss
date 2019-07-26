@@ -267,13 +267,14 @@ div[class^="rsg--sidebar"] {
     padding-bottom: $space-l;
   }
 
+  // Commented out because I like the nav to always be expanded ~ Josh
   // Sidebar sub navigations
-  ul ul[class^="rsg--list"] {
-    display: none;
-    &.vueds-visible {
-      display: block;
-    }
-  }
+  // ul ul[class^="rsg--list"] {
+  //   display: none;
+  //   &.vueds-visible {
+  //     display: block;
+  //   }
+  // }
 
   // Sidebar list item
   li[class^="rsg--item"] {
