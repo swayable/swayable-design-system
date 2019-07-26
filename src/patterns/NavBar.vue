@@ -6,33 +6,36 @@
     <div class='flex items-center flex-shrink-0 mr-4 p-3'>
       <slot>
         <span
-         v-if='heading'
-         v-html='heading'
-         class='font-heading font-medium text-xl text-white'
+          v-if='heading'
+          class='font-heading font-medium text-xl text-white'
+          v-html='heading'
         />
       </slot>
     </div>
     <div class='block lg:hidden'>
       <button
-        @click='open = !open'
         class='flex items-center px-3 py-2 rounded text-teal-200 border-teal-400 hover:text-white'
+        @click='open = !open'
       >
         <Icon name='menu' />
       </button>
     </div>
     <div
-      class='lg:flex flex-grow w-full lg:items-stretch lg:w-auto min-h-16'
       :class='{
         flex: open,
         hidden: !open,
       }'
+      class='lg:flex flex-grow w-full lg:items-stretch lg:w-auto min-h-16'
     >
       <div class='flex flex-grow'>
         <slot name='left' />
       </div>
       <div class='flex'>
         <slot name='right'>
-          <NavItem v-for='item in navItems' :key='item.name' v-bind='item' />
+          <NavItem 
+            v-for='item in navItems' 
+            :key='item.name' 
+            v-bind='item' />
         </slot>
       </div>
     </div>
@@ -63,6 +66,8 @@ export default {
      */
     heading: {
       type: String,
+      required: false,
+      default: null,
     },
     /**
      * Navigation items (cannot be used with slots)

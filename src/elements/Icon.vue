@@ -1,5 +1,9 @@
 <template>
-  <component :is="type" :aria-label="ariaLabel" :class="['icon', size]" v-html="svg" />
+  <component 
+    :is='type' 
+    :aria-label='ariaLabel' 
+    :class='["icon", size]' 
+    v-html='svg' />
 </template>
 
 <script>
@@ -19,6 +23,7 @@ export default {
      * The name of the icon to display.
      */
     name: {
+      type: String,
       required: true,
       default: 'settings',
     },

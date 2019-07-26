@@ -1,12 +1,14 @@
 <template>
-  <component :is="type" class="min-h-screen bg-gray-100">
+  <component 
+    :is='type' 
+    class='min-h-screen bg-gray-100'>
     <NavBar
-      :navItems="[
-        { name: 'Template', href: '/#/' },
-        { name: 'Documentation', href: 'http://localhost:6060/' },
-      ]"
+      :nav-items='[
+        { name: "Template", href: "/#/" },
+        { name: "Documentation", href: "http://localhost:6060/" },
+      ]'
     />
-    <Wrapper class="text-center">
+    <Wrapper class='text-center'>
       <Heading>404 Error</Heading>
       <Paragraph> Couldn’t find what you're looking for. </Paragraph>
     </Wrapper>

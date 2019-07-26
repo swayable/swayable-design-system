@@ -1,5 +1,9 @@
 <template>
-  <component :is="type" :href="href" :type="submit" :class="['button', size, state, variation]">
+  <component 
+    :is='type' 
+    :href='href' 
+    :type='submit' 
+    :class='["button", size, state, variation]'>
     <slot />
   </component>
 </template>

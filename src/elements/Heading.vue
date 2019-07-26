@@ -1,5 +1,7 @@
 <template>
-  <component :is="level" class="heading"> <slot /> </component>
+  <component 
+    :is='level' 
+    class='heading'> <slot /> </component>
 </template>
 
 <script>

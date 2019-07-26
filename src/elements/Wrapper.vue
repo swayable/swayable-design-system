@@ -1,5 +1,7 @@
 <template>
-  <component :is="type" class="wrapper"> <slot /> </component>
+  <component 
+    :is='type' 
+    class='wrapper'> <slot /> </component>
 </template>
 
 <script>

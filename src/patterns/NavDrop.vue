@@ -1,15 +1,26 @@
 <template>
-  <component :is="type" class="relative">
-    <NavItem type="a" @click="toggleOpen" v-on="$listeners">
+  <component 
+    :is='type' 
+    class='relative'
+  >
+    <NavItem 
+      type='a' 
+      @click='toggleOpen' 
+      v-on='$listeners'
+    >
       <slot>{{ name }}</slot>
     </NavItem>
     <div
-      v-show="open"
-      class="w-screen lg:w-auto min-w-full absolute right-0 flex-col bg-blue-900 z-20"
-      ref="navMenuDropdown"
+      v-show='open'
+      ref='navMenuDropdown'
+      class='w-screen lg:w-auto min-w-full absolute right-0 flex-col bg-blue-900 z-20'
     >
-      <slot name="dropdown">
-        <NavItem v-for="item in navItems" :key="item.name" v-bind="item" />
+      <slot name='dropdown'>
+        <NavItem
+          v-for='item in navItems'
+          :key='item.name'
+          v-bind='item'
+        />
       </slot>
     </div>
   </component>
@@ -36,6 +47,7 @@ export default {
      */
     name: {
       type: String,
+      required: false,
     },
     /**
      * Items to be displayed in the dropdown (overriden by slot #dropdown)

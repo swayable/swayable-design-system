@@ -1,5 +1,5 @@
 <template>
-  <div class="all-tokens">
+  <div class='all-tokens'>
     <table>
       <thead>
         <tr>
@@ -9,31 +9,34 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(token, index) in tokens" :key="index" class="token">
-          <td v-if="token.name">
-            <code class="name">${{ token.name.replace(/_/g, "-") }}</code>
+        <tr 
+          v-for='(token, index) in tokens' 
+          :key='index' 
+          class='token'>
+          <td v-if='token.name'>
+            <code class='name'>${{ token.name.replace(/_/g, "-") }}</code>
           </td>
           <td v-else>N/A</td>
-          <td v-if="token.value">
+          <td v-if='token.value'>
             <div
-              v-if="token.type === 'color'"
-              class="example color"
-              :style="{ backgroundColor: token.value }"
+              v-if='token.type === "color"'
+              :style='{ backgroundColor: token.value }'
+              class='example color'
             />
             <div
-              v-if="token.category === 'border-radius'"
-              class="example border-radius"
-              :style="{ borderRadius: token.value }"
+              v-if='token.category === "border-radius"'
+              :style='{ borderRadius: token.value }'
+              class='example border-radius'
             />
             <div
-              v-if="token.category === 'box-shadow'"
-              class="example box-shadow"
-              :style="{ boxShadow: token.value }"
+              v-if='token.category === "box-shadow"'
+              :style='{ boxShadow: token.value }'
+              class='example box-shadow'
             />
-            <code class="type">{{ token.value }}</code>
+            <code class='type'>{{ token.value }}</code>
           </td>
           <td v-else>N/A</td>
-          <td v-if="token.category">{{ token.category }}</td>
+          <td v-if='token.category'>{{ token.category }}</td>
           <td v-else>N/A</td>
         </tr>
       </tbody>
@@ -53,17 +56,17 @@ import orderBy from 'lodash/orderBy'
  */
 export default {
   name: 'All',
+  data() {
+    return {
+      tokens: this.orderData(designTokens.props),
+    }
+  },
   methods: {
     orderData: function(data) {
       let byName = orderBy(data, 'name', 'asc')
       let byCategoryAndName = orderBy(byName, 'category')
       return byCategoryAndName
     },
-  },
-  data() {
-    return {
-      tokens: this.orderData(designTokens.props),
-    }
   },
 }
 </script>

@@ -1,16 +1,20 @@
 <template>
-  <component :is="wrapper" :class="['input', { 'input-expand': width === 'expand' }]">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <component 
+    :is='wrapper' 
+    :class='["input", { "input-expand": width === "expand" }]'>
+    <label 
+      v-if='label' 
+      :for='id'>{{ label }}</label>
     <input
-      :id="id"
-      :disabled="disabled"
-      :type="type"
-      :value="value"
-      :class="state"
-      :placeholder="placeholder"
-      @input="onInput($event.target.value)"
-      @focus="onFocus($event.target.value)"
-    />
+      :id='id'
+      :disabled='disabled'
+      :type='type'
+      :value='value'
+      :class='state'
+      :placeholder='placeholder'
+      @input='onInput($event.target.value)'
+      @focus='onFocus($event.target.value)'
+    >
   </component>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
   <component
-    :is="type"
-    :href="href"
-    class="h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 border-gray-100 hover:text-white cursor-pointer font-medium items-center"
-    :class="{
-      'pb-3 lg:pb-2 border-b-4 active': active,
-    }"
-    :title="title"
-    ref="navItem"
-    v-on="$listeners"
+    ref='navItem'
+    :is='type'
+    :href='href'
+    :class='{
+      "pb-3 lg:pb-2 border-b-4 active": active,
+    }'
+    :title='title'
+    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 border-gray-100 hover:text-white cursor-pointer font-medium items-center'
+    v-on='$listeners'
   >
     <slot>
       <span>{{ name }}</span>

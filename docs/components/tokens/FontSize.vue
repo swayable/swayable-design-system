@@ -1,11 +1,11 @@
 <template>
-  <div class="font-sizes">
+  <div class='font-sizes'>
     <div
-      v-for="(prop, index) in tokens"
-      :key="index"
-      class="font"
-      v-if="prop.category === 'font-size'"
-      :style="{ fontSize: prop.value }"
+      v-for='(prop, index) in tokens'
+      v-if='prop.category === "font-size"'
+      :key='index'
+      :style='{ fontSize: prop.value }'
+      class='font'
     >
       ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
     </div>
@@ -24,16 +24,16 @@ import orderBy from 'lodash/orderBy'
  */
 export default {
   name: 'FontSize',
+  data() {
+    return {
+      tokens: this.orderData(designTokens.props),
+    }
+  },
   methods: {
     orderData: function(data) {
       let order = orderBy(data, 'value', 'desc')
       return order
     },
-  },
-  data() {
-    return {
-      tokens: this.orderData(designTokens.props),
-    }
   },
 }
 </script>

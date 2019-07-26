@@ -1,13 +1,15 @@
 <template>
-  <div class="colors">
+  <div class='colors'>
     <div
-      v-for="(prop, index) in tokens"
-      :key="index"
-      class="color"
-      :class="prop.category"
-      v-if="prop.type === 'color'"
+      v-for='(prop, index) in tokens'
+      v-if='prop.type === "color"'
+      :key='index'
+      :class='prop.category'
+      class='color'
     >
-      <div class="swatch" :style="{ backgroundColor: prop.value }" />
+      <div 
+        :style='{ backgroundColor: prop.value }' 
+        class='swatch' />
       <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
       <span> <em>RGB:</em> {{ prop.value }} </span>
       <span> <em>SCSS:</em> ${{ prop.name.replace(/_/g, "-") }} </span>
@@ -28,6 +30,11 @@ import orderBy from 'lodash/orderBy'
  */
 export default {
   name: 'Color',
+  data() {
+    return {
+      tokens: this.orderData(designTokens.props),
+    }
+  },
   methods: {
     orderData: function(data) {
       // let byValue = orderBy(data, "value", "asc")
@@ -35,11 +42,6 @@ export default {
       let byCategoryAndName = orderBy(byName, 'category')
       return byCategoryAndName
     },
-  },
-  data() {
-    return {
-      tokens: this.orderData(designTokens.props),
-    }
   },
 }
 </script>

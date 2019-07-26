@@ -1,21 +1,34 @@
 <template>
-  <component :is="type" class="min-h-screen bg-gray-100">
+  <component 
+    :is='type' 
+    class='min-h-screen bg-gray-100'>
     <header>
       <NavBar>
-        <img class='h-10' src='//images.swayable.com/logos/light.svg' alt='Swayable Logo' />
+        <img 
+          class='h-10' 
+          src='//images.swayable.com/logos/light.svg' 
+          alt='Swayable Logo' >
         <template #left>
-          <NavItem name="Template" href="/#/Templates/Index" active="true" />
-          <NavItem name="Documentation" href="/#/" />
+          <NavItem 
+            name='Template' 
+            href='/#/Templates/Index' 
+            active='true' />
+          <NavItem 
+            name='Documentation' 
+            href='/#/' />
         </template>
         <template #right>
           <NavDrop>
             Account &nbsp;
-            <Icon name="chevron-down" size="small" ariaLabel="Expand Menu" />
+            <Icon 
+              name='chevron-down' 
+              size='small' 
+              aria-label='Expand Menu' />
             <template #dropdown>
-              <NavItem name="Profile" />
-              <NavItem name="Settings" />
-              <hr class="border-t m-0" />
-              <NavItem name="Logout" />
+              <NavItem name='Profile' />
+              <NavItem name='Settings' />
+              <hr class='border-t m-0' >
+              <NavItem name='Logout' />
             </template>
           </NavDrop>
         </template>

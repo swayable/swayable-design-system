@@ -1,14 +1,18 @@
 <template>
-  <component :is="wrapper" :class="['textarea', { 'textarea-expand': width === 'expand' }]">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <component 
+    :is='wrapper' 
+    :class='["textarea", { "textarea-expand": width === "expand" }]'>
+    <label 
+      v-if='label' 
+      :for='id'>{{ label }}</label>
     <textarea
-      :id="id"
-      :disabled="disabled"
-      :class="state"
-      :placeholder="placeholder"
-      @input="onInput($event.target.value)"
-      @focus="onFocus($event.target.value)"
-      v-model="value"
+      :id='id'
+      :disabled='disabled'
+      :class='state'
+      :placeholder='placeholder'
+      v-model='value'
+      @input='onInput($event.target.value)'
+      @focus='onFocus($event.target.value)'
     />
   </component>
 </template>

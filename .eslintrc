@@ -33,6 +33,7 @@
     ],
     "no-console": "off",
     "vue/require-default-prop": "off",
+    "vue/html-quotes": ["error", "single"],
     "vue/max-attributes-per-line": ["error", {
       "singleline": 1,
       "multiline": {
