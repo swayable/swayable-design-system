@@ -2,6 +2,7 @@
   <component :is="type" class="min-h-screen bg-gray-100">
     <header>
       <NavBar>
+        <img class='h-10' src='//images.swayable.com/logos/light.svg' alt='Swayable Logo' />
         <template #left>
           <NavItem name="Template" href="/#/Templates/Index" active="true" />
           <NavItem name="Documentation" href="/#/" />
