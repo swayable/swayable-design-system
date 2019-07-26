@@ -20,16 +20,16 @@
  * A specialized NavItem which opens a dropdown.
  */
 export default {
-  name: "NavDrop",
-  status: "ready",
-  release: "1.0.0",
+  name: 'NavDrop',
+  status: 'ready',
+  release: '1.0.0',
   props: {
     /**
      * The html element used for component
      */
     type: {
       type: String,
-      default: "div",
+      default: 'div',
     },
     /**
      * Displayed text (overriden by default slot)
@@ -54,10 +54,10 @@ export default {
   },
   mounted() {
     this.populateElementsList()
-    window.addEventListener("click", this.windowClick)
+    window.addEventListener('click', this.windowClick)
   },
   beforeDestroy() {
-    window.removeEventListener("click", this.windowClick)
+    window.removeEventListener('click', this.windowClick)
   },
   methods: {
     populateElementsList() {

@@ -21,16 +21,16 @@
  * The links used in NavBar.
  */
 export default {
-  name: "NavItem",
-  status: "ready",
-  release: "1.0.0",
+  name: 'NavItem',
+  status: 'ready',
+  release: '1.0.0',
   props: {
     /**
      * The html element name used for the nav item
      */
     type: {
       type: String,
-      default: "a",
+      default: 'a',
     },
     /**
      * The destination address
