@@ -21,8 +21,8 @@ aliases:
     value: "240, 63%" # hue & saturation
 
   primary_indigo:
-    value: "240, 63%, 63%" # HSL value
-    rgb: "100, 100, 220" # original RGB value
+    value: "191, 17.4%, 18%" # HSL value
+    rgb: "38, 51, 54" # original RGB value
   primary_purple:
     value: "300, 50%, 47%" # HSL value
     rgb: "180, 60, 180" # original RGB value
@@ -99,7 +99,8 @@ props:
     value: "hsla({!dark}, 0.75)"
     category: colors_basic
   color_grey_light:
-    value: "hsla({!dark}, 0.45)"
+    value: "220, 1.9%, 69.6%" # HSL value
+    rgb: "176, 177, 179" # original RGB value
     category: colors_basic
   color_grey_lighter:
     value: "hsla({!dark}, 0.3)"

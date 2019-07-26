@@ -7,8 +7,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "../styles/fonts";
-@import "../styles/functions";
-@import "../styles/mixins";
-@import "../styles/spacing";
+ 
+@import "./fonts";
+@import './bulma';
+@import "./functions";
+@import "./mixins";
+@import "./spacing";

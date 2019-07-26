@@ -8,14 +8,16 @@ props:
     value: '"azo-sans-web",sans-serif'
   font_text:
     value: '"roboto",sans-serif'
+  font_mono:
+    value: '"roboto-mono",monospace'
   weight_bold:
     value: "700"
   weight_semi_bold:
     value: "600"
   weight_medium:
-    value: "400"
+    value: "500"
   weight_normal:
-    value: "300"
+    value: "400"
   weight_light:
     value: "200"
 global:
