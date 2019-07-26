@@ -12,11 +12,14 @@
         <tr 
           v-for='(token, index) in tokens' 
           :key='index' 
-          class='token'>
+          class='token'
+        >
           <td v-if='token.name'>
             <code class='name'>${{ token.name.replace(/_/g, "-") }}</code>
           </td>
-          <td v-else>N/A</td>
+          <td v-else>
+            N/A
+          </td>
           <td v-if='token.value'>
             <div
               v-if='token.type === "color"'
@@ -35,9 +38,15 @@
             />
             <code class='type'>{{ token.value }}</code>
           </td>
-          <td v-else>N/A</td>
-          <td v-if='token.category'>{{ token.category }}</td>
-          <td v-else>N/A</td>
+          <td v-else>
+            N/A
+          </td>
+          <td v-if='token.category'>
+            {{ token.category }}
+          </td>
+          <td v-else>
+            N/A
+          </td>
         </tr>
       </tbody>
     </table>

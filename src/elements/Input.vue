@@ -1,10 +1,14 @@
 <template>
   <component 
     :is='wrapper' 
-    :class='["input", { "input-expand": width === "expand" }]'>
+    :class='["input", { "input-expand": width === "expand" }]'
+  >
     <label 
       v-if='label' 
-      :for='id'>{{ label }}</label>
+      :for='id'
+    >
+      {{ label }}
+    </label>
     <input
       :id='id'
       :disabled='disabled'

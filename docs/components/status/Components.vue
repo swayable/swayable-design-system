@@ -13,21 +13,24 @@
         <Icon 
           :fill='tokens.color_ucla_gold.value' 
           name='review' 
-          size='small' />
+          size='small'
+        />
         <p>Under review</p>
       </li>
       <li>
         <Icon 
           :fill='tokens.color_vermilion.value' 
           name='deprecated' 
-          size='small' />
+          size='small'
+        />
         <p>Deprecated</p>
       </li>
       <li>
         <Icon 
           :fill='tokens.color_bleu_de_france.value' 
           name='prototype' 
-          size='small' />
+          size='small'
+        />
         <p>Prototype</p>
       </li>
       <li>
@@ -38,10 +41,18 @@
     <table>
       <thead>
         <tr>
-          <th v-if='show === "all"'>Component Name</th>
-          <th v-if='show === "elements"'>Element Name</th>
-          <th v-if='show === "patterns"'>Pattern Name</th>
-          <th v-if='show === "templates"'>Template Name</th>
+          <th v-if='show === "all"'>
+            Component Name
+          </th>
+          <th v-if='show === "elements"'>
+            Element Name
+          </th>
+          <th v-if='show === "patterns"'>
+            Pattern Name
+          </th>
+          <th v-if='show === "templates"'>
+            Template Name
+          </th>
           <th>Released in</th>
           <th>Status</th>
         </tr>
@@ -50,19 +61,27 @@
         <tr 
           v-for='(component, index) in components' 
           :key='index' 
-          class='component'>
+          class='component'
+        >
           <td v-if='component.name'>
             <code class='name'>{{ component.name }}</code>
           </td>
-          <td v-else>N/A</td>
-          <td v-if='component.release'>{{ component.release }}</td>
-          <td v-else>N/A</td>
+          <td v-else>
+            N/A
+          </td>
+          <td v-if='component.release'>
+            {{ component.release }}
+          </td>
+          <td v-else>
+            N/A
+          </td>
           <td v-if='component.status'>
             <Icon 
               v-if='component.status === "ready"' 
               name='ready' 
               fill='#7cb518' 
-              size='small' />
+              size='small'
+            />
             <Icon
               v-if='component.status === "under-review" || component.status === "review"'
               :fill='tokens.color_ucla_gold.value'
@@ -82,7 +101,9 @@
               size='small'
             />
           </td>
-          <td v-else>—</td>
+          <td v-else>
+            —
+          </td>
         </tr>
       </tbody>
     </table>

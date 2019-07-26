@@ -3,7 +3,8 @@
     :is='type' 
     :href='href' 
     :type='submit' 
-    :class='["button", size, state, variation]'>
+    :class='["button", size, state, variation]'
+  >
     <slot />
   </component>
 </template>

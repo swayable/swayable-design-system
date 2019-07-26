@@ -1,7 +1,10 @@
 <template>
   <component 
     :is='type' 
-    class='wrapper'> <slot /> </component>
+    class='wrapper'
+  >
+    <slot />
+  </component>
 </template>
 
 <script>

@@ -1,14 +1,17 @@
 <template>
   <div class='spacing'>
-    <div
-      v-for='(prop, index) in tokens'
+    <template
       v-if='prop.category === "space"'
-      :key='index'
-      :style='{ lineHeight: prop.value, height: prop.value }'
-      class='space'
     >
-      ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
-    </div>
+      <div
+        v-for='(prop, index) in tokens'
+        :key='index'
+        :style='{ lineHeight: prop.value, height: prop.value }'
+        class='space'
+      >
+        ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
+      </div>
+    </template>
   </div>
 </template>
 

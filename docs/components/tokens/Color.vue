@@ -1,19 +1,23 @@
 <template>
   <div class='colors'>
-    <div
-      v-for='(prop, index) in tokens'
+    <template
       v-if='prop.type === "color"'
-      :key='index'
-      :class='prop.category'
-      class='color'
     >
-      <div 
-        :style='{ backgroundColor: prop.value }' 
-        class='swatch' />
-      <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
-      <span> <em>RGB:</em> {{ prop.value }} </span>
-      <span> <em>SCSS:</em> ${{ prop.name.replace(/_/g, "-") }} </span>
-    </div>
+      <div
+        v-for='(prop, index) in tokens'
+        :key='index'
+        :class='prop.category'
+        class='color'
+      >
+        <div 
+          :style='{ backgroundColor: prop.value }' 
+          class='swatch'
+        />
+        <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
+        <span> <em>RGB:</em> {{ prop.value }} </span>
+        <span> <em>SCSS:</em> ${{ prop.name.replace(/_/g, "-") }} </span>
+      </div>
+    </template>
   </div>
 </template>
 

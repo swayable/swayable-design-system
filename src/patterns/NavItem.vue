@@ -1,7 +1,7 @@
 <template>
   <component
-    ref='navItem'
     :is='type'
+    ref='navItem'
     :href='href'
     :class='{
       "pb-3 lg:pb-2 border-b-4 active": active,

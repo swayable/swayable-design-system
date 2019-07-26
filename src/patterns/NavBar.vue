@@ -5,11 +5,12 @@
   >
     <div class='flex items-center flex-shrink-0 mr-4 p-3'>
       <slot>
-        <span
+        <h1
           v-if='heading'
           class='font-heading font-medium text-xl text-white'
-          v-html='heading'
-        />
+        >
+          {{ heading }}
+        </h1>
       </slot>
     </div>
     <div class='block lg:hidden'>
@@ -35,7 +36,8 @@
           <NavItem 
             v-for='item in navItems' 
             :key='item.name' 
-            v-bind='item' />
+            v-bind='item'
+          />
         </slot>
       </div>
     </div>

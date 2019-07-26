@@ -1,7 +1,10 @@
 <template>
   <component 
     :is='type' 
-    :class='["text-style", variation]'> <slot /> </component>
+    :class='["text-style", variation]'
+  >
+    <slot />
+  </component>
 </template>
 
 <script>

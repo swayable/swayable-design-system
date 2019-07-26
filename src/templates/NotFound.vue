@@ -1,7 +1,8 @@
 <template>
   <component 
     :is='type' 
-    class='min-h-screen bg-gray-100'>
+    class='min-h-screen bg-gray-100'
+  >
     <NavBar
       :nav-items='[
         { name: "Template", href: "/#/" },

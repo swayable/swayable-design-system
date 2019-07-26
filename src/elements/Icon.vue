@@ -3,7 +3,8 @@
     :is='type' 
     :aria-label='ariaLabel' 
     :class='["icon", size]' 
-    v-html='svg' />
+    v-html='svg'
+  />
 </template>
 
 <script>

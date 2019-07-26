@@ -5,11 +5,15 @@
       :key='"type-" + index'
       :style='{ fontFamily: prop.value }'
     >
-      <h2 v-if='prop.name.includes("heading")'>${{ prop.name.replace(/_/g, "-") }}</h2>
-      <p v-else>${{ prop.name.replace(/_/g, "-") }}</p>
+      <h2 v-if='prop.name.includes("heading")'>
+        ${{ prop.name.replace(/_/g, "-") }}
+      </h2>
+      <p v-else>
+        ${{ prop.name.replace(/_/g, "-") }}
+      </p>
       <code>{{ prop.value }}</code>
     </div>
-    <br >
+    <br>
     <div
       v-for='(prop, index) in fontWeights'
       :key='"weight-" + index'

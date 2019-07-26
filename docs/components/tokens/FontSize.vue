@@ -1,14 +1,17 @@
 <template>
   <div class='font-sizes'>
-    <div
-      v-for='(prop, index) in tokens'
+    <template
       v-if='prop.category === "font-size"'
-      :key='index'
-      :style='{ fontSize: prop.value }'
-      class='font'
     >
-      ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
-    </div>
+      <div
+        v-for='(prop, index) in tokens'
+        :key='index'
+        :style='{ fontSize: prop.value }'
+        class='font'
+      >
+        ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
+      </div>
+    </template>
   </div>
 </template>
 
