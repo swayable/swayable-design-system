@@ -22,6 +22,7 @@
  */
 export default {
   name: 'NotFound',
+  release: '0.1.0',
   metaInfo: {
     title: 'Page Not Found | Swayable Design System',
     htmlAttrs: {

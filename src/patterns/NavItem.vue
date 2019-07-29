@@ -22,8 +22,8 @@
  */
 export default {
   name: 'NavItem',
-  status: 'ready',
-  release: '1.0.0',
+  status: 'under-review',
+  release: '0.1.0',
   props: {
     /**
      * The html element name used for the nav item

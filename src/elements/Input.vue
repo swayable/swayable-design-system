@@ -30,8 +30,8 @@
  */
 export default {
   name: 'Input',
-  status: 'ready',
-  release: '1.0.0',
+  status: 'prototype',
+  release: '0.1.0',
   props: {
     /**
      * The type of the form input field.

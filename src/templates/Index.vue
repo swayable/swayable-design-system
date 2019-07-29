@@ -55,8 +55,7 @@
  */
 export default {
   name: 'Index',
-  status: 'deprecated',
-  release: '1.0.0',
+  release: '0.1.0',
   metaInfo: {
     title: 'Swayable Design System',
     htmlAttrs: {

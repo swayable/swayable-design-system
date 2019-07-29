@@ -29,8 +29,8 @@
  */
 export default {
   name: 'Textarea',
-  status: 'ready',
-  release: '3.5.0',
+  status: 'prototype',
+  release: '0.1.0',
   props: {
     /**
      * Text value of the form textarea.

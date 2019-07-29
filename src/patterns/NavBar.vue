@@ -50,8 +50,8 @@
  */
 export default {
   name: 'NavBar',
-  status: 'ready',
-  release: '1.0.0',
+  status: 'under-review',
+  release: '0.1.0',
   model: {
     prop: 'active',
   },

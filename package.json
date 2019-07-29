@@ -1,16 +1,17 @@
 {
   "name": "swayable-design-system",
-  "version": "3.5.7",
+  "version": "0.0.1",
   "description": "Design system for Swayable based on Vue Design System",
   "authors": [
     "viljamis <me@viljamis.com>",
-    "Tanner Welsh <tanner@swayable.com>"
+    "Tanner Welsh <tanner@swayable.com>",
+    "Josh Dean <josh@swayable.com>"
   ],
   "main": "dist/system/system.js",
   "files": [
     "dist/system"
   ],
-  "homepage": "https://swayable.com",
+  "homepage": "https://design.swayable.com",
   "private": true,
   "license": "MIT",
   "scripts": {
