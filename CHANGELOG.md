@@ -26,6 +26,30 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
+## 0.1.0 (2019-07-29)
+
+
+### Bug Fixes
+
+* Update tokens to use Swayable colors, fonts ([9a34535](https://github.com/swayable/swayable-design-system/commit/9a34535))
+* Use Trueno font ([87f1b6b](https://github.com/swayable/swayable-design-system/commit/87f1b6b))
+* **templates/Index:** Swap out text ([7c3732b](https://github.com/swayable/swayable-design-system/commit/7c3732b))
+
+
+### Build System
+
+* Run `npm audit fix` to clean up vulnerabilities ([50bff4f](https://github.com/swayable/swayable-design-system/commit/50bff4f))
+* Update package name and metadata ([3172b83](https://github.com/swayable/swayable-design-system/commit/3172b83))
+* Update package-lock ([f7819af](https://github.com/swayable/swayable-design-system/commit/f7819af))
+
+
+### Features
+
+* **commits:** add commitizen and standard-version ([fce4baa](https://github.com/swayable/swayable-design-system/commit/fce4baa))
+* **Navbar:** create navbar, navitem, navdrop ([1f952dd](https://github.com/swayable/swayable-design-system/commit/1f952dd))
+
+
+
 ### 3.5.7 (2018-11-28)
 
 
