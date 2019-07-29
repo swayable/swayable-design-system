@@ -1,8 +1,8 @@
 <template>
   <div class='fonts'>
     <div
-      v-for='(prop, index) in fontTypes'
-      :key='"type-" + index'
+      v-for='prop in fontTypes'
+      :key='prop.name'
       :style='{ fontFamily: prop.value }'
     >
       <h2 v-if='prop.name.includes("heading")'>
@@ -15,8 +15,8 @@
     </div>
     <br>
     <div
-      v-for='(prop, index) in fontWeights'
-      :key='"weight-" + index'
+      v-for='prop in fontWeights'
+      :key='prop.name'
       :style='{ fontWeight: prop.value }'
     >
       ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>

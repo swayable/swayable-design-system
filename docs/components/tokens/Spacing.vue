@@ -1,11 +1,9 @@
 <template>
   <div class='spacing'>
-    <template
-      v-if='prop.category === "space"'
-    >
+    <template v-for='prop in tokens'>
       <div
-        v-for='(prop, index) in tokens'
-        :key='index'
+        v-if='prop.category === "space"'
+        :key='prop.name'
         :style='{ lineHeight: prop.value, height: prop.value }'
         class='space'
       >
