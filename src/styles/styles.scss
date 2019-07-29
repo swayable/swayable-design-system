@@ -4,8 +4,12 @@
  * mixins, etc. in this file, to prevent duplicated
  * CSS in your final, compiled files.
  */
-
-@import "../styles/fonts";
-@import "../styles/functions";
-@import "../styles/mixins";
-@import "../styles/spacing";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@import "./fonts";
+@import './bulma';
+@import "./functions";
+@import "./mixins";
+@import "./spacing";

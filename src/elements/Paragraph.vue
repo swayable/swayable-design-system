@@ -1,12 +1,17 @@
 <template>
-  <component :is="type" :class="['paragraph', variation]"> <slot /> </component>
+  <component 
+    :is='type' 
+    :class='["paragraph", variation]'
+  >
+    <slot />
+  </component>
 </template>
 
 <script>
 export default {
   name: 'Paragraph',
   status: 'prototype',
-  release: '3.5.0',
+  release: '0.1.0',
   props: {
     /**
      * The html element used for the text.

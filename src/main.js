@@ -5,10 +5,10 @@ import App from '@/App'
 import router from '@/router'
 import WebFontLoader from '@/utils/webFontLoader' // eslint-disable-line no-unused-vars
 import Meta from 'vue-meta'
-
-// Vue Design System: Auto importing components globally
+import Buefy from 'buefy'
 import DesignSystem from '@/system'
 
+Vue.use(Buefy, { defaultIconPack: 'fa' })
 Vue.use(DesignSystem)
 Vue.use(Meta)
 
@@ -18,6 +18,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
   components: { App },
+  template: '<App/>',
 })

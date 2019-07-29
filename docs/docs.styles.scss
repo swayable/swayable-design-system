@@ -63,6 +63,7 @@ div[class^="rsg--root"] a[class^="rsg--link"] {
 // (includes h2 as well since in component views that’s the first heading)
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"],
 div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
+  font-family: $font-heading;
   display: block;
   border: 0;
   line-height: $line-height-s;
@@ -207,11 +208,11 @@ td[class^="rsg--cell"] p {
 
 // Sidebar logo
 div[class^="rsg--logo"] {
-  @include inset-space($space-m);
   border-bottom: 1px solid rgba($color-white, 0.1);
   h1 {
+    font-family: $font-heading;
     color: tint($color-primary-indigo, 90%);
-    font-weight: $weight-normal;
+    font-weight: $weight-medium;
   }
 }
 
@@ -266,13 +267,14 @@ div[class^="rsg--sidebar"] {
     padding-bottom: $space-l;
   }
 
+  // Commented out because I like the nav to always be expanded ~ Josh
   // Sidebar sub navigations
-  ul ul[class^="rsg--list"] {
-    display: none;
-    &.vueds-visible {
-      display: block;
-    }
-  }
+  // ul ul[class^="rsg--list"] {
+  //   display: none;
+  //   &.vueds-visible {
+  //     display: block;
+  //   }
+  // }
 
   // Sidebar list item
   li[class^="rsg--item"] {
@@ -285,8 +287,8 @@ div[class^="rsg--sidebar"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
-    font-weight: $weight-semi-bold;
-    color: $color-primary-indigo;
+    font-weight: $weight-medium;
+    color: $color-secondary-blue;
     display: block;
     white-space: nowrap;
     overflow: hidden;

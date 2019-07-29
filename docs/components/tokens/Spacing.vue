@@ -1,14 +1,15 @@
 <template>
-  <div class="spacing">
-    <div
-      v-for="(prop, index) in tokens"
-      :key="index"
-      class="space"
-      v-if="prop.category === 'space'"
-      :style="{ lineHeight: prop.value, height: prop.value }"
-    >
-      ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
-    </div>
+  <div class='spacing'>
+    <template v-for='prop in tokens'>
+      <div
+        v-if='prop.category === "space"'
+        :key='prop.name'
+        :style='{ lineHeight: prop.value, height: prop.value }'
+        class='space'
+      >
+        ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -25,16 +26,16 @@ import orderBy from 'lodash/orderBy'
  */
 export default {
   name: 'Spacing',
+  data() {
+    return {
+      tokens: this.orderData(designTokens.props),
+    }
+  },
   methods: {
     orderData: function(data) {
       let order = orderBy(data, 'category', 'asc')
       return order
     },
-  },
-  data() {
-    return {
-      tokens: this.orderData(designTokens.props),
-    }
   },
 }
 </script>

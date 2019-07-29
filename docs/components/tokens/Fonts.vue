@@ -1,19 +1,23 @@
 <template>
-  <div class="fonts">
+  <div class='fonts'>
     <div
-      v-for="(prop, index) in fontTypes"
-      :key="'type-' + index"
-      :style="{ fontFamily: prop.value }"
+      v-for='prop in fontTypes'
+      :key='prop.name'
+      :style='{ fontFamily: prop.value }'
     >
-      <h2 v-if="prop.name.includes('heading')">${{ prop.name.replace(/_/g, "-") }}</h2>
-      <p v-else>${{ prop.name.replace(/_/g, "-") }}</p>
+      <h2 v-if='prop.name.includes("heading")'>
+        ${{ prop.name.replace(/_/g, "-") }}
+      </h2>
+      <p v-else>
+        ${{ prop.name.replace(/_/g, "-") }}
+      </p>
       <code>{{ prop.value }}</code>
     </div>
-    <br />
+    <br>
     <div
-      v-for="(prop, index) in fontWeights"
-      :key="'weight-' + index"
-      :style="{ fontWeight: prop.value }"
+      v-for='prop in fontWeights'
+      :key='prop.name'
+      :style='{ fontWeight: prop.value }'
     >
       ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
     </div>
@@ -26,12 +30,6 @@ import orderBy from 'lodash/orderBy'
 
 export default {
   name: 'Fonts',
-  methods: {
-    orderData: function(data) {
-      let order = orderBy(data, 'value', 'desc')
-      return order
-    },
-  },
   data() {
     return {
       tokens: this.orderData(designTokens.props),
@@ -48,6 +46,12 @@ export default {
 
     fontTypes() {
       return this.fontTokens.filter(token => token.name.startsWith('font_'))
+    },
+  },
+  methods: {
+    orderData: function(data) {
+      let order = orderBy(data, 'value', 'desc')
+      return order
     },
   },
 }

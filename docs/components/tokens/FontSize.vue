@@ -1,14 +1,15 @@
 <template>
-  <div class="font-sizes">
-    <div
-      v-for="(prop, index) in tokens"
-      :key="index"
-      class="font"
-      v-if="prop.category === 'font-size'"
-      :style="{ fontSize: prop.value }"
-    >
-      ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
-    </div>
+  <div class='font-sizes'>
+    <template v-for='prop in tokens'>
+      <div
+        v-if='prop.category === "font-size"'
+        :key='prop.name'
+        :style='{ fontSize: prop.value }'
+        class='font'
+      >
+        ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -24,16 +25,16 @@ import orderBy from 'lodash/orderBy'
  */
 export default {
   name: 'FontSize',
+  data() {
+    return {
+      tokens: this.orderData(designTokens.props),
+    }
+  },
   methods: {
     orderData: function(data) {
       let order = orderBy(data, 'value', 'desc')
       return order
     },
-  },
-  data() {
-    return {
-      tokens: this.orderData(designTokens.props),
-    }
   },
 }
 </script>

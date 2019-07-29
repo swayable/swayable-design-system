@@ -1,14 +1,22 @@
 <template>
-  <component :is="wrapper" :class="['textarea', { 'textarea-expand': width === 'expand' }]">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <component 
+    :is='wrapper' 
+    :class='["textarea", { "textarea-expand": width === "expand" }]'
+  >
+    <label 
+      v-if='label' 
+      :for='id'
+    >
+      {{ label }}
+    </label>
     <textarea
-      :id="id"
-      :disabled="disabled"
-      :class="state"
-      :placeholder="placeholder"
-      @input="onInput($event.target.value)"
-      @focus="onFocus($event.target.value)"
-      v-model="value"
+      :id='id'
+      v-model='value'
+      :disabled='disabled'
+      :class='state'
+      :placeholder='placeholder'
+      @input='onInput($event.target.value)'
+      @focus='onFocus($event.target.value)'
     />
   </component>
 </template>
@@ -21,8 +29,8 @@
  */
 export default {
   name: 'Textarea',
-  status: 'ready',
-  release: '3.5.0',
+  status: 'prototype',
+  release: '0.1.0',
   props: {
     /**
      * Text value of the form textarea.

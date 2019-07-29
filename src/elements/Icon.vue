@@ -1,5 +1,10 @@
 <template>
-  <component :is="type" :aria-label="ariaLabel" :class="['icon', size]" v-html="svg" />
+  <component 
+    :is='type' 
+    :aria-label='ariaLabel' 
+    :class='["icon", size]' 
+    v-html='svg'
+  />
 </template>
 
 <script>
@@ -12,13 +17,14 @@ const req = require.context('@/assets/icons/', true, /^\.\/.*\.svg$/)
  */
 export default {
   name: 'Icon',
-  status: 'review',
-  release: '1.0.0',
+  status: 'prototype',
+  release: '0.1.0',
   props: {
     /**
      * The name of the icon to display.
      */
     name: {
+      type: String,
       required: true,
       default: 'settings',
     },

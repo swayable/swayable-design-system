@@ -1,12 +1,46 @@
 <template>
-  <component :is="type" class="nav">
-    <a
-      v-for="(item, index) in navItems"
-      :key="index"
-      :href="item.href"
-      :class="{ active: localActive === item.component }"
-      v-html="item.name"
-    />
+  <component
+    :is='type'
+    class='flex items-center justify-between flex-wrap bg-blue-900 pl-3 text-gray-500'
+  >
+    <div class='flex items-center flex-shrink-0 mr-4 p-3'>
+      <slot>
+        <h1
+          v-if='heading'
+          class='font-heading font-medium text-xl text-white'
+        >
+          {{ heading }}
+        </h1>
+      </slot>
+    </div>
+    <div class='block lg:hidden'>
+      <button
+        class='flex items-center px-3 py-2 rounded text-teal-200 border-teal-400 hover:text-white'
+        @click='open = !open'
+      >
+        <Icon name='menu' />
+      </button>
+    </div>
+    <div
+      :class='{
+        flex: open,
+        hidden: !open,
+      }'
+      class='lg:flex flex-grow w-full lg:items-stretch lg:w-auto min-h-16'
+    >
+      <div class='flex flex-grow'>
+        <slot name='left' />
+      </div>
+      <div class='flex'>
+        <slot name='right'>
+          <NavItem 
+            v-for='item in navItems' 
+            :key='item.name' 
+            v-bind='item'
+          />
+        </slot>
+      </div>
+    </div>
   </component>
 </template>
 
@@ -16,88 +50,51 @@
  */
 export default {
   name: 'NavBar',
-  status: 'ready',
-  release: '1.0.0',
+  status: 'under-review',
+  release: '0.1.0',
   model: {
     prop: 'active',
   },
   props: {
     /**
-     * The html element name used for the nav bar.
+     * The html element used for the nav bar.
      */
     type: {
       type: String,
       default: 'nav',
     },
     /**
-     * State which tab is active when initiated (using name of the component).
+     * The heading (overriden by default slot)
      */
-    active: {
-      required: true,
+    heading: {
       type: String,
+      required: false,
+      default: null,
     },
     /**
-     * Menu items to be displayed on the nav bar.
+     * Navigation items (cannot be used with slots)
+     * `[{ name:String, href:String, active:Boolean, title:String }]`
      */
     navItems: {
-      required: true,
       type: Array,
+      default: () => [],
     },
   },
-  computed: {
-    localActive: {
-      get() {
-        return this.active
-      },
-      set(val) {
-        this.$emit('input', val)
-      },
-    },
+  data() {
+    return { open: false }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-// Design Tokens with local scope
-$color-nav-link: $color-primary-indigo;
-$color-nav-link-active: $color-primary-indigo;
-
-.nav {
-  @include stack-space($space-m);
-  font-family: $font-text;
-  font-size: $size-s;
-  line-height: $line-height-m;
-  color: $color-white;
-  text-align: center;
-  width: 100%;
-  @media #{$media-query-l} {
-    // This is how you’d use design tokens with media queries
-  }
-  a {
-    color: $color-nav-link;
-    padding: $space-xs 0;
-    margin: 0 $space-xs;
-    text-decoration: none;
-    display: inline-block;
-    &:hover {
-      color: $color-nav-link-active;
-    }
-    &.active {
-      border-bottom: 2px solid $color-nav-link;
-      font-weight: $weight-bold;
-      color: $color-nav-link;
-    }
-  }
-}
-</style>
-
 <docs>
   ```jsx
-  <NavBar active="Dashboard" :navItems="[
-    {name: 'Dashboard', component: 'Dashboard', href: '/example/'},
-    {name: 'Posts', component: 'Posts', href: '/example/'},
-    {name: 'Users', component: 'Users', href: '/example/'},
-    {name: 'Settings', component: 'Settings', href: '/example/'}
-  ]"/>
+  <NavBar>
+    <template #left>
+      <NavItem name='Dashboard' />
+    </template>
+    <template #right>
+      <NavItem name='Sign in' />
+    </template>
+  </NavBar>
   ```
 </docs>

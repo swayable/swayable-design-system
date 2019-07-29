@@ -1,0 +1,57 @@
+{
+  "extends": [
+    // "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "vue/no-unused-vars": "error",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-extra-semi": "off",
+    "semi": [
+      "error",
+      "never"
+    ],
+    "semi-style": [
+      "error",
+      "last"
+    ],
+    "no-console": "off",
+    "vue/require-default-prop": "off",
+    "vue/html-quotes": ["error", "single"],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 1,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
+    "vue/multiline-html-element-content-newline": ["error", {
+      "ignoreWhenEmpty": true,
+      "ignores": ["pre"],
+      "allowEmptyLines": false
+    }]
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}
