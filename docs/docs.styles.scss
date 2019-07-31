@@ -294,7 +294,7 @@ div[class^="rsg--sidebar"] {
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $brand-lighter;
+      color: $lighter;
     }
     &:active {
       color: $dark;
@@ -493,7 +493,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-tag,
 .hljs-tag,
 .hljs-name {
-  color: $brand-light !important;
+  color: $light !important;
 }
 .hljs-attribute,
 .hljs-keyword,

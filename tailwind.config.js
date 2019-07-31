@@ -29,18 +29,18 @@ module.exports = {
   important: true,
   theme: {
     fontFamily: {
-      heading: designTokens.props.font_heading,
-      body: designTokens.props.font_text,
-      mono: designTokens.props.font_mono,
+      heading: designTokens.props.font_heading.originalValue,
+      body: designTokens.props.font_text.originalValue,
+      mono: designTokens.props.font_mono.originalValue,
     },
     extend: {
       minHeight: sizeMap,
       inset: sizeMap,
       colors: {
-        brand: designTokens.props.brand,
-        light: designTokens.props.light,
-        lighter: designTokens.props.lighter,
-        dark: designTokens.props.dark,
+        brand: designTokens.props.brand.originalValue,
+        light: designTokens.props.light.originalValue,
+        lighter: designTokens.props.lighter.originalValue,
+        dark: designTokens.props.dark.originalValue,
       },
     },
   },

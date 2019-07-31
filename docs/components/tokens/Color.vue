@@ -3,29 +3,27 @@
     <div
       v-for='prop in tokens'
       :key='prop.name'
-      :class='prop.category'
-      class='w-1/3 p-8 '
+      :class='`w-1/3 p-8 color ${prop.category}`'
     >
       <div class='max-w-sm rounded overflow-hidden shadow-lg'>
         <div
-          class='w-full h-20 border-b border-gray-200'
-          :style='{ backgroundColor: prop.value }'
+          :class='`w-full h-20 border-b border-gray-200 swatch bg-${prop.className}`'
         />
         <div class='p-4 pt-2'>
           <div class='flex'>
             <span class='flex-grow capitalize font-bold text-lg'>
-              {{ prop.name.replace(/_/g, " ").replace(/color/g, "").replace(/primary/g, "").replace(/secondary/g, "") }}
+              {{ prop.name }}
             </span>
             <span>
               <p class='bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700'>
-                {{ prop.category.replace(/color_/g, "") }}
+                {{ prop.category }}
               </p>
             </span>
           </div>
           <div class='flex text-gray-700 text-xs mt-1'>
             <div class='w-1/2'>
               <p>
-                ${{ prop.name.replace(/_/g, "-") }}
+                ${{ prop.className }}
               </p>
               <p class='lowercase'>
                 {{ prop.originalValue }}
@@ -36,13 +34,13 @@
             </div>
             <div class='w-1/2 text-right mr-2'>
               <p>
-                .bg-{{ prop.name.replace(/_/g, "-") }}
+                .bg-{{ prop.className }}
               </p>
               <p>
-                .text-{{ prop.name.replace(/_/g, "-") }}
+                .text-{{ prop.className }}
               </p>
               <p>
-                .border-{{ prop.name.replace(/_/g, "-") }}
+                .border-{{ prop.className }}
               </p>
             </div>
           </div>
@@ -70,13 +68,17 @@ import filter from 'lodash/filter'
 export default {
   name: 'Color',
   data() {
-    return {
-      tokens: orderBy(
-        filter(designTokens.props, { type: 'color' }),
-        ['order', 'category', 'name'],
-        'asc',
-      ),
+    const decorate = t => {
+      t.className =  t.name.replace(/_/g, '-')
+      t.category = t.category.replace(/color_/g, '')
+      return t
     }
+    const tokens = orderBy(
+      filter(designTokens.props, { type: 'color' }).map(decorate),
+      ['order', 'category', 'name'],
+      'asc',
+    )
+    return { tokens }
   },
 }
 </script>
