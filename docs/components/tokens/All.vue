@@ -61,7 +61,7 @@ import orderBy from 'lodash/orderBy'
  * A list of available tokens in Swayable Design System. Use these tokens in place
  * of hard-coded values in order to maintain a scalable and consistent system.
  * To edit these tokens and add more, see
- * [/src/tokens/](https://github.com/viljamis/vue-design-system/blob/master/src/tokens).
+ * [/src/tokens/](https://github.com/swayable/swayable-design-system/blob/master/src/tokens).
  */
 export default {
   name: 'All',
@@ -92,7 +92,7 @@ export default {
   font-family: $font-heading;
   font-weight: $weight-normal;
   line-height: $line-height-xs;
-  color: $color-dark;
+  color: $dark;
   margin-bottom: $space-s;
   font-style: normal;
   @media (max-width: 1000px) {
@@ -105,10 +105,10 @@ export default {
   }
   thead th {
     padding: $space-s $space-l $space-s $space-s;
-    background: $color-cloud;
+    background: $light;
     font-size: $size-s;
     font-weight: $weight-bold;
-    color: $color-oxford-blue;
+    color: $blue-800;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: $weight-semi-bold;
@@ -150,7 +150,7 @@ export default {
   .example {
     @include inline-space($space-xs);
     border-radius: $radius-default;
-    background: $color-white;
+    background: $white;
     box-shadow: $shadow-s-inset, $shadow-s-inset, $shadow-s-inset;
     margin-top: $space-xx-small;
     width: $space-s;

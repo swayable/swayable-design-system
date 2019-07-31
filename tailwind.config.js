@@ -1,3 +1,5 @@
+const designTokens = require('./src/assets/tokens/tokens.raw.json')
+
 const sizeMap = {
   '-20': '-5rem',
   '-16': '-4rem',
@@ -24,30 +26,21 @@ const sizeMap = {
 }
 
 module.exports = {
+  important: true,
   theme: {
     fontFamily: {
-      heading: '"azo-sans-web",sans-serif',
-      body: '"roboto",sans-serif',
-      mono: '"roboto-mono",monospace',
+      heading: designTokens.props.font_heading.originalValue,
+      body: designTokens.props.font_text.originalValue,
+      mono: designTokens.props.font_mono.originalValue,
     },
     extend: {
       minHeight: sizeMap,
       inset: sizeMap,
       colors: {
-        blue: {
-          '900': '#233341',
-        },
-        gray: {
-          '100': '#E9EAEB',
-          '200': '#D4D6D9',
-          '300': '#BDC1C5',
-          '400': '#A8ADB3',
-          '500': '#92999F',
-          '600': '#7D858C',
-          '700': '#677079',
-          '800': '#515C66',
-          '900': '#3B4753',
-        },
+        brand: designTokens.props.brand.originalValue,
+        light: designTokens.props.light.originalValue,
+        lighter: designTokens.props.lighter.originalValue,
+        dark: designTokens.props.dark.originalValue,
       },
     },
   },

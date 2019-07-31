@@ -1,157 +1,87 @@
 <template>
-  <div class='colors'>
-    <template v-for='prop in tokens'>
-      <div
-        v-if='prop.type === "color"'
-        :key='prop.name'
-        :class='prop.category'
-        class='color'
-      >
-        <div 
-          :style='{ backgroundColor: prop.value }' 
-          class='swatch'
+  <div class='flex flex-wrap bg-gray-100'>
+    <div
+      v-for='prop in tokens'
+      :key='prop.name'
+      :class='`w-1/3 p-8 color ${prop.category}`'
+    >
+      <div class='max-w-sm rounded overflow-hidden shadow-lg'>
+        <div
+          :class='`w-full h-20 border-b border-gray-200 swatch bg-${prop.className}`'
         />
-        <h3>{{ prop.name.replace(/_/g, " ").replace(/color/g, "") }}</h3>
-        <span> <em>RGB:</em> {{ prop.value }} </span>
-        <span> <em>SCSS:</em> ${{ prop.name.replace(/_/g, "-") }} </span>
+        <div class='p-4 pt-2'>
+          <div class='flex'>
+            <span class='flex-grow capitalize font-bold text-lg'>
+              {{ prop.name }}
+            </span>
+            <span>
+              <p class='bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700'>
+                {{ prop.category }}
+              </p>
+            </span>
+          </div>
+          <div class='flex text-gray-700 text-xs mt-1'>
+            <div class='w-1/2'>
+              <p>
+                ${{ prop.className }}
+              </p>
+              <p class='lowercase'>
+                {{ prop.originalValue }}
+              </p>
+              <p>
+                {{ prop.value }}
+              </p>
+            </div>
+            <div class='w-1/2 text-right mr-2'>
+              <p>
+                .bg-{{ prop.className }}
+              </p>
+              <p>
+                .text-{{ prop.className }}
+              </p>
+              <p>
+                .border-{{ prop.className }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
 <script>
 import designTokens from '@/assets/tokens/tokens.raw.json'
 import orderBy from 'lodash/orderBy'
+import filter from 'lodash/filter'
 
 /**
- * The color palette comes with 5 different weights for each hue. These hues
- * should be used purposefully to communicate how things function in the
- * interface. Keep in mind that `vermilion` is only used in special cases
- * like destructive actions and error messages. To edit the colors, see
- * [/src/tokens/color.yml](https://github.com/viljamis/vue-design-system/blob/master/src/tokens/color.yml).
+ * These hues should be used purposefully to communicate how things function in the
+ * interface.
+ * 
+ * * Colors in the `theme` category are from Swayable designs
+ * * Colors marked `tailwindcss` are from [Tailwindcss](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js)
+ * 
+ * To edit the colors, see
+ * [/src/tokens/color.yml](https://github.com/swayable/swayable-design-system/blob/master/src/tokens/color.yml).
  */
 export default {
   name: 'Color',
   data() {
-    return {
-      tokens: this.orderData(designTokens.props),
+    const decorate = t => {
+      t.className =  t.name.replace(/_/g, '-')
+      t.category = t.category.replace(/color_/g, '')
+      return t
     }
-  },
-  methods: {
-    orderData: function(data) {
-      // let byValue = orderBy(data, "value", "asc")
-      let byName = orderBy(data, 'name', 'asc')
-      let byCategoryAndName = orderBy(byName, 'category')
-      return byCategoryAndName
-    },
+    const tokens = orderBy(
+      filter(designTokens.props, { type: 'color' }).map(decorate),
+      ['order', 'category', 'name'],
+      'asc',
+    )
+    return { tokens }
   },
 }
 </script>
-
-<style lang="scss" scoped>
-@import "../../docs.tokens.scss";
-
-/* STYLES
---------------------------------------------- */
-
-.colors {
-  margin-top: $space-l;
-  display: block;
-  width: 100%;
-  @supports (display: grid) {
-    display: grid;
-    max-width: 1200px;
-    align-content: stretch;
-    justify-content: left;
-    grid-template-columns:
-      calc(20% - #{$space-m})
-      calc(20% - #{$space-m})
-      calc(20% - #{$space-m})
-      calc(20% - #{$space-m})
-      calc(20% - #{$space-m});
-    grid-column-gap: $space-m;
-    @media (max-width: 1300px) {
-      grid-template-columns:
-        calc(25% - #{$space-m})
-        calc(25% - #{$space-m})
-        calc(25% - #{$space-m})
-        calc(25% - #{$space-m});
-    }
-    @media (max-width: 1100px) {
-      grid-template-columns:
-        calc(33.333% - #{$space-m})
-        calc(33.333% - #{$space-m})
-        calc(33.333% - #{$space-m});
-    }
-    @media (max-width: 900px) {
-      grid-template-columns:
-        calc(50% - #{$space-m})
-        calc(50% - #{$space-m});
-    }
-    @media (max-width: 400px) {
-      grid-template-columns: 100%;
-    }
-  }
-}
-.swatch {
-  @include stack-space($space-s);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  height: $space-xxl;
-  margin-left: -#{$space-s};
-  margin-top: -#{$space-s};
-  width: calc(100% + #{$space-l});
-  float: left;
-}
-h3 {
-  @include reset;
-  @include stack-space($space-xs);
-  text-transform: capitalize;
-  line-height: 1.2;
-  width: 100%;
-  float: left;
-}
-.color {
-  @include reset;
-  @include inset-space($space-s);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-bottom: $space-m;
-  box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
-  font-size: $size-s;
-  font-family: $font-text;
-  color: $color-dark;
-  border-radius: $radius-default;
-  overflow: hidden;
-  text-align: left;
-  @supports (display: grid) {
-    width: 100%;
-    float: left;
-  }
-  @media (max-width: 400px) {
-    margin-bottom: $space-m;
-  }
-  &:hover {
-    span {
-      color: $color-dark;
-      em {
-        color: $color-grey;
-      }
-    }
-  }
-  span {
-    margin-bottom: $space-xs;
-    line-height: 1.3;
-    color: $color-grey;
-    font-size: $size-s;
-    width: 100%;
-    float: left;
-    em {
-      user-select: none;
-      font-style: normal;
-    }
-  }
-}
-</style>
 
 <docs>
   ```jsx

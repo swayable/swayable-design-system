@@ -1,119 +1,147 @@
 <template>
-  <div class='component-status'>
-    <ul class='status-list'>
-      <li>
+  <div>
+    <div class='flex'>
+      <span class='w-1/5 flex'>
         <Icon 
+          :fill='fill-ready'
           name='ready' 
-          fill='#7cb518' 
           size='small'
         />
         <p>Ready</p>
-      </li>
-      <li>
+      </span>
+      <span class='w-1/5 flex'>
         <Icon 
-          :fill='tokens.color_ucla_gold.value' 
+          :fill='fill.review' 
           name='review' 
           size='small'
         />
         <p>Under review</p>
-      </li>
-      <li>
+      </span>
+      <span class='w-1/5 flex'>
         <Icon 
-          :fill='tokens.color_vermilion.value' 
+          :fill='fill.deprecated' 
           name='deprecated' 
           size='small'
         />
         <p>Deprecated</p>
-      </li>
-      <li>
+      </span>
+      <span class='w-1/5 flex'>
         <Icon 
-          :fill='tokens.color_bleu_de_france.value' 
+          :fill='fill.prototype' 
           name='prototype' 
           size='small'
         />
         <p>Prototype</p>
-      </li>
-      <li>
-        <span>—</span>
+      </span>
+      <span class='w-1/5 flex'>
+        <span class='w-6 h-6'>—</span>
         <p>Not applicable</p>
-      </li>
-    </ul>
-    <table>
-      <thead>
-        <tr>
-          <th v-if='show === "all"'>
-            Component Name
-          </th>
-          <th v-if='show === "elements"'>
-            Element Name
-          </th>
-          <th v-if='show === "patterns"'>
-            Pattern Name
-          </th>
-          <th v-if='show === "templates"'>
-            Template Name
-          </th>
-          <th>Released in</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr 
+      </span>
+    </div>
+    <div class='mt-5'>
+      <div class='flex text-gray-600'>
+        <span
+          v-if='show === "all"'
+          class='w-1/3'
+        >
+          Component Name
+        </span>
+        <span
+          v-if='show === "elements"'
+          class='w-1/3'
+        >
+          Element Name
+        </span>
+        <span
+          v-if='show === "patterns"'
+          class='w-1/3'
+        >
+          Pattern Name
+        </span>
+        <span
+          v-if='show === "templates"'
+          class='w-1/3'
+        >
+          Template Name
+        </span>
+        <span class='w-1/3'>Released in</span>
+        <span class='w-1/3'>Status</span>
+      </div>
+      <div class='mt-1'>
+        <div 
           v-for='(component, index) in components' 
           :key='index' 
-          class='component'
+          class='flex'
         >
-          <td v-if='component.name'>
+          <span
+            v-if='component.name'
+            class='w-1/3'
+          >
             <code class='name'>{{ component.name }}</code>
-          </td>
-          <td v-else>
+          </span>
+          <span
+            v-else
+            class='w-1/3'
+          >
             N/A
-          </td>
-          <td v-if='component.release'>
+          </span>
+          <span
+            v-if='component.release'
+            class='w-1/3'
+          >
             {{ component.release }}
-          </td>
-          <td v-else>
+          </span>
+          <span
+            v-else
+            class='w-1/3'
+          >
             N/A
-          </td>
-          <td v-if='component.status'>
+          </span>
+          <span
+            v-if='component.status'
+            class='w-1/3'
+          >
             <Icon 
               v-if='component.status === "ready"' 
+              :fill='fill.ready'
               name='ready' 
-              fill='#7cb518' 
               size='small'
             />
             <Icon
               v-if='component.status === "under-review" || component.status === "review"'
-              :fill='tokens.color_ucla_gold.value'
+              :fill='fill.review'
               name='review'
               size='small'
             />
             <Icon
               v-if='component.status === "prototype"'
-              :fill='tokens.color_bleu_de_france.value'
+              :fill='fill.prototype'
               name='prototype'
               size='small'
             />
             <Icon
               v-if='component.status === "deprecated"'
-              :fill='tokens.color_vermilion.value'
+              :fill='fill.deprecated'
               name='deprecated'
               size='small'
             />
-          </td>
-          <td v-else>
+          </span>
+          <span
+            v-else
+            class='w-1/3'
+          >
             —
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // If you want to use your own tokens here, change the following line to:
 // import designTokens from "@/assets/tokens/tokens.raw.json"
-import designTokens from '../../docs.tokens.json'
+// import designTokens from '../../docs.tokens.json'
 import orderBy from 'lodash/orderBy'
 
 export default {
@@ -130,7 +158,12 @@ export default {
   data() {
     return {
       components: this.orderData(this.getComponents()),
-      tokens: designTokens.props,
+      fill: {
+        ready: 'text-green-600',
+        review: 'text-orange-600',
+        deprecated: 'text-red-600',
+        prototype: 'text-blue-600',
+      },
     }
   },
   methods: {
@@ -164,103 +197,6 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-@import "../../docs.tokens.scss";
-
-/* STYLES
---------------------------------------------- */
-
-.component-status {
-  @include reset;
-  font-family: $font-heading;
-  font-weight: $weight-normal;
-  line-height: $line-height-xs;
-  color: $color-dark;
-  margin-bottom: $space-s;
-  font-style: normal;
-  @media (max-width: 1000px) {
-    overflow-x: auto;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-  }
-  thead th {
-    padding: $space-s;
-    background: $color-cloud;
-    font-size: $size-s;
-    font-weight: $weight-bold;
-    color: $color-oxford-blue;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: $weight-semi-bold;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: left;
-    // Chrome has a bug related to thead, this only works on th:
-    position: -webkit-sticky;
-    position: sticky;
-    top: -1px;
-    &:first-child {
-      border-top-left-radius: $radius-default;
-      border-bottom-left-radius: $radius-default;
-    }
-    &:last-child {
-      border-top-right-radius: $radius-default;
-      border-bottom-right-radius: $radius-default;
-    }
-  }
-  tr {
-    border-bottom: 1px solid #dfe3e6;
-    &:last-child {
-      border: 0;
-    }
-  }
-  td {
-    font-size: $size-s;
-    padding: $space-s;
-    &:first-child {
-      font-weight: $weight-bold;
-      white-space: nowrap;
-    }
-  }
-  .status-list {
-    margin: 0 0 $space-m;
-    overflow: hidden;
-    padding: 0;
-    list-style: none;
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-    @media (max-width: 1000px) {
-      display: block;
-    }
-    li {
-      margin: 0 $space-m 0 0;
-      color: $color-grey;
-      font-size: $size-s;
-      align-items: center;
-      display: flex;
-      @media (max-width: 1000px) {
-        width: 50%;
-        float: left;
-        margin: 0;
-      }
-      svg,
-      span {
-        margin: -2px calc(#{$space-s} / 2) 0 0;
-      }
-      p {
-        @media (max-width: 1000px) {
-          margin: $space-xs;
-        }
-      }
-    }
-  }
-}
-</style>
 
 <docs>
   ```jsx

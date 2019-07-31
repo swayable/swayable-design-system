@@ -21,7 +21,7 @@ import orderBy from 'lodash/orderBy'
  * This typographic scale makes it easier to achieve visual harmony in the
  * interface. It’s purposefully designed to keep the number of separate font
  * sizes to a minimum. To edit font-sizes, see
- * [/src/tokens/font-size.yml](https://github.com/viljamis/vue-design-system/blob/master/src/tokens/font-size.yml).
+ * [/src/tokens/font-size.yml](https://github.com/swayable/swayable-design-system/blob/master/src/tokens/font-size.yml).
  */
 export default {
   name: 'FontSize',
@@ -55,14 +55,14 @@ export default {
   font-family: $font-heading;
   font-weight: $weight-bold;
   line-height: $line-height-xs;
-  color: $color-dark;
+  color: $dark;
   margin-bottom: $space-s;
   font-style: normal;
   span {
     letter-spacing: -0.02em;
     margin-left: 10px;
     font-weight: $weight-normal;
-    color: $color-grey;
+    color: $grey-600;
     user-select: none;
     font-style: normal;
   }

@@ -103,31 +103,31 @@ export default {
   align-items: center;
   justify-content: center;
   border: 0;
-  box-shadow: inset 0 0 0 2px $color-primary-indigo;
+  box-shadow: inset 0 0 0 2px $brand;
   border-radius: $radius-default;
   background: transparent;
-  color: $color-primary-indigo;
+  color: $brand;
   cursor: pointer;
   &:hover,
   &.hover {
-    color: $color-white;
-    background: $color-primary-indigo;
+    color: $white;
+    background: $brand;
     transform: translateZ(0) scale(1.03);
   }
   &:active,
   &.active {
     transition: none;
-    background: $color-primary-indigo-dark;
+    background: $dark;
     box-shadow: none;
-    color: $color-white;
+    color: $white;
     transform: translateZ(0) scale(1);
   }
 
   &:focus,
   &.focus {
-    background: $color-primary-indigo-darker;
+    background: $dark;
     box-shadow: none;
-    color: $color-white;
+    color: $white;
     transform: translateZ(0) scale(1);
     outline: 0;
   }
@@ -136,7 +136,7 @@ export default {
   .icon {
     float: right;
     margin: -#{$space-xs} -#{$space-xs} -#{$space-s} $space-xs/2;
-    color: $color-primary-indigo;
+    color: $brand;
   }
 
   // Various button sizes
@@ -155,16 +155,16 @@ export default {
 
   // Primary button
   &.primary {
-    background: $color-primary-indigo;
-    color: $color-white;
+    background: $brand;
+    color: $white;
     box-shadow: none;
     &:hover,
     &.hover {
-      background-color: shade($color-primary-indigo, 12%);
+      background-color: shade($brand, 12%);
     }
     &:active,
     &.active {
-      background-color: shade($color-primary-indigo, 20%);
+      background-color: shade($brand, 20%);
       transition: none;
     }
     &:focus {
