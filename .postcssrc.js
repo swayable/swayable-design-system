@@ -8,17 +8,18 @@ const plugins = [
   require("autoprefixer"),
 ]
 
-if (process.env.NODE_ENV === "production") {
-  const purgecss = require("@fullhuman/postcss-purgecss")({
-    // Specify the paths to all of the template files in your project
-    content: ["./src/**/*.vue"],
+// Temporarily disabled purge css as production was missing used styles
+// if (process.env.NODE_ENV === "production") {
+//   const purgecss = require("@fullhuman/postcss-purgecss")({
+//     // Specify the paths to all of the template files in your project
+//     content: ["./src/**/*.vue"],
 
-    // Include any special characters you're using in this regular expression
-    defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-  })
+//     // Include any special characters you're using in this regular expression
+//     defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+//   })
 
-  // purgecss must be the last plugin
-  plugins.push(purgecss)
-}
+//   // purgecss must be the last plugin
+//   plugins.push(purgecss)
+// }
 
 module.exports = { plugins }
