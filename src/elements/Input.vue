@@ -127,8 +127,6 @@ export default {
 
 <style lang="scss" scoped>
 // Design Tokens with local scope
-$grey-500: tint($grey-600, 50%);
-
 .input {
   @include stack-space($space-s);
   font-weight: $weight-normal;
