@@ -49,12 +49,12 @@ export default {
   font-family: $font-text;
   font-weight: $weight-normal;
   line-height: $line-height-m;
-  color: shade($color-grey, 70%);
+  color: shade($grey-600, 70%);
   a {
-    color: $color-primary-indigo;
+    color: $brand;
     text-decoration: none;
     &:hover {
-      color: darken($color-primary-indigo, 20%);
+      color: darken($brand, 20%);
     }
   }
   &.intro {

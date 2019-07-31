@@ -2,7 +2,7 @@
   <component 
     :is='type' 
     :aria-label='ariaLabel' 
-    :class='["icon", size]' 
+    :class='`h-6 w-6 self-center flex justify-center items-center icon ${size}`'
     v-html='svg'
   />
 </template>
@@ -63,7 +63,7 @@ export default {
   },
   data() {
     return {
-      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg style="fill: ${this.fill}" `),
+      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg class="fill-current ${this.fill}" `),
     }
   },
 }

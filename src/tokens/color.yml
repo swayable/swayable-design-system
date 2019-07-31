@@ -7,189 +7,300 @@
 # utilize both global & local tokens for colors.
 #
 
-aliases:
-  # ucla_gold:
-  #   value: "43, 100%"
-  dark:
-    value: "210, 25%, 20%" # HSL value
-    rgb: "38, 51, 64" # original RGB value
-  light:
-    value: "240, 7%, 97%" # HSL value
-    rgb: "247, 247, 248" # original RGB value
-
-  primary_indigo_base:
-    value: "240, 63%" # hue & saturation
-
-  primary_indigo:
-    value: "191, 17.4%, 18%" # HSL value
-    rgb: "38, 51, 54" # original RGB value
-  primary_purple:
-    value: "300, 50%, 47%" # HSL value
-    rgb: "180, 60, 180" # original RGB value
-  primary_pink:
-    value: "330, 70%, 55%" # HSL value
-    rgb: "220, 60, 140" # original RGB value
-  primary_red:
-    value: "0, 63%, 63%" # HSL value
-    rgb: "220, 100, 100" # original RGB value
-  primary_orange:
-    value: "40, 72%, 51%" # HSL value
-    rgb: "220, 160, 40" # original RGB value
-  primary_yellow:
-    value: "60, 82%, 43%" # HSL value
-    rgb: "200, 200, 20" # original RGB value
-  primary_green:
-    value: "108, 48%, 59%" # HSL value
-    rgb: "120, 200, 100" # original RGB value
-  primary_cyan:
-    value: "180, 82%, 43%" # HSL value
-    rgb: "20, 200, 200" # original RGB value
-  primary_blue:
-    value: "210, 70%, 55%" # HSL value
-    rgb: "60, 140, 220" # original RGB value
-
-  secondary_purple:
-    value: "270, 52%, 55%" # HSL value
-    rgb: "140, 80, 200" # original RGB value
-  secondary_pink:
-    value: "323, 67%, 47%" # HSL value
-    rgb: "200, 40, 140" # original RGB value
-  secondary_red:
-    value: "351, 67%, 59%" # HSL value
-    rgb: "220, 80, 100" # original RGB value
-  secondary_orange:
-    value: "24, 68%, 57%" # HSL value
-    rgb: "220, 130, 70" # original RGB value
-  secondary_yellow:
-    value: "48, 83%, 47%" # HSL value
-    rgb: "220, 180, 20" # original RGB value
-  secondary_green:
-    value: "77, 56%, 51%" # HSL value
-    rgb: "160, 200, 60" # original RGB value
-  secondary_cyan:
-    value: "150, 52%, 55%" # HSL value
-    rgb: "80, 200, 140" # original RGB value
-  secondary_blue:
-    value: "200, 72%, 51%" # HSL value
-    rgb: "40, 160, 220" # original RGB value
-  secondary_indigo:
-    value: "223, 67%, 59%" # HSL value
-    rgb: "80, 120, 220" # original RGB value
-
 props:
-  color_brand:
-    value: "hsla({!primary_indigo}, 1)"
-    category: colors_basic
-  color_light:
-    value: "hsla({!light}, 1)"
-    category: colors_basic
-  color_dark:
-    value: "hsla({!dark}, 1)"
-    category: colors_basic
-  color_white:
-    value: "hsla({!light}, 1)"
-    category: colors_basic
-  color_grey:
-    value: "hsla({!dark}, 0.6)"
-    category: colors_basic
-  color_grey_darker:
-    value: "hsla({!dark}, 0.9)"
-    category: colors_basic
-  color_grey_dark:
-    value: "hsla({!dark}, 0.75)"
-    category: colors_basic
-  color_grey_light:
-    value: "220, 1.9%, 69.6%" # HSL value
-    rgb: "176, 177, 179" # original RGB value
-    category: colors_basic
-  color_grey_lighter:
-    value: "hsla({!dark}, 0.3)"
-    category: colors_basic
+  brand:
+    value: '#253341'
+    category: 'color_theme'
+    order: 0
+  light:
+    value: '#EDEDED'
+    category: 'color_theme'
+    order: 2
+  lighter:
+    value: '#F2F2F2'
+    order: 3
+    category: 'color_theme'
+  dark:
+    value: '#2C2E35'
+    category: 'color_theme'
+    order: 1
+  white:
+    value: '#ffffff'
+    category: 'color_basic'
+  black:
+    value: '#000000'
+    category: 'color_basic'
+  grey_100:
+    value: '#f7fafc'
+    category: 'color_tailwindcss'
+  grey_200:
+    value: '#edf2f7'
+    category: 'color_tailwindcss'
+  grey_300:
+    value: '#e2e8f0'
+    category: 'color_tailwindcss'
+  grey_400:
+    value: '#cbd5e0'
+    category: 'color_tailwindcss'
+  grey_500:
+    value: '#a0aec0'
+    category: 'color_tailwindcss'
+  grey_600:
+    value: '#718096'
+    category: 'color_tailwindcss'
+  grey_700:
+    value: '#4a5568'
+    category: 'color_tailwindcss'
+  grey_800:
+    value: '#2d3748'
+    category: 'color_tailwindcss'
+  grey_900:
+    value: '#1a202c'
+    category: 'color_tailwindcss'
+  red_100:
+    value: '#fff5f5'
+    category: 'color_tailwindcss'
+  red_200:
+    value: '#fed7d7'
+    category: 'color_tailwindcss'
+  red_300:
+    value: '#feb2b2'
+    category: 'color_tailwindcss'
+  red_400:
+    value: '#fc8181'
+    category: 'color_tailwindcss'
+  red_500:
+    value: '#f56565'
+    category: 'color_tailwindcss'
+  red_600:
+    value: '#e53e3e'
+    category: 'color_tailwindcss'
+  red_700:
+    value: '#c53030'
+    category: 'color_tailwindcss'
+  red_800:
+    value: '#9b2c2c'
+    category: 'color_tailwindcss'
+  red_900:
+    value: '#742a2a'
+    category: 'color_tailwindcss'
+  orange_100:
+    value: '#fffaf0'
+    category: 'color_tailwindcss'
+  orange_200:
+    value: '#feebc8'
+    category: 'color_tailwindcss'
+  orange_300:
+    value: '#fbd38d'
+    category: 'color_tailwindcss'
+  orange_400:
+    value: '#f6ad55'
+    category: 'color_tailwindcss'
+  orange_500:
+    value: '#ed8936'
+    category: 'color_tailwindcss'
+  orange_600:
+    value: '#dd6b20'
+    category: 'color_tailwindcss'
+  orange_700:
+    value: '#c05621'
+    category: 'color_tailwindcss'
+  orange_800:
+    value: '#9c4221'
+    category: 'color_tailwindcss'
+  orange_900:
+    value: '#7b341e'
+    category: 'color_tailwindcss'
+  yellow_100:
+    value: '#fffff0'
+    category: 'color_tailwindcss'
+  yellow_200:
+    value: '#fefcbf'
+    category: 'color_tailwindcss'
+  yellow_300:
+    value: '#faf089'
+    category: 'color_tailwindcss'
+  yellow_400:
+    value: '#f6e05e'
+    category: 'color_tailwindcss'
+  yellow_500:
+    value: '#ecc94b'
+    category: 'color_tailwindcss'
+  yellow_600:
+    value: '#d69e2e'
+    category: 'color_tailwindcss'
+  yellow_700:
+    value: '#b7791f'
+    category: 'color_tailwindcss'
+  yellow_800:
+    value: '#975a16'
+    category: 'color_tailwindcss'
+  yellow_900:
+    value: '#744210'
+    category: 'color_tailwindcss'
+  green_100:
+    value: '#f0fff4'
+    category: 'color_tailwindcss'
+  green_200:
+    value: '#c6f6d5'
+    category: 'color_tailwindcss'
+  green_300:
+    value: '#9ae6b4'
+    category: 'color_tailwindcss'
+  green_400:
+    value: '#68d391'
+    category: 'color_tailwindcss'
+  green_500:
+    value: '#48bb78'
+    category: 'color_tailwindcss'
+  green_600:
+    value: '#38a169'
+    category: 'color_tailwindcss'
+  green_700:
+    value: '#2f855a'
+    category: 'color_tailwindcss'
+  green_800:
+    value: '#276749'
+    category: 'color_tailwindcss'
+  green_900:
+    value: '#22543d'
+    category: 'color_tailwindcss'
+  teal_100:
+    value: '#e6fffa'
+    category: 'color_tailwindcss'
+  teal_200:
+    value: '#b2f5ea'
+    category: 'color_tailwindcss'
+  teal_300:
+    value: '#81e6d9'
+    category: 'color_tailwindcss'
+  teal_400:
+    value: '#4fd1c5'
+    category: 'color_tailwindcss'
+  teal_500:
+    value: '#38b2ac'
+    category: 'color_tailwindcss'
+  teal_600:
+    value: '#319795'
+    category: 'color_tailwindcss'
+  teal_700:
+    value: '#2c7a7b'
+    category: 'color_tailwindcss'
+  teal_800:
+    value: '#285e61'
+    category: 'color_tailwindcss'
+  teal_900:
+    value: '#234e52'
+    category: 'color_tailwindcss'
+  blue_100:
+    value: '#ebf8ff'
+    category: 'color_tailwindcss'
+  blue_200:
+    value: '#bee3f8'
+    category: 'color_tailwindcss'
+  blue_300:
+    value: '#90cdf4'
+    category: 'color_tailwindcss'
+  blue_400:
+    value: '#63b3ed'
+    category: 'color_tailwindcss'
+  blue_500:
+    value: '#4299e1'
+    category: 'color_tailwindcss'
+  blue_600:
+    value: '#3182ce'
+    category: 'color_tailwindcss'
+  blue_700:
+    value: '#2b6cb0'
+    category: 'color_tailwindcss'
+  blue_800:
+    value: '#2c5282'
+    category: 'color_tailwindcss'
+  blue_900:
+    value: '#2a4365'
+    category: 'color_tailwindcss'
+  indigo_100:
+    value: '#ebf4ff'
+    category: 'color_tailwindcss'
+  indigo_200:
+    value: '#c3dafe'
+    category: 'color_tailwindcss'
+  indigo_300:
+    value: '#a3bffa'
+    category: 'color_tailwindcss'
+  indigo_400:
+    value: '#7f9cf5'
+    category: 'color_tailwindcss'
+  indigo_500:
+    value: '#667eea'
+    category: 'color_tailwindcss'
+  indigo_600:
+    value: '#5a67d8'
+    category: 'color_tailwindcss'
+  indigo_700:
+    value: '#4c51bf'
+    category: 'color_tailwindcss'
+  indigo_800:
+    value: '#434190'
+    category: 'color_tailwindcss'
+  indigo_900:
+    value: '#3c366b'
+    category: 'color_tailwindcss'
+  purple_100:
+    value: '#faf5ff'
+    category: 'color_tailwindcss'
+  purple_200:
+    value: '#e9d8fd'
+    category: 'color_tailwindcss'
+  purple_300:
+    value: '#d6bcfa'
+    category: 'color_tailwindcss'
+  purple_400:
+    value: '#b794f4'
+    category: 'color_tailwindcss'
+  purple_500:
+    value: '#9f7aea'
+    category: 'color_tailwindcss'
+  purple_600:
+    value: '#805ad5'
+    category: 'color_tailwindcss'
+  purple_700:
+    value: '#6b46c1'
+    category: 'color_tailwindcss'
+  purple_800:
+    value: '#553c9a'
+    category: 'color_tailwindcss'
+  purple_900:
+    value: '#44337a'
+    category: 'color_tailwindcss'
+  pink_100:
+    value: '#fff5f7'
+    category: 'color_tailwindcss'
+  pink_200:
+    value: '#fed7e2'
+    category: 'color_tailwindcss'
+  pink_300:
+    value: '#fbb6ce'
+    category: 'color_tailwindcss'
+  pink_400:
+    value: '#f687b3'
+    category: 'color_tailwindcss'
+  pink_500:
+    value: '#ed64a6'
+    category: 'color_tailwindcss'
+  pink_600:
+    value: '#d53f8c'
+    category: 'color_tailwindcss'
+  pink_700:
+    value: '#b83280'
+    category: 'color_tailwindcss'
+  pink_800:
+    value: '#97266d'
+    category: 'color_tailwindcss'
+  pink_900:
+    value: '#702459'
+    category: 'color_tailwindcss'
 
-  color_primary_indigo:
-    value: "hsla({!primary_indigo}, 1)"
-    category: colors_primary
-  color_primary_indigo_darker:
-    value: "hsl({!primary_indigo_base}, 45%)"
-    category: colors_primary
-  color_primary_indigo_dark:
-    value: "hsl({!primary_indigo_base}, 55%)"
-    category: colors_primary
-  color_primary_indigo_light:
-    value: "hsl({!primary_indigo_base}, 75%)"
-    category: colors_primary
-  color_primary_indigo_lighter:
-    value: "hsl({!primary_indigo_base}, 85%)"
-    category: colors_primary
-
-  color_primary_purple:
-    value: "hsla({!primary_purple}, 1)"
-    category: colors_primary
-  color_primary_pink:
-    value: "hsla({!primary_pink}, 1)"
-    category: colors_primary
-  color_primary_red:
-    value: "hsla({!primary_red}, 1)"
-    category: colors_primary
-  color_primary_orange:
-    value: "hsla({!primary_orange}, 1)"
-    category: colors_primary
-  color_primary_yellow:
-    value: "hsla({!primary_yellow}, 1)"
-    category: colors_primary
-  color_primary_green:
-    value: "hsla({!primary_green}, 1)"
-    category: colors_primary
-  color_primary_cyan:
-    value: "hsla({!primary_cyan}, 1)"
-    category: colors_primary
-  color_primary_blue:
-    value: "hsla({!primary_blue}, 1)"
-    category: colors_primary
-
-  color_secondary_purple:
-    value: "hsla({!secondary_purple}, 1)"
-    category: colors_secondary
-  color_secondary_pink:
-    value: "hsla({!secondary_pink}, 1)"
-    category: colors_secondary
-  color_secondary_red:
-    value: "hsla({!secondary_red}, 1)"
-    category: colors_secondary
-  color_secondary_orange:
-    value: "hsla({!secondary_orange}, 1)"
-    category: colors_secondary
-  color_secondary_yellow:
-    value: "hsla({!secondary_yellow}, 1)"
-    category: colors_secondary
-  color_secondary_green:
-    value: "hsla({!secondary_green}, 1)"
-    category: colors_secondary
-  color_secondary_cyan:
-    value: "hsla({!secondary_cyan}, 1)"
-    category: colors_secondary
-  color_secondary_blue:
-    value: "hsla({!secondary_blue}, 1)"
-    category: colors_secondary
-  color_secondary_indigo:
-    value: "hsla({!secondary_indigo}, 1)"
-    category: colors_secondary
-
-  # color_ucla_gold_darker:
-  #   value: "hsla({!ucla_gold}, 35%, 1)"
-  #   category: colors_primary
-  # color_ucla_gold_dark:
-  #   value: "hsla({!ucla_gold}, 45%, 1)"
-  #   category: colors_primary
-  # color_ucla_gold:
-  #   value: "hsla({!ucla_gold}, 52%, 1)"
-  #   category: colors_primary
-  # color_ucla_gold_light:
-  #   value: "hsla({!ucla_gold}, 65%, 1)"
-  #   category: colors_primary
-  # color_ucla_gold_lighter:
-  #   value: "hsla({!ucla_gold}, 75%, 1)"
-  #   category: colors_primary
 global:
   type: color
   category: color

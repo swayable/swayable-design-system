@@ -127,7 +127,7 @@ export default {
 
 <style lang="scss" scoped>
 // Design Tokens with local scope
-$color-placeholder: tint($color-grey, 50%);
+$grey-500: tint($grey-600, 50%);
 
 .input {
   @include stack-space($space-s);
@@ -143,7 +143,7 @@ $color-placeholder: tint($color-grey, 50%);
     cursor: pointer;
     display: block;
     font-size: $size-s;
-    color: tint($color-dark, 20%);
+    color: tint($dark, 20%);
     @include stack-space($space-xs);
   }
   input {
@@ -154,41 +154,41 @@ $color-placeholder: tint($color-grey, 50%);
     appearance: none;
     font-size: $size-m;
     font-family: $font-text;
-    background: $color-white;
+    background: $white;
     border-radius: $radius-default;
-    color: set-text-color($color-dark, $color-white);
+    color: set-text-color($dark, $white);
     width: 100%;
     margin: 0;
     border: 0;
-    box-shadow: inset 0 1px 0 0 rgba($color-dark, 0.07), 0 0 0 1px tint($color-dark, 80%);
+    box-shadow: inset 0 1px 0 0 rgba($dark, 0.07), 0 0 0 1px tint($dark, 80%);
     &::-webkit-input-placeholder {
       -webkit-font-smoothing: antialiased;
-      color: $color-placeholder;
+      color: $grey-500;
     }
     &:-ms-input-placeholder {
-      color: $color-placeholder;
+      color: $grey-500;
     }
     &::-moz-placeholder {
-      color: $color-placeholder;
+      color: $grey-500;
       -moz-osx-font-smoothing: grayscale;
       opacity: 1;
     }
     &:hover,
     &.hover {
-      box-shadow: 0 1px 5px 0 rgba($color-dark, 0.07), 0 0 0 1px tint($color-dark, 60%);
+      box-shadow: 0 1px 5px 0 rgba($dark, 0.07), 0 0 0 1px tint($dark, 60%);
     }
     &:focus,
     &.focus {
       transition: box-shadow 0.2s ease;
-      box-shadow: inset 0 0 0 1px $color-primary-indigo, 0 0 0 1px $color-primary-indigo;
+      box-shadow: inset 0 0 0 1px $brand, 0 0 0 1px $brand;
       outline: 0;
     }
     &[disabled] {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      box-shadow: 0 0 0 1px tint($color-dark, 80%);
-      background: lighten($color-placeholder, 42%);
-      color: tint($color-placeholder, 20%);
+      box-shadow: 0 0 0 1px tint($dark, 80%);
+      background: lighten($grey-500, 42%);
+      color: tint($grey-500, 20%);
       cursor: not-allowed;
       opacity: 0.7;
     }
