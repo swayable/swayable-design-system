@@ -33,7 +33,7 @@ export default {
   @include reset;
   @include inset-space($space-l);
   font-family: $font-text;
-  font-weight: $weight-normal;
+  font-weight: 400;
   font-size: 1rem;
   line-height: $line-height-m;
   width: 100%;

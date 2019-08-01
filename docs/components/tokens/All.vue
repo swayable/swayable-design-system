@@ -90,7 +90,7 @@ export default {
   @include reset;
   margin-top: $space-l;
   font-family: $font-heading;
-  font-weight: $weight-normal;
+  font-weight: 400;
   line-height: $line-height-xs;
   color: $dark;
   margin-bottom: $space-s;
@@ -107,11 +107,11 @@ export default {
     padding: $space-s $space-l $space-s $space-s;
     background: $light;
     font-size: 1rem;
-    font-weight: $weight-bold;
+    font-weight: 700;
     color: $blue;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: $weight-semi-bold;
+    font-weight: 600;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: left;
@@ -138,7 +138,7 @@ export default {
     font-size: 1rem;
     padding: $space-s $space-l $space-s $space-s;
     &:first-child {
-      font-weight: $weight-bold;
+      font-weight: 700;
       white-space: nowrap;
     }
   }

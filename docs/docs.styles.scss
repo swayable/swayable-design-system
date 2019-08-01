@@ -94,7 +94,7 @@ header[class^="rsg--header"] {
 
 // Links inside h1
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
-  font-weight: $weight-normal;
+  font-weight: 400;
   color: $blue;
   letter-spacing: -1px;
   &:hover {
@@ -110,7 +110,7 @@ h2[class^="rsg--heading"] {
   margin: $space-l 0 $space-m;
   font-size: 1.25rem;
   line-height: $line-height-s;
-  font-weight: $weight-normal;
+  font-weight: 400;
   letter-spacing: -0.5px;
   width: 100%;
   @media (max-width: #{$docs-breakpoint}) {
@@ -129,7 +129,7 @@ h3[class^="rsg--heading"],
 h3[class^="rsg--heading"] a {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
-  font-weight: $weight-light;
+  font-weight: 300;
   line-height: $line-height-m;
   margin: 0 0 $space-l;
   font-size: 1.125rem;
@@ -143,7 +143,7 @@ h3[class^="rsg--heading"] a {
 // Heading, level 4
 h4[class^="rsg--heading"],
 h4[class^="rsg--heading"] a {
-  font-weight: $weight-semi-bold;
+  font-weight: 600;
   letter-spacing: 0;
   margin: $space-l 0 $space-m;
   font-size: 1.125rem;
@@ -159,7 +159,7 @@ p[class^="rsg--para"] {
   margin-bottom: $space-s;
   line-height: $line-height-m;
   strong a[class^="rsg--link"] {
-    font-weight: $weight-semi-bold;
+    font-weight: 600;
   }
   code {
     -webkit-font-smoothing: subpixel-antialiased;
@@ -212,7 +212,7 @@ div[class^="rsg--logo"] {
   h1 {
     font-family: $font-heading;
     color: tint($blue, 90%);
-    font-weight: $weight-medium;
+    font-weight: 500;
   }
 }
 
@@ -222,7 +222,7 @@ p[class^="rsg--version"] {
   margin: $space-xs 0 0;
   color: $blue;
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  font-weight: $weight-normal;
+  font-weight: 400;
   display: inline-block;
   line-height: $line-height-xs;
   border: 1px solid $blue;
@@ -287,7 +287,7 @@ div[class^="rsg--sidebar"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
-    font-weight: $weight-medium;
+    font-weight: 500;
     color: $blue;
     display: block;
     white-space: nowrap;
@@ -334,7 +334,7 @@ div[class^="rsg--sidebar"] {
       // Sidebar second level link
       a[class*="rsg--link"] {
         font-size: 1rem;
-        font-weight: $weight-normal;
+        font-weight: 400;
         -webkit-font-smoothing: subpixel-antialiased;
         -moz-osx-font-smoothing: auto;
         @media (max-width: #{$docs-breakpoint-small}) {
@@ -448,7 +448,7 @@ div[class^="rsg--tab"] {
       margin: 0;
       letter-spacing: $spacing-l;
       font-size: 1rem;
-      font-weight: $weight-normal;
+      font-weight: 400;
       font-family: $font-text;
       line-height: $line-height-s;
       @include inset-squish-space($space-s);
@@ -515,7 +515,7 @@ code[class^="rsg--code"] {
 }
 span[class^="rsg--name"] code[class^="rsg--code"],
 code.name {
-  font-weight: $weight-bold;
+  font-weight: 700;
   color: shade($dark, 50%);
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
@@ -545,7 +545,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 // Status label is shown in top right corner for each component
 .status {
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  font-weight: $weight-normal;
+  font-weight: 400;
   order: 1;
   align-self: flex-end;
   cursor: help;
@@ -605,7 +605,7 @@ table[class^="rsg--table"] {
   th {
     padding: $space-s $space-l $space-s $space-s;
     font-size: 1rem;
-    font-weight: $weight-semi-bold;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
@@ -622,7 +622,7 @@ table[class^="rsg--table"] {
     font-size: 1rem;
     padding: $space-s $space-l $space-s $space-s;
     &:first-child {
-      font-weight: $weight-bold;
+      font-weight: 700;
       white-space: nowrap;
     }
   }
