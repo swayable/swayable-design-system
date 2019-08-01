@@ -89,13 +89,14 @@ export default {
       t.className = className
       t.name = name
       t.decorated = true
+
       return t
     }
-    const tokens = orderBy(
-      filter(designTokens.props, { type: 'color' }).map(decorate),
-      ['order', 'category', 'name'],
-    )
-    return { tokens }
+    const filteredTokens = filter(designTokens.props, { type: 'color' })
+    const decoratedTokens = colorTokens.map(decorate)
+    const orderedTokens = orderBy(decoratedTokens, ['order', 'category', 'name'])
+    
+    return { colorTokens: orderedTokens }
   },
 }
 </script>
