@@ -81,9 +81,13 @@ export default {
   data() {
     const decorate = t => {
       if (t.decorated) return t
-      t.tags = t.tags ? t.tags.split(',') : []
-      t.className =  t.name.replace(/_/g, '-')
-      t.name = t.name.replace(/_/g, ' ') 
+      const tags = t.tags ? t.tags.split(',') : []
+      const className = t.name.replace(/_/g, '-')
+      const name = t.name.replace(/_/g, ' ')
+
+      t.tags = tags
+      t.className = className
+      t.name = name
       t.decorated = true
       return t
     }
