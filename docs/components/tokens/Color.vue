@@ -80,7 +80,7 @@ export default {
   name: 'Color',
   data() {
     const decorate = t => {
-      t.tags = t.tags ? t.tags.split(',') : []
+      if (typeof t.tags === 'string')  t.tags = t.tags ? t.tags.split(',') : []
       t.className =  t.name.replace(/_/g, '-')
       t.name = t.name.replace(/_/g, ' ') 
       return t
