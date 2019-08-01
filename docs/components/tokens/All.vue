@@ -106,7 +106,7 @@ export default {
   thead th {
     padding: $space-s $space-l $space-s $space-s;
     background: $light;
-    font-size: $size-s;
+    font-size: 1rem;
     font-weight: $weight-bold;
     color: $blue;
     text-transform: uppercase;
@@ -135,7 +135,7 @@ export default {
     }
   }
   td {
-    font-size: $size-s;
+    font-size: 1rem;
     padding: $space-s $space-l $space-s $space-s;
     &:first-child {
       font-weight: $weight-bold;
