@@ -1,7 +1,7 @@
 <template>
   <div class='flex flex-wrap bg-light'>
     <div
-      v-for='prop in tokens'
+      v-for='prop in colorTokens'
       :key='prop.name'
       :class='`w-full lg:w-1/3  p-4 color ${prop.category}`'
     >
@@ -93,9 +93,9 @@ export default {
       return t
     }
     const filteredTokens = filter(designTokens.props, { type: 'color' })
-    const decoratedTokens = colorTokens.map(decorate)
+    const decoratedTokens = filteredTokens.map(decorate)
     const orderedTokens = orderBy(decoratedTokens, ['order', 'category', 'name'])
-    
+
     return { colorTokens: orderedTokens }
   },
 }
