@@ -108,7 +108,7 @@ export default {
     background: $light;
     font-size: $size-s;
     font-weight: $weight-bold;
-    color: $blue-800;
+    color: $blue;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: $weight-semi-bold;
@@ -150,7 +150,7 @@ export default {
   .example {
     @include inline-space($space-xs);
     border-radius: $radius-default;
-    background: $white;
+    background: $light;
     box-shadow: $shadow-s-inset, $shadow-s-inset, $shadow-s-inset;
     margin-top: $space-xx-small;
     width: $space-s;

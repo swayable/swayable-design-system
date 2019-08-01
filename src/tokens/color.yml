@@ -9,298 +9,312 @@
 
 props:
   brand:
-    value: '#253341'
-    category: 'color_theme'
+    value: '#6464dc'
+    category: 'color_basic'
+    tags: 'Primary'
+    description: 'Swayable brand'
     order: 0
   light:
-    value: '#EDEDED'
-    category: 'color_theme'
-    order: 2
-  lighter:
-    value: '#F2F2F2'
-    order: 3
-    category: 'color_theme'
-  dark:
-    value: '#2C2E35'
-    category: 'color_theme'
-    order: 1
-  white:
-    value: '#ffffff'
+    value: '#f7f7f8'
     category: 'color_basic'
-  black:
-    value: '#000000'
+    tags: 'Basic'
+    description: 'Background; Dark headings'
+    order: 0
+  dark: 
+    value: '#263340'
     category: 'color_basic'
-  grey_100:
-    value: '#f7fafc'
-    category: 'color_tailwindcss'
-  grey_200:
-    value: '#edf2f7'
-    category: 'color_tailwindcss'
-  grey_300:
-    value: '#e2e8f0'
-    category: 'color_tailwindcss'
-  grey_400:
-    value: '#cbd5e0'
-    category: 'color_tailwindcss'
-  grey_500:
-    value: '#a0aec0'
-    category: 'color_tailwindcss'
-  grey_600:
-    value: '#718096'
-    category: 'color_tailwindcss'
-  grey_700:
-    value: '#4a5568'
-    category: 'color_tailwindcss'
-  grey_800:
-    value: '#2d3748'
-    category: 'color_tailwindcss'
-  grey_900:
-    value: '#1a202c'
-    category: 'color_tailwindcss'
-  red_100:
-    value: '#fff5f5'
-    category: 'color_tailwindcss'
-  red_200:
-    value: '#fed7d7'
-    category: 'color_tailwindcss'
-  red_300:
-    value: '#feb2b2'
-    category: 'color_tailwindcss'
-  red_400:
-    value: '#fc8181'
-    category: 'color_tailwindcss'
-  red_500:
-    value: '#f56565'
-    category: 'color_tailwindcss'
-  red_600:
-    value: '#e53e3e'
-    category: 'color_tailwindcss'
-  red_700:
-    value: '#c53030'
-    category: 'color_tailwindcss'
-  red_800:
-    value: '#9b2c2c'
-    category: 'color_tailwindcss'
-  red_900:
-    value: '#742a2a'
-    category: 'color_tailwindcss'
-  orange_100:
-    value: '#fffaf0'
-    category: 'color_tailwindcss'
-  orange_200:
-    value: '#feebc8'
-    category: 'color_tailwindcss'
-  orange_300:
-    value: '#fbd38d'
-    category: 'color_tailwindcss'
-  orange_400:
-    value: '#f6ad55'
-    category: 'color_tailwindcss'
-  orange_500:
-    value: '#ed8936'
-    category: 'color_tailwindcss'
-  orange_600:
-    value: '#dd6b20'
-    category: 'color_tailwindcss'
-  orange_700:
-    value: '#c05621'
-    category: 'color_tailwindcss'
-  orange_800:
-    value: '#9c4221'
-    category: 'color_tailwindcss'
-  orange_900:
-    value: '#7b341e'
-    category: 'color_tailwindcss'
-  yellow_100:
-    value: '#fffff0'
-    category: 'color_tailwindcss'
-  yellow_200:
-    value: '#fefcbf'
-    category: 'color_tailwindcss'
-  yellow_300:
-    value: '#faf089'
-    category: 'color_tailwindcss'
-  yellow_400:
-    value: '#f6e05e'
-    category: 'color_tailwindcss'
-  yellow_500:
-    value: '#ecc94b'
-    category: 'color_tailwindcss'
-  yellow_600:
-    value: '#d69e2e'
-    category: 'color_tailwindcss'
-  yellow_700:
-    value: '#b7791f'
-    category: 'color_tailwindcss'
-  yellow_800:
-    value: '#975a16'
-    category: 'color_tailwindcss'
-  yellow_900:
-    value: '#744210'
-    category: 'color_tailwindcss'
-  green_100:
-    value: '#f0fff4'
-    category: 'color_tailwindcss'
-  green_200:
-    value: '#c6f6d5'
-    category: 'color_tailwindcss'
-  green_300:
-    value: '#9ae6b4'
-    category: 'color_tailwindcss'
-  green_400:
-    value: '#68d391'
-    category: 'color_tailwindcss'
-  green_500:
-    value: '#48bb78'
-    category: 'color_tailwindcss'
-  green_600:
-    value: '#38a169'
-    category: 'color_tailwindcss'
-  green_700:
-    value: '#2f855a'
-    category: 'color_tailwindcss'
-  green_800:
-    value: '#276749'
-    category: 'color_tailwindcss'
-  green_900:
-    value: '#22543d'
-    category: 'color_tailwindcss'
-  teal_100:
-    value: '#e6fffa'
-    category: 'color_tailwindcss'
-  teal_200:
-    value: '#b2f5ea'
-    category: 'color_tailwindcss'
-  teal_300:
-    value: '#81e6d9'
-    category: 'color_tailwindcss'
-  teal_400:
-    value: '#4fd1c5'
-    category: 'color_tailwindcss'
-  teal_500:
-    value: '#38b2ac'
-    category: 'color_tailwindcss'
-  teal_600:
-    value: '#319795'
-    category: 'color_tailwindcss'
-  teal_700:
-    value: '#2c7a7b'
-    category: 'color_tailwindcss'
-  teal_800:
-    value: '#285e61'
-    category: 'color_tailwindcss'
-  teal_900:
-    value: '#234e52'
-    category: 'color_tailwindcss'
-  blue_100:
-    value: '#ebf8ff'
-    category: 'color_tailwindcss'
-  blue_200:
-    value: '#bee3f8'
-    category: 'color_tailwindcss'
-  blue_300:
-    value: '#90cdf4'
-    category: 'color_tailwindcss'
-  blue_400:
-    value: '#63b3ed'
-    category: 'color_tailwindcss'
-  blue_500:
-    value: '#4299e1'
-    category: 'color_tailwindcss'
-  blue_600:
-    value: '#3182ce'
-    category: 'color_tailwindcss'
-  blue_700:
-    value: '#2b6cb0'
-    category: 'color_tailwindcss'
-  blue_800:
-    value: '#2c5282'
-    category: 'color_tailwindcss'
-  blue_900:
-    value: '#2a4365'
-    category: 'color_tailwindcss'
-  indigo_100:
-    value: '#ebf4ff'
-    category: 'color_tailwindcss'
-  indigo_200:
-    value: '#c3dafe'
-    category: 'color_tailwindcss'
-  indigo_300:
-    value: '#a3bffa'
-    category: 'color_tailwindcss'
-  indigo_400:
-    value: '#7f9cf5'
-    category: 'color_tailwindcss'
-  indigo_500:
-    value: '#667eea'
-    category: 'color_tailwindcss'
-  indigo_600:
-    value: '#5a67d8'
-    category: 'color_tailwindcss'
-  indigo_700:
-    value: '#4c51bf'
-    category: 'color_tailwindcss'
-  indigo_800:
-    value: '#434190'
-    category: 'color_tailwindcss'
-  indigo_900:
-    value: '#3c366b'
-    category: 'color_tailwindcss'
-  purple_100:
-    value: '#faf5ff'
-    category: 'color_tailwindcss'
-  purple_200:
-    value: '#e9d8fd'
-    category: 'color_tailwindcss'
-  purple_300:
-    value: '#d6bcfa'
-    category: 'color_tailwindcss'
-  purple_400:
-    value: '#b794f4'
-    category: 'color_tailwindcss'
-  purple_500:
-    value: '#9f7aea'
-    category: 'color_tailwindcss'
-  purple_600:
-    value: '#805ad5'
-    category: 'color_tailwindcss'
-  purple_700:
-    value: '#6b46c1'
-    category: 'color_tailwindcss'
-  purple_800:
-    value: '#553c9a'
-    category: 'color_tailwindcss'
-  purple_900:
-    value: '#44337a'
-    category: 'color_tailwindcss'
-  pink_100:
-    value: '#fff5f7'
-    category: 'color_tailwindcss'
-  pink_200:
-    value: '#fed7e2'
-    category: 'color_tailwindcss'
-  pink_300:
-    value: '#fbb6ce'
-    category: 'color_tailwindcss'
-  pink_400:
-    value: '#f687b3'
-    category: 'color_tailwindcss'
-  pink_500:
-    value: '#ed64a6'
-    category: 'color_tailwindcss'
-  pink_600:
-    value: '#d53f8c'
-    category: 'color_tailwindcss'
-  pink_700:
-    value: '#b83280'
-    category: 'color_tailwindcss'
-  pink_800:
-    value: '#97266d'
-    category: 'color_tailwindcss'
-  pink_900:
-    value: '#702459'
-    category: 'color_tailwindcss'
+    tags: 'Basic'
+    description: 'Headings; Dark background'
+    order: 0
 
+  blue:
+    value: '#6464dc'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 1
+  blue_fade:
+    value: '#CECEDD'
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 1
+  blue_burn:
+    value: '#444B61'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 1
+
+  magenta:
+    value: '#b43cb4'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 2
+  magenta_fade:
+    value: '#D9CBD9'
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 2
+  magenta_burn:
+    value: '#51485F'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 2
+
+  pink:
+    value: '#dc3c8c'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 3
+  pink_fade:
+    value: '#E4CBD6' 
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 3
+  pink_burn:
+    value: '#5B485D'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 3
+
+  red:
+    value: '#dc6464'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 4
+  red_fade:
+    value: '#E4CFCD' 
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 4
+  red_burn:
+    value: '#5A4C55'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 4
+
+  orange:
+    value: '#dca028'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 5
+  orange_fade:
+    value: '#E2D9C5' 
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 5
+  orange_burn:
+    value: '#595450'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 5
+
+  yellow:
+    value: '#c8c814'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 6
+  yellow_fade:
+    value: '#DFE0C8' 
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 6
+  yellow_burn:
+    value: '#545A53'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 6
+
+  green:
+    value: '#78c864'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 7
+  green_fade:
+    value: '#D3DFCF'
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 7
+  green_burn:
+    value: '#465A58'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 7
+
+  cyan:
+    value: '#14c8c8'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 8
+  cyan_fade:
+    value: '#CADFE0'
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 8
+  cyan_burn:
+    value: '#405A64'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 8
+
+  azure:
+    value: '#3c8cdc'
+    category: 'color_primary'
+    tags: 'Primary'
+    order: 9
+  azure_fade:
+    value: '#CCD5E2'
+    category: 'color_primary_fade'
+    tags: 'Primary alt,Light'
+    order: 9
+  azure_burn:
+    value: '#415265'
+    category: 'color_primary_burn'
+    tags: 'Primary alt,Dark'
+    order: 9
+  
+  purple:
+    value: '#8c50c8'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 10
+  purple_fade:
+    value: '#D3CCDB'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 10
+  purple_burn:
+    value: '#4A4A60'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 10
+
+  rose_dark:
+    value: '#c8288c'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 11
+  rose_dark_fade:
+    value: '#E0C8D6'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 11
+  rose_dark_burn:
+    value: '#58465E'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 11
+
+  red_dark:
+    value: '#dc5064'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 12
+  red_dark_fade:
+    value: '#E4CCCD'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 12
+  red_dark_burn:
+    value: '#5B4A55'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 12
+
+  orange_dark:
+    value: '#dc8246'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 13
+  orange_dark_fade:
+    value: '#E3D4C8'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 13
+  orange_dark_burn:
+    value: '#5A5051'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 13
+
+  orange_light:
+    value: '#dcb414'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 14
+  orange_light_fade:
+    value: '#E3DDC6'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 14
+  orange_light_burn:
+    value: '#585751'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 14
+
+  green_light:
+    value: '#a0c83c'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 15
+  green_light_fade:
+    value: '#D9E0C9'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 15
+  green_light_burn:
+    value: '#4D5B53'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 15
+
+  green_dark:
+    value: '#50c88c'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 16
+  green_dark_fade:
+    value: '#CFDFD6'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 16
+  green_dark_burn:
+    value: '#425A5C'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 16
+
+  azure_light:
+    value: '#28a0dc'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 17
+  azure_light_fade:
+    value: '#CAD9E5'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 17
+  azure_light_burn:
+    value: '#405567'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 17
+
+  azure_dark:
+    value: '#5078dc'
+    category: 'color_secondary'
+    tags: 'Secondary'
+    order: 18
+  azure_dark_fade:
+    value: '#CDD1DF'
+    category: 'color_secondary_fade'
+    tags: 'Secondary faded,Light'
+    order: 18
+  azure_dark_burn:
+    value: '#424E63'
+    category: 'color_secondary_burn'
+    tags: 'Secondary faded,Dark'
+    order: 18
+  
 global:
   type: color
   category: color

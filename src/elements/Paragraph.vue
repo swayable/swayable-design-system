@@ -39,39 +39,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.paragraph {
-  @include reset;
-  @include stack-space($space-m);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: color 0.3s ease;
-  font-family: $font-text;
-  font-weight: $weight-normal;
-  line-height: $line-height-m;
-  color: shade($grey-600, 70%);
-  a {
-    color: $brand;
-    text-decoration: none;
-    &:hover {
-      color: darken($brand, 20%);
-    }
-  }
-  &.intro {
-    @include stack-space($space-m);
-    font-family: $font-heading;
-    font-weight: $weight-light;
-    font-size: $size-l;
-  }
-  &.large {
-    font-size: $size-l;
-  }
-  &.small {
-    font-size: $size-s;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <div>

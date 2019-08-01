@@ -39,36 +39,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "../../docs.tokens.scss";
-
-/* STYLES
---------------------------------------------- */
-
-.font-sizes {
-  margin-top: $space-l;
-  overflow: hidden;
-  width: 100%;
-}
-.font {
-  @include reset;
-  font-family: $font-heading;
-  font-weight: $weight-bold;
-  line-height: $line-height-xs;
-  color: $dark;
-  margin-bottom: $space-s;
-  font-style: normal;
-  span {
-    letter-spacing: -0.02em;
-    margin-left: 10px;
-    font-weight: $weight-normal;
-    color: $grey-600;
-    user-select: none;
-    font-style: normal;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <FontSize/>
