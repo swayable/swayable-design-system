@@ -6,10 +6,12 @@
         :class='`font mt-5 p-2 ${(i%2 === 0 ? "bg-white" : "")}`'
       >
         <div class='flex text-xs'>
-          <p class="flex-grow text-gray-600">
+          <p class='flex-grow text-gray-600'>
             <code>.text-{{ name }}</code>
           </p>
-          <p class="text-gray-600">{{ size }}</p>
+          <p class='text-gray-600'>
+            {{ size }}
+          </p>
         </div>
         <p :class='`text-${name} truncate`'>
           How quickly daft jumping zebras vex!
@@ -42,7 +44,7 @@ export default {
         '4xl': '2.25rem',
         '5xl': '3rem',
         '6xl': '4rem',
-      }
+      },
     }
   },
 }
