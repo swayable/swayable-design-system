@@ -1,3 +1,6 @@
+const _reduce = require('lodash/reduce')
+const _filter = require('lodash/filter')
+
 const designTokens = require('./src/assets/tokens/tokens.raw.json')
 
 const sizeMap = {
@@ -25,6 +28,15 @@ const sizeMap = {
   '20': '5rem',
 }
 
+const colors = _reduce(
+  _filter(designTokens.props, { type: 'color' }),
+  (acc, color) => {
+    acc[color.name.replace(/_/g, '-')] = color.originalValue
+    return acc
+  },
+  {},
+)
+
 module.exports = {
   important: true,
   theme: {
@@ -36,12 +48,7 @@ module.exports = {
     extend: {
       minHeight: sizeMap,
       inset: sizeMap,
-      colors: {
-        brand: designTokens.props.brand.originalValue,
-        light: designTokens.props.light.originalValue,
-        lighter: designTokens.props.lighter.originalValue,
-        dark: designTokens.props.dark.originalValue,
-      },
+      colors,
     },
   },
 }

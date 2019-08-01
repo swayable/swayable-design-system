@@ -44,37 +44,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// Design Tokens with local scope
-$positive-text: #7cb518;
-
-.text-style {
-  @include reset;
-  @include stack-space($space-s);
-  color: $dark;
-  font-family: $font-text;
-  font-weight: $weight-normal;
-  font-size: $size-m;
-  line-height: $line-height-m;
-  @media #{$media-query-l} {
-    // This is how you’d use design tokens with media queries
-  }
-  &.disabled {
-    color: tint($dark, 50%);
-    text-decoration: line-through;
-  }
-  &.strong {
-    font-weight: $weight-semi-bold;
-  }
-  &.positive {
-    color: shade($positive-text, 20%);
-  }
-  &.negative {
-    color: $brand;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <div>

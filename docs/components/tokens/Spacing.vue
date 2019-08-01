@@ -40,41 +40,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "../../docs.tokens.scss";
-
-/* STYLES
---------------------------------------------- */
-
-.spacing {
-  margin-top: $space-l;
-  overflow: hidden;
-  max-width: 1176px;
-  width: 100%;
-}
-.space {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  border-radius: $radius-default;
-  box-shadow: $shadow-s-inset;
-  margin-bottom: $space-xs;
-  font-size: $size-s;
-  font-family: $font-text;
-  color: $dark;
-  background: tint(#c4cdd5, 85%);
-  text-align: center;
-  position: relative;
-  float: left;
-  width: 100%;
-  span {
-    margin-left: 5px;
-    color: $grey-600;
-    user-select: none;
-    font-style: normal;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <spacing/>

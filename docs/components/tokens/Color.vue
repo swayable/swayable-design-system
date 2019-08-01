@@ -1,49 +1,60 @@
 <template>
-  <div class='flex flex-wrap bg-gray-100'>
+  <div class='flex flex-wrap bg-light'>
     <div
       v-for='prop in tokens'
       :key='prop.name'
-      :class='`w-1/3 p-8 color ${prop.category}`'
+      :class='`w-full lg:w-1/3  p-4 color ${prop.category}`'
     >
       <div class='max-w-sm rounded overflow-hidden shadow-lg'>
         <div
-          :class='`w-full h-20 border-b border-gray-200 swatch bg-${prop.className}`'
+          :class='`bg-${prop.className} h-20`'
+          alt='Sunset in the mountains'
         />
-        <div class='p-4 pt-2'>
-          <div class='flex'>
-            <span class='flex-grow capitalize font-bold text-lg'>
-              {{ prop.name }}
-            </span>
-            <span>
-              <p class='bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700'>
-                {{ prop.category }}
-              </p>
-            </span>
+        <div class='px-6 pt-4'>
+          <div class='font-bold text-lg mb-2 capitalize font-heading text-dark'>
+            {{ prop.name }}
           </div>
-          <div class='flex text-gray-700 text-xs mt-1'>
-            <div class='w-1/2'>
-              <p>
+          <p
+            v-if='prop.description'
+            class='text-base'
+          >
+            {{ prop.description }}
+          </p>
+          <p class='flex flex-wrap text-xs text-semibold mt-3'>
+            <span class='w-1/2'>
+              <code class='bg-gray-200'>
                 ${{ prop.className }}
-              </p>
-              <p class='lowercase'>
-                {{ prop.originalValue }}
-              </p>
-              <p>
-                {{ prop.value }}
-              </p>
-            </div>
-            <div class='w-1/2 text-right mr-2'>
-              <p>
+              </code>
+            </span>
+            <span class='w-1/2'>
+              <code class='bg-gray-200'>
                 .bg-{{ prop.className }}
-              </p>
-              <p>
+              </code>
+            </span>
+            <span class='pt-1 w-1/2'>
+              <code class='bg-gray-200'>
                 .text-{{ prop.className }}
-              </p>
-              <p>
+              </code>
+            </span>
+            <span class='pt-1 w-1/2'>
+              <code class='bg-gray-200'>
                 .border-{{ prop.className }}
-              </p>
-            </div>
-          </div>
+              </code>
+            </span>
+          </p>
+        </div>
+        <div class='px-4 py-4'>
+          <span
+            v-for='tag in prop.tags'
+            :key='tag'
+            class='px-1'
+          >
+            <span
+              class='inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700'
+            >
+              {{ tag }}
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -56,11 +67,11 @@ import orderBy from 'lodash/orderBy'
 import filter from 'lodash/filter'
 
 /**
- * These hues should be used purposefully to communicate how things function in the
- * interface.
+ * The colors found here are defined in Swayable Designs by Gabriel Winer. Their are two groups: **primary** and **secondary**.
  * 
- * * Colors in the `theme` category are from Swayable designs
- * * Colors marked `tailwindcss` are from [Tailwindcss](https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js)
+ * Each standard color has two variants: **fade** for use on light background, and **burn** for dark backgrounds. Standard colors can be used on both light and dark backgrounds.
+ *  
+ * Because the Swayable Design System uses Tailwindcss, [their color palette](https://tailwindcss.com/docs/customizing-colors/#default-color-palette) is also available for use if necessary.
  * 
  * To edit the colors, see
  * [/src/tokens/color.yml](https://github.com/swayable/swayable-design-system/blob/master/src/tokens/color.yml).
@@ -69,14 +80,14 @@ export default {
   name: 'Color',
   data() {
     const decorate = t => {
+      t.tags = t.tags ? t.tags.split(',') : []
       t.className =  t.name.replace(/_/g, '-')
-      t.category = t.category.replace(/color_/g, '')
+      t.name = t.name.replace(/_/g, ' ') 
       return t
     }
     const tokens = orderBy(
       filter(designTokens.props, { type: 'color' }).map(decorate),
       ['order', 'category', 'name'],
-      'asc',
     )
     return { tokens }
   },

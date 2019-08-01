@@ -10,12 +10,12 @@
 /* LOCAL DESIGN TOKENS
 --------------------------------------------- */
 
-$docs-grey: $grey-600;
-$docs-grey-dark: $grey-800;
-$docs-status-ready: $orange-600;
+$docs-grey: $blue;
+$docs-grey-dark: $dark;
+$docs-status-ready: $orange;
 $docs-breakpoint: 800px;
 $docs-breakpoint-small: 600px;
-$docs-color-heading: $grey-700;
+$docs-color-heading: $dark;
 $docs-color-text: $dark;
 
 /* BASE
@@ -23,7 +23,7 @@ $docs-color-text: $dark;
 
 // Background of page
 div.rsg--root-1 {
-  background: $white;
+  background: $light;
 }
 
 // Main content
@@ -53,7 +53,7 @@ main section section > div > div[class^="rsg--root"] {
 
 // Link color
 div[class^="rsg--root"] a[class^="rsg--link"] {
-  color: $brand;
+  color: $blue;
   &:hover {
     color: $dark;
   }
@@ -95,7 +95,7 @@ header[class^="rsg--header"] {
 // Links inside h1
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
   font-weight: $weight-normal;
-  color: $blue-800;
+  color: $blue;
   letter-spacing: -1px;
   &:hover {
     text-decoration: none;
@@ -165,7 +165,7 @@ p[class^="rsg--para"] {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
     background: tint($docs-grey, 75%);
-    color: shade($grey-600, 20%);
+    color: shade($dark, 20%);
     padding: $space-xx-small;
     border-radius: $radius-default;
     font-size: 87.5%;
@@ -208,10 +208,10 @@ td[class^="rsg--cell"] p {
 
 // Sidebar logo
 div[class^="rsg--logo"] {
-  border-bottom: 1px solid rgba($white, 0.1);
+  border-bottom: 1px solid rgba($light, 0.1);
   h1 {
     font-family: $font-heading;
-    color: tint($brand, 90%);
+    color: tint($blue, 90%);
     font-weight: $weight-medium;
   }
 }
@@ -220,12 +220,12 @@ div[class^="rsg--logo"] {
 p[class^="rsg--version"] {
   @include inset-squish-space($space-xs);
   margin: $space-xs 0 0;
-  color: $brand;
+  color: $blue;
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   font-weight: $weight-normal;
   display: inline-block;
   line-height: $line-height-xs;
-  border: 1px solid $brand;
+  border: 1px solid $blue;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: $size-xs;
@@ -235,11 +235,11 @@ p[class^="rsg--version"] {
 // Sidebar search
 div[class^="rsg--search"] input {
   @include inset-squish-space($space-s);
-  color: $white;
+  color: $light;
   border: 1px solid transparent;
-  background: mix($brand, $dark, 20%);
+  background: mix($blue, $dark, 20%);
   &:focus {
-    border: 1px solid $brand;
+    border: 1px solid $blue;
     &::-webkit-textfield-decoration-container {
       display: none !important;
     }
@@ -248,20 +248,20 @@ div[class^="rsg--search"] input {
     }
   }
   &::-webkit-input-placeholder {
-    color: rgba(mix($white, $brand, 50%), 0.35);
+    color: rgba(mix($light, $blue, 50%), 0.35);
   }
   &:-ms-input-placeholder {
-    color: rgba(mix($white, $brand, 50%), 0.35);
+    color: rgba(mix($light, $blue, 50%), 0.35);
   }
   &::-moz-placeholder {
-    color: rgba(mix($white, $brand, 50%), 0.35);
+    color: rgba(mix($light, $blue, 50%), 0.35);
     opacity: 1;
   }
 }
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: mix($brand, $dark, 5%);
+  background: mix($blue, $dark, 5%);
   border: 0;
   @media (max-width: #{$docs-breakpoint}) {
     padding-bottom: $space-l;
@@ -288,13 +288,13 @@ div[class^="rsg--sidebar"] {
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
     font-weight: $weight-medium;
-    color: $blue-500;
+    color: $blue;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $lighter;
+      color: $light;
     }
     &:active {
       color: $dark;
@@ -308,7 +308,7 @@ div[class^="rsg--sidebar"] {
     }
     & > a,
     & > a:hover {
-      color: tint($brand, 80%);
+      color: tint($blue, 80%);
     }
   }
 
@@ -400,7 +400,7 @@ thead[class^="rsg--tableHead"] {
 pre[class^="rsg--pre"],
 .vueds-html.cm-s-night.CodeMirror,
 .react-codemirror2 .CodeMirror.CodeMirror {
-  background: mix($brand, $dark, 10%);
+  background: mix($blue, $dark, 10%);
   border-bottom-left-radius: $radius-default;
   border-bottom-right-radius: $radius-default;
   box-sizing: border-box;
@@ -413,7 +413,7 @@ pre[class^="rsg--pre"],
   margin: 0;
   min-height: $space-xxl / 1.5;
   margin-bottom: $space-m;
-  color: $white;
+  color: $light;
   padding: $space-m;
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -423,7 +423,7 @@ pre[class^="rsg--pre"],
     overflow: hidden;
   }
   code {
-    color: $white;
+    color: $light;
   }
 }
 
@@ -453,16 +453,16 @@ div[class^="rsg--tab"] {
       line-height: $line-height-s;
       @include inset-squish-space($space-s);
       cursor: pointer;
-      background: mix($brand, $dark, 50%);
-      color: $white;
+      background: mix($blue, $dark, 50%);
+      color: $light;
       &:active {
-        background: mix($brand, $dark, 45%);
+        background: mix($blue, $dark, 45%);
       }
       &:focus {
         outline: none;
       }
       &--active {
-        background: mix($brand, $dark, 40%);
+        background: mix($blue, $dark, 40%);
         box-shadow: inset 0 2px 8px rgba($dark, 0.2);
       }
     }
@@ -501,7 +501,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-operator,
 .cm-s-night span.cm-number,
 .cm-s-night span.cm-attribute {
-  color: $yellow-300 !important;
+  color: $yellow !important;
 }
 .cm-s-night span.cm-string,
 .hljs-string {
@@ -511,17 +511,17 @@ div[class^="rsg--tab"] {
 // Code highlighting elsewhere
 span[class^="rsg--type"],
 code[class^="rsg--code"] {
-  color: $grey-600;
+  color: $dark;
 }
 span[class^="rsg--name"] code[class^="rsg--code"],
 code.name {
   font-weight: $weight-bold;
-  color: shade($grey-600, 50%);
+  color: shade($dark, 50%);
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
 code.type {
   background: tint($docs-grey, 75%);
-  color: shade($grey-600, 20%);
+  color: shade($dark, 20%);
   padding: $space-xx-small;
   border-radius: $radius-default;
 }
@@ -570,20 +570,20 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   }
   &-ready {
     background: $docs-status-ready;
-    color: $white;
+    color: $light;
   }
   &-review,
   &-under-review {
-    background: $yellow-700;
+    background: $yellow;
     color: $dark;
   }
   &-prototype {
-    background: $brand;
-    color: $white;
+    background: $blue;
+    color: $light;
   }
   &-deprecated {
-    background: $brand;
-    color: $white;
+    background: $blue;
+    color: $light;
   }
 }
 
@@ -610,7 +610,7 @@ table[class^="rsg--table"] {
     letter-spacing: 1px;
     border-radius: 0;
     background: $light;
-    color: tint($blue-800, 10%);
+    color: tint($blue, 10%);
     text-align: left;
   }
   th[class^="rsg--cellHeading"],
