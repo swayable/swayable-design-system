@@ -3,7 +3,7 @@
   "props": {
     "orange_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(89, 84, 80)",
       "tags": "Primary alt,Dark",
       "order": 5,
@@ -12,7 +12,7 @@
     },
     "green_light_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(217, 224, 201)",
       "tags": "Secondary faded,Light",
       "order": 15,
@@ -21,7 +21,7 @@
     },
     "blue_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(206, 206, 221)",
       "tags": "Primary alt,Light",
       "order": 1,
@@ -30,7 +30,7 @@
     },
     "green": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(120, 200, 100)",
       "tags": "Primary",
       "order": 7,
@@ -39,7 +39,7 @@
     },
     "cyan": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(20, 200, 200)",
       "tags": "Primary",
       "order": 8,
@@ -48,7 +48,7 @@
     },
     "red_dark": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(220, 80, 100)",
       "tags": "Secondary",
       "order": 12,
@@ -57,7 +57,7 @@
     },
     "pink_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(228, 203, 214)",
       "tags": "Primary alt,Light",
       "order": 3,
@@ -66,7 +66,7 @@
     },
     "magenta_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(81, 72, 95)",
       "tags": "Primary alt,Dark",
       "order": 2,
@@ -75,7 +75,7 @@
     },
     "orange_light": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(220, 180, 20)",
       "tags": "Secondary",
       "order": 14,
@@ -84,7 +84,7 @@
     },
     "rose_dark": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(200, 40, 140)",
       "tags": "Secondary",
       "order": 11,
@@ -93,7 +93,7 @@
     },
     "azure_dark": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(80, 120, 220)",
       "tags": "Secondary",
       "order": 18,
@@ -102,7 +102,7 @@
     },
     "azure_light": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(40, 160, 220)",
       "tags": "Secondary",
       "order": 17,
@@ -111,7 +111,7 @@
     },
     "orange_dark_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(90, 80, 81)",
       "tags": "Secondary faded,Dark",
       "order": 13,
@@ -120,7 +120,7 @@
     },
     "orange_dark": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(220, 130, 70)",
       "tags": "Secondary",
       "order": 13,
@@ -129,7 +129,7 @@
     },
     "yellow_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(223, 224, 200)",
       "tags": "Primary alt,Light",
       "order": 6,
@@ -138,7 +138,7 @@
     },
     "brand": {
       "type": "color",
-      "category": "color_basic",
+      "category": "color-basic",
       "value": "rgb(100, 100, 220)",
       "tags": "Primary",
       "description": "Swayable brand",
@@ -148,7 +148,7 @@
     },
     "rose_dark_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(88, 70, 94)",
       "tags": "Secondary faded,Dark",
       "order": 11,
@@ -157,7 +157,7 @@
     },
     "azure_light_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(64, 85, 103)",
       "tags": "Secondary faded,Dark",
       "order": 17,
@@ -166,7 +166,7 @@
     },
     "azure_dark_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(66, 78, 99)",
       "tags": "Secondary faded,Dark",
       "order": 18,
@@ -175,7 +175,7 @@
     },
     "magenta": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(180, 60, 180)",
       "tags": "Primary",
       "order": 2,
@@ -184,7 +184,7 @@
     },
     "orange_light_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(88, 87, 81)",
       "tags": "Secondary faded,Dark",
       "order": 14,
@@ -193,7 +193,7 @@
     },
     "green_dark_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(207, 223, 214)",
       "tags": "Secondary faded,Light",
       "order": 16,
@@ -202,7 +202,7 @@
     },
     "red_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(228, 207, 205)",
       "tags": "Primary alt,Light",
       "order": 4,
@@ -211,7 +211,7 @@
     },
     "red_dark_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(91, 74, 85)",
       "tags": "Secondary faded,Dark",
       "order": 12,
@@ -220,7 +220,7 @@
     },
     "cyan_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(64, 90, 100)",
       "tags": "Primary alt,Dark",
       "order": 8,
@@ -229,7 +229,7 @@
     },
     "green_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(70, 90, 88)",
       "tags": "Primary alt,Dark",
       "order": 7,
@@ -238,7 +238,7 @@
     },
     "azure_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(204, 213, 226)",
       "tags": "Primary alt,Light",
       "order": 9,
@@ -247,7 +247,7 @@
     },
     "orange_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(226, 217, 197)",
       "tags": "Primary alt,Light",
       "order": 5,
@@ -256,7 +256,7 @@
     },
     "orange": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(220, 160, 40)",
       "tags": "Primary",
       "order": 5,
@@ -265,7 +265,7 @@
     },
     "azure": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(60, 140, 220)",
       "tags": "Primary",
       "order": 9,
@@ -274,25 +274,43 @@
     },
     "red": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(220, 100, 100)",
       "tags": "Primary",
       "order": 4,
       "originalValue": "#dc6464",
       "name": "red"
     },
+    "grey_100": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(247, 250, 252)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#f7fafc",
+      "name": "grey_100"
+    },
     "magenta_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(217, 203, 217)",
       "tags": "Primary alt,Light",
       "order": 2,
       "originalValue": "#D9CBD9",
       "name": "magenta_fade"
     },
+    "grey_200": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(237, 242, 247)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#edf2f7",
+      "name": "grey_200"
+    },
     "purple_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(74, 74, 96)",
       "tags": "Secondary faded,Dark",
       "order": 10,
@@ -301,16 +319,25 @@
     },
     "green_dark": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(80, 200, 140)",
       "tags": "Secondary",
       "order": 16,
       "originalValue": "#50c88c",
       "name": "green_dark"
     },
+    "grey_300": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(226, 232, 240)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#e2e8f0",
+      "name": "grey_300"
+    },
     "yellow": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(200, 200, 20)",
       "tags": "Primary",
       "order": 6,
@@ -319,7 +346,7 @@
     },
     "orange_dark_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(227, 212, 200)",
       "tags": "Secondary faded,Light",
       "order": 13,
@@ -328,7 +355,7 @@
     },
     "green_light_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(77, 91, 83)",
       "tags": "Secondary faded,Dark",
       "order": 15,
@@ -337,25 +364,43 @@
     },
     "blue_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(68, 75, 97)",
       "tags": "Primary alt,Dark",
       "order": 1,
       "originalValue": "#444B61",
       "name": "blue_burn"
     },
+    "grey_400": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(203, 213, 224)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#cbd5e0",
+      "name": "grey_400"
+    },
     "rose_dark_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(224, 200, 214)",
       "tags": "Secondary faded,Light",
       "order": 11,
       "originalValue": "#E0C8D6",
       "name": "rose_dark_fade"
     },
+    "grey_500": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(160, 174, 192)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#a0aec0",
+      "name": "grey_500"
+    },
     "azure_light_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(202, 217, 229)",
       "tags": "Secondary faded,Light",
       "order": 17,
@@ -364,7 +409,7 @@
     },
     "azure_dark_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(205, 209, 223)",
       "tags": "Secondary faded,Light",
       "order": 18,
@@ -373,7 +418,7 @@
     },
     "light": {
       "type": "color",
-      "category": "color_basic",
+      "category": "color-basic",
       "value": "rgb(247, 247, 248)",
       "tags": "Basic",
       "description": "Background; Dark headings",
@@ -383,7 +428,7 @@
     },
     "pink": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(220, 60, 140)",
       "tags": "Primary",
       "order": 3,
@@ -392,16 +437,25 @@
     },
     "orange_light_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(227, 221, 198)",
       "tags": "Secondary faded,Light",
       "order": 14,
       "originalValue": "#E3DDC6",
       "name": "orange_light_fade"
     },
+    "grey_600": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(113, 128, 150)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#718096",
+      "name": "grey_600"
+    },
     "dark": {
       "type": "color",
-      "category": "color_basic",
+      "category": "color-basic",
       "value": "rgb(38, 51, 64)",
       "tags": "Basic",
       "description": "Headings; Dark background",
@@ -409,9 +463,18 @@
       "originalValue": "#263340",
       "name": "dark"
     },
+    "grey_700": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(74, 85, 104)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#4a5568",
+      "name": "grey_700"
+    },
     "red_dark_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(228, 204, 205)",
       "tags": "Secondary faded,Light",
       "order": 12,
@@ -420,7 +483,7 @@
     },
     "cyan_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(202, 223, 224)",
       "tags": "Primary alt,Light",
       "order": 8,
@@ -429,25 +492,43 @@
     },
     "green_fade": {
       "type": "color",
-      "category": "color_primary_fade",
+      "category": "color-primary-fade",
       "value": "rgb(211, 223, 207)",
       "tags": "Primary alt,Light",
       "order": 7,
       "originalValue": "#D3DFCF",
       "name": "green_fade"
     },
+    "grey_800": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(45, 55, 72)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#2d3748",
+      "name": "grey_800"
+    },
     "pink_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(91, 72, 93)",
       "tags": "Primary alt,Dark",
       "order": 3,
       "originalValue": "#5B485D",
       "name": "pink_burn"
     },
+    "grey_900": {
+      "type": "color",
+      "category": "color-tailwind",
+      "value": "rgb(26, 32, 44)",
+      "tags": "Utility,Tailwind",
+      "order": 100,
+      "originalValue": "#1a202c",
+      "name": "grey_900"
+    },
     "blue": {
       "type": "color",
-      "category": "color_primary",
+      "category": "color-primary",
       "value": "rgb(100, 100, 220)",
       "tags": "Primary",
       "order": 1,
@@ -456,7 +537,7 @@
     },
     "green_light": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(160, 200, 60)",
       "tags": "Secondary",
       "order": 15,
@@ -465,7 +546,7 @@
     },
     "yellow_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(84, 90, 83)",
       "tags": "Primary alt,Dark",
       "order": 6,
@@ -474,7 +555,7 @@
     },
     "green_dark_burn": {
       "type": "color",
-      "category": "color_secondary_burn",
+      "category": "color-secondary-burn",
       "value": "rgb(66, 90, 92)",
       "tags": "Secondary faded,Dark",
       "order": 16,
@@ -483,7 +564,7 @@
     },
     "purple": {
       "type": "color",
-      "category": "color_secondary",
+      "category": "color-secondary",
       "value": "rgb(140, 80, 200)",
       "tags": "Secondary",
       "order": 10,
@@ -492,7 +573,7 @@
     },
     "red_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(90, 76, 85)",
       "tags": "Primary alt,Dark",
       "order": 4,
@@ -501,7 +582,7 @@
     },
     "purple_fade": {
       "type": "color",
-      "category": "color_secondary_fade",
+      "category": "color-secondary-fade",
       "value": "rgb(211, 204, 219)",
       "tags": "Secondary faded,Light",
       "order": 10,
@@ -510,66 +591,20 @@
     },
     "azure_burn": {
       "type": "color",
-      "category": "color_primary_burn",
+      "category": "color-primary-burn",
       "value": "rgb(65, 82, 101)",
       "tags": "Primary alt,Dark",
       "order": 9,
       "originalValue": "#415265",
       "name": "azure_burn"
     },
-    "size_xxxl": {
-      "type": "number",
-      "category": "font-size",
-      "value": "3rem",
-      "originalValue": "3rem",
-      "name": "size_xxxl"
-    },
-    "size_xxl": {
-      "type": "number",
-      "category": "font-size",
-      "value": "2.4rem",
-      "originalValue": "2.4rem",
-      "name": "size_xxl"
-    },
-    "size_xl": {
-      "type": "number",
-      "category": "font-size",
-      "value": "1.8rem",
-      "originalValue": "1.8rem",
-      "name": "size_xl"
-    },
-    "size_l": {
-      "type": "number",
-      "category": "font-size",
-      "value": "1.4rem",
-      "originalValue": "1.4rem",
-      "name": "size_l"
-    },
-    "size_m": {
-      "type": "number",
-      "category": "font-size",
-      "value": "1.2rem",
-      "originalValue": "1.2rem",
-      "name": "size_m"
-    },
-    "size_s": {
-      "type": "number",
-      "category": "font-size",
-      "value": "1.0rem",
-      "originalValue": "1.0rem",
-      "name": "size_s"
-    },
-    "size_xs": {
-      "type": "number",
-      "category": "font-size",
-      "value": "0.8rem",
-      "originalValue": "0.8rem",
-      "name": "size_xs"
-    },
     "font_heading": {
       "type": "...",
       "category": "font",
       "value": "\"azo-sans-web\",sans-serif",
+      "class": "heading",
+      "weights": "500",
+      "order": -1,
       "originalValue": "\"azo-sans-web\",sans-serif",
       "name": "font_heading"
     },
@@ -577,6 +612,9 @@
       "type": "...",
       "category": "font",
       "value": "\"roboto\",sans-serif",
+      "class": "body",
+      "weights": "300,400,500",
+      "order": -1,
       "originalValue": "\"roboto\",sans-serif",
       "name": "font_text"
     },
@@ -584,232 +622,11 @@
       "type": "...",
       "category": "font",
       "value": "\"roboto-mono\",monospace",
+      "class": "mono",
+      "weights": "400",
+      "order": -1,
       "originalValue": "\"roboto-mono\",monospace",
       "name": "font_mono"
-    },
-    "weight_bold": {
-      "type": "...",
-      "category": "font",
-      "value": "700",
-      "originalValue": "700",
-      "name": "weight_bold"
-    },
-    "weight_semi_bold": {
-      "type": "...",
-      "category": "font",
-      "value": "600",
-      "originalValue": "600",
-      "name": "weight_semi_bold"
-    },
-    "weight_medium": {
-      "type": "...",
-      "category": "font",
-      "value": "500",
-      "originalValue": "500",
-      "name": "weight_medium"
-    },
-    "weight_normal": {
-      "type": "...",
-      "category": "font",
-      "value": "400",
-      "originalValue": "400",
-      "name": "weight_normal"
-    },
-    "weight_light": {
-      "type": "...",
-      "category": "font",
-      "value": "200",
-      "originalValue": "200",
-      "name": "weight_light"
-    },
-    "opacity_disabled": {
-      "type": "number",
-      "category": "opacity",
-      "value": "0.5",
-      "originalValue": "0.5",
-      "name": "opacity_disabled"
-    },
-    "height_footer": {
-      "type": "number",
-      "category": "size",
-      "value": "64px",
-      "originalValue": "64px",
-      "name": "height_footer"
-    },
-    "tappable_square": {
-      "type": "number",
-      "category": "size",
-      "value": "44px",
-      "originalValue": "44px",
-      "name": "tappable_square"
-    },
-    "duration_quickly": {
-      "type": "number",
-      "category": "time",
-      "value": "0.08s",
-      "originalValue": "0.08s",
-      "name": "duration_quickly"
-    },
-    "duration_slowly": {
-      "type": "number",
-      "category": "time",
-      "value": "0.5s",
-      "originalValue": "0.5s",
-      "name": "duration_slowly"
-    },
-    "z_index_modal": {
-      "type": "number",
-      "category": "z-index",
-      "value": "9999",
-      "originalValue": "9999",
-      "name": "z_index_modal"
-    },
-    "z_index_sticky": {
-      "type": "number",
-      "category": "z-index",
-      "value": "100",
-      "originalValue": "100",
-      "name": "z_index_sticky"
-    },
-    "media_query_m": {
-      "type": "...",
-      "category": "media-query",
-      "value": "(min-width: 768px)",
-      "originalValue": "(min-width: 768px)",
-      "name": "media_query_m"
-    },
-    "media_query_l": {
-      "type": "...",
-      "category": "media-query",
-      "value": "(min-width: 1024px)",
-      "originalValue": "(min-width: 1024px)",
-      "name": "media_query_l"
-    },
-    "shadow_s": {
-      "type": "...",
-      "category": "box-shadow",
-      "value": "0 0 0 1px rgba(92,106,196,.1)",
-      "originalValue": "0 0 0 1px rgba(92,106,196,.1)",
-      "name": "shadow_s"
-    },
-    "spacing_xl": {
-      "type": "number",
-      "category": "letter-spacing",
-      "value": "2px",
-      "originalValue": "2px",
-      "name": "spacing_xl"
-    },
-    "spacing_l": {
-      "type": "number",
-      "category": "letter-spacing",
-      "value": "1px",
-      "originalValue": "1px",
-      "name": "spacing_l"
-    },
-    "spacing_m": {
-      "type": "number",
-      "category": "letter-spacing",
-      "value": "0",
-      "originalValue": "0",
-      "name": "spacing_m"
-    },
-    "spacing_s": {
-      "type": "number",
-      "category": "letter-spacing",
-      "value": "-0.5px",
-      "originalValue": "-0.5px",
-      "name": "spacing_s"
-    },
-    "spacing_xs": {
-      "type": "number",
-      "category": "letter-spacing",
-      "value": "-1px",
-      "originalValue": "-1px",
-      "name": "spacing_xs"
-    },
-    "radius_default": {
-      "type": "number",
-      "category": "border-radius",
-      "value": "3px",
-      "originalValue": "3px",
-      "name": "radius_default"
-    },
-    "radius_circle": {
-      "type": "number",
-      "category": "border-radius",
-      "value": "50%",
-      "originalValue": "50%",
-      "name": "radius_circle"
-    },
-    "space_xxl": {
-      "type": "number",
-      "category": "space",
-      "value": "128px",
-      "originalValue": "128px",
-      "name": "space_xxl"
-    },
-    "space_xl": {
-      "type": "number",
-      "category": "space",
-      "value": "64px",
-      "originalValue": "64px",
-      "name": "space_xl"
-    },
-    "space_l": {
-      "type": "number",
-      "category": "space",
-      "value": "48px",
-      "originalValue": "48px",
-      "name": "space_l"
-    },
-    "space_m": {
-      "type": "number",
-      "category": "space",
-      "value": "24px",
-      "originalValue": "24px",
-      "name": "space_m"
-    },
-    "space_s": {
-      "type": "number",
-      "category": "space",
-      "value": "16px",
-      "originalValue": "16px",
-      "name": "space_s"
-    },
-    "space_xs": {
-      "type": "number",
-      "category": "space",
-      "value": "8px",
-      "originalValue": "8px",
-      "name": "space_xs"
-    },
-    "space_xxs": {
-      "type": "number",
-      "category": "space",
-      "value": "4px",
-      "originalValue": "4px",
-      "name": "space_xxs"
-    },
-    "line_height_m": {
-      "type": "number",
-      "category": "line-height",
-      "value": "1.6",
-      "originalValue": "1.6",
-      "name": "line_height_m"
-    },
-    "line_height_s": {
-      "type": "number",
-      "category": "line-height",
-      "value": "1.3",
-      "originalValue": "1.3",
-      "name": "line_height_s"
-    },
-    "line_height_xs": {
-      "type": "number",
-      "category": "line-height",
-      "value": "1",
-      "originalValue": "1",
-      "name": "line_height_xs"
     }
   }
 }

@@ -10,8 +10,8 @@
 /* LOCAL DESIGN TOKENS
 --------------------------------------------- */
 
-$docs-grey: $blue;
-$docs-grey-dark: $dark;
+$docs-grey: $gray-300;
+$docs-grey-dark: $gray-800;
 $docs-status-ready: $orange;
 $docs-breakpoint: 800px;
 $docs-breakpoint-small: 600px;
@@ -55,7 +55,10 @@ main section section > div > div[class^="rsg--root"] {
 div[class^="rsg--root"] a[class^="rsg--link"] {
   color: $blue;
   &:hover {
-    color: $dark;
+    color: $purple;
+  }
+  &:active {
+    color: $purple;
   }
 }
 
@@ -64,12 +67,11 @@ div[class^="rsg--root"] a[class^="rsg--link"] {
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"],
 div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
   font-family: $font-heading;
+  color: $dark;
   display: block;
   border: 0;
-  line-height: $line-height-s;
-  padding: $space-xl $space-xl;
+  padding: $space-l 0 $space-s;
   width: calc(100% + #{$space-xl * 2});
-  margin: -#{$space-s} -#{$space-xl} $space-l -#{$space-xl};
   background: $light;
   font-size: 1.5rem;
   a:hover {
@@ -77,13 +79,12 @@ div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
     cursor: default;
   }
   @media (max-width: 1300px) {
-    padding: $space-l $space-xl;
+    padding: $space-m 0;
   }
   @media (max-width: #{$docs-breakpoint}) {
     font-size: 1.25rem / 1.2;
     width: calc(100% + #{$space-xl});
-    padding: $space-l $space-m;
-    margin: -#{$space-s} -#{$space-m} $space-m;
+    padding: $space-s 0;
   }
 }
 
@@ -94,7 +95,6 @@ header[class^="rsg--header"] {
 
 // Links inside h1
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
-  font-weight: 400;
   color: $blue;
   letter-spacing: -1px;
   &:hover {
@@ -107,10 +107,9 @@ div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
 h2[class^="rsg--heading"] {
   border-bottom: 1px solid $docs-grey;
   padding-bottom: $space-s;
-  margin: $space-l 0 $space-m;
+  margin: $space-s 0 $space-xs;
   font-size: 1.25rem;
   line-height: $line-height-s;
-  font-weight: 400;
   letter-spacing: -0.5px;
   width: 100%;
   @media (max-width: #{$docs-breakpoint}) {
@@ -212,7 +211,8 @@ div[class^="rsg--logo"] {
   h1 {
     font-family: $font-heading;
     color: tint($blue, 90%);
-    font-weight: 500;
+    font-size: 1.1rem;
+    margin: $space-m 0 $space-s;
   }
 }
 
@@ -261,25 +261,33 @@ div[class^="rsg--search"] input {
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: mix($blue, $dark, 5%);
+  background: $dark;
+  color: $light;
   border: 0;
   @media (max-width: #{$docs-breakpoint}) {
     padding-bottom: $space-l;
   }
 
-  // Commented out because I like the nav to always be expanded ~ Josh
+ 
+
   // Sidebar sub navigations
-  // ul ul[class^="rsg--list"] {
-  //   display: none;
-  //   &.vueds-visible {
-  //     display: block;
-  //   }
-  // }
+  ul ul[class^="rsg--list"] {
+    max-height: 0;
+    transition: max-height 0.25s ease-out;
+    &.vueds-visible {
+      height: auto;
+    }
+  }
 
   // Sidebar list item
   li[class^="rsg--item"] {
     margin: 0;
     display: block;
+    &:focus {
+      ul[class^="rsg--list"] {
+        max-height: 400px !important;
+      }
+    }
   }
 
   // Sidebar first level links
@@ -288,23 +296,23 @@ div[class^="rsg--sidebar"] {
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
     font-weight: 500;
-    color: $blue;
+    color: $gray-500;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $light;
+      color: $gray-300;
     }
     &:active {
-      color: $dark;
+      color: $gray-300;
     }
   }
 
   // Sidebar active link
-  .vueds-active {
+  .vueds-active{
     ul[class^="rsg--list"] {
-      display: block;
+      max-height: 400px;
     }
     & > a,
     & > a:hover {
@@ -352,8 +360,8 @@ div[class^="rsg--sidebar"] {
 // Previews of the components
 div[class^="rsg--preview"] {
   padding: $space-l / 1.2;
-  background-color: tint($docs-grey, 90%);
-  border: 1px solid tint($docs-grey, 50%);
+  background-color: $gray-100;
+  border: 1px solid $gray-300;
   box-shadow: inset 0 0 $space-xs rgba($dark, 0.05);
   margin: $space-s 0 0;
   border-radius: 0;

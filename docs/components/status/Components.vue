@@ -3,7 +3,7 @@
     <div class='flex'>
       <span class='w-1/5 flex'>
         <Icon 
-          :fill='fill-ready'
+          :fill='fill.ready'
           name='ready' 
           size='small'
         />
@@ -130,7 +130,7 @@
             v-else
             class='w-1/3'
           >
-            —
+            <span>&nbsp;—</span>
           </span>
         </div>
       </div>
@@ -159,10 +159,10 @@ export default {
     return {
       components: this.orderData(this.getComponents()),
       fill: {
-        ready: 'text-green-600',
-        review: 'text-orange-600',
-        deprecated: 'text-red-600',
-        prototype: 'text-blue-600',
+        ready: 'text-green',
+        review: 'text-orange',
+        deprecated: 'text-red-dark',
+        prototype: 'text-blue',
       },
     }
   },
