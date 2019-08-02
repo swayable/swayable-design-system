@@ -6,7 +6,9 @@
 @import "../src/assets/tokens/tokens.scss";
 @import "./docs.tokens.scss";
 @import "../src/styles/styles.scss";
-
+@import "./styles/functions";
+@import "./styles/mixins";
+@import "./styles/spacing";
 /* LOCAL DESIGN TOKENS
 --------------------------------------------- */
 
@@ -659,8 +661,7 @@ thead[class^="rsg--thead"] {
 div[class^="rsg--tabButtons"],
 div[class^="rsg--controls"],
 div[class^="rsg--pathline"],
-footer[class^="rsg--footer"],
-div[class^="rsg--toolbar"] {
+footer[class^="rsg--footer"] {
   display: none !important;
 }
 

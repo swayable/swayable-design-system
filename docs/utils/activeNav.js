@@ -16,6 +16,7 @@ export default {
   methods: {
     init() {
       const sidebar = document.querySelector('div[class^=\'rsg--sidebar\']')
+      if (!sidebar) return
       const navLinks = sidebar.querySelectorAll('nav > ul > li > a')
       const current = location.hash.split('/')[1]
       const [actives, inactives] = _partition(navLinks, nl => nl.href.includes(current))

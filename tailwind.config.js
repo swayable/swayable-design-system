@@ -47,6 +47,7 @@ module.exports = {
     },
     extend: {
       minHeight: sizeMap,
+      minWidth: sizeMap,
       inset: sizeMap,
       colors,
     },

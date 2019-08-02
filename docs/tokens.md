@@ -6,6 +6,7 @@
 - [Padding](https://tailwindcss.com/docs/padding)
 - [Margin](https://tailwindcss.com/docs/margin)
 - [Flex](https://tailwindcss.com/docs/flex)
+- [Responsive Design](https://tailwindcss.com/docs/responsive-design/)
 
 ## Color Palette
 

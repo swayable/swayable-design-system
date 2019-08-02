@@ -1,21 +1,27 @@
 <template>
   <component
     :is='type'
-    class='flex items-center justify-between flex-wrap bg-blue-900 pl-3 text-gray-500'
+    :class='`flex items-center justify-between flex-wrap pl-3 shadow nav-bar`'
   >
     <div class='flex items-center flex-shrink-0 mr-4 p-3'>
-      <slot>
-        <h1
-          v-if='heading'
-          class='font-heading font-medium text-xl text-white'
-        >
-          {{ heading }}
-        </h1>
+      <slot name='heading'>
+        <a :href='headerLink'>
+          <h1
+            v-if='heading'
+            class='font-heading font-medium text-xl'
+          >
+            {{ heading }}
+          </h1>
+          <div
+            v-else
+            class='h-10 py-1 bg-contain bg-center bg-no-repeat swayable-logo'
+          />
+        </a>
       </slot>
     </div>
-    <div class='block lg:hidden'>
+    <div class='block md:hidden'>
       <button
-        class='flex items-center px-3 py-2 rounded text-teal-200 border-teal-400 hover:text-white'
+        class='flex items-center px-3 py-2 rounded hover:text-white'
         @click='open = !open'
       >
         <Icon name='menu' />
@@ -26,27 +32,50 @@
         flex: open,
         hidden: !open,
       }'
-      class='lg:flex flex-grow w-full lg:items-stretch lg:w-auto min-h-16'
+      class='md:flex flex-grow w-full md:items-stretch md:w-auto min-h-16'
     >
       <div class='flex flex-grow'>
         <slot name='left' />
       </div>
       <div class='flex'>
-        <slot name='right'>
-          <NavItem
-            v-for='item in navItems'
-            :key='item.name'
-            v-bind='item'
-          />
-        </slot>
+        <slot />
       </div>
     </div>
   </component>
 </template>
 
+<style lang="scss">
+.swayable-logo {
+  min-width: 250px;
+}
+
+.nav-bar {
+  background-color: $dark;
+  color: $light;
+  .swayable-logo {
+    background-image: url(https://images.swayable.com/logos/dark.svg?v=1)
+  }
+}
+
+.theme-dark {
+  .nav-bar {
+    background-color: $light;
+    color: $dark;
+    .swayable-logo {
+      background-image: url(https://images.swayable.com/logos/light.svg?v=1)
+    }
+  }
+}
+</style>
+
 <script>
 /**
  * Used as main page navigation in templates.
+ *
+ * ## Slots
+ * * `heading`: replaces logo
+ * * `left`: for left aligned nav items
+ * * default: for right aligned nav items
  */
 export default {
   name: 'NavBar',
@@ -57,6 +86,14 @@ export default {
   },
   props: {
     /**
+     * href of heading (unavailable if using heading slot)
+     */
+    headerLink: {
+      type: String,
+      required: false,
+      default: '/',
+    },
+    /**
      * The html element used for the nav bar.
      */
     type: {
@@ -64,20 +101,12 @@ export default {
       default: 'nav',
     },
     /**
-     * The heading (overriden by default slot)
+     * The heading (unavailable if using heading slot, defaults to Swayable logo if not provided)
      */
     heading: {
       type: String,
       required: false,
       default: null,
-    },
-    /**
-     * Navigation items (cannot be used with slots)
-     * `[{ name:String, href:String, active:Boolean, title:String }]`
-     */
-    navItems: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
@@ -88,13 +117,25 @@ export default {
 
 <docs>
   ```jsx
-  <NavBar>
-    <template #left>
-      <NavItem name='Dashboard' />
-    </template>
-    <template #right>
-      <NavItem name='Sign in' />
-    </template>
-  </NavBar>
+  <section>
+    <NavBar headerLink='/#/Patterns/NavBar'>
+      <template #left>
+        <NavItem name='Dashboard' active='true' />
+      </template>
+      <template>
+        <NavItem name='Sign in' />
+      </template>
+    </NavBar>
+  </section>
+  <section class='theme-dark'>
+    <NavBar headerLink='/#/Patterns/NavBar'>
+      <template #left>
+        <NavItem name='Dashboard' active='true' />
+      </template>
+      <template>
+        <NavItem name='Sign in' />
+      </template>
+    </NavBar>
+  </section>
   ```
 </docs>

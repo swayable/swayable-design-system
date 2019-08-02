@@ -76,7 +76,6 @@ export default {
 // We don’t want to use scoped since these styles need to cascade down to SVGs.
 // We also want to be able to style .icon inside buttons etc.
 .icon {
-  @include reset;
   &.large svg {
     width: 48px;
     height: 48px;

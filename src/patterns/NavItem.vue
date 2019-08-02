@@ -4,10 +4,10 @@
     ref='navItem'
     :href='href'
     :class='{
-      "pb-3 lg:pb-2 border-b-4 active": active,
+      "pb-3 lg:pb-2 active": isActive,
     }'
     :title='title'
-    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 border-gray-100 hover:text-white cursor-pointer font-medium items-center'
+    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 cursor-pointer font-medium items-center nav-item'
     v-on='$listeners'
   >
     <slot>
@@ -42,8 +42,7 @@ export default {
      * Indicates whether this is the current link
      */
     active: {
-      type: Boolean,
-      default: false,
+      type: String,
     },
     /**
      * Displayed text (overriden by default slot)
@@ -58,15 +57,45 @@ export default {
       type: String,
     },
   },
+  computed: {
+    isActive() {
+      return this.active === 'true'
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+.nav-item {
+  color: $gray-400;
+  &:hover, &:active, &:focus {
+    color: $gray-200;
+  }
+  &.active {
+    border-bottom-width: 4px;
+    border-style: solid;
+    border-color: $gray-400;
+  }
+}
+.theme-dark {
+  .nav-item {
+    color: $gray-700;
+    &:hover, &:active, &:focus {
+      color: $dark;
+    }
+    &.active {
+      border-color: $gray-600;
+    }
+  }
+}
+</style>
 
 <docs>
   ```jsx
   <div>
     <NavBar>
       <template #right>
-        <NavItem href="/#/" name="Item 1" :active='true' />
+        <NavItem href="/#/" name="Item 1" active='true' />
         <NavItem href="/#/" name="Item 2" title="The only item with a title" />
         <NavItem href="/#/">Item 3</NavItem>
       </template>

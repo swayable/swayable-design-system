@@ -1,0 +1,38 @@
+body {
+  img { max-height: 100%; }
+
+  h1, h2, h3, h4, h5 { font-family: $font-heading; }
+
+  a, button { cursor: pointer; }
+
+  // Defining Light Theme as a mixin allows us to use it as the default
+  // and also redefine it under the class `.theme-light`;
+  // allowing for use of `.theme-light` inside of a parent `.theme-dark`
+  @mixin lightTheme() {
+    background-color: $light;
+    color: $gray-700;
+    h1, h2, h3, h4, h5 .heading  {
+      color: $dark;
+    }
+    a {
+      color: $blue;
+      &:hover, &:active, &:focus {
+        color: $purple;
+      }
+    }
+  }
+
+  @include lightTheme();
+
+  .theme-dark {
+    background-color: $dark;
+    color: $light;
+    h1, h2, h3, h4, h5 .heading  {
+      color: $gray-300;
+    }
+  }
+
+  .theme-light {
+    @include lightTheme()
+  }
+}
