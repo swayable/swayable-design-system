@@ -7,7 +7,7 @@
     >
       <div class='max-w-sm rounded overflow-hidden shadow-lg'>
         <div
-          :class='`bg-${prop.classSuffix} p-20`'
+          :class='`bg-${prop.classSuffix} p-20 swatch`'
         />
         <div class='px-6 pt-4'>
           <div class='font-bold text-lg mb-2 capitalize font-heading text-dark'>

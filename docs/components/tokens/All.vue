@@ -14,7 +14,7 @@
     <div
       v-for='(token, index) in tokens'
       :key='index'
-      class='p-4 border-gray-600 border-t flex items-center'
+      class='p-4 border-gray-600 border-t flex items-center token'
       :class='{
         [token.bgClass]: true,
         [`text-${token.classSuffix}`]: token.type === "color",

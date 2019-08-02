@@ -24,8 +24,4 @@ describe('All.vue', () => {
   it('should create examples of usage', () => {
     expect(vm.$el.querySelector('.example')).toBeDefined()
   })
-
-  it('should apply inline styles', () => {
-    expect(vm.$el.querySelector('.example.border-radius').style).toBeDefined()
-  })
 })
