@@ -73,8 +73,6 @@ import Token from '../../decorators/token'
  *  
  * Because the Swayable Design System uses Tailwindcss, [their color palette](https://tailwindcss.com/docs/customizing-colors/#default-color-palette) is also available for use if necessary.
  * 
- * To edit the colors, see
- * [/src/tokens/color.yml](https://github.com/swayable/swayable-design-system/blob/master/src/tokens/color.yml).
  */
 export default {
   name: 'Color',
