@@ -1,32 +1,32 @@
 <template>
-  <component 
-    :is='type' 
+  <component
+    :is='type'
     class='min-h-screen bg-gray-100'
   >
     <header>
       <NavBar>
-        <img 
-          class='h-10' 
-          src='//images.swayable.com/logos/light.svg' 
+        <img
+          class='h-10'
+          src='//images.swayable.com/logos/light.svg'
           alt='Swayable Logo'
         >
         <template #left>
-          <NavItem 
-            name='Template' 
-            href='/#/Templates/Index' 
+          <NavItem
+            name='Template'
+            href='/#/Templates/Index'
             active='true'
           />
-          <NavItem 
-            name='Documentation' 
+          <NavItem
+            name='Documentation'
             href='/#/'
           />
         </template>
         <template #right>
           <NavDrop>
             Account &nbsp;
-            <Icon 
-              name='chevron-down' 
-              size='small' 
+            <Icon
+              name='chevron-down'
+              size='small'
               aria-label='Expand Menu'
             />
             <template #dropdown>

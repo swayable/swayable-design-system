@@ -18,7 +18,7 @@
       :class='{
         [token.bgClass]: true,
         [`text-${token.classSuffix}`]: token.type === "color",
-      }' 
+      }'
     >
       <div class='w-1/3'>
         <span v-if='token.name'>

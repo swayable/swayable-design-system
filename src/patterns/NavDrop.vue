@@ -1,11 +1,11 @@
 <template>
-  <component 
-    :is='type' 
+  <component
+    :is='type'
     class='relative'
   >
-    <NavItem 
-      type='a' 
-      @click='toggleOpen' 
+    <NavItem
+      type='a'
+      @click='toggleOpen'
       v-on='$listeners'
     >
       <slot>{{ name }}</slot>

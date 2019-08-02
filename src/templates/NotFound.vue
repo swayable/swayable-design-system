@@ -1,6 +1,6 @@
 <template>
-  <component 
-    :is='type' 
+  <component
+    :is='type'
     class='min-h-screen bg-gray-100'
   >
     <NavBar

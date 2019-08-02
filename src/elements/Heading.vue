@@ -1,6 +1,6 @@
 <template>
-  <component 
-    :is='level' 
+  <component
+    :is='level'
     class='heading'
   >
     <slot />

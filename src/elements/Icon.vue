@@ -1,7 +1,7 @@
 <template>
-  <component 
-    :is='type' 
-    :aria-label='ariaLabel' 
+  <component
+    :is='type'
+    :aria-label='ariaLabel'
     :class='`h-6 w-6 self-center flex justify-center items-center icon ${size}`'
     v-html='svg'
   />

@@ -33,9 +33,9 @@
       </div>
       <div class='flex'>
         <slot name='right'>
-          <NavItem 
-            v-for='item in navItems' 
-            :key='item.name' 
+          <NavItem
+            v-for='item in navItems'
+            :key='item.name'
             v-bind='item'
           />
         </slot>

@@ -27,7 +27,7 @@ import orderBy from 'lodash/orderBy'
 
 /**
  * This is a reference to [Tailwindcss font sizes](https://tailwindcss.com/docs/font-size/).
- * 
+ *
  */
 export default {
   name: 'FontSize',

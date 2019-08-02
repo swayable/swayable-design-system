@@ -1,10 +1,10 @@
 <template>
-  <component 
-    :is='wrapper' 
+  <component
+    :is='wrapper'
     :class='["textarea", { "textarea-expand": width === "expand" }]'
   >
-    <label 
-      v-if='label' 
+    <label
+      v-if='label'
       :for='id'
     >
       {{ label }}
