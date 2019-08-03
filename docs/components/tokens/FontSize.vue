@@ -1,13 +1,21 @@
 <template>
   <div class='font-sizes'>
-    <template v-for='prop in tokens'>
+    <template v-for='(size, name, i) in tokens'>
       <div
-        v-if='prop.category === "font-size"'
-        :key='prop.name'
-        :style='{ fontSize: prop.value }'
-        class='font'
+        :key='name'
+        :class='`font mt-5 p-2 ${(i%2 === 0 ? "bg-white" : "")}`'
       >
-        ${{ prop.name.replace(/_/g, "-") }} <span>({{ prop.value }})</span>
+        <div class='flex text-xs'>
+          <p class='flex-grow text-gray-600'>
+            <code>.text-{{ name }}</code>
+          </p>
+          <p class='text-gray-600'>
+            {{ size }}
+          </p>
+        </div>
+        <p :class='`text-${name} truncate`'>
+          How quickly daft jumping zebras vex!
+        </p>
       </div>
     </template>
   </div>
@@ -18,23 +26,26 @@ import designTokens from '@/assets/tokens/tokens.raw.json'
 import orderBy from 'lodash/orderBy'
 
 /**
- * This typographic scale makes it easier to achieve visual harmony in the
- * interface. It’s purposefully designed to keep the number of separate font
- * sizes to a minimum. To edit font-sizes, see
- * [/src/tokens/font-size.yml](https://github.com/swayable/swayable-design-system/blob/master/src/tokens/font-size.yml).
+ * This is a reference to [Tailwindcss font sizes](https://tailwindcss.com/docs/font-size/).
+ *
  */
 export default {
   name: 'FontSize',
   data() {
     return {
-      tokens: this.orderData(designTokens.props),
+      tokens: {
+        xs: '0.75rem',
+        sm: '0.875rem',
+        base: '1rem',
+        lg: '1.125rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
+        '5xl': '3rem',
+        '6xl': '4rem',
+      },
     }
-  },
-  methods: {
-    orderData: function(data) {
-      let order = orderBy(data, 'value', 'desc')
-      return order
-    },
   },
 }
 </script>

@@ -18,6 +18,6 @@ describe('Color.vue', () => {
   })
 
   it('should create swatches and apply inline styles', () => {
-    expect(vm.$el.querySelector('.color .swatch').style).toBeDefined()
+    expect(vm.$el.querySelector('.color .swatch')).toBeDefined()
   })
 })

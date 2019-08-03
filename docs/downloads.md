@@ -1,8 +1,13 @@
-### These downloads, links, and third-party tools will help you and your teams learn, design, and build products. Here you can also provide links to assets like fonts, icons, color swatches, Sketch UI kits and so&nbsp;on.
-
-You’re looking at Swayable Design System’s demo downloads section. Everything you see here is editable in Markdown format. To change or remove this content, see [/docs/downloads.md](https://github.com/viljamis/vue-design-system/blob/master/docs/downloads.md).
-
 ## Swayable Design System (zip)
 
-- [Download latest version](https://github.com/viljamis/vue-design-system/archive/master.zip)
-- [All versions](https://github.com/viljamis/vue-design-system/releases)
+- [Download latest version](https://github.com/swayable/swayable-design-system/archive/master.zip)
+- [All versions](https://github.com/swayable/swayable-design-system/releases)
+
+## Node
+#### The best way to use Swayable Design System is importing it with Node
+
+`import DesignSystem from 'swayable-design-system'`
+
+`import 'swayable-design-system/dist/system/system.css'`
+
+`Vue.use(DesignSystem)`

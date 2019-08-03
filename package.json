@@ -30,7 +30,7 @@
     "theo": "theo ./src/tokens/tokens.yml --transform web --format map.scss,scss,raw.json,json --dest ./src/assets/tokens",
     "theo:onchange": "onchange \"./src/tokens/*.yml\" -- npm run theo",
     "test": "npm-run-all theo unit",
-    "commit": "git-cz",
+    "commit": "yarn lint --fix && git-cz",
     "release": "standard-version"
   },
   "husky": {

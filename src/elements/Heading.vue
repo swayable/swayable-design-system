@@ -1,6 +1,6 @@
 <template>
-  <component 
-    :is='level' 
+  <component
+    :is='level'
     class='heading'
   >
     <slot />
@@ -32,48 +32,6 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.heading {
-  @include reset;
-  @include stack-space($space-m);
-  font-family: $font-heading;
-  line-height: $line-height-xs;
-  color: $dark;
-  @media #{$media-query-l} {
-    // This is how you’d use design tokens with media queries
-  }
-}
-h1 {
-  letter-spacing: $spacing-xs;
-  font-size: $size-xxl;
-  font-weight: $weight-semi-bold;
-  @media #{$media-query-l} {
-    font-size: $size-xxxl;
-  }
-}
-h2 {
-  letter-spacing: $spacing-s;
-  font-size: $size-xxl;
-  font-weight: $weight-semi-bold;
-}
-h3 {
-  font-size: $size-xl;
-  font-weight: $weight-semi-bold;
-}
-h4 {
-  font-size: $size-l;
-  font-weight: $weight-semi-bold;
-}
-h5 {
-  font-size: $size-m;
-  font-weight: $weight-normal;
-}
-h6 {
-  font-size: $size-s;
-  font-weight: $weight-normal;
-}
-</style>
 
 <docs>
   ```jsx

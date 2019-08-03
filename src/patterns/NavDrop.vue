@@ -1,11 +1,11 @@
 <template>
-  <component 
-    :is='type' 
+  <component
+    :is='type'
     class='relative'
   >
-    <NavItem 
-      type='a' 
-      @click='toggleOpen' 
+    <NavItem
+      type='a'
+      @click='toggleOpen'
       v-on='$listeners'
     >
       <slot>{{ name }}</slot>
@@ -13,7 +13,7 @@
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen lg:w-auto min-w-full absolute right-0 flex-col bg-blue-900 z-20'
+      class='w-screen lg:w-auto min-w-full absolute right-0 flex-col nav-drop z-20'
     >
       <slot name='dropdown'>
         <NavItem
@@ -92,28 +92,41 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.nav-drop {
+  background-color: $dark;
+  .nav-item.active {
+    border-bottom: 0;
+    border-right-width: 4px;
+  }
+}
+.theme-dark {
+  .nav-drop {
+    background-color: $light;
+  }
+}
+</style>
+
 <docs>
   ```jsx
   <NavBar>
-    <template #right>
-      <NavItem name="Link" />
-      <NavDrop name="Links Menu" :navItems='[
-          { name: "Item 1" },
-          { name: "Item 2" },
-          { name: "Item 3" },
-        ]'
-      />
-      <NavDrop>
-        Account &nbsp;
-        <Icon name="chevron-down" size="small" ariaLabel="Expand Menu" />
-        <template #dropdown>
-          <NavItem name="Profile" />
-          <NavItem name="Settings" />
-          <hr class="border-t m-0" />
-          <NavItem name="Logout" />
-        </template>
-      </NavDrop>
-    </template>
+    <NavItem name="Link" />
+    <NavDrop name="Links Menu" :navItems='[
+        { name: "Item 1" },
+        { name: "Item 2", active: "true" },
+        { name: "Item 3" },
+      ]'
+    />
+    <NavDrop>
+      Account &nbsp;
+      <Icon name="chevron-down" size="small" ariaLabel="Expand Menu" />
+      <template #dropdown>
+        <NavItem name="Profile" />
+        <NavItem name="Settings" />
+        <hr class="border-t m-0" />
+        <NavItem name="Logout" />
+      </template>
+    </NavDrop>
   </NavBar>
   ```
 </docs>

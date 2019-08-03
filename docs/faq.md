@@ -1,10 +1,12 @@
+## Warning: This page has not been updated since the fork from Vue Design System. 
+
 ## What is the Vue Design System?
 
 Vue Design System is an open source tool for building UI Design Systems with [Vue.js](https://vuejs.org). It provides you and your team a set of organized tools, patterns & practices that work as the foundation for your application development. [Read more about it](https://viljamis.com/2018/vue-design-system/).
 
 ## What browsers are supported?
 
-The development environment supports the following browsers. To tweak browsers supported in production you will want to edit the [browsers list in package.json](https://github.com/viljamis/vue-design-system/blob/master/package.json#L172-L180). To see what browsers are selected by the browser list, run `npx browserslist --config="package.json"` in the root directory of this project.
+The development environment supports the following browsers. To tweak browsers supported in production you will want to edit the [browsers list in package.json](https://github.com/swayable/swayable-design-system/blob/master/package.json#L172-L180). To see what browsers are selected by the browser list, run `npx browserslist --config="package.json"` in the root directory of this project.
 
 | BROWSER         | VERSION |
 | --------------- | ------- |
@@ -42,7 +44,7 @@ Vue Design System is not a front-end component library and never will be. Instea
 
 ## Can I convert YAML tokens to more than just SCSS and JSON?
 
-Definitely. See [Theo’s docs](https://github.com/salesforce-ux/theo). It allows you to convert the tokens to almost any format you can think of. The formats used are being configured in [package.json](https://github.com/viljamis/vue-design-system/blob/master/package.json#L25).
+Definitely. See [Theo’s docs](https://github.com/salesforce-ux/theo). It allows you to convert the tokens to almost any format you can think of. The formats used are being configured in [package.json](https://github.com/swayable/swayable-design-system/blob/master/package.json#L25).
 
 ## Does Vue Design System work on Windows?
 
@@ -60,7 +62,7 @@ Icons are inside `src/assets/icons` directory, so you can just add any icons tha
 
 Vue Design System uses Typekit’s [Web Font Loader](https://github.com/typekit/webfontloader) which is easy to configure. To load your own font files, see [Getting Started with WebFontLoader](https://github.com/typekit/webfontloader#get-started). Currently, the app is loading _Fira Sans_ and a few different weights from Google Fonts. See `src/utils/webFontLoader.js` for an example.
 
-If you want to bundle your fonts into the project itself, that’s possible as well. I’ve created a separate branch with an example of this. See the needed changes in [this commit](https://github.com/viljamis/vue-design-system/commit/a7b3badb618fb5e0e1c999940b8ea82e86aea190).
+If you want to bundle your fonts into the project itself, that’s possible as well. I’ve created a separate branch with an example of this. See the needed changes in [this commit](https://github.com/swayable/swayable-design-system/commit/a7b3badb618fb5e0e1c999940b8ea82e86aea190).
 
 ## How to use design tokens in JavaScript?
 
@@ -94,16 +96,16 @@ Once done, you can utilize tokens inside `<template>` like this:
 
 ```scss
 .wrapper {
-  padding: $space-l;
+  padding: 48px;
   @media #{$media-query-l} {
-    padding: $space-xl;
+    padding: 64px;
   }
 }
 ```
 
 ## How to disable browser from auto opening a new window?
 
-Remove `--open` option from [this line in package.json](https://github.com/viljamis/vue-design-system/blob/master/package.json#L24).
+Remove `--open` option from [this line in package.json](https://github.com/swayable/swayable-design-system/blob/master/package.json#L24).
 
 ## How do I use static image assets?
 
@@ -117,11 +119,11 @@ Yes! While we don’t currently have extensive documentation on this, there’s 
 
 ## I can’t get Vue Design System working as an NPM dependency?
 
-Please see the official example first: [github.com/viljamis/vue-design-system-example](https://github.com/viljamis/vue-design-system-example). If you’re getting an error about `export 'default' was not found` you’re probably trying to import the provided UMD module as an ES Module.
+Please see the official example first: [github.com/swayable/swayable-design-system-example](https://github.com/swayable/swayable-design-system-example). If you’re getting an error about `export 'default' was not found` you’re probably trying to import the provided UMD module as an ES Module.
 
 ## Can I use the components from the system on our static website?
 
-Yes you can. See the official example on GitHub: [github.com/viljamis/vue-design-system-example-website](https://github.com/viljamis/vue-design-system-example-website)
+Yes you can. See the official example on GitHub: [github.com/swayable/swayable-design-system-example-website](https://github.com/swayable/swayable-design-system-example-website)
 
 ## I want to use CSS Modules, are those supported?
 

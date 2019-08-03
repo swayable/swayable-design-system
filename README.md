@@ -39,4 +39,4 @@ Deployed with [Netlify](https://www.netlify.com/) (via GitHub). To deploy, simpl
 
 This is a fork of the [**Vue Design System**](https://vueds.com/), an open source tool for building UI Design Systems with [Vue.js](https://vuejs.org).
 
-Licensed under the [MIT license](https://github.com/viljamis/vue-design-system/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/swayable/swayable-design-system/blob/master/LICENSE).

@@ -2,33 +2,33 @@
   <div>
     <div class='flex'>
       <span class='w-1/5 flex'>
-        <Icon 
-          :fill='fill-ready'
-          name='ready' 
+        <Icon
+          :fill='fill.ready'
+          name='ready'
           size='small'
         />
         <p>Ready</p>
       </span>
       <span class='w-1/5 flex'>
-        <Icon 
-          :fill='fill.review' 
-          name='review' 
+        <Icon
+          :fill='fill.review'
+          name='review'
           size='small'
         />
         <p>Under review</p>
       </span>
       <span class='w-1/5 flex'>
-        <Icon 
-          :fill='fill.deprecated' 
-          name='deprecated' 
+        <Icon
+          :fill='fill.deprecated'
+          name='deprecated'
           size='small'
         />
         <p>Deprecated</p>
       </span>
       <span class='w-1/5 flex'>
-        <Icon 
-          :fill='fill.prototype' 
-          name='prototype' 
+        <Icon
+          :fill='fill.prototype'
+          name='prototype'
           size='small'
         />
         <p>Prototype</p>
@@ -68,9 +68,9 @@
         <span class='w-1/3'>Status</span>
       </div>
       <div class='mt-1'>
-        <div 
-          v-for='(component, index) in components' 
-          :key='index' 
+        <div
+          v-for='(component, index) in components'
+          :key='index'
           class='flex'
         >
           <span
@@ -101,10 +101,10 @@
             v-if='component.status'
             class='w-1/3'
           >
-            <Icon 
-              v-if='component.status === "ready"' 
+            <Icon
+              v-if='component.status === "ready"'
               :fill='fill.ready'
-              name='ready' 
+              name='ready'
               size='small'
             />
             <Icon
@@ -130,7 +130,7 @@
             v-else
             class='w-1/3'
           >
-            —
+            <span>&nbsp;—</span>
           </span>
         </div>
       </div>
@@ -159,10 +159,10 @@ export default {
     return {
       components: this.orderData(this.getComponents()),
       fill: {
-        ready: 'text-green-600',
-        review: 'text-orange-600',
-        deprecated: 'text-red-600',
-        prototype: 'text-blue-600',
+        ready: 'text-green',
+        review: 'text-orange',
+        deprecated: 'text-red-dark',
+        prototype: 'text-blue',
       },
     }
   },

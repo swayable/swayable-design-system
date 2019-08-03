@@ -6,12 +6,14 @@
 @import "../src/assets/tokens/tokens.scss";
 @import "./docs.tokens.scss";
 @import "../src/styles/styles.scss";
-
+@import "./styles/functions";
+@import "./styles/mixins";
+@import "./styles/spacing";
 /* LOCAL DESIGN TOKENS
 --------------------------------------------- */
 
-$docs-grey: $blue;
-$docs-grey-dark: $dark;
+$docs-grey: $gray-300;
+$docs-grey-dark: $gray-800;
 $docs-status-ready: $orange;
 $docs-breakpoint: 800px;
 $docs-breakpoint-small: 600px;
@@ -55,7 +57,10 @@ main section section > div > div[class^="rsg--root"] {
 div[class^="rsg--root"] a[class^="rsg--link"] {
   color: $blue;
   &:hover {
-    color: $dark;
+    color: $purple;
+  }
+  &:active {
+    color: $purple;
   }
 }
 
@@ -64,26 +69,24 @@ div[class^="rsg--root"] a[class^="rsg--link"] {
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"],
 div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
   font-family: $font-heading;
+  color: $dark;
   display: block;
   border: 0;
-  line-height: $line-height-s;
-  padding: $space-xl $space-xl;
+  padding: $space-l 0 $space-s;
   width: calc(100% + #{$space-xl * 2});
-  margin: -#{$space-s} -#{$space-xl} $space-l -#{$space-xl};
   background: $light;
-  font-size: $size-xxl;
+  font-size: 1.5rem;
   a:hover {
     text-decoration: none;
     cursor: default;
   }
   @media (max-width: 1300px) {
-    padding: $space-l $space-xl;
+    padding: $space-m 0;
   }
   @media (max-width: #{$docs-breakpoint}) {
-    font-size: $size-xl / 1.2;
+    font-size: 1.25rem / 1.2;
     width: calc(100% + #{$space-xl});
-    padding: $space-l $space-m;
-    margin: -#{$space-s} -#{$space-m} $space-m;
+    padding: $space-s 0;
   }
 }
 
@@ -94,7 +97,6 @@ header[class^="rsg--header"] {
 
 // Links inside h1
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
-  font-weight: $weight-normal;
   color: $blue;
   letter-spacing: -1px;
   &:hover {
@@ -107,17 +109,16 @@ div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
 h2[class^="rsg--heading"] {
   border-bottom: 1px solid $docs-grey;
   padding-bottom: $space-s;
-  margin: $space-l 0 $space-m;
-  font-size: $size-xl;
+  margin: $space-s 0 $space-xs;
+  font-size: 1.25rem;
   line-height: $line-height-s;
-  font-weight: $weight-normal;
   letter-spacing: -0.5px;
   width: 100%;
   @media (max-width: #{$docs-breakpoint}) {
-    font-size: $size-xl / 1.3;
+    font-size: 1.25rem / 1.3;
   }
   @media (max-width: #{$docs-breakpoint-small}) {
-    font-size: $size-xl / 1.6;
+    font-size: 1.25rem / 1.6;
   }
   a {
     color: $docs-color-heading;
@@ -129,13 +130,13 @@ h3[class^="rsg--heading"],
 h3[class^="rsg--heading"] a {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
-  font-weight: $weight-light;
+  font-weight: 300;
   line-height: $line-height-m;
   margin: 0 0 $space-l;
-  font-size: $size-l;
+  font-size: 1.125rem;
   color: $docs-color-text;
   @media (max-width: #{$docs-breakpoint}) {
-    font-size: $size-l / 1.2;
+    font-size: 1.125rem / 1.2;
     margin: 0 0 $space-m;
   }
 }
@@ -143,10 +144,10 @@ h3[class^="rsg--heading"] a {
 // Heading, level 4
 h4[class^="rsg--heading"],
 h4[class^="rsg--heading"] a {
-  font-weight: $weight-semi-bold;
+  font-weight: 600;
   letter-spacing: 0;
   margin: $space-l 0 $space-m;
-  font-size: $size-l;
+  font-size: 1.125rem;
   line-height: $line-height-s;
   color: $docs-color-heading;
 }
@@ -159,7 +160,7 @@ p[class^="rsg--para"] {
   margin-bottom: $space-s;
   line-height: $line-height-m;
   strong a[class^="rsg--link"] {
-    font-weight: $weight-semi-bold;
+    font-weight: 600;
   }
   code {
     -webkit-font-smoothing: subpixel-antialiased;
@@ -212,7 +213,8 @@ div[class^="rsg--logo"] {
   h1 {
     font-family: $font-heading;
     color: tint($blue, 90%);
-    font-weight: $weight-medium;
+    font-size: 1.1rem;
+    margin: $space-m 0 $space-s;
   }
 }
 
@@ -222,13 +224,13 @@ p[class^="rsg--version"] {
   margin: $space-xs 0 0;
   color: $blue;
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  font-weight: $weight-normal;
+  font-weight: 400;
   display: inline-block;
   line-height: $line-height-xs;
   border: 1px solid $blue;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: $size-xs;
+  font-size: 0.875rem;
   border-radius: $radius-default;
 }
 
@@ -261,25 +263,33 @@ div[class^="rsg--search"] input {
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: mix($blue, $dark, 5%);
+  background: $dark;
+  color: $light;
   border: 0;
   @media (max-width: #{$docs-breakpoint}) {
     padding-bottom: $space-l;
   }
 
-  // Commented out because I like the nav to always be expanded ~ Josh
+ 
+
   // Sidebar sub navigations
-  // ul ul[class^="rsg--list"] {
-  //   display: none;
-  //   &.vueds-visible {
-  //     display: block;
-  //   }
-  // }
+  ul ul[class^="rsg--list"] {
+    max-height: 0;
+    transition: max-height 0.25s ease-out;
+    &.vueds-visible {
+      height: auto;
+    }
+  }
 
   // Sidebar list item
   li[class^="rsg--item"] {
     margin: 0;
     display: block;
+    &:focus {
+      ul[class^="rsg--list"] {
+        max-height: 400px !important;
+      }
+    }
   }
 
   // Sidebar first level links
@@ -287,24 +297,24 @@ div[class^="rsg--sidebar"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
-    font-weight: $weight-medium;
-    color: $blue;
+    font-weight: 500;
+    color: $gray-500;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $light;
+      color: $gray-300;
     }
     &:active {
-      color: $dark;
+      color: $gray-300;
     }
   }
 
   // Sidebar active link
-  .vueds-active {
+  .vueds-active{
     ul[class^="rsg--list"] {
-      display: block;
+      max-height: 400px;
     }
     & > a,
     & > a:hover {
@@ -333,8 +343,8 @@ div[class^="rsg--sidebar"] {
 
       // Sidebar second level link
       a[class*="rsg--link"] {
-        font-size: $size-s;
-        font-weight: $weight-normal;
+        font-size: 1rem;
+        font-weight: 400;
         -webkit-font-smoothing: subpixel-antialiased;
         -moz-osx-font-smoothing: auto;
         @media (max-width: #{$docs-breakpoint-small}) {
@@ -352,8 +362,8 @@ div[class^="rsg--sidebar"] {
 // Previews of the components
 div[class^="rsg--preview"] {
   padding: $space-l / 1.2;
-  background-color: tint($docs-grey, 90%);
-  border: 1px solid tint($docs-grey, 50%);
+  background-color: $gray-100;
+  border: 1px solid $gray-300;
   box-shadow: inset 0 0 $space-xs rgba($dark, 0.05);
   margin: $space-s 0 0;
   border-radius: 0;
@@ -409,7 +419,7 @@ pre[class^="rsg--pre"],
   height: auto;
   border: 0;
   font-family: Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: $size-s;
+  font-size: 1rem;
   margin: 0;
   min-height: $space-xxl / 1.5;
   margin-bottom: $space-m;
@@ -447,8 +457,8 @@ div[class^="rsg--tab"] {
       border: 0;
       margin: 0;
       letter-spacing: $spacing-l;
-      font-size: $size-s;
-      font-weight: $weight-normal;
+      font-size: 1rem;
+      font-weight: 400;
       font-family: $font-text;
       line-height: $line-height-s;
       @include inset-squish-space($space-s);
@@ -515,7 +525,7 @@ code[class^="rsg--code"] {
 }
 span[class^="rsg--name"] code[class^="rsg--code"],
 code.name {
-  font-weight: $weight-bold;
+  font-weight: 700;
   color: shade($dark, 50%);
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
@@ -545,7 +555,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 // Status label is shown in top right corner for each component
 .status {
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  font-weight: $weight-normal;
+  font-weight: 400;
   order: 1;
   align-self: flex-end;
   cursor: help;
@@ -554,7 +564,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   padding: $space-xs $space-s $space-xs/1.2;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: $size-xs;
+  font-size: 0.875rem;
   border-radius: $radius-default;
   color: $dark;
   position: absolute;
@@ -604,8 +614,8 @@ table[class^="rsg--table"] {
   width: 100%;
   th {
     padding: $space-s $space-l $space-s $space-s;
-    font-size: $size-s;
-    font-weight: $weight-semi-bold;
+    font-size: 1rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
@@ -619,10 +629,10 @@ table[class^="rsg--table"] {
     background: transparent;
   }
   td {
-    font-size: $size-s;
+    font-size: 1rem;
     padding: $space-s $space-l $space-s $space-s;
     &:first-child {
-      font-weight: $weight-bold;
+      font-weight: 700;
       white-space: nowrap;
     }
   }
@@ -651,8 +661,7 @@ thead[class^="rsg--thead"] {
 div[class^="rsg--tabButtons"],
 div[class^="rsg--controls"],
 div[class^="rsg--pathline"],
-footer[class^="rsg--footer"],
-div[class^="rsg--toolbar"] {
+footer[class^="rsg--footer"] {
   display: none !important;
 }
 

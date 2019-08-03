@@ -2,24 +2,25 @@
 # FONT TOKENS
 # Use these tokens to set font-weight and font-family.
 #
+# Weights must reflect whichever are included in `src/styles/_fonts.scss`
 
 props:
   font_heading:
     value: '"azo-sans-web",sans-serif'
+    class: 'heading'
+    weights: '500'
+    order: -1
   font_text:
     value: '"roboto",sans-serif'
+    class: 'body'
+    weights: '300,400,500'
+    order: -1
   font_mono:
     value: '"roboto-mono",monospace'
-  weight_bold:
-    value: "700"
-  weight_semi_bold:
-    value: "600"
-  weight_medium:
-    value: "500"
-  weight_normal:
-    value: "400"
-  weight_light:
-    value: "200"
+    class: 'mono'
+    weights: '400'
+    order: -1
+
 global:
   type: ...
   category: font

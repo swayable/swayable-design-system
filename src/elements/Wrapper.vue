@@ -1,6 +1,6 @@
 <template>
-  <component 
-    :is='type' 
+  <component
+    :is='type'
     class='wrapper'
   >
     <slot />
@@ -27,21 +27,6 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.wrapper {
-  @include reset;
-  @include inset-space($space-l);
-  font-family: $font-text;
-  font-weight: $weight-normal;
-  font-size: $size-m;
-  line-height: $line-height-m;
-  width: 100%;
-  @media #{$media-query-l} {
-    @include inset-space($space-xl);
-  }
-}
-</style>
 
 <docs>
   ```jsx

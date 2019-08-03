@@ -1,32 +1,27 @@
 <template>
-  <component 
-    :is='type' 
-    class='min-h-screen bg-gray-100'
+  <component
+    :is='type'
+    class='min-h-screen theme-dark'
   >
     <header>
       <NavBar>
-        <img 
-          class='h-10' 
-          src='//images.swayable.com/logos/light.svg' 
-          alt='Swayable Logo'
-        >
         <template #left>
-          <NavItem 
-            name='Template' 
-            href='/#/Templates/Index' 
+          <NavItem
+            name='Template'
+            href='/#/Templates/Index'
             active='true'
           />
-          <NavItem 
-            name='Documentation' 
+          <NavItem
+            name='Documentation'
             href='/#/'
           />
         </template>
-        <template #right>
+        <template>
           <NavDrop>
             Account &nbsp;
-            <Icon 
-              name='chevron-down' 
-              size='small' 
+            <Icon
+              name='chevron-down'
+              size='small'
               aria-label='Expand Menu'
             />
             <template #dropdown>
@@ -39,13 +34,20 @@
         </template>
       </NavBar>
     </header>
-    <Wrapper>
-      <Heading>Swayable Design System</Heading>
-      <Paragraph>
-        The organized principles, tools, patterns &amp; practices providing foundation for our
-        product design.
-      </Paragraph>
-    </Wrapper>
+    <section class='p-4 md:p-6'>
+      <h1 class='text-xl mt-2'>
+        Swayable Design System
+      </h1>
+      <div class='mt-4'>
+        <p>
+          The organized principles, tools, patterns &amp; practices providing foundation for our
+          product design.
+        </p>
+        <p>
+          Check out <a href='/#/Templates/Light'>light theme</a>.
+        </p>
+      </div>
+    </section>
   </component>
 </template>
 
@@ -54,7 +56,7 @@
  * Shows how to layout and structure a home page.
  */
 export default {
-  name: 'Index',
+  name: 'Dark',
   release: '0.1.0',
   metaInfo: {
     title: 'Swayable Design System',
@@ -76,6 +78,6 @@ export default {
 
 <docs>
   ```jsx
-  <Index />
+  <Dark />
   ```
 </docs>

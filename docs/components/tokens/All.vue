@@ -1,61 +1,64 @@
 <template>
   <div class='all-tokens'>
-    <table>
-      <thead>
-        <tr>
-          <th>Token Name</th>
-          <th>Value</th>
-          <th>Category</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr 
-          v-for='(token, index) in tokens' 
-          :key='index' 
-          class='token'
-        >
-          <td v-if='token.name'>
-            <code class='name'>${{ token.name.replace(/_/g, "-") }}</code>
-          </td>
-          <td v-else>
-            N/A
-          </td>
-          <td v-if='token.value'>
-            <div
-              v-if='token.type === "color"'
-              :style='{ backgroundColor: token.value }'
-              class='example color'
-            />
-            <div
-              v-if='token.category === "border-radius"'
-              :style='{ borderRadius: token.value }'
-              class='example border-radius'
-            />
-            <div
-              v-if='token.category === "box-shadow"'
-              :style='{ boxShadow: token.value }'
-              class='example box-shadow'
-            />
-            <code class='type'>{{ token.value }}</code>
-          </td>
-          <td v-else>
-            N/A
-          </td>
-          <td v-if='token.category'>
-            {{ token.category }}
-          </td>
-          <td v-else>
-            N/A
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class='flex font-heading text-dark p-2'>
+      <div class='w-1/3'>
+        Token Name
+      </div>
+      <div class='w-1/3'>
+        Value
+      </div>
+      <div class='w-1/3'>
+        Category
+      </div>
+    </div>
+    <div
+      v-for='(token, index) in tokens'
+      :key='index'
+      class='p-4 border-gray-600 border-t flex items-center token'
+      :class='{
+        [token.bgClass]: true,
+        [`text-${token.classSuffix}`]: token.type === "color",
+      }'
+    >
+      <div class='w-1/3'>
+        <span v-if='token.name'>
+          <code>
+            ${{ token.name }}
+          </code>
+        </span>
+        <span v-else>
+          N/A
+        </span>
+      </div>
+      <div class='w-1/3 flex items-center'>
+        <template v-if='token.value'>
+          <div
+            v-if='token.type === "color"'
+            :class='`p-3 inline-block bg-${token.classSuffix}`'
+          />
+          <code class='type ml-2'>{{ token.value }}</code>
+        </template>
+        <span v-else>
+          N/A
+        </span>
+      </div>
+      <div class='w-1/3'>
+        <span v-if='token.category'>
+          {{ token.category }}
+        </span>
+        <span v-else>
+          N/A
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import designTokens from '@/assets/tokens/tokens.raw.json'
 import orderBy from 'lodash/orderBy'
+
+import designTokens from '@/assets/tokens/tokens.raw.json'
+import Token from '../../decorators/token'
 
 /**
  * A list of available tokens in Swayable Design System. Use these tokens in place
@@ -67,98 +70,11 @@ export default {
   name: 'All',
   data() {
     return {
-      tokens: this.orderData(designTokens.props),
+      tokens: Token.order(designTokens.props).map(Token.build),
     }
-  },
-  methods: {
-    orderData: function(data) {
-      let byName = orderBy(data, 'name', 'asc')
-      let byCategoryAndName = orderBy(byName, 'category')
-      return byCategoryAndName
-    },
   },
 }
 </script>
-
-<style lang="scss" scoped>
-@import "../../docs.tokens.scss";
-
-/* STYLES
---------------------------------------------- */
-
-.all-tokens {
-  @include reset;
-  margin-top: $space-l;
-  font-family: $font-heading;
-  font-weight: $weight-normal;
-  line-height: $line-height-xs;
-  color: $dark;
-  margin-bottom: $space-s;
-  font-style: normal;
-  @media (max-width: 1000px) {
-    overflow-x: auto;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-  }
-  thead th {
-    padding: $space-s $space-l $space-s $space-s;
-    background: $light;
-    font-size: $size-s;
-    font-weight: $weight-bold;
-    color: $blue;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: $weight-semi-bold;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: left;
-    // Chrome has a bug related to thead, this only works on th:
-    position: -webkit-sticky;
-    position: sticky;
-    top: -1px;
-    &:first-child {
-      border-top-left-radius: $radius-default;
-      border-bottom-left-radius: $radius-default;
-    }
-    &:last-child {
-      border-top-right-radius: $radius-default;
-      border-bottom-right-radius: $radius-default;
-    }
-  }
-  tr {
-    border-bottom: 1px solid #dfe3e6;
-    &:last-child {
-      border: 0;
-    }
-  }
-  td {
-    font-size: $size-s;
-    padding: $space-s $space-l $space-s $space-s;
-    &:first-child {
-      font-weight: $weight-bold;
-      white-space: nowrap;
-    }
-  }
-  .type {
-    line-height: $line-height-s;
-    max-width: calc(100% - #{$space-m});
-    float: left;
-  }
-  .example {
-    @include inline-space($space-xs);
-    border-radius: $radius-default;
-    background: $light;
-    box-shadow: $shadow-s-inset, $shadow-s-inset, $shadow-s-inset;
-    margin-top: $space-xx-small;
-    width: $space-s;
-    height: $space-s;
-    float: left;
-  }
-}
-</style>
 
 <docs>
   ```jsx
