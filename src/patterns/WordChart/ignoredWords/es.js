@@ -1,0 +1,18 @@
+export default [
+  'con',
+  'de',
+  'el',
+  'en',
+  'es',
+  'la',
+  'las',
+  'lo',
+  'los',
+  'mas',
+  'muy',
+  'para',
+  'que',
+  'se',
+  'un',
+  'una',
+]
