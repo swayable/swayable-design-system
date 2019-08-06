@@ -2,7 +2,7 @@
 # FONT TOKENS
 # Use these tokens to set font-weight and font-family.
 #
-# Weights must reflect whichever are included in `src/styles/_fonts.scss`
+# Weights should reflect whichever are included in typekit (see src/utils/webFontLoader.js)
 
 props:
   font_heading:
