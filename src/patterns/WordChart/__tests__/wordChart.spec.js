@@ -1,6 +1,6 @@
-import _reduce from './node_modules/lodash/reduce'
-import _times from './node_modules/lodash/times'
-import { shallowMount } from './node_modules/@vue/test-utils'
+import _reduce from 'lodash/reduce'
+import _times from 'lodash/times'
+import { shallowMount } from '@vue/test-utils'
 
 import WordChart from '../WordChart'
 
@@ -42,8 +42,44 @@ describe('WordChart.vue', () => {
     expect(wrapper.emitted('selectWord')).toEqual([[{ count: 20,  word: 'hello' }]])
   })
 
-  xit('displays no more words than maxWordsShown', () => {})
-  xit('does not display words with less characters than minWordLength', () => {})
-  xit('does not display words with less incidence than minWordCount', () => {})
-  xit('does not display words in the provided language\'s ignored words list', () => {})
+  it('displays the most frequent words limited by maxWordsShown', () => {
+    const text = buildText({ hello: 20, goodbye: 10, howdy: 15, aloha: 18, sayonara: 30 })
+    const wrapper = mountWordChart({ text, maxWordsShown: 4 })
+    const wordChartText = wrapper.find('.word-chart').text()
+
+    expect(wordChartText.includes('hello')).toBe(true)
+    expect(wordChartText.includes('goodbye')).toBe(false)
+    expect(wordChartText.includes('howdy')).toBe(true)
+    expect(wordChartText.includes('aloha')).toBe(true)
+    expect(wordChartText.includes('sayonara')).toBe(true)
+  })
+
+  it('display words with character counts greater or equal to minWordLength', () => {
+    const text = buildText({ hi: 20, bye: 30, hello: 10 })
+    const wrapper = mountWordChart({ text, minWordLength: 3 })
+    const wordChartText = wrapper.find('.word-chart').text()
+
+    expect(wordChartText.includes('hi')).toBe(false)
+    expect(wordChartText.includes('bye')).toBe(true)
+    expect(wordChartText.includes('hello')).toBe(true)
+  })
+
+  it('display words with a frequency greater or equal to minWordFrequency', () => {
+    const text = buildText({ hello: 20, goodbye: 2, howdy: 3 })
+    const wrapper = mountWordChart({ text, minWordFrequency: 3 })
+    const wordChartText = wrapper.find('.word-chart').text()
+
+    expect(wordChartText.includes('hello')).toBe(true)
+    expect(wordChartText.includes('howdy')).toBe(true)
+    expect(wordChartText.includes('goodbye')).toBe(false)
+  })
+
+  it('does not display words in the ignored words list', () => {
+    const text = buildText({ hello: 20, goodbye: 10 })
+    const wrapper = mountWordChart({ text, ignoredWords: ['goodbye'] })
+    const wordChartText = wrapper.find('.word-chart').text()
+
+    expect(wordChartText.includes('hello')).toBe(true)
+    expect(wordChartText.includes('goodbye')).toBe(false)
+  })
 })

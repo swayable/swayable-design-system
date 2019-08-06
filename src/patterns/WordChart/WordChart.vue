@@ -4,7 +4,7 @@
     class='word-chart leading-none'
   >
     <a
-      v-for='word in words'
+      v-for='word in chartWords'
       :key='word.text'
       class='inline-block mx-1'
       :style='`color: ${word.color}; font-size: ${word.fontSize}`'
@@ -13,18 +13,25 @@
     >
       {{ word.text }}
     </a>
+    <p
+      v-if='showDroppedWordCount'
+      class='m-4 text-right text-sm text-gray-600'
+    >
+      {{ droppedWordCount }}  trivial and low-frequency words not shown
+    </p>
   </component>
 </template>
 
 <script>
+import _uniq from 'lodash/uniq'
 import _filter from 'lodash/filter'
 import _orderBy from 'lodash/orderBy'
 
 import tokens from '../../utils/tokens'
 
-import IGNORED_WORDS_ENGLISH from './ignoredWords/en'
-import IGNORED_WORDS_SPANISH from './ignoredWords/es'
-import IGNORED_WORDS_PORTUGUESE from './ignoredWords/pt'
+const COLORS = tokens.primaryColors
+  .concat(tokens.secondaryColors)
+  .map(c => c.value)
 
 const WHITESPACE = /\s+/
 const NOT_ALPHANUMERIC_UNDERSCORE_DASH = /[^\w\-]/gi
@@ -35,7 +42,7 @@ const NOT_ALPHANUMERIC_UNDERSCORE_DASH = /[^\w\-]/gi
  * **Events**
  *
  * `@selectWord`
- * emits object `{ word:String, count:Number }`
+ * emits object `{ word:String, frequency:Number }`
  */
 export default {
   name: 'WordChart',
@@ -53,11 +60,11 @@ export default {
       required: true,
     },
     /**
-     * Removes non-meaningful words for language. Currently supports `en`, `es`, and `pt`
+     * Chart will not display these words
      */
-    language: {
-      type: String,
-      default: 'en',
+    ignoredWords: {
+      type: Array,
+      default: () => [],
     },
     /**
      * The html element used for the word chart container
@@ -81,9 +88,9 @@ export default {
       default: 'rem',
     },
     /**
-     * The minimum incidence a word must have to be displayed
+     * The minimum frequency a word must have to be displayed
      */
-    minWordCount: {
+    minWordFrequency: {
       type: Number,
       default: 5,
     },
@@ -101,69 +108,75 @@ export default {
       type: Number,
       default: 50,
     },
+    /**
+     * Display the number of unique words in props.text not displayed in chart
+     */
+    showDroppedWordCount: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
-      colors: tokens.primaryColors.concat(tokens.secondaryColors).map(c => c.value),
+      droppedWordCount: 0,
+      chartWords: [],
     }
   },
-  computed: {
-    ignoredWords() {
-      return {
-        en: IGNORED_WORDS_ENGLISH,
-        es: IGNORED_WORDS_SPANISH,
-        pt: IGNORED_WORDS_PORTUGUESE,
-      }[this.language]
-    },
-    words() {
-      // returned data structure
-      // [
-      //   {
-      //     text: 'amazing',
-      //     color: 'rgb(120, 200, 100)',
-      //     remSize: 3,
-      //   },
-      // ]
-      const words = this.text.split(WHITESPACE)
-      let maxCount = 0
+  watch: {
+    text: 'buildChartWords',
+  },
+  mounted() {
+    this.buildChartWords()
+  },
+  methods: {
+    buildChartWords() {
+      let highestFrequency = 0
+      this.droppedWordCount = 0
+      const ignoredWordsSet = new Set(this.ignoredWords)
+      
 
-      const treatWord = word => word.toLowerCase().replace(NOT_ALPHANUMERIC_UNDERSCORE_DASH, '')
-
-      const countReducer = (acc, w) => {
-        const word = treatWord(w)
+      const toCanonical = word => word.toLowerCase().replace(NOT_ALPHANUMERIC_UNDERSCORE_DASH, '')
+      const frequencyReducer = (acc, w) => {
+        const word = toCanonical(w)
         
-        const skipWord = word.length < this.minWordLength || this.ignoredWords.includes(word)
-        if (skipWord) return acc
+        if (word.length < this.minWordLength || ignoredWordsSet.has(word)) {
+          this.droppedWordCount++
+          return acc
+        }
 
-        const count = (acc[word] || 0) + 1
-        if (count > maxCount) maxCount = count
-
-        return { ...acc, [word]: count }
+        const frequency = (acc[word] || 0) + 1
+        if (frequency > highestFrequency) highestFrequency = frequency
+        acc[word] = frequency
+        return acc
       }
+      const wordFrequencies = this.text
+        .split(WHITESPACE)
+        .reduce(frequencyReducer, {})
 
-      const counts = words.reduce(countReducer, {})
-      const limitedOrderedWords = _orderBy(
-        Object.keys(counts),
-        word => counts[word],
+      const words = Object.keys(wordFrequencies)
+      const displayedWords = _orderBy(
+        words,
+        word => wordFrequencies[word],
         'desc',
       ).slice(0, this.maxWordsShown)
 
-      const colorForIndex = i => this.colors[(i + this.colors.length) % this.colors.length]
-      const weightForCount = count => (count/maxCount) * this.maximumFontSize
+      const lowFrequencyWords = words.slice(this.maxWordsShown, words.length)
+      this.droppedWordCount += lowFrequencyWords.length
+
+      const colorForIndex = i => COLORS[(i + COLORS.length) % COLORS.length]
+      const weightForFrequency = frequency => (frequency/highestFrequency) * this.maximumFontSize
       const buildWord = (word, i) => ({
         text: word,
         color: colorForIndex(i),
-        fontSize: `${weightForCount(counts[word])}${this.maximumFontSizeUnits}`,
-        count: counts[word],
+        fontSize: `${weightForFrequency(wordFrequencies[word])}${this.maximumFontSizeUnits}`,
+        count: wordFrequencies[word],
       })
-
       const wordReducer = (acc, word, i) => {
-        const count = counts[word]
-        if (count < this.minWordCount) return acc
-        return acc.concat(buildWord(word, i))
+        if (wordFrequencies[word] < this.minWordFrequency) return acc
+        acc.push(buildWord(word, i))
+        return acc
       }
-
-      return limitedOrderedWords.reduce(wordReducer, [])
+      this.chartWords = displayedWords.reduce(wordReducer, [])
     },
   },
 }
@@ -173,6 +186,10 @@ export default {
   ```jsx
     import example from './exampleText.js'
 
-    <WordChart :text='example.text' />
+    <WordChart
+      :text='example.text'
+      :ignoredWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
+      :showDroppedWordCount='true'
+    />
   ```
 </docs>
