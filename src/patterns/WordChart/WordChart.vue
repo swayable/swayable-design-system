@@ -8,8 +8,8 @@
       :key='word.text'
       class='inline-block mx-1'
       :style='`color: ${word.color}; font-size: ${word.fontSize}`'
-      :title='`${word.text} (${word.count})`'
-      @click='$emit("selectWord", { word: word.text, count: word.count })'
+      :title='`${word.text} (${word.frequency})`'
+      @click='$emit("selectWord", { word: word.text, frequency: word.frequency })'
     >
       {{ word.text }}
     </a>
@@ -169,7 +169,7 @@ export default {
         text: word,
         color: colorForIndex(i),
         fontSize: `${weightForFrequency(wordFrequencies[word])}${this.maximumFontSizeUnits}`,
-        count: wordFrequencies[word],
+        frequency: wordFrequencies[word],
       })
       const wordReducer = (acc, word, i) => {
         if (wordFrequencies[word] < this.minWordFrequency) return acc
