@@ -2,14 +2,12 @@ import _orderBy from 'lodash/orderBy'
 
 import designTokens from '@/assets/tokens/tokens.raw.json'
 
-const tokens = _orderBy(designTokens.props, ['order', 'category', 'name'])
+const orderedTokens = _orderBy(designTokens.props, ['order', 'category', 'name'])
 
 export default {
   get colors() {
-    const colors = Object.values(tokens)
-    const primaryColors = colors.filter(c => c.category === 'color-primary')
-    const fadeColors = colors.filter(c => c.category === 'color-primary')
-    return colors.filter(c => c.type === 'color')
+    const tokens = Object.values(orderedTokens)
+    return tokens.filter(c => c.type === 'color')
   },
   
   get primaryColors() {
