@@ -78,7 +78,7 @@ export default {
      */
     maximumFontSize: {
       type: Number,
-      default: 5,
+      default: 3.5,
     },
     /**
      * The unit of maximumFontSize
@@ -92,7 +92,7 @@ export default {
      */
     minWordFrequency: {
       type: Number,
-      default: 5,
+      default: 2,
     },
     /**
      * The minimum number of characters a word must be to be displayed
