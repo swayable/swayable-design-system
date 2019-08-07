@@ -101,6 +101,6 @@ describe('WordChart.vue', () => {
     const wrapper = mountWordChart({ text })
     const WHITESPACE = /\s+/
     const wordChartTexts = wrapper.find('.word-chart').text().split(WHITESPACE)
-    expect(wordChartTexts).toEqual(['its', 'how', 'doyou', 'do'])
+    expect(wordChartTexts).toEqual(['its', 'nonhello', 'how', 'doyou', 'do'])
   })
 })
