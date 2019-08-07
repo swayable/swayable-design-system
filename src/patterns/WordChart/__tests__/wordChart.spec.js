@@ -97,7 +97,7 @@ describe('WordChart.vue', () => {
   })
 
   it('does not include special characters', () => {
-    const text = buildText({ 'it\'s': 20, 'non-hello': 1, 'how^ do$you _do?': 5 })
+    const text = buildText({ 'it\'s': 20, 'non-hello': 20, 'how^ do$you _do?': 20 })
     const wrapper = mountWordChart({ text })
     const WHITESPACE = /\s+/
     const wordChartTexts = wrapper.find('.word-chart').text().split(WHITESPACE)
