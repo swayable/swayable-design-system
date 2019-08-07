@@ -34,14 +34,6 @@ describe('WordChart.vue', () => {
     expect(goodbye.element.style['font-size']).toBe('1rem')
   })
 
-  it('emits the word and count when a word is clicked', () => {
-    const text = buildText({ hello: 20, goodbye: 10 })
-    const wrapper = mountWordChart({ text, maximumFontSize: 2 })
-    const wordChartWords = wrapper.find('.word-chart').find('a').trigger('click')
-
-    expect(wrapper.emitted('selectWord')).toEqual([[{ frequency: 20,  word: 'hello' }]])
-  })
-
   it('displays the most frequent words limited by maxWordsShown', () => {
     const text = buildText({ hello: 20, goodbye: 10, howdy: 15, aloha: 18, sayonara: 30 })
     const wrapper = mountWordChart({ text, maxWordsShown: 4 })
@@ -102,5 +94,23 @@ describe('WordChart.vue', () => {
     const WHITESPACE = /\s+/
     const wordChartTexts = wrapper.find('.word-chart').text().split(WHITESPACE)
     expect(wordChartTexts).toEqual(['its', 'nonhello', 'how', 'doyou', 'do'])
+  })
+
+  it('emits the word and count when a word is clicked', () => {
+    const text = buildText({ hello: 20, goodbye: 10 })
+    const wrapper = mountWordChart({ text })
+    const wordChartWords = wrapper.find('.word-chart').find('a').trigger('click')
+
+    expect(wrapper.emitted('selectWord')).toEqual([[{ frequency: 20,  word: 'hello' }]])
+  })
+
+  describe('when wordsAreInteractive is false', () => {
+    it('emits the word and count when a word is clicked', () => {
+      const text = buildText({ hello: 20, goodbye: 10 })
+      const wrapper = mountWordChart({ text, wordsAreInteractive: false })
+      const wordChartWords = wrapper.find('.word-chart').find('a').trigger('click')
+  
+      expect(wrapper.emitted('selectWord')).toEqual(undefined)
+    })
   })
 })

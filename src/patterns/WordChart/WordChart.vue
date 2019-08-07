@@ -6,10 +6,10 @@
     <a
       v-for='word in chartWords'
       :key='word.text'
-      class='inline-block mx-1'
+      :class='wordClasses(word)'
       :style='`color: ${word.color}; font-size: ${word.fontSize}${fontSizeUnits}`'
       :title='`${word.text} (${word.frequency})`'
-      @click='$emit("selectWord", { word: word.text, frequency: word.frequency })'
+      @click='onClickWord(word)'
     >
       {{ word.text }}
     </a>
@@ -114,6 +114,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Words appear clickable. Disabling will remove cursor pointer, hover state, and prevent event `@selectWord` from emitting
+     */
+    wordsAreInteractive: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     frequencies() {
@@ -168,8 +175,28 @@ export default {
       })
     },
   },
+  methods: {
+    onClickWord(word) {
+      if (this.wordsAreInteractive) {
+        this.$emit('selectWord', { word: word.text, frequency: word.frequency })
+      }
+    },
+    wordClasses(word) {
+      const interactivity = this.wordsAreInteractive ? 'interactive' : ''
+      return `inline-block mx-1 word-chart-word ${interactivity}`
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+.word-chart-word { cursor: default }
+.word-chart-word.interactive {
+  cursor: pointer;
+  &:hover { filter: brightness(120%) }
+}
+</style>
+
 
 <docs>
   ```jsx
