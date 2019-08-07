@@ -33,7 +33,7 @@ const COLORS = tokens.primaryColors
   .map(c => c.value)
 
 const WHITESPACE = /\s+/
-const NOT_ALPHANUMERIC = /[^\w ]|_|-/g
+const NOT_ALPHANUMERIC = /[^\w ]|_/g
 
 /**
  * Draws a chart indicating incidence of words
