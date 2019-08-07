@@ -7,7 +7,7 @@
       v-for='word in chartWords'
       :key='word.text'
       class='inline-block mx-1'
-      :style='`color: ${word.color}; font-size: ${word.fontSize}`'
+      :style='`color: ${word.color}; font-size: ${word.fontSize}${fontSizeUnits}`'
       :title='`${word.text} (${word.frequency})`'
       @click='$emit("selectWord", { word: word.text, frequency: word.frequency })'
     >
@@ -17,14 +17,13 @@
       v-if='showDroppedWordCount'
       class='m-4 text-right text-sm text-gray-600'
     >
-      {{ droppedWordCount }}  trivial and low-frequency words not shown
+      {{ droppedWords.length }} trivial and low-frequency words not shown
     </p>
   </component>
 </template>
 
 <script>
-import _uniq from 'lodash/uniq'
-import _filter from 'lodash/filter'
+import _partition from 'lodash/partition'
 import _orderBy from 'lodash/orderBy'
 
 import tokens from '../../utils/tokens'
@@ -62,7 +61,7 @@ export default {
     /**
      * Chart will not display these words
      */
-    ignoredWords: {
+    ignoreWords: {
       type: Array,
       default: () => [],
     },
@@ -83,7 +82,7 @@ export default {
     /**
      * The unit of maximumFontSize
      */
-    maximumFontSizeUnits: {
+    fontSizeUnits: {
       type: String,
       default: 'rem',
     },
@@ -116,67 +115,57 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-      droppedWordCount: 0,
-      chartWords: [],
-    }
-  },
-  watch: {
-    text: 'buildChartWords',
-  },
-  mounted() {
-    this.buildChartWords()
-  },
-  methods: {
-    buildChartWords() {
-      let highestFrequency = 0
-      this.droppedWordCount = 0
-      const ignoredWordsSet = new Set(this.ignoredWords)
-      
-
+  computed: {
+    frequencies() {
       const toCanonical = word => word.toLowerCase().replace(NOT_ALPHANUMERIC_UNDERSCORE_DASH, '')
-      const frequencyReducer = (acc, w) => {
+      const words = this.text.split(WHITESPACE)
+
+      return words.reduce((acc, w) => {
         const word = toCanonical(w)
-        
-        if (word.length < this.minWordLength || ignoredWordsSet.has(word)) {
-          this.droppedWordCount++
-          return acc
+        if (word.length === 0) return acc
+        const frequency = (acc.get(word) || 0) + 1
+        acc.set(word, frequency)
+        return acc
+      }, new Map())
+    },
+    partitionedWords() {
+      const ignoreWordsSet = new Set(this.ignoreWords)
+      const uniqueWords = Array.from(this.frequencies.keys())
+
+      const tooShort = word => word.length < this.minWordLength
+      const tooInfrequent = word => this.frequencies.get(word) < this.minWordFrequency
+      const ignored = word => ignoreWordsSet.has(word)
+
+      const [candidates, notCandidates] = _partition(
+        uniqueWords,
+        word => !tooShort(word) && !tooInfrequent(word) && !ignored(word),
+      )
+
+      const orderedCandidates = _orderBy(candidates, word => this.frequencies.get(word), 'desc' )
+      const displayed = orderedCandidates.slice(0, this.maxWordsShown)
+      const dropped = notCandidates.concat(orderedCandidates.splice(this.maxWordsShown))
+
+      return { displayed, dropped }
+    },
+    displayedWords() {
+      return this.partitionedWords.displayed
+    },
+    droppedWords() {
+      return this.partitionedWords.dropped
+    },
+    highestFrequency() {
+      return this.frequencies.get(this.displayedWords[0])
+    },
+    chartWords() {
+      return this.displayedWords.map((word, i) => {
+        const frequency = this.frequencies.get(word)
+        return {
+          text: word,
+          frequency,
+          color:  COLORS[(i + COLORS.length) % COLORS.length],
+          fontSize: (frequency/this.highestFrequency) * this.maximumFontSize,
         }
-
-        const frequency = (acc[word] || 0) + 1
-        if (frequency > highestFrequency) highestFrequency = frequency
-        acc[word] = frequency
-        return acc
-      }
-      const wordFrequencies = this.text
-        .split(WHITESPACE)
-        .reduce(frequencyReducer, {})
-
-      const words = Object.keys(wordFrequencies)
-      const displayedWords = _orderBy(
-        words,
-        word => wordFrequencies[word],
-        'desc',
-      ).slice(0, this.maxWordsShown)
-
-      const lowFrequencyWords = words.slice(this.maxWordsShown, words.length)
-      this.droppedWordCount += lowFrequencyWords.length
-
-      const colorForIndex = i => COLORS[(i + COLORS.length) % COLORS.length]
-      const weightForFrequency = frequency => (frequency/highestFrequency) * this.maximumFontSize
-      const buildWord = (word, i) => ({
-        text: word,
-        color: colorForIndex(i),
-        fontSize: `${weightForFrequency(wordFrequencies[word])}${this.maximumFontSizeUnits}`,
-        frequency: wordFrequencies[word],
       })
-      const wordReducer = (acc, word, i) => {
-        if (wordFrequencies[word] < this.minWordFrequency) return acc
-        acc.push(buildWord(word, i))
-        return acc
-      }
-      this.chartWords = displayedWords.reduce(wordReducer, [])
     },
   },
 }
@@ -188,7 +177,7 @@ export default {
 
     <WordChart
       :text='example.text'
-      :ignoredWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
+      :ignoreWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
       :showDroppedWordCount='true'
     />
   ```

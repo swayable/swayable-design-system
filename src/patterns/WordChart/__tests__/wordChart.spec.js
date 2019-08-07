@@ -39,7 +39,7 @@ describe('WordChart.vue', () => {
     const wrapper = mountWordChart({ text, maximumFontSize: 2 })
     const wordChartWords = wrapper.find('.word-chart').find('a').trigger('click')
 
-    expect(wrapper.emitted('selectWord')).toEqual([[{ count: 20,  word: 'hello' }]])
+    expect(wrapper.emitted('selectWord')).toEqual([[{ frequency: 20,  word: 'hello' }]])
   })
 
   it('displays the most frequent words limited by maxWordsShown', () => {
@@ -76,10 +76,23 @@ describe('WordChart.vue', () => {
 
   it('does not display words in the ignored words list', () => {
     const text = buildText({ hello: 20, goodbye: 10 })
-    const wrapper = mountWordChart({ text, ignoredWords: ['goodbye'] })
+    const wrapper = mountWordChart({ text, ignoreWords: ['goodbye'] })
     const wordChartText = wrapper.find('.word-chart').text()
 
     expect(wordChartText.includes('hello')).toBe(true)
     expect(wordChartText.includes('goodbye')).toBe(false)
+  })
+
+  it('accurately displays number of dropped words', () => {
+    const text = buildText({ hello: 20, goodbye: 1, hi: 5, bye: 20 })
+    const wrapper = mountWordChart({
+      text,
+      ignoreWords: ['bye'],
+      minWordFrequency: 2,
+      minWordLength: 3,
+      showDroppedWordCount: true,
+    })
+    const wordChartText = wrapper.find('.word-chart').text()
+    expect(wordChartText.includes('3 trivial and low-frequency words not shown')).toBe(true)
   })
 })
