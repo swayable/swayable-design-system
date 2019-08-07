@@ -33,7 +33,7 @@ const COLORS = tokens.primaryColors
   .map(c => c.value)
 
 const WHITESPACE = /\s+/
-const NOT_ALPHANUMERIC_UNDERSCORE_DASH = /[^\w\-]/gi
+const NOT_ALPHANUMERIC = /[^\w ]|_|-/g
 
 /**
  * Draws a chart indicating incidence of words
@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     frequencies() {
-      const toCanonical = word => word.toLowerCase().replace(NOT_ALPHANUMERIC_UNDERSCORE_DASH, '')
+      const toCanonical = word => word.toLowerCase().replace(NOT_ALPHANUMERIC, '')
       const words = this.text.split(WHITESPACE)
 
       return words.reduce((acc, w) => {

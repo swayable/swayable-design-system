@@ -95,4 +95,12 @@ describe('WordChart.vue', () => {
     const wordChartText = wrapper.find('.word-chart').text()
     expect(wordChartText.includes('3 trivial and low-frequency words not shown')).toBe(true)
   })
+
+  it('does not include special characters', () => {
+    const text = buildText({ 'it\'s': 20, 'non-hello': 1, 'how^ do$you _do?': 5 })
+    const wrapper = mountWordChart({ text })
+    const WHITESPACE = /\s+/
+    const wordChartTexts = wrapper.find('.word-chart').text().split(WHITESPACE)
+    expect(wordChartTexts).toEqual(['its', 'how', 'doyou', 'do'])
+  })
 })
