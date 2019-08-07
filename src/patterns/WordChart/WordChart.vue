@@ -136,9 +136,9 @@ export default {
       const tooInfrequent = word => this.frequencies.get(word) < this.minWordFrequency
       const ignored = word => ignoreWordsSet.has(word)
 
-      const [candidates, notCandidates] = _partition(
+      const [notCandidates, candidates] = _partition(
         uniqueWords,
-        word => !tooShort(word) && !tooInfrequent(word) && !ignored(word),
+        word => tooShort(word) || tooInfrequent(word) || ignored(word),
       )
 
       const orderedCandidates = _orderBy(candidates, word => this.frequencies.get(word), 'desc' )
