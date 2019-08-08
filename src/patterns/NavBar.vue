@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    :class='`flex items-center justify-between pl-1 md:pl-3 shadow nav-bar ${colorClass}`'
+    :class='`flex items-center justify-between pl-1 md:pl-3 shadow z-20 nav-bar ${colorClass}`'
   >
     <div
       v-if='showHeading'

@@ -14,7 +14,7 @@
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen lg:w-auto min-w-full absolute right-0 flex-col nav-drop z-20'
+      class='w-screen md:w-auto min-w-full absolute right-0 flex-col nav-drop z-30'
     >
       <slot name='dropdown'>
         <NavItem
