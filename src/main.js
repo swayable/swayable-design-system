@@ -3,10 +3,10 @@
 import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
-import WebFontLoader from '@/utils/webFontLoader' // eslint-disable-line no-unused-vars
 import Meta from 'vue-meta'
 import Buefy from 'buefy'
 import DesignSystem from '@/system'
+import '@/utils/webFontLoader'
 
 Vue.use(Buefy, { defaultIconPack: 'fa' })
 Vue.use(DesignSystem)

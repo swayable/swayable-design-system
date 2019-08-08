@@ -1,9 +1,12 @@
 <template>
   <component
     :is='type'
-    :class='`flex items-center justify-between flex-wrap pl-3 shadow nav-bar`'
+    :class='`flex items-center justify-between pl-1 md:pl-3 shadow nav-bar ${colorClass}`'
   >
-    <div class='flex items-center flex-shrink-0 mr-4 p-3'>
+    <div
+      v-if='showHeading'
+      class='flex items-center flex-shrink-0 p-3 md:mr-4'
+    >
       <slot name='heading'>
         <a :href='headerLink'>
           <h1
@@ -19,22 +22,9 @@
         </a>
       </slot>
     </div>
-    <div class='block md:hidden'>
-      <button
-        class='flex items-center px-3 py-2 rounded hover:text-white'
-        @click='open = !open'
-      >
-        <Icon name='menu' />
-      </button>
-    </div>
-    <div
-      :class='{
-        flex: open,
-        hidden: !open,
-      }'
-      class='md:flex flex-grow w-full md:items-stretch md:w-auto min-h-16'
-    >
-      <div class='flex flex-grow'>
+    <div class='flex flex-grow items-stretch w-auto min-h-16'>
+      <div class='flex-grow md:hidden' />
+      <div class='flex md:flex-grow'>
         <slot name='left' />
       </div>
       <div class='flex'>
@@ -43,30 +33,6 @@
     </div>
   </component>
 </template>
-
-<style lang="scss">
-.swayable-logo {
-  min-width: 250px;
-}
-
-.nav-bar {
-  background-color: $dark;
-  color: $light;
-  .swayable-logo {
-    background-image: url(https://images.swayable.com/logos/dark.svg?v=1)
-  }
-}
-
-.theme-dark {
-  .nav-bar {
-    background-color: $light;
-    color: $dark;
-    .swayable-logo {
-      background-image: url(https://images.swayable.com/logos/light.svg?v=1)
-    }
-  }
-}
-</style>
 
 <script>
 /**
@@ -81,9 +47,6 @@ export default {
   name: 'NavBar',
   status: 'under-review',
   release: '0.1.0',
-  model: {
-    prop: 'active',
-  },
   props: {
     /**
      * href of heading (unavailable if using heading slot)
@@ -108,34 +71,83 @@ export default {
       required: false,
       default: null,
     },
+    /**
+     * Used to remove heading/logo
+     */
+    noheading: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Changes the style to a light background
+     */
+    light: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data() {
-    return { open: false }
+  computed: {
+    showHeading() {
+      return this.noheading === false
+    },
+    colorClass() {
+      return this.light !== false
+        ? 'nav-light'
+        : ''
+    },
   },
 }
 </script>
 
+
+<style lang="scss">
+.nav-bar {
+  $small-logo-url: url(https://images.swayable.com/logos/motif.svg);
+  $dark-logo-url: url(https://images.swayable.com/logos/dark.svg);
+  $light-logo-url: url(https://images.swayable.com/logos/light.svg);
+  
+  background-color: $dark;
+  color: $light;
+
+  &.nav-light {
+    background-color: $light;
+    color: $dark;
+  }
+
+  .swayable-logo {
+    width: 40px;
+    background-image: $small-logo-url;
+  }
+
+  @media (min-width: 640px) {
+    .swayable-logo {
+      width: 250px;
+      background-image: $dark-logo-url;
+    }
+    &.nav-light {
+      .swayable-logo { background-image: $light-logo-url; }
+    }
+  }
+}
+</style>
+
 <docs>
   ```jsx
-  <section>
-    <NavBar headerLink='/#/Patterns/NavBar'>
-      <template #left>
-        <NavItem name='Dashboard' active='true' />
-      </template>
-      <template>
-        <NavItem name='Sign in' />
-      </template>
-    </NavBar>
-  </section>
-  <section class='theme-dark'>
-    <NavBar headerLink='/#/Patterns/NavBar'>
-      <template #left>
-        <NavItem name='Dashboard' active='true' />
-      </template>
-      <template>
-        <NavItem name='Sign in' />
-      </template>
-    </NavBar>
-  </section>
+  <NavBar headerLink='/#/Patterns/NavBar'>
+    <template #left>
+      <NavItem name='Dashboard' active='true' />
+    </template>
+    <template>
+      <NavItem name='Sign in' />
+    </template>
+  </NavBar>
+  <NavBar headerLink='/#/Patterns/NavBar' light>
+    <template #left>
+      <NavItem name='Dashboard' active='true' />
+    </template>
+    <template>
+      <NavItem name='Sign in' />
+    </template>
+  </NavBar>
   ```
 </docs>
