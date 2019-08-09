@@ -34,7 +34,7 @@
       </div>
       <div class='w-1/3'>
         <p class='capitalize'>
-           {{ token.category }}
+          {{ token.category }}
         </p>
         <p class='text-sm'>
           {{ token.description }}

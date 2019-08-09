@@ -2,17 +2,12 @@
   <component
     :is='smartType'
     v-bind='navigation'
-    :class='{
-      "border-b-4 border-grey active": isActive,
-    }'
+    :class='isActive && "active"'
     :title='title'
     class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item text-grey'
     v-on='$listeners'
   >
-    <span
-      class='p-4 lg:py-3 flex flex-grow interactive'
-      :class='isActive && "pb-3 lg:pb-2"'
-    >
+    <span class='p-3 flex flex-grow interactive'>
       <slot>{{ name }}</slot>
     </span>
   </component>
@@ -79,12 +74,19 @@ export default {
       if (this.href) return { href: this.href }
       return {}
     },
-    
   },
 }
 </script>
 
 <style lang="scss">
+.nav-item {
+  &.active, &.router-link-active {
+    border-bottom: 0.25rem solid $color-grey;
+    .interactive {
+      padding-bottom: 0.5rem !important;
+    }
+  }
+}
 .nav-alt .nav-item {
   color: $color-gray-700 !important;
   @include dim-interaction;

@@ -23,8 +23,7 @@
       </slot>
     </div>
     <div class='flex flex-grow items-stretch w-auto min-h-16'>
-      <div class='flex-grow md:hidden' />
-      <div class='flex md:flex-grow nav-bar-left'>
+      <div class='flex flex-grow nav-bar-left'>
         <slot name='left' />
       </div>
       <div class='flex nav-bar-right'>
