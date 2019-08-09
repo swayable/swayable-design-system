@@ -3,15 +3,18 @@
     :is='smartType'
     v-bind='navigation'
     :class='{
-      "pb-3 lg:pb-2 active": isActive,
+      "border-b-4 border-grey active": isActive,
     }'
     :title='title'
-    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 font-medium items-center nav-item text-grey'
+    class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item text-grey'
     v-on='$listeners'
   >
-    <slot>
-      <span>{{ name }}</span>
-    </slot>
+    <span
+      class='p-4 lg:py-3 flex flex-grow interactive'
+      :class='isActive && "pb-3 lg:pb-2"'
+    >
+      <slot>{{ name }}</slot>
+    </span>
   </component>
 </template>
 
@@ -82,11 +85,13 @@ export default {
 </script>
 
 <style lang="scss">
-.nav-light {
-  .nav-item {
-    color: $color-gray-700 !important;
-    @include dark-interaction
-  }
+.nav-alt .nav-item {
+  color: $color-gray-700 !important;
+  @include dim-interaction;
+}
+.theme-dark .nav-alt .nav-item {
+  color: $color-grey !important;
+  @include bright-interaction;
 }
 </style>
 

@@ -5,7 +5,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(66, 90, 92)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 16,
       "originalValue": "#425A5C",
       "name": "color_green_dark_burn"
@@ -23,7 +23,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(81, 72, 95)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 2,
       "originalValue": "#51485F",
       "name": "color_magenta_burn"
@@ -59,7 +59,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(90, 80, 81)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 13,
       "originalValue": "#5A5051",
       "name": "color_orange_dark_burn"
@@ -68,7 +68,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(211, 204, 219)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 10,
       "originalValue": "#D3CCDB",
       "name": "color_purple_fade"
@@ -77,7 +77,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(64, 85, 103)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 17,
       "originalValue": "#405567",
       "name": "color_azure_light_burn"
@@ -86,7 +86,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(89, 84, 80)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 5,
       "originalValue": "#595450",
       "name": "color_orange_burn"
@@ -95,7 +95,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(88, 70, 94)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 11,
       "originalValue": "#58465E",
       "name": "color_rose_dark_burn"
@@ -104,7 +104,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(206, 206, 221)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 1,
       "originalValue": "#CECEDD",
       "name": "color_blue_fade"
@@ -113,7 +113,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(228, 207, 205)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 4,
       "originalValue": "#E4CFCD",
       "name": "color_red_fade"
@@ -131,7 +131,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(70, 90, 88)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 7,
       "originalValue": "#465A58",
       "name": "color_green_burn"
@@ -140,7 +140,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(204, 213, 226)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 9,
       "originalValue": "#CCD5E2",
       "name": "color_azure_fade"
@@ -149,7 +149,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(228, 203, 214)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 3,
       "originalValue": "#E4CBD6",
       "name": "color_pink_fade"
@@ -194,26 +194,16 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(223, 224, 200)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 6,
       "originalValue": "#DFE0C8",
       "name": "color_yellow_fade"
-    },
-    "color_brand": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(100, 100, 220)",
-      "tags": "Primary",
-      "description": "Swayable brand",
-      "order": 0,
-      "originalValue": "#6464dc",
-      "name": "color_brand"
     },
     "color_azure_dark_burn": {
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(66, 78, 99)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 18,
       "originalValue": "#424E63",
       "name": "color_azure_dark_burn"
@@ -222,7 +212,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(88, 87, 81)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 14,
       "originalValue": "#585751",
       "name": "color_orange_light_burn"
@@ -240,7 +230,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(207, 223, 214)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 16,
       "originalValue": "#CFDFD6",
       "name": "color_green_dark_fade"
@@ -267,7 +257,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(91, 74, 85)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 12,
       "originalValue": "#5B4A55",
       "name": "color_red_dark_burn"
@@ -276,7 +266,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(217, 203, 217)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 2,
       "originalValue": "#D9CBD9",
       "name": "color_magenta_fade"
@@ -285,7 +275,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(64, 90, 100)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 8,
       "originalValue": "#405A64",
       "name": "color_cyan_burn"
@@ -303,7 +293,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(227, 212, 200)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 13,
       "originalValue": "#E3D4C8",
       "name": "color_orange_dark_fade"
@@ -312,7 +302,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(77, 91, 83)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 15,
       "originalValue": "#4D5B53",
       "name": "color_green_light_burn"
@@ -321,7 +311,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(202, 217, 229)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 17,
       "originalValue": "#CAD9E5",
       "name": "color_azure_light_fade"
@@ -330,7 +320,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(226, 217, 197)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 5,
       "originalValue": "#E2D9C5",
       "name": "color_orange_fade"
@@ -339,7 +329,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(224, 200, 214)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 11,
       "originalValue": "#E0C8D6",
       "name": "color_rose_dark_fade"
@@ -403,7 +393,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(211, 223, 207)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 7,
       "originalValue": "#D3DFCF",
       "name": "color_green_fade"
@@ -439,7 +429,7 @@
       "type": "color",
       "category": "color-secondary-burn",
       "value": "rgb(74, 74, 96)",
-      "tags": "Secondary faded,Dark",
+      "tags": "Secondary alt,Burn",
       "order": 10,
       "originalValue": "#4A4A60",
       "name": "color_purple_burn"
@@ -458,6 +448,7 @@
       "category": "color-primary",
       "value": "rgb(100, 100, 220)",
       "tags": "Primary",
+      "description": "Swayable Brand",
       "order": 1,
       "originalValue": "#6464dc",
       "name": "color_blue"
@@ -484,7 +475,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(68, 75, 97)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 1,
       "originalValue": "#444B61",
       "name": "color_blue_burn"
@@ -511,7 +502,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(90, 76, 85)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 4,
       "originalValue": "#5A4C55",
       "name": "color_red_burn"
@@ -520,7 +511,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(205, 209, 223)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 18,
       "originalValue": "#CDD1DF",
       "name": "color_azure_dark_fade"
@@ -529,7 +520,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(227, 221, 198)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 14,
       "originalValue": "#E3DDC6",
       "name": "color_orange_light_fade"
@@ -558,7 +549,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(228, 204, 205)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 12,
       "originalValue": "#E4CCCD",
       "name": "color_red_dark_fade"
@@ -567,7 +558,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(65, 82, 101)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 9,
       "originalValue": "#415265",
       "name": "color_azure_burn"
@@ -576,7 +567,7 @@
       "type": "color",
       "category": "color-primary-fade",
       "value": "rgb(202, 223, 224)",
-      "tags": "Primary alt,Light",
+      "tags": "Primary alt,Fade",
       "order": 8,
       "originalValue": "#CADFE0",
       "name": "color_cyan_fade"
@@ -585,7 +576,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(91, 72, 93)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 3,
       "originalValue": "#5B485D",
       "name": "color_pink_burn"
@@ -594,7 +585,7 @@
       "type": "color",
       "category": "color-secondary-fade",
       "value": "rgb(217, 224, 201)",
-      "tags": "Secondary faded,Light",
+      "tags": "Secondary alt,Fade",
       "order": 15,
       "originalValue": "#D9E0C9",
       "name": "color_green_light_fade"
@@ -612,7 +603,7 @@
       "type": "color",
       "category": "color-primary-burn",
       "value": "rgb(84, 90, 83)",
-      "tags": "Primary alt,Dark",
+      "tags": "Primary alt,Burn",
       "order": 6,
       "originalValue": "#545A53",
       "name": "color_yellow_burn"
@@ -625,6 +616,15 @@
       "order": 8,
       "originalValue": "#14c8c8",
       "name": "color_cyan"
+    },
+    "color_darker": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(25, 32, 38)",
+      "tags": "Basic",
+      "order": 0,
+      "originalValue": "#192026",
+      "name": "color_darker"
     },
     "font_heading": {
       "type": "...",

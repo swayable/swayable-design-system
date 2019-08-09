@@ -1,5 +1,38 @@
+// Utilities
+$small-logo-url: url(https://images.swayable.com/logos/motif.svg);
+$color-dark-logo-url: url(https://images.swayable.com/logos/dark.svg);
+$color-light-logo-url: url(https://images.swayable.com/logos/light.svg);
 
+@mixin bright-interaction {
+  .interactive, &.interactive {
+    &:hover, &:active, &:focus {
+      filter:  brightness(150%);
+    }
+  }
+}
 
+@mixin dim-interaction {
+  .interactive, &.interactive {
+    &:hover, &:active, &:focus {
+      filter:  brightness(50%);
+    }
+  }
+}
+
+@each $token, $value in $tokens-map {
+  @if str-index($token, 'color') {
+    $colorname: str-slice($token, 7);
+    .text-#{$colorname}, &.text-#{$colorname}, .bg-#{$colorname}, &.bg-#{$colorname} {
+      @if (lightness($value) > 65) {
+        @include dim-interaction;
+      } @else {
+        @include bright-interaction;
+      }
+    }
+  }
+}
+
+// Global styles
 html {
   background-color: $color-light;
   color: $color-gray-700;
@@ -10,12 +43,9 @@ h1, h2, h3, h4, h5 .heading {
   font-family: $font-heading;
 }
 
-a, button {
-  cursor: pointer;
-}
+a, button { cursor: pointer; }
 
 a { color: $color-blue; }
-
 
 .theme-dark {
   color: $color-white;
@@ -23,32 +53,8 @@ a { color: $color-blue; }
   h1, h2, h3, h4, h5 .heading {
     color: $color-white;
   }
+  .theme-dark-hidden { display: none !important; }
+  .theme-dark-block { display: block !important; }
+  .theme-dark-inline { display: inline !important; }
+  .theme-dark-inline-block { display: inline-block !important; }
 }
-
-@mixin bright-interaction {
-  &:hover, &:active, &:focus {
-    filter:  brightness(150%);
-  }
-}
-
-@mixin dark-interaction {
-  &:hover, &:active, &:focus {
-    filter:  brightness(50%);
-  }
-}
-
-@each $token, $value in $tokens-map {
-  @if str-index($token, 'color') {
-    $colorname: str-slice($token, 7);
-    a, button {
-      .text-#{$colorname}, &.text-#{$colorname} {
-        @if (lightness($value) > 65) {
-          @include dark-interaction;
-        } @else {
-          @include bright-interaction;
-        }
-      }
-    }
-  }
-}
-

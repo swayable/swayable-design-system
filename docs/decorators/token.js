@@ -14,6 +14,14 @@ class Token {
     }
   }
 
+  matches(valueToFind) {
+    return this.allInfo.includes(valueToFind)
+  }
+
+  get allInfo() {
+    return `${this.name} ${this.tags} ${this.classSuffix} ${this.description} ${this.originalValue} ${this.value} ${this.category}`
+  }
+
   static build(token) {
     return new Token(token)
   }

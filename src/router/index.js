@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import LightTheme from '@/templates/LightTheme'
+import Index from '@/templates/Index'
 import DarkTheme from '@/templates/DarkTheme'
 
 Vue.use(Router)
@@ -9,13 +9,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'LightTheme',
-      component: LightTheme,
+      name: 'Index',
+      component: Index,
+    },
+    {
+      path: '/dark',
+      name: 'Dark',
+      component: DarkTheme,
     },
     {
       path: '*',
-      name: 'DarkTheme',
-      component: DarkTheme,
+      name: 'NotFound',
+      component: NotFound,
     },
   ],
 })

@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    class='relative'
+    class='relative nav-drop'
   >
     <NavItem
       type='button'
@@ -14,7 +14,7 @@
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen md:w-auto min-w-full absolute right-0 flex-col nav-drop z-30'
+      class='w-screen md:w-auto min-w-full absolute flex-col z-30 shadow nav-drop-dropdown'
     >
       <slot name='dropdown'>
         <NavItem
@@ -94,15 +94,11 @@ export default {
 </script>
 
 <style lang="scss">
-.nav-drop {
-  background-color: $color-dark;
-  .nav-item.active { border-bottom: 0; }
-}
-.theme-dark {
-  .nav-drop {
-    background-color: $color-light;
-  }
-}
+.nav-drop .nav-item.active { border-bottom: 0; }
+.nav-bar-right .nav-drop-dropdown { right: 0; }
+.nav-bar-left .nav-drop-dropdown { left: 0; }
+.nav-drop-dropdown { background-color: $color-dark; }
+.nav-alt .nav-drop-dropdown { background-color: $color-light; }
 </style>
 
 <docs>

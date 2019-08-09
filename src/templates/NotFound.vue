@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    class='min-h-screen'
+    class='min-h-screen theme-dark'
   >
     <header>
       <NavBar>
@@ -44,7 +44,7 @@
           product design.
         </p>
         <p>
-          Check out <a href='/#/Templates/Dark'>dark theme</a>.
+          Check out <a href='/#/Templates/Light'>light theme</a>.
         </p>
       </div>
     </section>
@@ -56,7 +56,7 @@
  * Shows how to layout and structure a home page.
  */
 export default {
-  name: 'Light',
+  name: 'NotFound',
   release: '0.1.0',
   metaInfo: {
     title: 'Swayable Design System',
@@ -78,6 +78,6 @@ export default {
 
 <docs>
   ```jsx
-  <Light />
+  <Dark />
   ```
 </docs>
