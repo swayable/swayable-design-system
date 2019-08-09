@@ -103,15 +103,15 @@ export default {
 <style lang="scss">
 .nav-bar {
   $small-logo-url: url(https://images.swayable.com/logos/motif.svg);
-  $dark-logo-url: url(https://images.swayable.com/logos/dark.svg);
-  $light-logo-url: url(https://images.swayable.com/logos/light.svg);
+  $color-dark-logo-url: url(https://images.swayable.com/logos/dark.svg);
+  $color-light-logo-url: url(https://images.swayable.com/logos/light.svg);
   
-  background-color: $dark;
-  color: $light;
+  background-color: $color-dark;
+  color: $color-light;
 
   &.nav-light {
-    background-color: $light;
-    color: $dark;
+    background-color: $color-light;
+    color: $color-dark;
   }
 
   .swayable-logo {
@@ -122,10 +122,10 @@ export default {
   @media (min-width: 640px) {
     .swayable-logo {
       width: 250px;
-      background-image: $dark-logo-url;
+      background-image: $color-dark-logo-url;
     }
     &.nav-light {
-      .swayable-logo { background-image: $light-logo-url; }
+      .swayable-logo { background-image: $color-light-logo-url; }
     }
   }
 }

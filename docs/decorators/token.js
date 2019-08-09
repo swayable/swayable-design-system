@@ -4,8 +4,8 @@ class Token {
   constructor({ type, description, category, value, order, originalValue, name, tags = '' }) {
     Object.assign(this, { type, description, category, value, order, originalValue, name, tags })
     
-    this.title = name.replace(/_/g, ' ')
-    this.classSuffix = name.replace(/_/g, '-')
+    this.title = name.replace(/color|_/g, ' ')
+    this.classSuffix = name.replace(/color_/g, '').replace(/_/g, '-')
     if (this.tags) {
       this.meta = tags.split(',')
       this.bgClass = this.meta.includes('Dark') || this.name === 'light' ? 'bg-dark' : ''

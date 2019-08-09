@@ -22,7 +22,7 @@
           <p class='flex flex-wrap text-xs text-semibold mt-3'>
             <span class='w-1/2'>
               <code class='bg-gray-200'>
-                ${{ prop.classSuffix }}
+                $color-{{ prop.classSuffix }}
               </code>
             </span>
             <span class='w-1/2'>

@@ -12,20 +12,20 @@
 /* LOCAL DESIGN TOKENS
 --------------------------------------------- */
 
-$docs-grey: $gray-300;
-$docs-grey-dark: $gray-800;
-$docs-status-ready: $orange;
+$docs-grey: $color-gray-300;
+$docs-grey-dark: $color-gray-800;
+$docs-status-ready: $color-orange;
 $docs-breakpoint: 800px;
 $docs-breakpoint-small: 600px;
-$docs-color-heading: $dark;
-$docs-color-text: $dark;
+$docs-color-heading: $color-dark;
+$docs-color-text: $color-dark;
 
 /* BASE
 --------------------------------------------- */
 
 // Background of page
 div.rsg--root-1 {
-  background: $light;
+  background: $color-light;
 }
 
 // Main content
@@ -55,12 +55,12 @@ main section section > div > div[class^="rsg--root"] {
 
 // Link color
 div[class^="rsg--root"] a[class^="rsg--link"] {
-  color: $blue;
+  color: $color-blue;
   &:hover {
-    color: $purple;
+    color: $color-purple;
   }
   &:active {
-    color: $purple;
+    color: $color-purple;
   }
 }
 
@@ -69,12 +69,12 @@ div[class^="rsg--root"] a[class^="rsg--link"] {
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"],
 div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
   font-family: $font-heading;
-  color: $dark;
+  color: $color-dark;
   display: block;
   border: 0;
   padding: $space-l 0 $space-s;
   width: calc(100% + #{$space-xl * 2});
-  background: $light;
+  background: $color-light;
   font-size: 1.5rem;
   a:hover {
     text-decoration: none;
@@ -97,7 +97,7 @@ header[class^="rsg--header"] {
 
 // Links inside h1
 div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
-  color: $blue;
+  color: $color-blue;
   letter-spacing: -1px;
   &:hover {
     text-decoration: none;
@@ -166,7 +166,7 @@ p[class^="rsg--para"] {
     -webkit-font-smoothing: subpixel-antialiased;
     -moz-osx-font-smoothing: auto;
     background: tint($docs-grey, 75%);
-    color: shade($dark, 20%);
+    color: shade($color-dark, 20%);
     padding: $space-xx-small;
     border-radius: $radius-default;
     font-size: 87.5%;
@@ -209,10 +209,10 @@ td[class^="rsg--cell"] p {
 
 // Sidebar logo
 div[class^="rsg--logo"] {
-  border-bottom: 1px solid rgba($light, 0.1);
+  border-bottom: 1px solid rgba($color-light, 0.1);
   h1 {
     font-family: $font-heading;
-    color: tint($blue, 90%);
+    color: tint($color-blue, 90%);
     font-size: 1.1rem;
     margin: $space-m 0 $space-s;
   }
@@ -222,12 +222,12 @@ div[class^="rsg--logo"] {
 p[class^="rsg--version"] {
   @include inset-squish-space($space-xs);
   margin: $space-xs 0 0;
-  color: $blue;
+  color: $color-blue;
   font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   display: inline-block;
   line-height: $line-height-xs;
-  border: 1px solid $blue;
+  border: 1px solid $color-blue;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.875rem;
@@ -237,11 +237,11 @@ p[class^="rsg--version"] {
 // Sidebar search
 div[class^="rsg--search"] input {
   @include inset-squish-space($space-s);
-  color: $light;
+  color: $color-light;
   border: 1px solid transparent;
-  background: mix($blue, $dark, 20%);
+  background: mix($color-blue, $color-dark, 20%);
   &:focus {
-    border: 1px solid $blue;
+    border: 1px solid $color-blue;
     &::-webkit-textfield-decoration-container {
       display: none !important;
     }
@@ -250,21 +250,21 @@ div[class^="rsg--search"] input {
     }
   }
   &::-webkit-input-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
+    color: rgba(mix($color-light, $color-blue, 50%), 0.35);
   }
   &:-ms-input-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
+    color: rgba(mix($color-light, $color-blue, 50%), 0.35);
   }
   &::-moz-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
+    color: rgba(mix($color-light, $color-blue, 50%), 0.35);
     opacity: 1;
   }
 }
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: $dark;
-  color: $light;
+  background: $color-dark;
+  color: $color-light;
   border: 0;
   @media (max-width: #{$docs-breakpoint}) {
     padding-bottom: $space-l;
@@ -298,16 +298,16 @@ div[class^="rsg--sidebar"] {
     -moz-osx-font-smoothing: grayscale;
     padding: $space-xx-small $space-m;
     font-weight: 500;
-    color: $gray-500;
+    color: $color-gray-500;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $gray-300;
+      color: $color-gray-300;
     }
     &:active {
-      color: $gray-300;
+      color: $color-gray-300;
     }
   }
 
@@ -318,7 +318,7 @@ div[class^="rsg--sidebar"] {
     }
     & > a,
     & > a:hover {
-      color: tint($blue, 80%);
+      color: tint($color-blue, 80%);
     }
   }
 
@@ -362,9 +362,9 @@ div[class^="rsg--sidebar"] {
 // Previews of the components
 div[class^="rsg--preview"] {
   padding: $space-l / 1.2;
-  background-color: $gray-100;
-  border: 1px solid $gray-300;
-  box-shadow: inset 0 0 $space-xs rgba($dark, 0.05);
+  background-color: $color-gray-100;
+  border: 1px solid $color-gray-300;
+  box-shadow: inset 0 0 $space-xs rgba($color-dark, 0.05);
   margin: $space-s 0 0;
   border-radius: 0;
   display: block;
@@ -410,7 +410,7 @@ thead[class^="rsg--tableHead"] {
 pre[class^="rsg--pre"],
 .vueds-html.cm-s-night.CodeMirror,
 .react-codemirror2 .CodeMirror.CodeMirror {
-  background: mix($blue, $dark, 10%);
+  background: mix($color-blue, $color-dark, 10%);
   border-bottom-left-radius: $radius-default;
   border-bottom-right-radius: $radius-default;
   box-sizing: border-box;
@@ -423,7 +423,7 @@ pre[class^="rsg--pre"],
   margin: 0;
   min-height: $space-xxl / 1.5;
   margin-bottom: $space-m;
-  color: $light;
+  color: $color-light;
   padding: $space-m;
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -433,7 +433,7 @@ pre[class^="rsg--pre"],
     overflow: hidden;
   }
   code {
-    color: $light;
+    color: $color-light;
   }
 }
 
@@ -448,7 +448,7 @@ div[class^="rsg--tab"] {
   .vueds-tabs {
     z-index: 5;
     border-radius: $radius-default;
-    box-shadow: 0 2px 8px rgba($dark, 0.8);
+    box-shadow: 0 2px 8px rgba($color-dark, 0.8);
     overflow: hidden;
     position: absolute;
     top: $space-m;
@@ -463,17 +463,17 @@ div[class^="rsg--tab"] {
       line-height: $line-height-s;
       @include inset-squish-space($space-s);
       cursor: pointer;
-      background: mix($blue, $dark, 50%);
-      color: $light;
+      background: mix($color-blue, $color-dark, 50%);
+      color: $color-light;
       &:active {
-        background: mix($blue, $dark, 45%);
+        background: mix($color-blue, $color-dark, 45%);
       }
       &:focus {
         outline: none;
       }
       &--active {
-        background: mix($blue, $dark, 40%);
-        box-shadow: inset 0 2px 8px rgba($dark, 0.2);
+        background: mix($color-blue, $color-dark, 40%);
+        box-shadow: inset 0 2px 8px rgba($color-dark, 0.2);
       }
     }
   }
@@ -503,7 +503,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-tag,
 .hljs-tag,
 .hljs-name {
-  color: $light !important;
+  color: $color-light !important;
 }
 .hljs-attribute,
 .hljs-keyword,
@@ -511,7 +511,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-operator,
 .cm-s-night span.cm-number,
 .cm-s-night span.cm-attribute {
-  color: $yellow !important;
+  color: $color-yellow !important;
 }
 .cm-s-night span.cm-string,
 .hljs-string {
@@ -522,18 +522,18 @@ div[class^="rsg--tab"] {
 span[class^="rsg--type"],
 code[class^="rsg--code"] {
   font-family: $font-mono;
-  color: $red !important;
-  border: 1px solid $gray-300;
+  color: $color-red !important;
+  border: 1px solid $color-gray-300;
 }
 span[class^="rsg--name"] code[class^="rsg--code"],
 code.name {
   font-weight: 700;
-  color: shade($dark, 50%);
+  color: shade($color-dark, 50%);
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
 code.type {
   background: tint($docs-grey, 75%);
-  color: shade($dark, 20%);
+  color: shade($color-dark, 20%);
   padding: $space-xx-small;
   border-radius: $radius-default;
 }
@@ -568,7 +568,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   letter-spacing: 1px;
   font-size: 0.875rem;
   border-radius: $radius-default;
-  color: $dark;
+  color: $color-dark;
   position: absolute;
   right: $space-xl;
   top: $space-xl * 1.2;
@@ -582,20 +582,20 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   }
   &-ready {
     background: $docs-status-ready;
-    color: $light;
+    color: $color-light;
   }
   &-review,
   &-under-review {
-    background: $yellow;
-    color: $dark;
+    background: $color-yellow;
+    color: $color-dark;
   }
   &-prototype {
-    background: $blue;
-    color: $light;
+    background: $color-blue;
+    color: $color-light;
   }
   &-deprecated {
-    background: $blue;
-    color: $light;
+    background: $color-blue;
+    color: $color-light;
   }
 }
 
@@ -606,7 +606,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 tr {
   transition: background-color 0.1s ease;
   &:hover {
-    background: rgba($light, 0.3);
+    background: rgba($color-light, 0.3);
   }
 }
 
@@ -621,8 +621,8 @@ table[class^="rsg--table"] {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
-    background: $light;
-    color: tint($blue, 10%);
+    background: $color-light;
+    color: tint($color-blue, 10%);
     text-align: left;
   }
   th[class^="rsg--cellHeading"],

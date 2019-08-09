@@ -1,38 +1,54 @@
-body {
-  img { max-height: 100%; }
 
-  h1, h2, h3, h4, h5 { font-family: $font-heading; }
 
-  a, button { cursor: pointer; }
+html {
+  background-color: $color-light;
+  color: $color-gray-700;
+}
 
-  // Defining Light Theme as a mixin allows us to use it as the default
-  // and also redefine it under the class `.theme-light`;
-  // allowing for use of `.theme-light` inside of a parent `.theme-dark`
-  @mixin lightTheme() {
-    background-color: $light;
-    color: $gray-700;
-    h1, h2, h3, h4, h5 .heading  {
-      color: $dark;
-    }
-    a {
-      color: $blue;
-      &:hover, &:active, &:focus {
-        color: $purple;
+h1, h2, h3, h4, h5 .heading {
+  color: $color-dark;
+  font-family: $font-heading;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+a { color: $color-blue; }
+
+
+.theme-dark {
+  color: $color-white;
+  background-color: $color-black;
+  h1, h2, h3, h4, h5 .heading {
+    color: $color-white;
+  }
+}
+
+@mixin bright-interaction {
+  &:hover, &:active, &:focus {
+    filter:  brightness(150%);
+  }
+}
+
+@mixin dark-interaction {
+  &:hover, &:active, &:focus {
+    filter:  brightness(50%);
+  }
+}
+
+@each $token, $value in $tokens-map {
+  @if str-index($token, 'color') {
+    $colorname: str-slice($token, 7);
+    a, button {
+      .text-#{$colorname}, &.text-#{$colorname} {
+        @if (lightness($value) > 65) {
+          @include dark-interaction;
+        } @else {
+          @include bright-interaction;
+        }
       }
     }
   }
-
-  @include lightTheme();
-
-  .theme-dark {
-    background-color: $dark;
-    color: $light;
-    h1, h2, h3, h4, h5 .heading  {
-      color: $gray-300;
-    }
-  }
-
-  .theme-light {
-    @include lightTheme()
-  }
 }
+

@@ -95,12 +95,12 @@ export default {
 
 <style lang="scss">
 .nav-drop {
-  background-color: $dark;
+  background-color: $color-dark;
   .nav-item.active { border-bottom: 0; }
 }
 .theme-dark {
   .nav-drop {
-    background-color: $light;
+    background-color: $color-light;
   }
 }
 </style>

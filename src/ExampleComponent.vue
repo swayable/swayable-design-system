@@ -72,7 +72,7 @@ export default {
 .example {
   @include reset;
   @include stack-space(24px);
-  color: set-text-color($dark, $light);
+  color: set-text-color($color-dark, $color-light);
   @media #{$media-query-m} {
     @include stack-space(64px);
   }

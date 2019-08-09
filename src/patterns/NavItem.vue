@@ -6,7 +6,7 @@
       "pb-3 lg:pb-2 active": isActive,
     }'
     :title='title'
-    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 font-medium items-center nav-item'
+    class='h-full whitespace-no-wrap flex p-4 lg:py-3 ml-1 font-medium items-center nav-item text-grey'
     v-on='$listeners'
   >
     <slot>
@@ -76,32 +76,16 @@ export default {
       if (this.href) return { href: this.href }
       return {}
     },
+    
   },
 }
 </script>
 
 <style lang="scss">
-a.nav-item, button.nav-item { cursor: pointer }
-.nav-item {
-  color: $gray-400;
-  &:hover, &:active, &:focus {
-    color: $gray-200;
-  }
-  &.active, &.router-link-active {
-    border-bottom-width: 4px;
-    border-style: solid;
-    border-color: $gray-400;
-  }
-}
 .nav-light {
   .nav-item {
-    color: $gray-700;
-    &:hover, &:active, &:focus {
-      color: $dark;
-    }
-    &.active, &.router-link-active  {
-      border-color: $gray-600;
-    }
+    color: $color-gray-700 !important;
+    @include dark-interaction
   }
 }
 </style>
