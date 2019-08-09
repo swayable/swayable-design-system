@@ -8,17 +8,17 @@ props:
   font_heading:
     value: '"azo-sans-web",sans-serif'
     class: 'heading'
-    weights: '500'
+    weights: '300,400,500,700'
     order: -1
   font_text:
     value: '"roboto",sans-serif'
     class: 'body'
-    weights: '300,400,500'
+    weights: '300,400,500,700'
     order: -1
   font_mono:
     value: '"roboto-mono",monospace'
     class: 'mono'
-    weights: '400'
+    weights: '300,400'
     order: -1
 
 global:
