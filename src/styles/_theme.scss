@@ -11,6 +11,14 @@ $color-light-logo-url: url(https://images.swayable.com/logos/light.svg);
   }
 }
 
+@mixin bright-interaction {
+  .interactive, &.interactive {
+    &:hover, &:active, &:focus {
+      filter:  brightness(150%);
+    }
+  }
+}
+
 @mixin dim-interaction {
   .interactive, &.interactive {
     &:hover, &:active, &:focus {

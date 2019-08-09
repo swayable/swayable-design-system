@@ -1,0 +1,16 @@
+#
+# THEME TOKENS
+# Use these tokens to apply global styles
+
+props:
+  theme-dark:
+    value: 'N/A'
+    description: 'Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably a class of <html> tag. See Templates -> Dark for an example.'
+    order: -1
+  interactive:
+    value: 'N/A'
+    description: ':hover, :active, or :focus applies a brightness filter whose value depends on the nearest color class. e.g. `.text-dark.interactive` will be brighter, whereas `.text-light.interactive` will be dimmer.'
+    order: -1
+global:
+  type: ...
+  category: theme

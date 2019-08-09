@@ -5,6 +5,7 @@
 imports:
   - ./color.yml
   - ./font.yml
+  - ./theme.yml
 global:
   type: global
   category: all

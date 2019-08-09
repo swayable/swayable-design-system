@@ -8,7 +8,7 @@
         Value
       </div>
       <div class='w-1/3'>
-        Category
+        Description
       </div>
     </div>
     <div
@@ -21,34 +21,24 @@
       }'
     >
       <div class='w-1/3'>
-        <span v-if='token.name'>
-          <code>
-            ${{ token.name }}
-          </code>
-        </span>
-        <span v-else>
-          N/A
-        </span>
+        <code>
+          ${{ token.name }}
+        </code>
       </div>
       <div class='w-1/3 flex items-center'>
-        <template v-if='token.value'>
-          <div
-            v-if='token.type === "color"'
-            :class='`p-3 inline-block bg-${token.classSuffix}`'
-          />
-          <code class='type ml-2'>{{ token.value }}</code>
-        </template>
-        <span v-else>
-          N/A
-        </span>
+        <div
+          v-if='token.type === "color"'
+          :class='`p-3 inline-block bg-${token.classSuffix}`'
+        />
+        <code class='type ml-2'>{{ token.value }}</code>
       </div>
       <div class='w-1/3'>
-        <span v-if='token.category'>
-          {{ token.category }}
-        </span>
-        <span v-else>
-          N/A
-        </span>
+        <p class='capitalize'>
+           {{ token.category }}
+        </p>
+        <p class='text-sm'>
+          {{ token.description }}
+        </p>
       </div>
     </div>
   </div>

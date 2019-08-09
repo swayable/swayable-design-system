@@ -1,4 +1,6 @@
 import orderBy from 'lodash/orderBy'
+import tinycolor from 'tinycolor2'
+
 
 class Token {
   constructor({ type, description, category, value, order, originalValue, name, tags = '' }) {
@@ -8,7 +10,7 @@ class Token {
     this.classSuffix = name.replace(/color_/g, '').replace(/_/g, '-')
     if (this.tags) {
       this.meta = tags.split(',')
-      this.bgClass = this.meta.includes('Dark') || this.name === 'light' ? 'bg-dark' : ''
+      this.bgClass = tinycolor(originalValue).getBrightness() > 130 ? 'bg-dark' : ''
     } else {
       this.meta = []
     }
