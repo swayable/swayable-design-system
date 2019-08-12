@@ -4,7 +4,8 @@
     class='relative'
   >
     <NavItem
-      type='a'
+      type='button'
+      aria-label='Expand Menu'
       @click='toggleOpen'
       v-on='$listeners'
     >
@@ -13,7 +14,7 @@
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen lg:w-auto min-w-full absolute right-0 flex-col nav-drop z-20'
+      class='w-screen md:w-auto min-w-full absolute right-0 flex-col nav-drop z-30'
     >
       <slot name='dropdown'>
         <NavItem
@@ -95,10 +96,7 @@ export default {
 <style lang="scss">
 .nav-drop {
   background-color: $dark;
-  .nav-item.active {
-    border-bottom: 0;
-    border-right-width: 4px;
-  }
+  .nav-item.active { border-bottom: 0; }
 }
 .theme-dark {
   .nav-drop {
@@ -110,8 +108,8 @@ export default {
 <docs>
   ```jsx
   <NavBar>
-    <NavItem name="Link" />
-    <NavDrop name="Links Menu" :navItems='[
+    <NavItem href='/' name="Link" />
+    <NavDrop name="Menu" :navItems='[
         { name: "Item 1" },
         { name: "Item 2", active: "true" },
         { name: "Item 3" },
@@ -119,7 +117,7 @@ export default {
     />
     <NavDrop>
       Account &nbsp;
-      <Icon name="chevron-down" size="small" ariaLabel="Expand Menu" />
+      <Icon name="chevron-down" size="small" />
       <template #dropdown>
         <NavItem name="Profile" />
         <NavItem name="Settings" />
