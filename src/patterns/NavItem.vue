@@ -2,7 +2,7 @@
   <component
     :is='smartType'
     v-bind='navigation'
-    :class='isActive && "active"'
+    :class='active && "active"'
     :title='title'
     class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item text-grey'
     v-on='$listeners'
@@ -46,7 +46,8 @@ export default {
      * Indicates whether this is the current link
      */
     active: {
-      type: String,
+      type: Boolean,
+      default: false,
     },
     /**
      * Displayed text (overriden by default slot)
@@ -62,9 +63,6 @@ export default {
     },
   },
   computed: {
-    isActive() {
-      return this.active === 'true'
-    },
     smartType() {
       if (this.type === 'a' && this.to !== null) return 'router-link'
       return this.type
@@ -101,7 +99,7 @@ export default {
   ```jsx
   <div>
     <NavBar>
-      <NavItem href='/#/' name='Item 1' active='true' />
+      <NavItem href='/#/' name='Item 1' :active='true' />
       <NavItem href='/#/' name='Item 2' title='The only item with a title' />
       <NavItem href='/#/'>Item 3</NavItem>
     </NavBar>

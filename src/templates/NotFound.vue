@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    class='min-h-screen theme-dark'
+    class='min-h-screen'
   >
     <header>
       <NavBar>
@@ -9,7 +9,7 @@
           <NavItem
             name='Template'
             href='/#/Templates/Index'
-            active='true'
+            :active='true'
           />
           <NavItem
             name='Documentation'
@@ -34,19 +34,13 @@
         </template>
       </NavBar>
     </header>
-    <section class='p-4 md:p-6'>
-      <h1 class='text-xl mt-2'>
-        Swayable Design System
+    <section class='p-4 md:p-6 text-center'>
+      <h1 class='text-xl mt-20'>
+        Page not found
       </h1>
-      <div class='mt-4'>
-        <p>
-          The organized principles, tools, patterns &amp; practices providing foundation for our
-          product design.
-        </p>
-        <p>
-          Check out <a href='/#/Templates/Light'>light theme</a>.
-        </p>
-      </div>
+      <p>
+        <a href='/'>Go back to the beginning</a>.
+      </p>
     </section>
   </component>
 </template>
@@ -78,6 +72,6 @@ export default {
 
 <docs>
   ```jsx
-  <Dark />
+  <NotFound />
   ```
 </docs>

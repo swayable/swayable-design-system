@@ -9,7 +9,7 @@
           <NavItem
             name='Template'
             href='/#/Templates/Index'
-            active='true'
+            :active='true'
           />
           <NavItem
             name='Documentation'
@@ -46,7 +46,7 @@
               <NavItem name='Labs' />
             </template>
           </NavDrop>
-          <NavItem active='true'>
+          <NavItem :active='true'>
             Design
           </NavItem>
           <NavItem>Audience</NavItem>

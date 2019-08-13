@@ -139,7 +139,7 @@ export default {
   ```jsx
   <NavBar headerLink='/#/Patterns/NavBar'>
     <template #left>
-      <NavItem name='Dashboard' active='true' />
+      <NavItem name='Dashboard' :active='true' />
       <NavItem name='About' />
     </template>
     <template>
@@ -148,7 +148,7 @@ export default {
   </NavBar>
   <NavBar headerLink='/#/Patterns/NavBar' alt>
     <template #left>
-      <NavItem name='Dashboard' active='true' />
+      <NavItem name='Dashboard' :active='true' />
       <NavItem name='About' />
     </template>
     <template>
