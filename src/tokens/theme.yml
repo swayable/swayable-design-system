@@ -3,9 +3,9 @@
 # Use these tokens to apply global styles
 
 props:
-  theme-dark:
+  data-theme['dark']:
     value: 'N/A'
-    description: 'Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably a class of <html> tag. See Templates -> Dark for an example.'
+    description: 'Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably an attribute of the <html> tag. See Templates Index for an example.'
     order: -1
   interactive:
     value: 'N/A'

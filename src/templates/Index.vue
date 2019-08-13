@@ -1,7 +1,8 @@
 <template>
   <component
     :is='type'
-    class='min-h-screen'
+    class='min-h-screen page'
+    :data-theme='theme'
   >
     <header>
       <NavBar>
@@ -57,18 +58,25 @@
       <h1 class='text-xl mt-2'>
         Swayable Design System
       </h1>
-      <div class='mt-4'>
-        <p>
-          The organized principles, tools, patterns &amp; practices providing foundation for our
-          product design.
-        </p>
-        <p class='hidden theme-dark-block'>
-          Check out <a href='/#/Templates/Index'>light theme</a>.
-        </p>
-        <p class='theme-dark-hidden'>
-          Check out <a href='/#/Templates/Dark'>dark theme</a>.
-        </p>
-      </div>
+      <p class='mt-4'>
+        The organized principles, tools, patterns &amp; practices providing foundation for our
+        product design.
+      </p>
+      <p class='mt-4'>
+        Check out
+        <a
+          v-if='isDarkTheme'
+          href='/#/Templates/Index'
+        >
+          light theme
+        </a>
+        <a
+          v-else
+          href='/?theme=dark#/Templates/Index'
+        >
+          dark theme
+        </a>
+      </p>
     </section>
   </component>
 </template>
@@ -93,6 +101,20 @@ export default {
     type: {
       type: String,
       default: 'div',
+    },
+  },
+  computed: {
+    theme() {
+      const { search } = window.location
+      const themeParam = search.replace('?', '')
+        .split('&')
+        .find(substr => substr.includes('theme'))
+      return themeParam
+        ? themeParam.split('=')[1]
+        : false
+    },
+    isDarkTheme() {
+      return this.theme === 'dark'
     },
   },
 }

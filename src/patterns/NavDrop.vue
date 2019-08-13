@@ -93,14 +93,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.nav-drop .nav-item.active { border-bottom: 0; }
-.nav-bar-right .nav-drop-dropdown { right: 0; }
-.nav-bar-left .nav-drop-dropdown { left: 0; }
-.nav-drop-dropdown { background-color: $color-dark; }
-.nav-alt .nav-drop-dropdown { background-color: $color-light; }
-</style>
-
 <docs>
   ```jsx
   <NavBar>

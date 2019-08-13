@@ -186,15 +186,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.word-chart-word { cursor: default }
-.word-chart-word.interactive {
-  cursor: pointer;
-  &:hover { filter: brightness(120%) }
-}
-</style>
-
-
 <docs>
   ```jsx
     import example from './exampleText.js'

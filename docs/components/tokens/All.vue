@@ -22,7 +22,7 @@
     >
       <div class='w-1/3'>
         <code>
-          ${{ token.name }}
+          {{ token.name }}
         </code>
       </div>
       <div class='w-1/3 flex items-center'>

@@ -656,14 +656,14 @@
       "originalValue": "\"roboto-mono\",monospace",
       "name": "font_mono"
     },
-    "theme-dark": {
+    "data-theme['dark']": {
       "type": "...",
       "category": "theme",
       "value": "N/A",
-      "description": "Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably a class of <html> tag. See Templates -> Dark for an example.",
+      "description": "Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably an attribute of the <html> tag. See Templates Index for an example.",
       "order": -1,
       "originalValue": "N/A",
-      "name": "theme-dark"
+      "name": "data-theme['dark']"
     },
     "interactive": {
       "type": "...",

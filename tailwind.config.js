@@ -38,7 +38,7 @@ const colors = _reduce(
 )
 
 module.exports = {
-  important: true,
+  important: '#app',
   theme: {
     fontFamily: {
       heading: designTokens.props.font_heading.originalValue,

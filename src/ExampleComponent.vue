@@ -63,22 +63,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-/**
- * Styles in a top-level App component and in layout components may be global,
- * but all other components should always be scoped (using either scoped
- * attribute or class based scoping).
- */
-.example {
-  @include reset;
-  @include stack-space(24px);
-  color: set-text-color($color-dark, $color-light);
-  @media #{$media-query-m} {
-    @include stack-space(64px);
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <Example>

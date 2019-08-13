@@ -4,10 +4,10 @@
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
-    class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item text-grey'
+    class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item'
     v-on='$listeners'
   >
-    <span class='p-3 flex flex-grow interactive'>
+    <span class='p-3 flex flex-grow'>
       <slot>{{ name }}</slot>
     </span>
   </component>
@@ -75,25 +75,6 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.nav-item {
-  &.active, &.router-link-active {
-    border-bottom: 0.25rem solid $color-grey;
-    .interactive {
-      padding-bottom: 0.5rem !important;
-    }
-  }
-}
-.nav-alt .nav-item {
-  color: $color-gray-700 !important;
-  @include dim-interaction;
-}
-.theme-dark .nav-alt .nav-item {
-  color: $color-grey !important;
-  @include bright-interaction;
-}
-</style>
 
 <docs>
   ```jsx
