@@ -10,6 +10,12 @@
       v-on='$listeners'
     >
       <slot>{{ name }}</slot>
+      <span class='ml-1'>
+        <Icon
+          name='chevron-down'
+          size='small'
+        />
+      </span>
     </NavItem>
     <div
       v-show='open'
@@ -104,8 +110,7 @@ export default {
       ]'
     />
     <NavDrop>
-      Account &nbsp;
-      <Icon name="chevron-down" size="small" />
+      Account
       <template #dropdown>
         <NavItem name="Profile" />
         <NavItem name="Settings" />

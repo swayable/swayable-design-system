@@ -4,10 +4,10 @@
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
-    class='relative h-full whitespace-no-wrap flex ml-1 font-medium items-center nav-item'
+    class='px-2 relative h-full whitespace-no-wrap flex font-medium items-center nav-item'
     v-on='$listeners'
   >
-    <span class='p-3 flex flex-grow'>
+    <span class='flex flex-grow'>
       <slot>{{ name }}</slot>
     </span>
   </component>

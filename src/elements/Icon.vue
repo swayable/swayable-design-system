@@ -69,6 +69,23 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.icon {
+  &.large svg {
+    width: 48px;
+    height: 48px;
+  }
+  &.medium svg {
+    width: 24px;
+    height: 24px;
+  }
+  &.small svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+</style>
+
 <docs>
   ```jsx
   <div>

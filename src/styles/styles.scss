@@ -5,7 +5,7 @@
  * CSS in your final, compiled files.
  */
  
-@import './bulma';
+@import './bulma-template';
 
 @import '~tailwindcss/base';
 @import '~tailwindcss/components';
@@ -13,4 +13,3 @@
 
 @import './custom-base-styles';
 @import './custom-utilities';
-@import './custom-components';

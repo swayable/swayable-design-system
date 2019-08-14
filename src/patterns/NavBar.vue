@@ -98,6 +98,83 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --nav-bg: theme('colors.dark');
+  --nav-color: theme('colors.grey');
+  --nav-color-active: theme('colors.white');
+  --nav-active-filter: var(--filter-bright);
+}
+
+.nav-bar {
+  @media (min-width: 640px) {
+    --logo-url: var(--logo-dark);
+    --logo-width: 250px;
+  }
+
+  &.nav-alt{
+    --nav-bg: theme('colors.light');
+    --nav-color: theme('colors.gray.700');
+    --nav-color-active: theme('colors.dark');
+    --nav-active-filter: var(--filter-dim);
+    @media (min-width: 640px) {
+      --logo-url: var(--logo-light)
+    }
+  }
+
+  background-color: var(--nav-bg);
+  .swayable-logo {
+    width: var(--logo-width);
+    background-image: var(--logo-url);
+  }
+  .nav-item {
+    color: var(--nav-color);
+    &:hover, &:active, &:focus {
+      span {
+        filter: var(--nav-active-filter);
+      }
+    }
+    &.active, &.router-link-active {
+      color: var(--nav-color-active);
+      > * { padding-top: 0.25rem; }
+      border-bottom: 0.25rem solid theme('colors.grey');
+    }
+  }
+
+  // Scrollbar space
+  .nav-bar-right > .nav-item:last-of-type {
+    padding-right: theme('spacing.6') !important;
+  }
+  .nav-bar-right > .nav-drop:last-of-type > .nav-item {
+    padding-right: theme('spacing.5') !important;
+  }
+
+  // position dropdowns flush with edges
+  .nav-bar-right .nav-drop-dropdown { right: 0; }
+  .nav-bar-left .nav-drop-dropdown { left: 0; }
+
+  // give dropdown navitems some area
+  .nav-drop-dropdown {
+    .nav-item > * { padding: theme('spacing.3'); }
+    background-color: var(--nav-bg);
+    .nav-item { margin: 0 !important; }
+    .active, .router-link-active { border-bottom: 0; }
+  }
+}
+
+[data-theme='dark'] {
+  .nav-bar.nav-alt {
+    --nav-color: theme('colors.grey');
+    --nav-bg: theme('colors.darker');
+    --nav-active-filter: var(--filter-bright);
+    --nav-color-active: theme('colors.white');
+    @media (min-width: 640px) {
+      --logo-url: var(--logo-dark)
+    }
+  }
+}
+</style>
+
 <docs>
   ```jsx
   <NavBar headerLink='/#/Patterns/NavBar'>

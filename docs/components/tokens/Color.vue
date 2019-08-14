@@ -73,9 +73,9 @@ import designTokens from '@/assets/tokens/tokens.raw.json'
 import Token from '../../decorators/token'
 
 /**
- * The colors found here are defined in Swayable Designs by Gabriel Winer. There are two groups: **primary** and **secondary**.
+ * The colors found here are defined in Swayable Designs by Gabriel Winer. There are two groups: `primary` and `secondary`
  *
- * Each standard color has two variants: **fade** for use on light background, and **burn** for dark backgrounds. Standard colors can be used on both light and dark backgrounds.
+ * Each standard color has two variants: `fade` for use on light background, and `burn` for dark backgrounds. Standard colors can be used on both light and dark backgrounds.
  *
  */
 export default {

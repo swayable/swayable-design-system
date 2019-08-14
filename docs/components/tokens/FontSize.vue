@@ -1,15 +1,15 @@
 <template>
   <div class='font-sizes'>
-    <template v-for='(size, name, i) in tokens'>
+    <template v-for='(size, name) in tokens'>
       <div
         :key='name'
-        :class='`font mt-5 p-2 ${(i%2 === 0 ? "bg-white" : "")}`'
+        :class='`font mt-5 p-2`'
       >
-        <div class='flex text-xs'>
-          <p class='flex-grow text-gray-600'>
+        <div class='flex items-center'>
+          <p>
             <code>.text-{{ name }}</code>
           </p>
-          <p class='text-gray-600'>
+          <p class='text-gray-600 ml-2 text-sm'>
             {{ size }}
           </p>
         </div>
