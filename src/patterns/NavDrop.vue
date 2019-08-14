@@ -99,7 +99,7 @@ export default {
     <NavItem href='/' name="Link" />
     <NavDrop name="Menu" :navItems='[
         { name: "Item 1" },
-        { name: "Item 2", active: "true" },
+        { name: "Item 2", active: true },
         { name: "Item 3" },
       ]'
     />

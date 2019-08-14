@@ -655,24 +655,6 @@
       "order": -1,
       "originalValue": "\"roboto-mono\",monospace",
       "name": "font_mono"
-    },
-    "data-theme['dark']": {
-      "type": "...",
-      "category": "theme",
-      "value": "N/A",
-      "description": "Activates alternative global styles and some alternative component styles, resulting in a darker application. Preferably an attribute of the <html> tag. See Templates Index for an example.",
-      "order": -1,
-      "originalValue": "N/A",
-      "name": "data-theme['dark']"
-    },
-    "interactive": {
-      "type": "...",
-      "category": "theme",
-      "value": "N/A",
-      "description": ":hover, :active, or :focus applies a brightness filter whose value depends on the nearest color class. e.g. `.text-dark.interactive` will be brighter, whereas `.text-light.interactive` will be dimmer.",
-      "order": -1,
-      "originalValue": "N/A",
-      "name": "interactive"
     }
   }
 }

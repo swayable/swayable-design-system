@@ -1,3 +1,12 @@
+// Custom Component Styles
+
+// Please use utility classes wherever possible. Options include:
+// - Tailwind classes
+// - Extend Tailwind to include the utility class you need
+// - Add to ./custom-utilities
+
+// TODO: refactor the styles below into utilities where possible
+
 // -- ICON
 .icon {
   &.large svg {
@@ -15,12 +24,14 @@
 }
 
 // -- NAVBAR
-.nav-bar {
+:root {
   --nav-bg: theme('colors.dark');
   --nav-color: theme('colors.grey');
   --nav-color-active: theme('colors.white');
   --nav-active-filter: var(--filter-bright);
+}
 
+.nav-bar {
   @media (min-width: 640px) {
     --logo-url: var(--logo-dark);
     --logo-width: 250px;

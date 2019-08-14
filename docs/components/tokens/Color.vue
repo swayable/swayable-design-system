@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div class='colors'>
     <input
       v-model='filter'
       placeholder='Search colors'
     >
-    <div class='flex flex-wrap bg-light'>
+    <div class='flex flex-wrap -mx-4'>
       <div
         v-for='prop in filteredColorTokens'
         :key='prop.name'
-        :class='`w-full lg:w-1/3  p-4 color ${prop.category}`'
+        :class='`p-4 color ${prop.category}`'
       >
-        <div class='max-w-sm rounded overflow-hidden shadow-lg'>
+        <div class='max-w-sm rounded overflow-hidden shadow-lg bg-gray-100'>
           <div
             :class='`bg-${prop.classSuffix} p-20 swatch`'
           />
@@ -20,7 +20,7 @@
             </div>
             <p
               v-if='prop.description'
-              class='text-base'
+              class='text-black'
             >
               {{ prop.description }}
             </p>

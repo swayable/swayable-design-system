@@ -2,7 +2,6 @@
   <component
     :is='type'
     class='min-h-screen page'
-    :data-theme='theme'
   >
     <header>
       <NavBar>
@@ -64,18 +63,13 @@
       </p>
       <p class='mt-4'>
         Check out
-        <a
-          v-if='isDarkTheme'
-          href='/#/Templates/Index'
+        <button
+          class='link'
+          @click='toggleTheme'
         >
-          light theme
-        </a>
-        <a
-          v-else
-          href='/?theme=dark#/Templates/Index'
-        >
-          dark theme
-        </a>
+          <span v-if='darkTheme'>light theme</span>
+          <span v-else>dark theme</span>
+        </button>
       </p>
     </section>
   </component>
@@ -103,18 +97,25 @@ export default {
       default: 'div',
     },
   },
-  computed: {
-    theme() {
-      const { search } = window.location
-      const themeParam = search.replace('?', '')
-        .split('&')
-        .find(substr => substr.includes('theme'))
-      return themeParam
-        ? themeParam.split('=')[1]
-        : false
-    },
-    isDarkTheme() {
-      return this.theme === 'dark'
+  data() {
+    const darkTheme = document
+      .querySelector('html')
+      .getAttribute('data-theme') === 'dark'
+    return { darkTheme }
+  },
+  mounted() {
+    const toggleTheme = window.location.href.includes('theme=toggle')
+    if (toggleTheme) this.toggleTheme()
+  },
+  methods: {
+    toggleTheme() {
+      this.darkTheme = !this.darkTheme
+      const page = document.querySelector('html')
+      if (this.darkTheme) {
+        page.setAttribute('data-theme', 'dark')
+      } else {
+        page.removeAttribute('data-theme')
+      }
     },
   },
 }

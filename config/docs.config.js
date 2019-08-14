@@ -66,13 +66,14 @@ module.exports = {
       exampleMode: 'hide',
       usageMode: 'hide',
     },
-    {
-      name: 'Voice & Tone',
-      content: '../docs/voice-and-tone.md',
-      sectionDepth: 1,
-      exampleMode: 'hide',
-      usageMode: 'hide',
-    },
+    // TODO: write voice and tone
+    // {
+    //   name: 'Voice & Tone',
+    //   content: '../docs/voice-and-tone.md',
+    //   sectionDepth: 1,
+    //   exampleMode: 'hide',
+    //   usageMode: 'hide',
+    // },
     {
       name: 'Design Tokens',
       content: '../docs/tokens.md',
@@ -81,10 +82,8 @@ module.exports = {
       usageMode: 'hide',
       components: () => [
         '../docs/components/tokens/Color.vue',
-        '../docs/components/tokens/FontSize.vue',
         '../docs/components/tokens/Fonts.vue',
-        '../docs/components/tokens/Spacing.vue',
-        '../docs/components/tokens/All.vue',
+        '../docs/components/tokens/FontSize.vue',
       ],
     },
     {

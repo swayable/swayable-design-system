@@ -1,3 +1,5 @@
+// Custom Base Styles
+
 html,
 body,
 #app {
@@ -35,7 +37,7 @@ body,
   color: var(--text-color);
 
   a, button { cursor: pointer; }
-  a { color: var(--link-color) }
+  a, .link { color: var(--link-color) }
 
   h1, h2, h3, h4, h5 .heading {
     font-family: theme('fonts.heading');

@@ -3,28 +3,30 @@
     <div
       v-for='prop in fontTypes'
       :key='prop.name'
-      :class='`mt-8 border border-dark rounded font-${prop.class}`'
+      :class='`mt-2 font font-${prop.class}`'
     >
-      <div class='p-4 flex items-center'>
-        <h2 class='text-xl capitalize flex-grow'>
-          {{ prop.value.split(',')[0].replace(/"/g, '') }}
-        </h2>
-        <code>.font-{{ prop.class }}</code>
-      </div>
-      <div :class='`p-4 bg-dark text-light font-${prop.class}`'>
+      <div :class='`flex flex-wrap flex-1 mt-2 -mx-2 font-${prop.class}`'>
         <div
           v-for='weight in prop.weights'
           :key='weight.weight'
-          :class='`flex font-${weight.class}`'
+          :class='`p-2 flex-grow font-weight font-${weight.class}`'
         >
-          <div class='w-1/4'>
-            <code>.font-{{ weight.class }}</code>
-          </div>
-          <div class='w-1/4'>
-            {{ weight.weight }}
-          </div>
-          <div class='w-1/2 truncate text-right'>
-            The five boxing wizards jump quickly.
+          <div class='max-w-sm rounded overflow-hidden shadow-lg bg-gray-100 h-full'>
+            <p class='flex border-b p-2'>
+              <span class='flex-grow capitalize'>{{ prop.value.split(',')[0].replace(/"/g, '') }}</span>
+              <span>{{ weight.weight }}</span>
+            </p>
+            <p class='px-2 pt-2'>
+              <code class='bg-gray-200'>
+                .font-{{ prop.class }}
+              </code>
+              <code class='bg-gray-200'>
+                .font-{{ weight.class }}
+              </code>
+            </p>
+            <p class='text-sm p-2'>
+              The five boxing wizards jump quickly.
+            </p>
           </div>
         </div>
       </div>
