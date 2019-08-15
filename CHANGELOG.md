@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.0 (2019-08-15)
+
+
+### Bug Fixes
+
+* Update tokens to use Swayable colors, fonts ([9a34535](https://github.com/swayable/swayable-design-system/commit/9a34535))
+* Use Trueno font ([87f1b6b](https://github.com/swayable/swayable-design-system/commit/87f1b6b))
+* **postcss:** disable purgecss to fix missing styles ([fe383bf](https://github.com/swayable/swayable-design-system/commit/fe383bf))
+* **templates/Index:** Swap out text ([7c3732b](https://github.com/swayable/swayable-design-system/commit/7c3732b))
+
+
+### Build System
+
+* Run `npm audit fix` to clean up vulnerabilities ([50bff4f](https://github.com/swayable/swayable-design-system/commit/50bff4f))
+* Update package name and metadata ([3172b83](https://github.com/swayable/swayable-design-system/commit/3172b83))
+* Update package-lock ([f7819af](https://github.com/swayable/swayable-design-system/commit/f7819af))
+
+
+### Features
+
+* **navbar:** improvements to function and style of navbar ([#14](https://www.pivotaltracker.com/story/show/14)) ([ccc740c](https://github.com/swayable/swayable-design-system/commit/ccc740c))
+* **patterns:** add WordChart ([#12](https://www.pivotaltracker.com/story/show/12)) ([906209e](https://github.com/swayable/swayable-design-system/commit/906209e))
+* **tokencolors:** apply theme colors ([39652ee](https://github.com/swayable/swayable-design-system/commit/39652ee))
+* **tokens:** complete tokens  ([8654de5](https://github.com/swayable/swayable-design-system/commit/8654de5))
+* **tokens:** define color tokens using brand and tailwind colors ([174fbde](https://github.com/swayable/swayable-design-system/commit/174fbde)), closes [#167436640](https://www.pivotaltracker.com/story/show/167436640)
+* **wordchart:** add interactivity indicators ([#13](https://www.pivotaltracker.com/story/show/13)) ([a369451](https://github.com/swayable/swayable-design-system/commit/a369451))
+
+
+
 ## 0.1.0 (2019-07-29)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "swayable-design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design system for Swayable based on Vue Design System",
   "authors": [
     "viljamis <me@viljamis.com>",
@@ -31,7 +31,7 @@
     "theo:onchange": "onchange \"./src/tokens/*.yml\" -- npm run theo",
     "test": "npm-run-all theo unit",
     "commit": "yarn lint --fix && git-cz",
-    "release": "npm-run-all theo node:build:system && git commit -a -m 'chore(pre-release): build system distribution' && standard-version"
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
