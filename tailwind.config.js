@@ -31,14 +31,14 @@ const sizeMap = {
 const colors = _reduce(
   _filter(designTokens.props, { type: 'color' }),
   (acc, color) => {
-    acc[color.name.replace(/_/g, '-')] = color.originalValue
+    acc[color.name.replace(/color_/g, '').replace(/_/g, '-')] = color.originalValue
     return acc
   },
   {},
 )
 
 module.exports = {
-  important: true,
+  important: '#app',
   theme: {
     fontFamily: {
       heading: designTokens.props.font_heading.originalValue,

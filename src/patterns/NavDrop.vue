@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    class='relative'
+    class='relative nav-drop'
   >
     <NavItem
       type='button'
@@ -10,11 +10,17 @@
       v-on='$listeners'
     >
       <slot>{{ name }}</slot>
+      <span class='ml-1'>
+        <Icon
+          name='chevron-down'
+          size='small'
+        />
+      </span>
     </NavItem>
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen md:w-auto min-w-full absolute right-0 flex-col nav-drop z-30'
+      class='w-screen md:w-auto min-w-full absolute flex-col z-30 shadow nav-drop-dropdown'
     >
       <slot name='dropdown'>
         <NavItem
@@ -93,31 +99,18 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.nav-drop {
-  background-color: $dark;
-  .nav-item.active { border-bottom: 0; }
-}
-.theme-dark {
-  .nav-drop {
-    background-color: $light;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <NavBar>
     <NavItem href='/' name="Link" />
     <NavDrop name="Menu" :navItems='[
         { name: "Item 1" },
-        { name: "Item 2", active: "true" },
+        { name: "Item 2", active: true },
         { name: "Item 3" },
       ]'
     />
     <NavDrop>
-      Account &nbsp;
-      <Icon name="chevron-down" size="small" />
+      Account
       <template #dropdown>
         <NavItem name="Profile" />
         <NavItem name="Settings" />

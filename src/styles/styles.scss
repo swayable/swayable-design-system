@@ -4,9 +4,12 @@
  * mixins, etc. in this file, to prevent duplicated
  * CSS in your final, compiled files.
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
  
-@import './bulma';
-@import './theme';
+@import './bulma-template';
+
+@import '~tailwindcss/base';
+@import '~tailwindcss/components';
+@import '~tailwindcss/utilities';
+
+@import './custom-base-styles';
+@import './custom-utilities';

@@ -8,357 +8,373 @@
 #
 
 props:
-  brand:
-    value: '#6464dc'
-    category: 'color-basic'
-    tags: 'Primary'
-    description: 'Swayable brand'
-    order: 0
-  light:
+  color_light:
     value: '#f7f7f8'
     category: 'color-basic'
     tags: 'Basic'
-    description: 'Background; Dark headings'
+    description: 'Background'
     order: 0
-  dark: 
+  color_dark: 
     value: '#263340'
     category: 'color-basic'
     tags: 'Basic'
-    description: 'Headings; Dark background'
+    description: 'Headings; Navbar background'
+    order: 0
+  color_darker: 
+    value: '#192026'
+    category: 'color-basic'
+    tags: 'Basic'
+    order: 0
+  color_white:
+    value: '#ffffff'
+    category: 'color-basic'
+    tags: 'Basic'
+    order: 0
+  color_grey:
+    value: '#9E9F9E'
+    category: 'color-basic'
+    tags: 'Basic'
+    description: 'Nav items'
+    order: 0
+  color_black: 
+    value: '#0D0D0D'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 0
 
-  gray_100: 
+  color_gray_100: 
     value: '#f7fafc'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_200: 
+  color_gray_200: 
     value: '#edf2f7'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_300: 
+  color_gray_300: 
     value: '#e2e8f0'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_400: 
+  color_gray_400: 
     value: '#cbd5e0'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_500: 
+  color_gray_500: 
     value: '#a0aec0'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_600: 
+  color_gray_600: 
     value: '#718096'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_700: 
+  color_gray_700: 
     value: '#4a5568'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_800: 
+  color_gray_800: 
     value: '#2d3748'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
-  gray_900: 
+  color_gray_900: 
     value: '#1a202c'
     category: 'color-tailwind'
     tags: 'Utility,Tailwind'
     order: 100
 
-  blue:
+  color_blue:
     value: '#6464dc'
     category: 'color-primary'
     tags: 'Primary'
+    description: 'Swayable Brand'
     order: 1
-  blue_fade:
+  color_blue_fade:
     value: '#CECEDD'
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 1
-  blue_burn:
+  color_blue_burn:
     value: '#444B61'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 1
 
-  magenta:
+  color_magenta:
     value: '#b43cb4'
     category: 'color-primary'
     tags: 'Primary'
     order: 2
-  magenta_fade:
+  color_magenta_fade:
     value: '#D9CBD9'
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 2
-  magenta_burn:
+  color_magenta_burn:
     value: '#51485F'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 2
 
-  pink:
+  color_pink:
     value: '#dc3c8c'
     category: 'color-primary'
     tags: 'Primary'
     order: 3
-  pink_fade:
+  color_pink_fade:
     value: '#E4CBD6' 
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 3
-  pink_burn:
+  color_pink_burn:
     value: '#5B485D'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 3
 
-  red:
+  color_red:
     value: '#dc6464'
     category: 'color-primary'
     tags: 'Primary'
     order: 4
-  red_fade:
+  color_red_fade:
     value: '#E4CFCD' 
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 4
-  red_burn:
+  color_red_burn:
     value: '#5A4C55'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 4
 
-  orange:
+  color_orange:
     value: '#dca028'
     category: 'color-primary'
     tags: 'Primary'
     order: 5
-  orange_fade:
+  color_orange_fade:
     value: '#E2D9C5' 
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 5
-  orange_burn:
+  color_orange_burn:
     value: '#595450'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 5
 
-  yellow:
+  color_yellow:
     value: '#c8c814'
     category: 'color-primary'
     tags: 'Primary'
     order: 6
-  yellow_fade:
+  color_yellow_fade:
     value: '#DFE0C8' 
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 6
-  yellow_burn:
+  color_yellow_burn:
     value: '#545A53'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 6
 
-  green:
+  color_green:
     value: '#78c864'
     category: 'color-primary'
     tags: 'Primary'
     order: 7
-  green_fade:
+  color_green_fade:
     value: '#D3DFCF'
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 7
-  green_burn:
+  color_green_burn:
     value: '#465A58'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 7
 
-  cyan:
+  color_cyan:
     value: '#14c8c8'
     category: 'color-primary'
     tags: 'Primary'
     order: 8
-  cyan_fade:
+  color_cyan_fade:
     value: '#CADFE0'
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 8
-  cyan_burn:
+  color_cyan_burn:
     value: '#405A64'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 8
 
-  azure:
+  color_azure:
     value: '#3c8cdc'
     category: 'color-primary'
     tags: 'Primary'
     order: 9
-  azure_fade:
+  color_azure_fade:
     value: '#CCD5E2'
     category: 'color-primary-fade'
-    tags: 'Primary alt,Light'
+    tags: 'Primary alt,Fade'
     order: 9
-  azure_burn:
+  color_azure_burn:
     value: '#415265'
     category: 'color-primary-burn'
-    tags: 'Primary alt,Dark'
+    tags: 'Primary alt,Burn'
     order: 9
   
-  purple:
+  color_purple:
     value: '#8c50c8'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 10
-  purple_fade:
+  color_purple_fade:
     value: '#D3CCDB'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 10
-  purple_burn:
+  color_purple_burn:
     value: '#4A4A60'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 10
 
-  rose_dark:
+  color_rose_dark:
     value: '#c8288c'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 11
-  rose_dark_fade:
+  color_rose_dark_fade:
     value: '#E0C8D6'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 11
-  rose_dark_burn:
+  color_rose_dark_burn:
     value: '#58465E'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 11
 
-  red_dark:
+  color_red_dark:
     value: '#dc5064'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 12
-  red_dark_fade:
+  color_red_dark_fade:
     value: '#E4CCCD'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 12
-  red_dark_burn:
+  color_red_dark_burn:
     value: '#5B4A55'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 12
 
-  orange_dark:
+  color_orange_dark:
     value: '#dc8246'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 13
-  orange_dark_fade:
+  color_orange_dark_fade:
     value: '#E3D4C8'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 13
-  orange_dark_burn:
+  color_orange_dark_burn:
     value: '#5A5051'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 13
 
-  orange_light:
+  color_orange_light:
     value: '#dcb414'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 14
-  orange_light_fade:
+  color_orange_light_fade:
     value: '#E3DDC6'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 14
-  orange_light_burn:
+  color_orange_light_burn:
     value: '#585751'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 14
 
-  green_light:
+  color_green_light:
     value: '#a0c83c'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 15
-  green_light_fade:
+  color_green_light_fade:
     value: '#D9E0C9'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 15
-  green_light_burn:
+  color_green_light_burn:
     value: '#4D5B53'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 15
 
-  green_dark:
+  color_green_dark:
     value: '#50c88c'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 16
-  green_dark_fade:
+  color_green_dark_fade:
     value: '#CFDFD6'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 16
-  green_dark_burn:
+  color_green_dark_burn:
     value: '#425A5C'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 16
 
-  azure_light:
+  color_azure_light:
     value: '#28a0dc'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 17
-  azure_light_fade:
+  color_azure_light_fade:
     value: '#CAD9E5'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 17
-  azure_light_burn:
+  color_azure_light_burn:
     value: '#405567'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 17
 
-  azure_dark:
+  color_azure_dark:
     value: '#5078dc'
     category: 'color-secondary'
     tags: 'Secondary'
     order: 18
-  azure_dark_fade:
+  color_azure_dark_fade:
     value: '#CDD1DF'
     category: 'color-secondary-fade'
-    tags: 'Secondary faded,Light'
+    tags: 'Secondary alt,Fade'
     order: 18
-  azure_dark_burn:
+  color_azure_dark_burn:
     value: '#424E63'
     category: 'color-secondary-burn'
-    tags: 'Secondary faded,Dark'
+    tags: 'Secondary alt,Burn'
     order: 18
   
 global:

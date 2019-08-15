@@ -1,0 +1,48 @@
+// Custom Base Styles
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --logo-small: url(https://images.swayable.com/logos/motif.svg);
+  --logo-dark: url(https://images.swayable.com/logos/dark.svg);
+  --logo-light: url(https://images.swayable.com/logos/light.svg);
+  --bg-color: theme('colors.light');
+  --text-color: theme('colors.black');
+  --heading-color: theme('colors.dark');
+  --link-color: theme('colors.blue');
+
+  --logo-url: var(--logo-small);
+  --logo-width: 40px;
+
+  --filter-dim: brightness(50%);
+  --filter-bright: brightness(150%);
+}
+
+
+[data-theme='dark'] {
+  --logo-url: var(--logo-url);
+  --bg-color: theme('colors.black');
+  --heading-color: theme('colors.white');
+  --text-color: theme('colors.white');
+}
+
+@mixin pagestyle {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  a, button { cursor: pointer; }
+  a, .link { color: var(--link-color) }
+
+  h1, h2, h3, h4, h5 .heading {
+    font-family: theme('fonts.heading');
+    color: var(--heading-color);
+  }
+}
+
+html { @include pagestyle }

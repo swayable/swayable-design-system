@@ -3,37 +3,22 @@
  * (the odd formatting hence most of the classes are dynamic)
  */
 
-@import "../src/assets/tokens/tokens.scss";
-@import "./docs.tokens.scss";
-@import "../src/styles/styles.scss";
-@import "./styles/functions";
-@import "./styles/mixins";
-@import "./styles/spacing";
-/* LOCAL DESIGN TOKENS
---------------------------------------------- */
-
-$docs-grey: $gray-300;
-$docs-grey-dark: $gray-800;
-$docs-status-ready: $orange;
-$docs-breakpoint: 800px;
-$docs-breakpoint-small: 600px;
-$docs-color-heading: $dark;
-$docs-color-text: $dark;
-
 /* BASE
 --------------------------------------------- */
-
 // Background of page
 div.rsg--root-1 {
-  background: $light;
+  background: theme('colors.white');
 }
-
+[data-theme='dark'] {
+  div.rsg--root-1 {
+    background: theme('colors.darker');
+  }
+}
 // Main content
 main[class^="rsg--content"] {
-  display: block; /* IE11 fix */
-  padding: $space-s $space-xl;
-  @media (max-width: #{$docs-breakpoint}) {
-    padding: $space-s $space-m;
+  padding: theme('spacing.4') theme('spacing.6');
+  @media (min-width: theme('screens.md')) {
+    padding: theme('spacing.4') theme('spacing.16');
   }
 }
 
@@ -53,135 +38,19 @@ main section section > div > div[class^="rsg--root"] {
 /* TYPOGRAPHY
 --------------------------------------------- */
 
-// Link color
-div[class^="rsg--root"] a[class^="rsg--link"] {
-  color: $blue;
-  &:hover {
-    color: $purple;
-  }
-  &:active {
-    color: $purple;
-  }
-}
-
-// Main headings
-// (includes h2 as well since in component views that’s the first heading)
-div[class^="rsg--wrapper"] > h1[class^="rsg--heading"],
-div[class^="rsg--wrapper"] > h2[class^="rsg--heading"] {
-  font-family: $font-heading;
-  color: $dark;
-  display: block;
-  border: 0;
-  padding: $space-l 0 $space-s;
-  width: calc(100% + #{$space-xl * 2});
-  background: $light;
-  font-size: 1.5rem;
-  a:hover {
-    text-decoration: none;
-    cursor: default;
-  }
-  @media (max-width: 1300px) {
-    padding: $space-m 0;
-  }
-  @media (max-width: #{$docs-breakpoint}) {
-    font-size: 1.25rem / 1.2;
-    width: calc(100% + #{$space-xl});
-    padding: $space-s 0;
-  }
-}
-
 // Remove extra margins from all headers
-header[class^="rsg--header"] {
-  margin: 0;
-}
+// header[class^="rsg--header"] {
+//   margin: 0;
+// }
 
 // Links inside h1
-div[class^="rsg--wrapper"] > h1[class^="rsg--heading"] a {
-  color: $blue;
-  letter-spacing: -1px;
-  &:hover {
-    text-decoration: none;
-    cursor: default;
-  }
+[class^="rsg--heading"], [class^="rsg--heading"] a {
+  color: var(--heading-color) !important;
 }
 
-// Heading, level 2
-h2[class^="rsg--heading"] {
-  border-bottom: 1px solid $docs-grey;
-  padding-bottom: $space-s;
-  margin: $space-s 0 $space-xs;
-  font-size: 1.25rem;
-  line-height: $line-height-s;
-  letter-spacing: -0.5px;
-  width: 100%;
-  @media (max-width: #{$docs-breakpoint}) {
-    font-size: 1.25rem / 1.3;
-  }
-  @media (max-width: #{$docs-breakpoint-small}) {
-    font-size: 1.25rem / 1.6;
-  }
-  a {
-    color: $docs-color-heading;
-  }
-}
-
-// Heading, level 3
-h3[class^="rsg--heading"],
-h3[class^="rsg--heading"] a {
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: auto;
-  font-weight: 300;
-  line-height: $line-height-m;
-  margin: 0 0 $space-l;
-  font-size: 1.125rem;
-  color: $docs-color-text;
-  @media (max-width: #{$docs-breakpoint}) {
-    font-size: 1.125rem / 1.2;
-    margin: 0 0 $space-m;
-  }
-}
-
-// Heading, level 4
-h4[class^="rsg--heading"],
-h4[class^="rsg--heading"] a {
-  font-weight: 600;
-  letter-spacing: 0;
-  margin: $space-l 0 $space-m;
-  font-size: 1.125rem;
-  line-height: $line-height-s;
-  color: $docs-color-heading;
-}
-
-// Paragraphs
-p[class^="rsg--para"] {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $docs-color-text;
-  margin-bottom: $space-s;
-  line-height: $line-height-m;
-  strong a[class^="rsg--link"] {
-    font-weight: 600;
-  }
-  code {
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-    background: tint($docs-grey, 75%);
-    color: shade($dark, 20%);
-    padding: $space-xx-small;
-    border-radius: $radius-default;
-    font-size: 87.5%;
-  }
-  a {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-  }
-  pre + & {
-    margin-top: $space-s;
-  }
+// // Paragraphs
+html, body, code, [class^="rsg--para"] {
+  color: var(--text-color) !important;
 }
 
 // Type layout adjustments
@@ -209,39 +78,35 @@ td[class^="rsg--cell"] p {
 
 // Sidebar logo
 div[class^="rsg--logo"] {
-  border-bottom: 1px solid rgba($light, 0.1);
+  border-bottom: 1px solid var(--nav-color);
   h1 {
-    font-family: $font-heading;
-    color: tint($blue, 90%);
-    font-size: 1.1rem;
-    margin: $space-m 0 $space-s;
+    color: var(--nav-color-active);
+    font-size: theme('fontSize.lg') !important;
+    margin-top: theme('spacing.5');
   }
 }
 
 // Sidebar version
 p[class^="rsg--version"] {
-  @include inset-squish-space($space-xs);
-  margin: $space-xs 0 0;
-  color: $blue;
-  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
-  font-weight: 400;
   display: inline-block;
-  line-height: $line-height-xs;
-  border: 1px solid $blue;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.875rem;
-  border-radius: $radius-default;
+  padding: theme('spacing.1') theme('spacing.2');
+  margin-top: theme('spacing.3');
+  color: var(--nav-color);
+  line-height: theme('lineHeight.none');
+  border: 1px solid var(--nav-color);
+  letter-spacing: theme('letterSpacing.wide');
+  font-size: theme('fontSize.sm');
+  border-radius: theme('borderRadius.sm');
 }
 
 // Sidebar search
 div[class^="rsg--search"] input {
-  @include inset-squish-space($space-s);
-  color: $light;
+  padding: theme('spacing.2') theme('spacing.3');
+  color: var(--nav-color-active);
   border: 1px solid transparent;
-  background: mix($blue, $dark, 20%);
+  background: theme('colors.blue-burn');
   &:focus {
-    border: 1px solid $blue;
+    border: 1px solid theme('colors.blue');
     &::-webkit-textfield-decoration-container {
       display: none !important;
     }
@@ -249,25 +114,22 @@ div[class^="rsg--search"] input {
       display: none !important;
     }
   }
-  &::-webkit-input-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
-  }
-  &:-ms-input-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
+  &::-webkit-input-placeholder, &:-ms-input-placeholder {
+    color: theme('colors.blue-fade');
   }
   &::-moz-placeholder {
-    color: rgba(mix($light, $blue, 50%), 0.35);
+    color: theme('colors.blue-fade');
     opacity: 1;
   }
 }
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: $dark;
-  color: $light;
+  background: var(--nav-bg);
+  color: var(--nav-color);
   border: 0;
-  @media (max-width: #{$docs-breakpoint}) {
-    padding-bottom: $space-l;
+  @media (max-width: theme('screens.md')) {
+    padding-bottom: theme('spacing.12');
   }
 
  
@@ -296,18 +158,18 @@ div[class^="rsg--sidebar"] {
   a[class^="rsg--link"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding: $space-xx-small $space-m;
+    padding: theme('spacing.1') theme('spacing.6');
     font-weight: 500;
-    color: $gray-500;
+    color: var(--nav-color);
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover {
-      color: $gray-300;
+      color: var(--nav-color-active)
     }
     &:active {
-      color: $gray-300;
+      color: var(--nav-color-active)
     }
   }
 
@@ -318,7 +180,7 @@ div[class^="rsg--sidebar"] {
     }
     & > a,
     & > a:hover {
-      color: tint($blue, 80%);
+      color: var(--nav-color-active)
     }
   }
 
@@ -328,16 +190,16 @@ div[class^="rsg--sidebar"] {
 
     // Sidebar sub-list
     ul {
-      padding-left: $space-s;
-      line-height: $line-height-s;
-      @media (max-width: #{$docs-breakpoint-small}) {
-        padding: 0 0 0 $space-l;
+      padding-left: theme('spacing.4');
+      line-height: theme('lineHeight.snug');
+      @media (max-width: #{theme('screens.sm')}) {
+        padding: 0 0 0 theme('spacing.12');
         width: 90%;
 
         // Sidebar sub-list item
         li {
           display: inline;
-          line-height: $line-height-m;
+          line-height: theme('lineHeight.relaxed');
         }
       }
 
@@ -347,9 +209,9 @@ div[class^="rsg--sidebar"] {
         font-weight: 400;
         -webkit-font-smoothing: subpixel-antialiased;
         -moz-osx-font-smoothing: auto;
-        @media (max-width: #{$docs-breakpoint-small}) {
+        @media (max-width: #{theme('screens.sm')}) {
           float: left;
-          padding: 0 $space-xs 0 0;
+          padding: 0 theme('spacing.2') 0 0;
         }
       }
     }
@@ -361,16 +223,14 @@ div[class^="rsg--sidebar"] {
 
 // Previews of the components
 div[class^="rsg--preview"] {
-  padding: $space-l / 1.2;
-  background-color: $gray-100;
-  border: 1px solid $gray-300;
-  box-shadow: inset 0 0 $space-xs rgba($dark, 0.05);
-  margin: $space-s 0 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
   border-radius: 0;
   display: block;
   width: 100%;
-  border-top-left-radius: $radius-default;
-  border-top-right-radius: $radius-default;
+  border-top-left-radius: theme('borderRadius.sm');
+  border-top-right-radius: theme('borderRadius.sm');
 }
 
 // If you edit the component categories, you have to edit
@@ -399,7 +259,7 @@ div[data-preview]:after {
 // Code tabs and table
 div[class^="rsg--tabs"],
 table[class^="rsg--table"] {
-  margin-bottom: $space-s;
+  margin-bottom: theme('spacing.4');
   overflow-x: auto;
 }
 thead[class^="rsg--tableHead"] {
@@ -410,9 +270,9 @@ thead[class^="rsg--tableHead"] {
 pre[class^="rsg--pre"],
 .vueds-html.cm-s-night.CodeMirror,
 .react-codemirror2 .CodeMirror.CodeMirror {
-  background: mix($blue, $dark, 10%);
-  border-bottom-left-radius: $radius-default;
-  border-bottom-right-radius: $radius-default;
+  background: theme('colors.black');
+  border-bottom-left-radius: theme('borderRadius.sm');
+  border-bottom-right-radius: theme('borderRadius.sm');
   box-sizing: border-box;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
@@ -421,10 +281,10 @@ pre[class^="rsg--pre"],
   font-family: Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 1rem;
   margin: 0;
-  min-height: $space-xxl / 1.5;
-  margin-bottom: $space-m;
-  color: $light;
-  padding: $space-m;
+  min-height: theme('spacing.48') / 1.5;
+  margin-bottom: theme('spacing.6');
+  color: theme('colors.light');
+  padding: theme('spacing.6');
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal;
@@ -433,13 +293,13 @@ pre[class^="rsg--pre"],
     overflow: hidden;
   }
   code {
-    color: $light;
+    color: theme('colors.light');
   }
 }
 
 // HTML preview needs some padding adjustments to match Styleguidist
 .vueds-html.cm-s-night.CodeMirror {
-  padding-left: $space-m - 4px;
+  padding-left: theme('spacing.6') - 4px;
 }
 
 // VUE & HTML Code tabs
@@ -447,33 +307,32 @@ div[class^="rsg--tab"] {
   position: relative;
   .vueds-tabs {
     z-index: 5;
-    border-radius: $radius-default;
-    box-shadow: 0 2px 8px rgba($dark, 0.8);
+    border-radius: theme('borderRadius.sm');
+    box-shadow: 0 2px 8px theme('colors.gray.800');
     overflow: hidden;
     position: absolute;
-    top: $space-m;
-    right: $space-m;
+    top: theme('spacing.6');
+    right: theme('spacing.6');
     .vueds-tab {
       border: 0;
       margin: 0;
-      letter-spacing: $spacing-l;
+      letter-spacing: theme('letterSpacing.tight');
       font-size: 1rem;
       font-weight: 400;
       font-family: $font-text;
-      line-height: $line-height-s;
-      @include inset-squish-space($space-s);
+      line-height: theme('lineHeight.snug');
+      padding: theme('spacing.4');
       cursor: pointer;
-      background: mix($blue, $dark, 50%);
-      color: $light;
+      background: theme('colors.blue-burn');
+      color: theme('colors.light');
       &:active {
-        background: mix($blue, $dark, 45%);
+        background: theme('colors.blue');
       }
       &:focus {
         outline: none;
       }
       &--active {
-        background: mix($blue, $dark, 40%);
-        box-shadow: inset 0 2px 8px rgba($dark, 0.2);
+        background: theme('colors.blue');
       }
     }
   }
@@ -503,7 +362,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-tag,
 .hljs-tag,
 .hljs-name {
-  color: $light !important;
+  color: theme('colors.light') !important;
 }
 .hljs-attribute,
 .hljs-keyword,
@@ -511,31 +370,24 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-operator,
 .cm-s-night span.cm-number,
 .cm-s-night span.cm-attribute {
-  color: $yellow !important;
+  color: theme('colors.yellow') !important;
 }
 .cm-s-night span.cm-string,
 .hljs-string {
-  color: lighten($docs-status-ready, 20%) !important;
+  color: theme('colors.orange-fade') !important;
 }
 
-// Code highlighting elsewhere
-span[class^="rsg--type"],
-code[class^="rsg--code"] {
-  font-family: $font-mono;
-  color: $red !important;
-  border: 1px solid $gray-300;
-}
 span[class^="rsg--name"] code[class^="rsg--code"],
 code.name {
   font-weight: 700;
-  color: shade($dark, 50%);
+  color: var(--text-color);
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
 code.type {
-  background: tint($docs-grey, 75%);
-  color: shade($dark, 20%);
-  padding: $space-xx-small;
-  border-radius: $radius-default;
+  background: theme('colors.grey');
+  color: var(--text-color);
+  padding: theme('spacing.1');
+  border-radius: theme('borderRadius.sm');
 }
 
 /* COMPONENT STATUS LABELS
@@ -556,46 +408,45 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 
 // Status label is shown in top right corner for each component
 .status {
-  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   order: 1;
   align-self: flex-end;
   cursor: help;
-  line-height: $line-height-xs;
-  background: tint($docs-grey, 50%);
-  padding: $space-xs $space-s $space-xs/1.2;
+  line-height: theme('lineHeight.none');
+  background: theme('colors.gray.600');
+  padding: theme('spacing.2') theme('spacing.4') theme('spacing.2')/1.2;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.875rem;
-  border-radius: $radius-default;
-  color: $dark;
+  border-radius: theme('borderRadius.sm');
+  color: theme('colors.dark');
   position: absolute;
-  right: $space-xl;
-  top: $space-xl * 1.2;
+  right: theme('spacing.24');
+  top: theme('spacing.32');
   z-index: 2;
   @media (max-width: 1300px) {
-    top: $space-xl;
+    top: theme('spacing.24');
   }
-  @media (max-width: #{$docs-breakpoint}) {
-    top: $space-l * 1.2;
-    right: $space-m;
+  @media (max-width: #{theme('screens.md')}) {
+    top: theme('spacing.16');
+    right: theme('spacing.6');
   }
   &-ready {
-    background: $docs-status-ready;
-    color: $light;
+    background: theme('colors.orange');
+    color: theme('colors.light');
   }
   &-review,
   &-under-review {
-    background: $yellow;
-    color: $dark;
+    background: theme('colors.yellow');
+    color: theme('colors.dark');
   }
   &-prototype {
-    background: $blue;
-    color: $light;
+    background: theme('colors.blue');
+    color: theme('colors.light');
   }
   &-deprecated {
-    background: $blue;
-    color: $light;
+    background: theme('colors.blue');
+    color: theme('colors.light');
   }
 }
 
@@ -606,7 +457,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 tr {
   transition: background-color 0.1s ease;
   &:hover {
-    background: rgba($light, 0.3);
+    background: theme('colors.light');
   }
 }
 
@@ -615,31 +466,31 @@ table[class^="rsg--table"] {
   border-spacing: 0;
   width: 100%;
   th {
-    padding: $space-s $space-l $space-s $space-s;
+    padding: theme('spacing.4') theme('spacing.12') theme('spacing.4') theme('spacing.4');
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
-    background: $light;
-    color: tint($blue, 10%);
+    background: theme('colors.light');
+    color: theme('colors.blue');
     text-align: left;
   }
   th[class^="rsg--cellHeading"],
   td {
-    padding: $space-s $space-l $space-s $space-s;
+    padding: theme('spacing.4') theme('spacing.12') theme('spacing.4') theme('spacing.4');
     background: transparent;
   }
   td {
     font-size: 1rem;
-    padding: $space-s $space-l $space-s $space-s;
+    padding: theme('spacing.4') theme('spacing.12') theme('spacing.4') theme('spacing.4');
     &:first-child {
       font-weight: 700;
       white-space: nowrap;
     }
   }
   tr {
-    border-bottom: 1px solid tint($docs-grey, 50%);
+    border-bottom: 1px solid theme('colors.grey');
   }
   tbody tr:last-child {
     border-bottom: 0;
@@ -648,12 +499,12 @@ table[class^="rsg--table"] {
 
 thead[class^="rsg--thead"] {
   th:first-child {
-    border-top-left-radius: $radius-default;
-    border-bottom-left-radius: $radius-default;
+    border-top-left-radius: theme('borderRadius.sm');
+    border-bottom-left-radius: theme('borderRadius.sm');
   }
   th:last-child {
-    border-top-right-radius: $radius-default;
-    border-bottom-right-radius: $radius-default;
+    border-top-right-radius: theme('borderRadius.sm');
+    border-bottom-right-radius: theme('borderRadius.sm');
   }
 }
 
@@ -687,4 +538,30 @@ ul a[href*="/#/Design Tokens/FontSize"],
 ul a[href*="/#/Design Tokens/All"],
 ul a[href*="/#/Private Components"] {
   display: none !important;
+}
+
+
+h1, h1 > * { font-size: theme('fontSize.4xl') !important }
+h2, h2 > * { font-size: theme('fontSize.3xl') !important }
+h3, h3 > * { font-size: theme('fontSize.2xl') !important }
+h4, h4 > * { font-size: theme('fontSize.xl') !important }
+h5, h5 > * { font-size: theme('fontSize.lg') !important }
+code {
+  font-family: $font-mono !important;
+  color: theme('colors.red') !important;
+  font-weight: theme('fontWeight.thin') !important;
+  background-color: var(--bg-color) !important;
+  padding: theme('spacing.px') theme('spacing.1') !important;
+  display: inline-block;
+  font-size: theme('fontSize.sm') !important;
+  border-radius: theme('borderRadius.none')
+}
+.page {
+  @include pagestyle;
+}
+
+input {
+  background: var(--bg-color);
+  padding: theme('spacing.1') theme('spacing.2');
+  border-radius: theme('borderRadius.sm')
 }

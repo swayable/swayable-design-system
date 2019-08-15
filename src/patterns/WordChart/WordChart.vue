@@ -47,9 +47,6 @@ export default {
   name: 'WordChart',
   status: 'prototype',
   release: '0.1.0',
-  model: {
-    prop: 'active',
-  },
   props: {
     /**
      * The body of text word incidence will be measured in
@@ -196,7 +193,6 @@ export default {
   &:hover { filter: brightness(120%) }
 }
 </style>
-
 
 <docs>
   ```jsx
