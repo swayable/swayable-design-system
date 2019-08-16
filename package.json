@@ -31,7 +31,7 @@
     "theo:onchange": "onchange \"./src/tokens/*.yml\" -- npm run theo",
     "test": "npm-run-all theo unit",
     "commit": "yarn lint --fix && git-cz",
-    "release": "standard-version"
+    "release": "npm-run-all theo node:build:system && git commit -a -m 'chore(pre-release): build system distribution' && standard-version || standard-version"
   },
   "husky": {
     "hooks": {
