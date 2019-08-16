@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/swayable/swayable-design-system/compare/v0.2.1...v0.2.2) (2019-08-16)
+
+
+### Bug Fixes
+
+* **navbarstyle:** remove extra right padding on nav items which are not last ([17e85dd](https://github.com/swayable/swayable-design-system/commit/17e85dd))
+
+
+
 ### [0.2.1](https://github.com/swayable/swayable-design-system/compare/v0.2.0...v0.2.1) (2019-08-15)
 
 
