@@ -142,10 +142,10 @@ export default {
   }
 
   // Scrollbar space
-  .nav-bar-right > .nav-item:last-of-type {
+  .nav-bar-right > .nav-item:last-child {
     padding-right: theme('spacing.6') !important;
   }
-  .nav-bar-right > .nav-drop:last-of-type > .nav-item {
+  .nav-bar-right > .nav-drop:last-child > .nav-item {
     padding-right: theme('spacing.5') !important;
   }
 
