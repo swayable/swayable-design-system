@@ -5,40 +5,27 @@
   >
     <header>
       <NavBar>
-        <template #left>
-          <NavItem
-            name='Template'
-            href='/#/Templates/Index'
-            :active='true'
-          />
-          <NavItem
-            name='Documentation'
-            href='/#/'
-          />
-        </template>
-        <template>
-          <NavDrop>
-            Account &nbsp;
-            <Icon
-              name='chevron-down'
-              size='small'
-              aria-label='Expand Menu'
-            />
-            <template #dropdown>
-              <NavItem name='Profile' />
-              <NavItem name='Settings' />
-              <hr class='border-t m-0'>
-              <NavItem name='Logout' />
-            </template>
-          </NavDrop>
-        </template>
+        <NavGroup class='flex-grow'>
+          <NavLogo />
+          <NavItem>Home</NavItem>
+          <NavItem>About</NavItem>
+        </NavGroup>
+        <NavDrop>
+          Account
+          <template #dropdown>
+            <NavItem name='Profile' />
+            <NavItem name='Settings' />
+            <hr class='border-t m-0'>
+            <NavItem name='Logout' />
+          </template>
+        </NavDrop>
       </NavBar>
       <NavBar
         alt
         noheading
       >
-        <template #left>
-          <NavDrop>
+        <NavGroup>
+          <NavDrop align='left'>
             Results
             <template #dropdown>
               <NavItem name='Qualitative' />
@@ -50,7 +37,7 @@
             Design
           </NavItem>
           <NavItem>Audience</NavItem>
-        </template>
+        </NavGroup>
       </NavBar>
     </header>
     <section class='p-4 md:p-6'>

@@ -6,21 +6,24 @@
     <NavItem
       type='button'
       aria-label='Expand Menu'
+      :class='`pr-1 sm:pr-2 md:pr-3 lg:pr-4`'
       @click='toggleOpen'
       v-on='$listeners'
     >
-      <slot>{{ name }}</slot>
-      <span class='ml-1'>
-        <Icon
-          name='chevron-down'
-          size='small'
-        />
+      <span class='flex'>
+        <slot>{{ name }}</slot>
+        <span class='ml-1'>
+          <Icon
+            name='chevron-down'
+            size='small'
+          />
+        </span>
       </span>
     </NavItem>
     <div
       v-show='open'
       ref='navMenuDropdown'
-      class='w-screen md:w-auto min-w-full absolute flex-col z-30 shadow nav-drop-dropdown'
+      :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 shadow ${align}-0 nav-drop-dropdown`'
     >
       <slot name='dropdown'>
         <NavItem
@@ -64,6 +67,14 @@ export default {
       type: Array,
       default: () => [],
     },
+    /**
+     * Dropdown originates from the right or left
+     */
+    align: {
+      type: String,
+      default: 'right',
+      validator: value => ['right', 'left'].includes(value),
+    },
   },
   data() {
     return {
@@ -102,22 +113,26 @@ export default {
 <docs>
   ```jsx
   <NavBar>
-    <NavItem href='/' name="Link" />
-    <NavDrop name="Menu" :navItems='[
-        { name: "Item 1" },
-        { name: "Item 2", active: true },
-        { name: "Item 3" },
-      ]'
-    />
-    <NavDrop>
-      Account
-      <template #dropdown>
-        <NavItem name="Profile" />
-        <NavItem name="Settings" />
-        <hr class="border-t m-0" />
-        <NavItem name="Logout" />
-      </template>
-    </NavDrop>
+    <NavGroup class='flex-grow'>
+      <NavLogo />
+    </NavGroup>
+    <NavGroup>
+      <NavDrop name="Menu" :navItems='[
+          { name: "Item 1" },
+          { name: "Item 2", active: true },
+          { name: "Item 3" },
+        ]'
+      />
+      <NavDrop>
+        Account
+        <template #dropdown>
+          <NavItem name="Profile" />
+          <NavItem name="Settings" />
+          <hr class="border-t m-0" />
+          <NavItem name="Logout" />
+        </template>
+      </NavDrop>
+    </NavGroup>
   </NavBar>
   ```
 </docs>

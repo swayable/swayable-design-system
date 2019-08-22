@@ -26,6 +26,11 @@ const sizeMap = {
   '12': '3rem',
   '16': '4rem',
   '20': '5rem',
+  '1/2': '50%',
+  '1/3': '33.3333%',
+  '2/3': '66.6666%',
+  '1/4': '25%',
+  '3/4': '75%',
 }
 
 const colors = _reduce(
@@ -48,6 +53,8 @@ module.exports = {
     extend: {
       minHeight: sizeMap,
       minWidth: sizeMap,
+      maxHeight: sizeMap,
+      maxWidth: sizeMap,
       inset: sizeMap,
       colors,
     },
