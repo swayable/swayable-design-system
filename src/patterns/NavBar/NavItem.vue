@@ -4,11 +4,13 @@
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
-    class='px-2 relative h-full whitespace-no-wrap flex font-medium items-center nav-item'
+    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative h-16 whitespace-no-wrap flex font-medium items-stretch max-w-full'
     v-on='$listeners'
   >
-    <span class='flex flex-grow'>
-      <slot>{{ name }}</slot>
+    <span class='flex flex-grow max-w-full relative items-center'>
+      <span :class='`flex-grow max-w-full items-center flex-col ${interactionClass}`'>
+        <slot>{{ name }}</slot>
+      </span>
     </span>
   </component>
 </template>
@@ -23,21 +25,19 @@ export default {
   release: '0.1.0',
   props: {
     /**
-     * The html element name used for the nav item
+     * The html element
      */
     type: {
       type: String,
-      default: 'a',
     },
     /**
-     * If provided, type will default to `router-link`
+     * Router link
      */
     to: {
       type: Object,
-      default: null,
     },
     /**
-     * The destination address
+     * Web link
      */
     href: {
       type: String,
@@ -61,15 +61,29 @@ export default {
     title: {
       type: String,
     },
+    /**
+     * Removes hover/active/focus filter.
+     */
+    noninteractive: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
+    interactionClass() {
+      return this.noninteractive === false
+        ? 'interactive'
+        : ''
+    },
     smartType() {
-      if (this.type === 'a' && this.to !== null) return 'router-link'
-      return this.type
+      if (this.type) return this.type
+      if (this.to) return 'router-link'
+      if (this.href) return 'a'
+      return 'span'
     },
     navigation() {
       if (this.smartType === 'router-link') return { to: (this.to || this.href) }
-      if (this.href) return { href: this.href }
+      if (this.smartType === 'a') return { href: this.href }
       return {}
     },
   },
@@ -80,9 +94,9 @@ export default {
   ```jsx
   <div>
     <NavBar>
-      <NavItem href='/#/' name='Item 1' :active='true' />
-      <NavItem href='/#/' name='Item 2' title='The only item with a title' />
-      <NavItem href='/#/'>Item 3</NavItem>
+      <NavItem name='Item 1' :active='true' />
+      <NavItem name='Item 2' title='The only item with a title' noninteractive />
+      <NavItem>Item 3</NavItem>
     </NavBar>
   </div>
   ```

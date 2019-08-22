@@ -9,24 +9,17 @@ body,
 }
 
 :root {
-  --logo-small: url(https://images.swayable.com/logos/motif.svg);
-  --logo-dark: url(https://images.swayable.com/logos/dark.svg);
-  --logo-light: url(https://images.swayable.com/logos/light.svg);
   --bg-color: theme('colors.light');
   --text-color: theme('colors.black');
   --heading-color: theme('colors.dark');
   --link-color: theme('colors.blue');
 
-  --logo-url: var(--logo-small);
-  --logo-width: 40px;
 
   --filter-dim: brightness(50%);
   --filter-bright: brightness(150%);
 }
 
-
 [data-theme='dark'] {
-  --logo-url: var(--logo-url);
   --bg-color: theme('colors.black');
   --heading-color: theme('colors.white');
   --text-color: theme('colors.white');

@@ -5,7 +5,7 @@
   >
     <header>
       <NavBar>
-        <template #left>
+        <NavGroup>
           <NavItem
             name='Template'
             href='/#/Templates/Index'
@@ -15,15 +15,10 @@
             name='Documentation'
             href='/#/'
           />
-        </template>
-        <template>
+        </NavGroup>
+        <NavGroup>
           <NavDrop>
-            Account &nbsp;
-            <Icon
-              name='chevron-down'
-              size='small'
-              aria-label='Expand Menu'
-            />
+            Account
             <template #dropdown>
               <NavItem name='Profile' />
               <NavItem name='Settings' />
@@ -31,7 +26,7 @@
               <NavItem name='Logout' />
             </template>
           </NavDrop>
-        </template>
+        </NavGroup>
       </NavBar>
     </header>
     <section class='p-4 md:p-6 text-center'>
