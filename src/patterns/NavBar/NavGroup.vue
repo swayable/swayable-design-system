@@ -13,8 +13,8 @@
  */
 export default {
   name: 'NavGroup',
-  status: 'under-review',
-  release: '0.1.0',
+  status: 'ready',
+  release: '0.3.0',
   props: {
     /**
      * The html element used
