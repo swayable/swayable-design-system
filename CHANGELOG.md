@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/swayable/swayable-design-system/compare/v0.2.3...v0.3.0) (2019-08-22)
+
+
+### Features
+
+* **navgroup:** improvements to navbar to make it more flexible ([#17](https://www.pivotaltracker.com/story/show/17)) ([c48597b](https://github.com/swayable/swayable-design-system/commit/c48597b))
+
+
+
 ### [0.2.3](https://github.com/swayable/swayable-design-system/compare/v0.2.2...v0.2.3) (2019-08-16)
 
 
