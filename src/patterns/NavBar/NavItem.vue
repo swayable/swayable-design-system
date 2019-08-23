@@ -4,7 +4,7 @@
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
-    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative h-16 whitespace-no-wrap flex font-medium items-stretch max-w-full min-w-12'
+    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative h-16 whitespace-no-wrap flex font-medium items-stretch max-w-full'
     v-on='$listeners'
   >
     <span class='flex flex-grow max-w-full relative items-center'>
