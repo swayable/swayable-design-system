@@ -4,7 +4,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: theme('fonts.body');
+  font-family: theme('fonts.body'), sans-serif;
+}
+
+pre, code { 
+  font-family: theme('fonts.mono'), monospace;
+
 }
 
 :root {
@@ -31,7 +36,7 @@ body {
   a, .link { color: var(--link-color) }
 
   h1, h2, h3, h4, h5 .heading {
-    font-family: theme('fonts.heading');
+    font-family: theme('fonts.heading'), sans-serif;;
     color: var(--heading-color);
   }
 }
