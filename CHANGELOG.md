@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/swayable/swayable-design-system/compare/v0.3.0...v0.3.1) (2019-08-23)
+
+
+### Bug Fixes
+
+* **fonts:** include webFontLoader in system build ([79efe66](https://github.com/swayable/swayable-design-system/commit/79efe66))
+
+
+
 ## [0.3.0](https://github.com/swayable/swayable-design-system/compare/v0.2.3...v0.3.0) (2019-08-22)
 
 
