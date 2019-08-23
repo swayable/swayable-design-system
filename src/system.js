@@ -4,6 +4,7 @@
  *
  * You should & can add your own dependencies here if needed.
  */
+import '@/utils/webFontLoader'
 
 // Define contexts to require
 const contexts = [

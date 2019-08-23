@@ -6,6 +6,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: theme('fonts.body');
 }
 
 :root {
@@ -13,7 +14,6 @@ body,
   --text-color: theme('colors.black');
   --heading-color: theme('colors.dark');
   --link-color: theme('colors.blue');
-
 
   --filter-dim: brightness(50%);
   --filter-bright: brightness(150%);
