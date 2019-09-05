@@ -1,7 +1,7 @@
 <template>
   <NavItem
     v-bind='props'
-    class='bg-contain bg-center bg-no-repeat nav-logo p-0 mx-2 sm:mx-3 md:mx-4 lg:mx-5'
+    class='nav-logo p-0 mx-2 sm:mx-3 md:mx-4 lg:mx-5 bg-contain bg-center bg-no-repeat self-center'
     noninteractive
   />
 </template>
@@ -50,6 +50,7 @@ export default {
 <style lang="scss">
 .nav-logo {
   width: var(--logo-width);
+  height: 30px !important;
   background-image: var(--logo-url);
 }
 </style>

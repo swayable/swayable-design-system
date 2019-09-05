@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    class='flex min-h-16 nav-group'
+    class='flex h-full nav-group'
   >
     <slot />
   </component>

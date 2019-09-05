@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    :class='`min-h-16 flex items-stretch justify-between shadow z-20 nav-bar ${altClass}`'
+    :class='`flex items-stretch justify-between shadow z-20 nav-bar ${altClass}`'
   >
     <slot />
   </component>
@@ -49,7 +49,7 @@ export default {
   --logo-dark: url(https://images.swayable.com/logos/dark.svg);
   --logo-light: url(https://images.swayable.com/logos/light.svg);
   --logo-url: var(--logo-small);
-  --logo-width: 40px;
+  --logo-width: 33px;
   --nav-bg: theme('colors.dark');
   --nav-color: theme('colors.grey');
   --nav-color-active: theme('colors.white');
@@ -70,7 +70,7 @@ export default {
 .nav-bar {
   @media (min-width: 640px) {
     --logo-url: var(--logo-dark);
-    --logo-width: 240px;
+    --logo-width: 180px;
   }
 
   &.nav-alt{

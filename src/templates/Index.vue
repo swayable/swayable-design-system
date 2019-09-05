@@ -21,6 +21,7 @@
         </NavDrop>
       </NavBar>
       <NavBar
+        class='h-16'
         alt
         noheading
       >

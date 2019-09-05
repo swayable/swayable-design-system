@@ -6,11 +6,11 @@
     <NavItem
       type='button'
       aria-label='Expand Menu'
-      :class='`pr-1 sm:pr-2 md:pr-3 lg:pr-4`'
+      :class='`pr-1 sm:pr-2 md:pr-3 lg:pr-4 h-full`'
       @click='toggleOpen'
       v-on='$listeners'
     >
-      <span class='flex'>
+      <span class='flex items-center'>
         <slot>{{ name }}</slot>
         <span class='ml-1 flex'>
           <Icon
