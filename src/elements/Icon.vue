@@ -13,7 +13,8 @@ const req = require.context('@/assets/icons/', true, /^\.\/.*\.svg$/)
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. They can act as wayfinding tools to help users more
- * easily understand where they are in the product.
+ * easily understand where they are in the product. They come in three sizes,
+ * and respond to text color utility classes.
  */
 export default {
   name: 'Icon',
@@ -76,43 +77,26 @@ export default {
 
 <docs>
   ```jsx
-  <div>
-    <div class="mb-5 flex justify-around flex-wrap flex-grow">
-      <div class="flex justify-around">
-        <span class="px-3">Chevron</span>
-        <Icon class="rotate-1/4" name="chevron" />
-      </div>
-      <div class="flex justify-around">
-        <span class="px-3">Menu</span>
-        <Icon name="menu" fill="text-blue" />
-      </div>
-      <div class="flex">
-        <span class="px-3">Respondents</span>
-        <Icon name="respondents" />
-      </div>
-      <div class="flex">
-        <span class="px-3">Tests</span>
-        <Icon name="tests" />
-      </div>
-      <div class="flex">
-        <span class="px-3">Library</span>
-        <Icon name="library" />
-      </div>
+  <div class="my-5 flex justify-around flex-wrap flex-grow">
+    <div class="flex items-center">
+      <span class="px-3">Chevron</span>
+      <Icon name="chevron" size="small" class="rotate-1/4" />
     </div>
-    <h3>Sizes</h3>
-    <div class="mb-5 flex justify-around flex-wrap flex-grow">
-      <div class="flex items-center">
-        <span class="px-3">Small</span>
-        <Icon name="tests" size="small" />
-      </div>
-      <div class="flex items-center">
-        <span class="px-3">Medium</span>
-        <Icon name="tests" />
-      </div>
-      <div class="flex items-center">
-        <span class="px-3">Large</span>
-        <Icon name="tests" size="large" />
-      </div>
+    <div class="flex items-center">
+      <span class="px-3">Menu</span>
+      <Icon name="menu" />
+    </div>
+    <div class="flex items-center">
+      <span class="px-3">Respondents</span>
+      <Icon name="respondents" size="large" />
+    </div>
+    <div class="flex items-center">
+      <span class="px-3">Tests</span>
+      <Icon name="tests" />
+    </div>
+    <div class="flex items-center">
+      <span class="px-3">Library</span>
+      <Icon name="library" class="text-blue" />
     </div>
   </div>
   ```
