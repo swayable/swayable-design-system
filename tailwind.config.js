@@ -1,3 +1,4 @@
+const _map = require('lodash/map')
 const _reduce = require('lodash/reduce')
 const _filter = require('lodash/filter')
 
@@ -58,5 +59,23 @@ module.exports = {
       inset: sizeMap,
       colors,
     },
+    rotate: {
+      '1/4': '90deg',
+      '1/2': '180deg',
+      '3/4': '270deg',
+    },
   },
+  plugins: [
+    function({ addUtilities, config, e }) {
+      const rotateUtilities = _map(config('theme.rotate'), (value, key) => {
+        return {
+          [`.${e(`rotate-${key}`)}`]: {
+            transform: `rotate(${value})`,
+          },
+        }
+      })
+
+      addUtilities(rotateUtilities)
+    },
+  ],
 }
