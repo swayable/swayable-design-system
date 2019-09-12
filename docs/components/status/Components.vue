@@ -1,41 +1,41 @@
 <template>
   <div>
     <div class='flex'>
-      <span class='w-1/5 flex'>
+      <span class='w-1/5 flex items-center'>
+        <p class='mr-2'>Ready</p>
         <Icon
           :fill='fill.ready'
           name='ready'
           size='small'
         />
-        <p>Ready</p>
       </span>
-      <span class='w-1/5 flex'>
+      <span class='w-1/5 flex items-center'>
+        <p class='mr-2'>Under review</p>
         <Icon
           :fill='fill.review'
           name='review'
           size='small'
         />
-        <p>Under review</p>
       </span>
-      <span class='w-1/5 flex'>
+      <span class='w-1/5 flex items-center'>
+        <p class='mr-2'>Deprecated</p>
         <Icon
           :fill='fill.deprecated'
           name='deprecated'
           size='small'
         />
-        <p>Deprecated</p>
       </span>
-      <span class='w-1/5 flex'>
+      <span class='w-1/5 flex items-center'>
+        <p class='mr-2'>Prototype</p>
         <Icon
           :fill='fill.prototype'
           name='prototype'
           size='small'
         />
-        <p>Prototype</p>
       </span>
-      <span class='w-1/5 flex'>
+      <span class='w-1/5 flex items-center'>
+        <p class='mr-2'>Not applicable</p>
         <span class='w-6 h-6'>—</span>
-        <p>Not applicable</p>
       </span>
     </div>
     <div class='mt-5'>

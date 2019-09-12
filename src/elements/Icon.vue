@@ -2,7 +2,7 @@
   <component
     :is='type'
     :aria-label='ariaLabel'
-    :class='`h-6 w-6 self-center flex justify-center items-center icon ${size}`'
+    :class='`self-center flex justify-center items-center icon ${size}`'
     v-html='svg'
   />
 </template>
@@ -62,37 +62,58 @@ export default {
     },
   },
   data() {
+    const sizeNum = {
+      small: '14',
+      medium: '24',
+      large: '48',
+    }[this.size]
     return {
-      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg class="fill-current ${this.fill}" `),
+      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg viewBox="0 0 24 24" height="${sizeNum}" width="${sizeNum}" height="${sizeNum}" class="fill-current ${this.fill} inline-block`),
     }
   },
 }
 </script>
 
-<style lang="scss">
-.icon {
-  &.large svg {
-    width: 48px;
-    height: 48px;
-  }
-  &.medium svg {
-    width: 24px;
-    height: 24px;
-  }
-  &.small svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-</style>
-
 <docs>
   ```jsx
   <div>
-    <Icon name="ready" aria-label="Component is ready" fill="#7cb518" />
-    <Icon name="review" fill="rgb(255,186,10)" />
-    <Icon name="deprecated" fill="rgb(235,59,36)" />
-    <Icon name="prototype" fill="rgb(37,138,239)" />
+    <div class="mb-5 flex justify-around flex-wrap flex-grow">
+      <div class="flex justify-around">
+        <span class="px-3">Chevron</span>
+        <Icon class="rotate-1/4" name="chevron" />
+      </div>
+      <div class="flex justify-around">
+        <span class="px-3">Menu</span>
+        <Icon name="menu" fill="text-blue" />
+      </div>
+      <div class="flex">
+        <span class="px-3">Respondents</span>
+        <Icon name="respondents" />
+      </div>
+      <div class="flex">
+        <span class="px-3">Tests</span>
+        <Icon name="tests" />
+      </div>
+      <div class="flex">
+        <span class="px-3">Library</span>
+        <Icon name="library" />
+      </div>
+    </div>
+    <h3>Sizes</h3>
+    <div class="mb-5 flex justify-around flex-wrap flex-grow">
+      <div class="flex items-center">
+        <span class="px-3">Small</span>
+        <Icon name="tests" size="small" />
+      </div>
+      <div class="flex items-center">
+        <span class="px-3">Medium</span>
+        <Icon name="tests" />
+      </div>
+      <div class="flex items-center">
+        <span class="px-3">Large</span>
+        <Icon name="tests" size="large" />
+      </div>
+    </div>
   </div>
   ```
 </docs>

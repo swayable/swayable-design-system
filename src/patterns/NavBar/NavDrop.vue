@@ -12,10 +12,11 @@
     >
       <span class='flex items-center'>
         <slot>{{ name }}</slot>
-        <span class='ml-1 flex'>
+        <span class='ml-2 flex'>
           <Icon
-            name='chevron-down'
+            name='chevron'
             size='small'
+            class='rotate-1/4'
           />
         </span>
       </span>
