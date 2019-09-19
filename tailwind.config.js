@@ -43,9 +43,16 @@ const colors = _reduce(
   {},
 )
 
+const fontSize = _reduce(
+  _filter(designTokens.props, { category: 'font-size' }),
+  (acc, size) => ({ ...acc, [size.token]: size.originalValue }),
+  {},
+)
+
 module.exports = {
   important: '#app',
   theme: {
+    fontSize,
     fontFamily: {
       heading: designTokens.props.font_heading.originalValue,
       body: designTokens.props.font_text.originalValue,

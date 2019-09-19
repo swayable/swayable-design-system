@@ -1,19 +1,19 @@
 <template>
   <div class='font-sizes'>
-    <template v-for='(size, name) in tokens'>
+    <template v-for='token in tokens'>
       <div
-        :key='name'
+        :key='token.name'
         :class='`font mt-5 p-2`'
       >
         <div class='flex items-center'>
           <p>
-            <code>.text-{{ name }}</code>
+            <code>.text-{{ token.name }}</code>
           </p>
           <p class='text-grey-600 ml-2 text-sm'>
-            {{ size }}
+            {{ token.size }}
           </p>
         </div>
-        <p :class='`text-${name} truncate`'>
+        <p :class='`text-${token.name} truncate`'>
           How quickly daft jumping zebras vex!
         </p>
       </div>
@@ -23,7 +23,16 @@
 
 <script>
 import designTokens from '@/assets/tokens/tokens.raw.json'
-import orderBy from 'lodash/orderBy'
+import _filter from 'lodash/fp/filter'
+import _map from 'lodash/fp/map'
+import _orderBy from 'lodash/fp/orderBy'
+import _flow from 'lodash/fp/flow'
+
+const tokens = _flow(
+  _filter(x => x.category === 'font-size'),
+  _map(x => ({ name: x.token, size: x.originalValue })),
+  _orderBy(x => parseFloat(x.size), 'asc')
+)(designTokens.props)
 
 /**
  * This is a reference to [Tailwindcss font sizes](https://tailwindcss.com/docs/font-size/).
@@ -32,20 +41,7 @@ import orderBy from 'lodash/orderBy'
 export default {
   name: 'FontSize',
   data() {
-    return {
-      tokens: {
-        xs: '0.75rem',
-        sm: '0.875rem',
-        base: '1rem',
-        lg: '1.125rem',
-        xl: '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '1.875rem',
-        '4xl': '2.25rem',
-        '5xl': '3rem',
-        '6xl': '4rem',
-      },
-    }
+    return { tokens }
   },
 }
 </script>

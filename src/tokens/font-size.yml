@@ -1,0 +1,38 @@
+# FONT-SIZE TOKENS
+# Use these tokens to set a font-size.
+#
+
+props:
+  size_6xl:
+    token: "6xl"
+    value: "4rem"
+  size_5xl:
+    token: "5xl"
+    value: "3rem"
+  size_4xl:
+    token: "4xl"
+    value: "2.25rem"
+  size_3xl:
+    token: "3xl"
+    value: "1.875rem"
+  size_2xl:
+    token: "2xl"
+    value: "1.5rem"
+  size_xl:
+    token: "xl"
+    value: "1.25rem"
+  size_lg:
+    token: "lg"
+    value: "1.125rem"
+  size_base:
+    token: "base"
+    value: "1rem"
+  size_sm:
+    token: "sm"
+    value: "0.875rem"
+  size_xs:
+    token: "xs"
+    value: "0.75rem"
+global:
+  type: number
+  category: font-size
