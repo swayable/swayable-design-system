@@ -1,7 +1,7 @@
 <template>
   <component
     :is='level'
-    class='heading'
+    class='font-heading font-medium'
   >
     <slot />
   </component>
@@ -36,10 +36,12 @@ export default {
 <docs>
   ```jsx
   <div>
-    <Heading>The quick brown fox</Heading>
-    <Heading level="h2">The quick brown fox</Heading>
-    <Heading level="h3">The quick brown fox</Heading>
-    <Heading level="h4">The quick brown fox</Heading>
+    <Heading level="h1">h1. The Quick Brown Fox</Heading>
+    <Heading level="h2">h2. The Quick Brown Fox</Heading>
+    <Heading level="h3">h3. The Quick Brown Fox</Heading>
+    <Heading level="h4">h4. The Quick Brown Fox</Heading>
+    <Heading level="h5">h5. The Quick Brown Fox</Heading>
+    <Heading level="h6">h6. The Quick Brown Fox</Heading>
   </div>
   ```
 </docs>
