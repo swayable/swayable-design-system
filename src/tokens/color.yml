@@ -42,50 +42,50 @@ props:
     tags: 'Basic'
     order: 0
 
-  color_gray_100: 
-    value: '#f7fafc'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_100: 
+    value: '#F2F2F2'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_200: 
-    value: '#edf2f7'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_200: 
+    value: '#D9D9D9'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_300: 
-    value: '#e2e8f0'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_300: 
+    value: '#BFBFBF'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_400: 
-    value: '#cbd5e0'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_400: 
+    value: '#A7A7A7'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_500: 
-    value: '#a0aec0'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_500: 
+    value: '#8C8C8C'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_600: 
-    value: '#718096'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_600: 
+    value: '#737373'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_700: 
-    value: '#4a5568'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_700: 
+    value: '#595959'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_800: 
-    value: '#2d3748'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_800: 
+    value: '#404040'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
-  color_gray_900: 
-    value: '#1a202c'
-    category: 'color-tailwind'
-    tags: 'Utility,Tailwind'
+  color_grey_900: 
+    value: '#262626'
+    category: 'color-basic'
+    tags: 'Basic'
     order: 100
 
   color_blue:

@@ -75,7 +75,7 @@ export default {
 
   &.nav-alt{
     --nav-bg: theme('colors.light');
-    --nav-color: theme('colors.gray.700');
+    --nav-color: theme('colors.grey.700');
     --nav-color-active: theme('colors.dark');
     --nav-active-filter: var(--filter-dim);
     @media (min-width: 640px) {

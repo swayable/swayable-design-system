@@ -39,7 +39,7 @@
       </span>
     </div>
     <div class='mt-5'>
-      <div class='flex text-gray-600'>
+      <div class='flex text-grey-600'>
         <span
           v-if='show === "all"'
           class='w-1/3'

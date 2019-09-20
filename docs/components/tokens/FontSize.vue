@@ -9,7 +9,7 @@
           <p>
             <code>.text-{{ name }}</code>
           </p>
-          <p class='text-gray-600 ml-2 text-sm'>
+          <p class='text-grey-600 ml-2 text-sm'>
             {{ size }}
           </p>
         </div>
