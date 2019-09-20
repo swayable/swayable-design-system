@@ -226,6 +226,15 @@
       "originalValue": "#ffffff",
       "name": "color_white"
     },
+    "color_grey_100": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(242, 242, 242)",
+      "tags": "Basic",
+      "order": 100,
+      "originalValue": "#F2F2F2",
+      "name": "color_grey_100"
+    },
     "color_green_dark_fade": {
       "type": "color",
       "category": "color-secondary-fade",
@@ -253,6 +262,15 @@
       "originalValue": "#50c88c",
       "name": "color_green_dark"
     },
+    "color_grey_200": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(217, 217, 217)",
+      "tags": "Basic",
+      "order": 100,
+      "originalValue": "#D9D9D9",
+      "name": "color_grey_200"
+    },
     "color_red_dark_burn": {
       "type": "color",
       "category": "color-secondary-burn",
@@ -270,6 +288,15 @@
       "order": 2,
       "originalValue": "#D9CBD9",
       "name": "color_magenta_fade"
+    },
+    "color_grey_300": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(191, 191, 191)",
+      "tags": "Basic",
+      "order": 100,
+      "originalValue": "#BFBFBF",
+      "name": "color_grey_300"
     },
     "color_cyan_burn": {
       "type": "color",
@@ -289,6 +316,15 @@
       "originalValue": "#c8c814",
       "name": "color_yellow"
     },
+    "color_grey_400": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(167, 167, 167)",
+      "tags": "Basic",
+      "order": 100,
+      "originalValue": "#A7A7A7",
+      "name": "color_grey_400"
+    },
     "color_orange_dark_fade": {
       "type": "color",
       "category": "color-secondary-fade",
@@ -306,6 +342,15 @@
       "order": 15,
       "originalValue": "#4D5B53",
       "name": "color_green_light_burn"
+    },
+    "color_grey_500": {
+      "type": "color",
+      "category": "color-basic",
+      "value": "rgb(140, 140, 140)",
+      "tags": "Basic",
+      "order": 100,
+      "originalValue": "#8C8C8C",
+      "name": "color_grey_500"
     },
     "color_azure_light_fade": {
       "type": "color",
@@ -334,14 +379,14 @@
       "originalValue": "#E0C8D6",
       "name": "color_rose_dark_fade"
     },
-    "color_gray_100": {
+    "color_grey_600": {
       "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(247, 250, 252)",
-      "tags": "Utility,Tailwind",
+      "category": "color-basic",
+      "value": "rgb(115, 115, 115)",
+      "tags": "Basic",
       "order": 100,
-      "originalValue": "#f7fafc",
-      "name": "color_gray_100"
+      "originalValue": "#737373",
+      "name": "color_grey_600"
     },
     "color_pink": {
       "type": "color",
@@ -362,14 +407,14 @@
       "originalValue": "#263340",
       "name": "color_dark"
     },
-    "color_gray_200": {
+    "color_grey_700": {
       "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(237, 242, 247)",
-      "tags": "Utility,Tailwind",
+      "category": "color-basic",
+      "value": "rgb(89, 89, 89)",
+      "tags": "Basic",
       "order": 100,
-      "originalValue": "#edf2f7",
-      "name": "color_gray_200"
+      "originalValue": "#595959",
+      "name": "color_grey_700"
     },
     "color_azure": {
       "type": "color",
@@ -380,14 +425,14 @@
       "originalValue": "#3c8cdc",
       "name": "color_azure"
     },
-    "color_gray_300": {
+    "color_grey_800": {
       "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(226, 232, 240)",
-      "tags": "Utility,Tailwind",
+      "category": "color-basic",
+      "value": "rgb(64, 64, 64)",
+      "tags": "Basic",
       "order": 100,
-      "originalValue": "#e2e8f0",
-      "name": "color_gray_300"
+      "originalValue": "#404040",
+      "name": "color_grey_800"
     },
     "color_green_fade": {
       "type": "color",
@@ -398,15 +443,6 @@
       "originalValue": "#D3DFCF",
       "name": "color_green_fade"
     },
-    "color_gray_400": {
-      "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(203, 213, 224)",
-      "tags": "Utility,Tailwind",
-      "order": 100,
-      "originalValue": "#cbd5e0",
-      "name": "color_gray_400"
-    },
     "color_red": {
       "type": "color",
       "category": "color-primary",
@@ -416,14 +452,14 @@
       "originalValue": "#dc6464",
       "name": "color_red"
     },
-    "color_gray_500": {
+    "color_grey_900": {
       "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(160, 174, 192)",
-      "tags": "Utility,Tailwind",
+      "category": "color-basic",
+      "value": "rgb(38, 38, 38)",
+      "tags": "Basic",
       "order": 100,
-      "originalValue": "#a0aec0",
-      "name": "color_gray_500"
+      "originalValue": "#262626",
+      "name": "color_grey_900"
     },
     "color_purple_burn": {
       "type": "color",
@@ -434,15 +470,6 @@
       "originalValue": "#4A4A60",
       "name": "color_purple_burn"
     },
-    "color_gray_600": {
-      "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(113, 128, 150)",
-      "tags": "Utility,Tailwind",
-      "order": 100,
-      "originalValue": "#718096",
-      "name": "color_gray_600"
-    },
     "color_blue": {
       "type": "color",
       "category": "color-primary",
@@ -452,15 +479,6 @@
       "order": 1,
       "originalValue": "#6464dc",
       "name": "color_blue"
-    },
-    "color_gray_700": {
-      "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(74, 85, 104)",
-      "tags": "Utility,Tailwind",
-      "order": 100,
-      "originalValue": "#4a5568",
-      "name": "color_gray_700"
     },
     "color_purple": {
       "type": "color",
@@ -479,24 +497,6 @@
       "order": 1,
       "originalValue": "#444B61",
       "name": "color_blue_burn"
-    },
-    "color_gray_800": {
-      "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(45, 55, 72)",
-      "tags": "Utility,Tailwind",
-      "order": 100,
-      "originalValue": "#2d3748",
-      "name": "color_gray_800"
-    },
-    "color_gray_900": {
-      "type": "color",
-      "category": "color-tailwind",
-      "value": "rgb(26, 32, 44)",
-      "tags": "Utility,Tailwind",
-      "order": 100,
-      "originalValue": "#1a202c",
-      "name": "color_gray_900"
     },
     "color_red_burn": {
       "type": "color",
