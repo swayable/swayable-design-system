@@ -42,9 +42,9 @@
       </NavBar>
     </header>
     <section class='p-4 md:p-6'>
-      <h1 class='text-xl mt-2'>
+      <Heading level='h1'>
         Swayable Design System
-      </h1>
+      </Heading>
       <p class='mt-4'>
         The organized principles, tools, patterns &amp; practices providing foundation for our
         product design.
@@ -59,6 +59,73 @@
           <span v-else>dark theme</span>
         </button>
       </p>
+
+      <Heading level='h2'>
+        Typography
+      </Heading>
+
+      <Heading level='h3'>
+        Headings
+      </Heading>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Heading</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;Heading level='h1'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h1'>
+                h1. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;Heading level='h2'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h2'>
+                h2. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;Heading level='h3'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h3'>
+                h3. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;Heading level='h4'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h4'>
+                h4. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;Heading level='h5'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h5'>
+                h5. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;Heading level='h6'&gt;&lt;/Heading&gt;</code></td>
+            <td>
+              <Heading level='h6'>
+                h6. The Quick Brown Fox
+              </Heading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </component>
 </template>
