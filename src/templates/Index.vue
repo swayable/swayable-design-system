@@ -42,7 +42,7 @@
       </NavBar>
     </header>
     <section class='p-4 md:p-6'>
-      <Heading level='h1'>
+      <Heading type='h1'>
         Swayable Design System
       </Heading>
       <p class='mt-4'>
@@ -60,11 +60,11 @@
         </button>
       </p>
 
-      <Heading level='h2'>
+      <Heading type='h2'>
         Typography
       </Heading>
 
-      <Heading level='h3'>
+      <Heading type='h3'>
         Headings
       </Heading>
 
@@ -77,49 +77,49 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>&lt;Heading level='h1'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h1'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h1'>
+              <Heading type='h1'>
                 h1. The Quick Brown Fox
               </Heading>
             </td>
           </tr>
           <tr>
-            <td><code>&lt;Heading level='h2'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h2'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h2'>
+              <Heading type='h2'>
                 h2. The Quick Brown Fox
               </Heading>
             </td>
           </tr>
           <tr>
-            <td><code>&lt;Heading level='h3'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h3'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h3'>
+              <Heading type='h3'>
                 h3. The Quick Brown Fox
               </Heading>
             </td>
           </tr>
           <tr>
-            <td><code>&lt;Heading level='h4'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h4'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h4'>
+              <Heading type='h4'>
                 h4. The Quick Brown Fox
               </Heading>
             </td>
           </tr>
           <tr>
-            <td><code>&lt;Heading level='h5'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h5'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h5'>
+              <Heading type='h5'>
                 h5. The Quick Brown Fox
               </Heading>
             </td>
           </tr>
           <tr>
-            <td><code>&lt;Heading level='h6'&gt;&lt;/Heading&gt;</code></td>
+            <td><code>&lt;Heading type='h6'&gt;&lt;/Heading&gt;</code></td>
             <td>
-              <Heading level='h6'>
+              <Heading type='h6'>
                 h6. The Quick Brown Fox
               </Heading>
             </td>
