@@ -80,7 +80,7 @@
             <td><code>&lt;Heading type='h1'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h1'>
-                h1. The Quick Brown Fox
+                h1. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
@@ -88,7 +88,7 @@
             <td><code>&lt;Heading type='h2'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h2'>
-                h2. The Quick Brown Fox
+                h2. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
@@ -96,7 +96,7 @@
             <td><code>&lt;Heading type='h3'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h3'>
-                h3. The Quick Brown Fox
+                h3. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
@@ -104,7 +104,7 @@
             <td><code>&lt;Heading type='h4'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h4'>
-                h4. The Quick Brown Fox
+                h4. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
@@ -112,7 +112,7 @@
             <td><code>&lt;Heading type='h5'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h5'>
-                h5. The Quick Brown Fox
+                h5. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
@@ -120,7 +120,7 @@
             <td><code>&lt;Heading type='h6'&gt;&lt;/Heading&gt;</code></td>
             <td>
               <Heading type='h6'>
-                h6. The Quick Brown Fox
+                h6. Amazingly few discotheques provide jukeboxes.
               </Heading>
             </td>
           </tr>
