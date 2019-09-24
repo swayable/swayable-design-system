@@ -79,7 +79,7 @@ td[class^="rsg--cell"] p {
 // Sidebar logo
 div[class^="rsg--logo"] {
   border-bottom: 1px solid var(--nav-color);
-  h1 {
+  h1[class^="rsg--heading"] {
     color: var(--nav-color-active);
     font-size: theme('fontSize.lg') !important;
     margin-top: theme('spacing.5');
@@ -541,11 +541,21 @@ ul a[href*="/#/Private Components"] {
 }
 
 
-h1, h1 > * { font-size: theme('fontSize.4xl') !important }
-h2, h2 > * { font-size: theme('fontSize.3xl') !important }
-h3, h3 > * { font-size: theme('fontSize.2xl') !important }
-h4, h4 > * { font-size: theme('fontSize.xl') !important }
-h5, h5 > * { font-size: theme('fontSize.lg') !important }
+h1[class^="rsg--heading"], h1[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.4xl') !important;
+}
+h2[class^="rsg--heading"], h2[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.3xl') !important;
+}
+h3[class^="rsg--heading"], h3[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.2xl') !important;
+}
+h4[class^="rsg--heading"], h4[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.xl') !important;
+}
+h5[class^="rsg--heading"], h5[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.lg') !important;
+}
 code {
   font-family: $font-mono !important;
   color: theme('colors.red') !important;

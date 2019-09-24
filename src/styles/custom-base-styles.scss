@@ -34,11 +34,6 @@ pre, code {
 
   a, button { cursor: pointer; }
   a, .link { color: var(--link-color) }
-
-  h1, h2, h3, h4, h5 .heading {
-    font-family: theme('fonts.heading'), sans-serif;;
-    color: var(--heading-color);
-  }
 }
 
 html { @include pagestyle }

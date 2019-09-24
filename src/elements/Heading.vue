@@ -47,12 +47,12 @@ export default {
 <docs>
   ```jsx
   <div>
-    <Heading type="h1">h1. The Quick Brown Fox</Heading>
-    <Heading type="h2">h2. The Quick Brown Fox</Heading>
-    <Heading type="h3">h3. The Quick Brown Fox</Heading>
-    <Heading type="h4">h4. The Quick Brown Fox</Heading>
-    <Heading type="h5">h5. The Quick Brown Fox</Heading>
-    <Heading type="h6">h6. The Quick Brown Fox</Heading>
+    <Heading type="h1">h1. Amazingly few discotheques provide jukeboxes.</Heading>
+    <Heading type="h2">h2. Amazingly few discotheques provide jukeboxes.</Heading>
+    <Heading type="h3">h3. Amazingly few discotheques provide jukeboxes.</Heading>
+    <Heading type="h4">h4. Amazingly few discotheques provide jukeboxes.</Heading>
+    <Heading type="h5">h5. Amazingly few discotheques provide jukeboxes.</Heading>
+    <Heading type="h6">h6. Amazingly few discotheques provide jukeboxes.</Heading>
   </div>
   ```
 </docs>
