@@ -65,6 +65,9 @@ module.exports = {
       maxWidth: sizeMap,
       inset: sizeMap,
       colors,
+      boxShadow: {
+        outline: `0 0 0 2px ${colors['blue-fade']}`,
+      },
     },
     rotate: {
       '1/4': '90deg',
