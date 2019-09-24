@@ -655,6 +655,86 @@
       "order": -1,
       "originalValue": "\"roboto-mono\",monospace",
       "name": "font_mono"
+    },
+    "size_2xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "2xl",
+      "value": "1.5rem",
+      "originalValue": "1.5rem",
+      "name": "size_2xl"
+    },
+    "size_3xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "3xl",
+      "value": "1.875rem",
+      "originalValue": "1.875rem",
+      "name": "size_3xl"
+    },
+    "size_4xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "4xl",
+      "value": "2.25rem",
+      "originalValue": "2.25rem",
+      "name": "size_4xl"
+    },
+    "size_5xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "5xl",
+      "value": "3rem",
+      "originalValue": "3rem",
+      "name": "size_5xl"
+    },
+    "size_6xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "6xl",
+      "value": "4rem",
+      "originalValue": "4rem",
+      "name": "size_6xl"
+    },
+    "size_base": {
+      "type": "number",
+      "category": "font-size",
+      "token": "base",
+      "value": "1rem",
+      "originalValue": "1rem",
+      "name": "size_base"
+    },
+    "size_xl": {
+      "type": "number",
+      "category": "font-size",
+      "token": "xl",
+      "value": "1.25rem",
+      "originalValue": "1.25rem",
+      "name": "size_xl"
+    },
+    "size_sm": {
+      "type": "number",
+      "category": "font-size",
+      "token": "sm",
+      "value": "0.875rem",
+      "originalValue": "0.875rem",
+      "name": "size_sm"
+    },
+    "size_lg": {
+      "type": "number",
+      "category": "font-size",
+      "token": "lg",
+      "value": "1.125rem",
+      "originalValue": "1.125rem",
+      "name": "size_lg"
+    },
+    "size_xs": {
+      "type": "number",
+      "category": "font-size",
+      "token": "xs",
+      "value": "0.75rem",
+      "originalValue": "0.75rem",
+      "name": "size_xs"
     }
   }
 }
