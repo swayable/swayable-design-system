@@ -1,25 +1,14 @@
 <template>
-  <component
-    :is='wrapper'
-    :class='["input", { "input-expand": width === "expand" }]'
+  <input
+    :id='id'
+    :disabled='disabled'
+    :type='type'
+    :value='value'
+    :class='["p-2", "rounded", style]'
+    :placeholder='placeholder'
+    @input='onInput($event.target.value)'
+    @focus='onFocus($event.target.value)'
   >
-    <label
-      v-if='label'
-      :for='id'
-    >
-      {{ label }}
-    </label>
-    <input
-      :id='id'
-      :disabled='disabled'
-      :type='type'
-      :value='value'
-      :class='state'
-      :placeholder='placeholder'
-      @input='onInput($event.target.value)'
-      @focus='onFocus($event.target.value)'
-    >
-  </component>
 </template>
 
 <script>
@@ -59,40 +48,11 @@ export default {
       default: null,
     },
     /**
-     * The label of the form input field.
-     */
-    label: {
-      type: String,
-      default: null,
-    },
-    /**
-     * The html element name used for the wrapper.
-     * `div, section`
-     */
-    wrapper: {
-      type: String,
-      default: 'div',
-      validator: value => {
-        return value.match(/(div|section)/)
-      },
-    },
-    /**
      * Unique identifier of the form input field.
      */
     id: {
       type: String,
       default: null,
-    },
-    /**
-     * The width of the form input field.
-     * `auto, expand`
-     */
-    width: {
-      type: String,
-      default: 'expand',
-      validator: value => {
-        return value.match(/(auto|expand)/)
-      },
     },
     /**
      * Whether the form input field is disabled or not.
@@ -102,16 +62,19 @@ export default {
       type: Boolean,
       default: false,
     },
-    /**
-     * Manually trigger various states of the input.
-     * `hover, active, focus`
-     */
-    state: {
-      type: String,
-      default: null,
-      validator: value => {
-        return value.match(/(hover|active|focus)/)
-      },
+  },
+  computed: {
+    style() {
+      if (this.disabled) return ['cursor-not-allowed', 'text-grey']
+
+      return [
+        'shadow-inner',
+        'focus:shadow-outline',
+        'border',
+        'border-grey-0',
+        'hover:border-grey',
+        'focus:border-blue',
+      ]
     },
   },
   methods: {
@@ -128,10 +91,8 @@ export default {
 <docs>
   ```jsx
   <div>
-    <Input label="Default input" placeholder="Write your text" id="input-1" />
-    <Input label=":hover" state="hover" placeholder="Write your text" id="input-2" />
-    <Input label=":focus" state="focus" placeholder="Write your text" id="input-3" />
-    <Input label="[disabled]" disabled value="Write your text" id="input-4" />
+    <Input placeholder="Default Input" id="input-1" />
+    <Input disabled value="Disabled" id="input-4" />
   </div>
   ```
 </docs>

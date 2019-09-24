@@ -41,7 +41,7 @@
         </NavGroup>
       </NavBar>
     </header>
-    <section class='p-4 md:p-6'>
+    <article class='p-4 md:p-6'>
       <Heading type='h1'>
         Swayable Design System
       </Heading>
@@ -60,73 +60,111 @@
         </button>
       </p>
 
-      <Heading type='h2'>
-        Typography
-      </Heading>
+      <section>
+        <Heading type='h2'>
+          Typography
+        </Heading>
 
-      <Heading type='h3'>
-        Headings
-      </Heading>
+        <Heading type='h3'>
+          Headings
+        </Heading>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Heading</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>&lt;Heading type='h1'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h1'>
-                h1. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;Heading type='h2'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h2'>
-                h2. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;Heading type='h3'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h3'>
-                h3. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;Heading type='h4'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h4'>
-                h4. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;Heading type='h5'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h5'>
-                h5. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;Heading type='h6'&gt;&lt;/Heading&gt;</code></td>
-            <td>
-              <Heading type='h6'>
-                h6. Amazingly few discotheques provide jukeboxes.
-              </Heading>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+        <table>
+          <thead>
+            <tr>
+              <th>Heading</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;Heading type='h1'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h1'>
+                  h1. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Heading type='h2'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h2'>
+                  h2. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Heading type='h3'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h3'>
+                  h3. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Heading type='h4'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h4'>
+                  h4. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Heading type='h5'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h5'>
+                  h5. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Heading type='h6'&gt;&lt;/Heading&gt;</code></td>
+              <td>
+                <Heading type='h6'>
+                  h6. Amazingly few discotheques provide jukeboxes.
+                </Heading>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <Heading type='h2'>
+          Form Controls
+        </Heading>
+
+        <Heading type='h3'>
+          Input
+        </Heading>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;Input placeholder='Placeholder' /&gt;</code></td>
+              <td>
+                <Input placeholder='Placeholder' />
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;Input disabled placeholder='Disabled' /&gt;</code></td>
+              <td>
+                <Input
+                  disabled
+                  placeholder='Disabled'
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </article>
   </component>
 </template>
 
