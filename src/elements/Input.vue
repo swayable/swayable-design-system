@@ -8,6 +8,7 @@
     :placeholder='placeholder'
     @input='onInput($event.target.value)'
     @focus='onFocus($event.target.value)'
+    @click='onClick($event.target.value)'
   >
 </template>
 
@@ -83,6 +84,9 @@ export default {
     },
     onFocus(value) {
       this.$emit('focus', value)
+    },
+    onClick(value) {
+      this.$emit('click', value)
     },
   },
 }

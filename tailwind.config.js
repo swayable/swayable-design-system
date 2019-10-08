@@ -32,6 +32,7 @@ const sizeMap = {
   '2/3': '66.6666%',
   '1/4': '25%',
   '3/4': '75%',
+  'full': '100%',
 }
 
 const colors = _reduce(

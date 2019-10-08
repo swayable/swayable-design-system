@@ -131,6 +131,63 @@
 
       <section>
         <Heading type='h2'>
+          Dropdown
+        </Heading>
+
+        <code>
+          <pre>
+&lt;Dropdown @change='onChange'&gt;
+  &lt;Input
+    slot='trigger'
+    placeholder='Search
+  /&gt;
+
+  &lt;DropdownMenu max-height='120'&gt;
+    &lt;DropdownItem value='option_1'&gt;
+      &lt;span&gt;Option A&lt;/span&gt;
+    &lt;/DropdownItem&gt;
+
+    &lt;DropdownItem value='option_2'&gt;
+      &lt;span&gt;Option B&lt;/span&gt;
+    &lt;/DropdownItem&gt;
+
+    &lt;DropdownItem value='option_3'&gt;
+      &lt;span&gt;Option C&lt;/span&gt;
+    &lt;/DropdownItem&gt;
+
+    &lt;DropdownItem value='option_4'&gt;
+      &lt;span&gt;Option D&lt;/span&gt;
+    &lt;/DropdownItem&gt;
+  &lt;/DropdownMenu&gt;
+&lt;/Dropdown&gt;
+          </pre>
+        </code>
+
+        <Dropdown @change='onChange'>
+          <Input
+            slot='trigger'
+            placeholder='Search'
+          />
+
+          <DropdownMenu :max-height='120'>
+            <DropdownItem value='option_1'>
+              <p>Option A</p>
+            </DropdownItem>
+            <DropdownItem value='option_2'>
+              <p>Option B</p>
+            </DropdownItem>
+            <DropdownItem value='option_3'>
+              <p>Option C</p>
+            </DropdownItem>
+            <DropdownItem value='option_4'>
+              <p>Option D</p>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </section>
+
+      <section>
+        <Heading type='h2'>
           Form Controls
         </Heading>
 
@@ -201,6 +258,9 @@ export default {
     if (toggleTheme) this.toggleTheme()
   },
   methods: {
+    onChange(val) {
+      console.log(val)
+    },
     toggleTheme() {
       this.darkTheme = !this.darkTheme
       const page = document.querySelector('html')
