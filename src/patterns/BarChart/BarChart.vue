@@ -1,7 +1,6 @@
 <template>
   <div
     class='w-full flex bar-chart bg-inherit'
-    :class='direction'
     :style='`height: ${thickness}px`'
   >
     <div
@@ -13,17 +12,32 @@
       </div>
     </div>
     <div
-      class='h-full flex-shrink-0 relative bg-inherit overflow-hidden'
       v-bind='barWidthBinding'
+      class='h-full flex-shrink-0 relative bg-inherit'
     >
       <div
-        class='absolute w-full h-full z-10'
         v-bind='barBackgroundBinding'
+        class='absolute w-full h-full z-10 bg-grey-200'
       />
+      <div class='w-full h-full bg-inherit overflow-hidden relative'>
+        <div
+          v-bind='arrowTopBinding'
+          class='arrow-top rotate-1/8 h-full z-20 bg-inherit absolute'
+        />
+        <div
+          v-bind='arrowBottomBinding'
+          class='arrow-bottom rotate-7/8 h-full z-20 bg-inherit absolute'
+        />
+      </div>
       <div
-        class='arrow bg-inherit overflow-hidden absolute h-full'
-        v-bind='arrowBinding'
-      />
+        v-if='error'
+        class='error-bar absolute h-full flex flex-col items-stretch'
+        v-bind='errorBarBinding'
+      >
+        <span class='flex-grow' />
+        <span class='flex-grow bg-black opacity-25 opacity z-20' />
+        <span class='flex-grow' />
+      </div>
     </div>
     <div class='spacer flex-grow flex items-center relative'>
       <div class='absolute left-1 whitespace-no-wrap text-xs font-semibold'>
@@ -60,6 +74,10 @@ export default {
      */
     baseline: { type: Number, required: false, default: 0 },
     /**
+     * The margin of error in the delta
+     */
+    error: { type: Number },
+    /**
      * The px thickness of the bar
      */
     thickness: { type: Number, default: 20 },
@@ -79,7 +97,7 @@ export default {
      */
     scale: { type: Number, default: 100 },
     /**
-     * If true, the bar will be grey
+     * Bar is grey rather than a gradient
      */
     insignificant: { type: Boolean },
     /**
@@ -129,11 +147,6 @@ export default {
         : this.baseline + this.delta
       return Math.abs(origin)
     },
-    direction() {
-      return this.positive
-        ? 'right'
-        : 'left'
-    },
     originSpacerBinding() {
       const originRatio = this.origin / this.totalWidth
       const width = `${originRatio * 100}%`
@@ -148,8 +161,29 @@ export default {
       const { background } = this
       return { style: { background } }
     },
-    arrowBinding() {
-      const width = `${this.thickness / 2}px`
+    arrowCSS() {
+      const xOffset = this.thickness / 2
+      const yOffset = this.thickness / 4 - 1
+      const direction =  this.positive
+        ? 'left'
+        : 'right'
+      return {
+        y: `calc(50% + ${yOffset}px)`,
+        [direction]: `calc(100% - ${xOffset}px)`,
+        width: `${this.thickness}px`,
+      }
+    },
+    arrowTopBinding() {
+      const { left, right, width, y } = this.arrowCSS
+      return { style: { top: y, left, right, width }}
+    },
+    arrowBottomBinding() {
+      const { left, right, width, y } = this.arrowCSS
+      return { style: {  bottom: y, left, right, width }}
+    },
+    errorBarBinding() {
+      const errorRatio = (this.error * 2) / this.width
+      const width = `${errorRatio * 100}%`
       return { style: { width } }
     },
     leftLabel() {
@@ -181,44 +215,12 @@ export default {
 }
 </script>
 
-<style lang='scss'>
-.bar-chart {
-  .arrow {
-    &:before, &:after {
-      z-index: 20;
-      position: absolute;
-      content: ' ';
-      height: 100%;
-      width: 100%;
-      background: inherit;
-    }
-    &:before { top: -36% }
-    &:after { bottom: -36% }
-  }
-  &.left {
-    .arrow {
-      left: 0;
-      &:before, &:after { right: 50% }
-      &:before { transform: rotate(45deg) }
-      &:after {transform: rotate(-45deg) }
-    }
-  }
-  &.right {
-    .arrow {
-      right: 0;
-      &:before, &:after { left: 50% }
-      &:before { transform: rotate(-45deg) }
-      &:after { transform: rotate(45deg) }
-    }
-  }
-}
-</style>
-
 <docs>
   ```jsx
   const shared = { insignificant:  false, max: 7, min: -2, scale: 10, }
-  const props1 = { ...shared, deltaLabel: '+44.2%', baselineLabel: '38.5% ▶', baseline: 3.85, delta: 4.42, }
-  const props2 = { ...shared, baselineLabel: '◀ 18.5%', deltaLabel: '-14.1%', baseline: 1.85, delta: -1.41, }
+  const props1 = { ...shared, deltaLabel: '+44.2%', baselineLabel: '38.5% ▶', baseline: 3.85, delta: 4.42, error: 0.9 }
+  const props2 = { ...shared, baselineLabel: '◀ 54.5%', deltaLabel: '-2.4%', baseline: 5.45, delta: -0.24, insignificant: true, error: 0.31 }
+  const props3 = { ...shared, baselineLabel: '◀ 18.5%', deltaLabel: '-14.1%', baseline: 1.85, delta: -1.41, error: 1.2 }
 
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
   <div class='bg-grey-100 py-1 my-1'>
@@ -236,6 +238,7 @@ export default {
     <div class='mt-2 bg-inherit'>
       <BarChart class='mt-px' v-bind='props1' />
       <BarChart class='mt-px' v-bind='props2' />
+      <BarChart class='mt-px' v-bind='props3' />
     </div>
   </div>
   <div class='bg-grey-100 py-1 mt-3'>
@@ -243,6 +246,7 @@ export default {
     <div class='mt-2 bg-inherit'>
       <BarChart class='mt-px' mode='baseline' v-bind='props1' />
       <BarChart class='mt-px' mode='baseline' v-bind='props2' />
+      <BarChart class='mt-px' mode='baseline' v-bind='props3' />
     </div>
   </div>
   <Heading type='h5' class='mt-10 text-center'>Gotcha</Heading>
