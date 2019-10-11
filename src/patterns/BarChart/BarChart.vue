@@ -220,36 +220,6 @@ export default {
   const props1 = { ...shared, deltaLabel: '+44.2%', baselineLabel: '38.5% ▶', baseline: 3.85, delta: 4.42, }
   const props2 = { ...shared, baselineLabel: '◀ 18.5%', deltaLabel: '-14.1%', baseline: 1.85, delta: -1.41, }
 
-  const common = {
-    // max:0.08,
-    // min:-0.27,
-    min:-0.3,
-    max:0.1,
-    mode:"delta",
-    scale:10,
-  }
-
-  const props3 = {
-    ...common,
-    baseline:6.70,
-    baselineLabel:"",
-    delta:-0.27,
-    deltaLabel:"-2.8",
-  }
-
-  const props4 = {
-    ...common,
-    baseline:6.70,
-    baselineLabel:"",
-    delta:0.08,
-    deltaLabel:"0.9",
-  }
-
-  <div class='bg-grey py-1'>
-    <BarChart class='my-1' v-bind='props4' />
-    <BarChart class='my-1' v-bind='props3' />
-  </div>
-
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
   <div class='bg-grey-100 py-1 my-1'>
     <div class='mt-1 bg-inherit'>
