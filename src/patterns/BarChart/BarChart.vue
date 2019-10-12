@@ -1,13 +1,13 @@
 <template>
   <div
-    class='w-full flex bar-chart bg-inherit'
+    class='w-full flex bg-inherit'
     :style='`height: ${thickness}px`'
   >
     <div
-      class='spacer flex-shrink-0 flex relative items-center'
+      class='flex-shrink-0 flex relative items-center bg-inherit'
       v-bind='originSpacerBinding'
     >
-      <div class='absolute right-1 whitespace-no-wrap text-xs font-semibold'>
+      <div class='absolute right-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
         {{ this.leftLabel }}
       </div>
     </div>
@@ -22,25 +22,25 @@
       <div class='w-full h-full bg-inherit overflow-hidden relative'>
         <div
           v-bind='arrowTopBinding'
-          class='arrow-top rotate-1/8 h-full z-20 bg-inherit absolute'
+          class='rotate-1/8 h-full z-20 bg-inherit absolute'
         />
         <div
           v-bind='arrowBottomBinding'
-          class='arrow-bottom rotate-7/8 h-full z-20 bg-inherit absolute'
+          class='rotate-7/8 h-full z-20 bg-inherit absolute'
         />
       </div>
       <div
         v-if='error'
-        class='error-bar absolute h-full flex flex-col items-stretch'
+        class='absolute h-full flex flex-col items-stretch top-0'
         v-bind='errorBarBinding'
       >
         <span class='flex-grow' />
-        <span class='flex-grow bg-black opacity-25 opacity z-20' />
+        <span class='flex-grow bg-grey-700 opacity-25 opacity z-30' />
         <span class='flex-grow' />
       </div>
     </div>
-    <div class='spacer flex-grow flex items-center relative'>
-      <div class='absolute left-1 whitespace-no-wrap text-xs font-semibold'>
+    <div class='flex-grow flex items-center relative bg-inherit'>
+      <div class='absolute left-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
         {{ this.rightLabel }}
       </div>
     </div>
@@ -161,30 +161,24 @@ export default {
       const { background } = this
       return { style: { background } }
     },
-    arrowCSS() {
-      const xOffset = this.thickness / 2
-      const yOffset = this.thickness / 4 - 1
-      const direction =  this.positive
-        ? 'left'
-        : 'right'
-      return {
-        y: `calc(50% + ${yOffset}px)`,
-        [direction]: `calc(100% - ${xOffset}px)`,
-        width: `${this.thickness}px`,
-      }
-    },
     arrowTopBinding() {
-      const { left, right, width, y } = this.arrowCSS
-      return { style: { top: y, left, right, width }}
+      return { style: this.buildArrowCSS('top') }
     },
     arrowBottomBinding() {
-      const { left, right, width, y } = this.arrowCSS
-      return { style: {  bottom: y, left, right, width }}
+      return { style: this.buildArrowCSS('bottom') }
     },
     errorBarBinding() {
       const errorRatio = (this.error * 2) / this.width
-      const width = `${errorRatio * 100}%`
-      return { style: { width } }
+      const width = errorRatio * 100
+      const direction = this.positive
+        ? 'right'
+        : 'left'
+      return {
+        style: {
+          width: `${width}%`,
+          [direction]: `-${width / 2}%`,
+        },
+      }
     },
     leftLabel() {
       if (this.isDelta && this.positive) return ''
@@ -212,6 +206,19 @@ export default {
         : `linear-gradient(to right, ${deltaColor}, ${baselineColor})`
     },
   },
+  methods: {
+    buildArrowCSS(yAnchor) {
+      const xOffset = this.thickness / 3
+      const xAnchor = this.positive
+        ? 'left'
+        : 'right'
+      return {
+        width: `${this.thickness}px`,
+        [yAnchor]: '50%',
+        [xAnchor]: `calc(100% - ${xOffset}px)`,
+      }
+    },
+  },
 }
 </script>
 
@@ -235,7 +242,7 @@ export default {
   <Heading type='h5' class='mt-10 text-center'>The same data shown in Delta vs. Baseline modes</Heading>
   <div class='bg-grey-100 py-1 mt-1'>
     <p class='text-center'>Delta mode</p>
-    <div class='mt-2 bg-inherit'>
+    <div class='mt-2 bg-inherit overflow-hidden'>
       <BarChart class='mt-px' v-bind='props1' />
       <BarChart class='mt-px' v-bind='props2' />
       <BarChart class='mt-px' v-bind='props3' />
@@ -243,7 +250,7 @@ export default {
   </div>
   <div class='bg-grey-100 py-1 mt-3'>
     <p class='text-center'>Baseline mode</p>
-    <div class='mt-2 bg-inherit'>
+    <div class='mt-2 bg-inherit overflow-hidden'>
       <BarChart class='mt-px' mode='baseline' v-bind='props1' />
       <BarChart class='mt-px' mode='baseline' v-bind='props2' />
       <BarChart class='mt-px' mode='baseline' v-bind='props3' />
