@@ -163,7 +163,7 @@
             </tr>
           </tbody>
         </table>
-
+      </section>
     </article>
   </component>
 </template>
