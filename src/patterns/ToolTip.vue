@@ -13,7 +13,7 @@
     <transition name='expand'>
       <div
         v-show='show'
-        class='tooltip absolute bg-dark text-white z-40 rounded text-center py-1 px-2 whitespace-no-wrap'
+        class='tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap'
         :class='`tooltip-${position}`'
       >
         <slot name='tip' />
@@ -54,6 +54,13 @@ export default {
       default: 'bottom',
       validator: (val) => Object.keys(anchorMap).includes(val),
     },
+    /**
+     * Displays an arrow like a speech bubble
+     */
+    showArrow: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return { show: false }
@@ -62,31 +69,24 @@ export default {
 </script>
 
 <style lang="scss">
-.tooltip:after {
-  content: ' ';
-  position: absolute;
-  background: inherit;
-  width: 10px;
-  height: 10px;
-  transform: rotate(45deg);
-  z-index: -1;
-}
+.tooltip { background: adjust-color($color-dark, $alpha: -0.1) }
+
 .tooltip-top-wrapper, .tooltip-bottom-wrapper {
-  .expand-enter-active { animation: expandY .2s }
-  .expand-leave-active { animation: expandY .2s reverse }
+  .expand-enter-active { animation: expandY .15s }
+  .expand-leave-active { animation: expandY .15s reverse }
 }
 @keyframes expandY {
-  0% { transform: scale(0) translateX(-50%) translateY(0%); }
+  0% { transform: scale(0.5) translateX(-50%) translateY(0%); }
   50% { transform: scale(1.1) translateX(-50%) translateY(0%); }
   100% { transform: scale(1) translateX(-50%) translateY(0%); }
 }
 
 .tooltip-left-wrapper, .tooltip-right-wrapper {
-  .expand-enter-active { animation: expandX .2s }
-  .expand-leave-active { animation: expandX .2s reverse }
+  .expand-enter-active { animation: expandX .15s }
+  .expand-leave-active { animation: expandX .15s reverse }
 }
 @keyframes expandX {
-  0% { transform: scale(0) translateX(0%) translateY(-50%); }
+  0% { transform: scale(0.5) translateX(0%) translateY(-50%); }
   50% { transform: scale(1.1) translateX(0% translateY(-50%)); }
   100% { transform: scale(1) translateX(0%) translateY(-50%); }
 }
@@ -96,14 +96,20 @@ export default {
   left: 50%;
   transform-origin: bottom left;
   transform: translateX(-50%) translateY(0%);
-  &:after { top: calc(100% - 8px) }
+  &:after {
+    left: calc(50% - 4px);
+    top: calc(100% - 8px);
+  }
 }
 .tooltip-bottom {
   top: calc(100% + 4px);
   left: 50%;
   transform-origin: top left;
   transform: translateX(-50%) translateY(0%);
-  &:after { bottom: calc(100% - 8px) }
+  &:after {
+    left: calc(50% - 4px);
+    bottom: calc(100% - 8px);
+  }
 }
 .tooltip-left {
   top: 50%;
