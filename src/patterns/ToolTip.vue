@@ -1,14 +1,14 @@
 <template>
   <component
     :is='type'
-    class='inline-block relative'
+    class='relative'
     :class='`tooltip-${position}-wrapper`'
   >
     <span
       @mouseover='show = true'
       @mouseleave='show = false'
     >
-      <slot name='trigger' />
+      <slot />
     </span>
     <transition name='expand'>
       <div
@@ -16,7 +16,7 @@
         class='tooltip absolute bg-dark text-white z-40 rounded text-center py-1 px-2 whitespace-no-wrap'
         :class='`tooltip-${position}`'
       >
-        <slot />
+        <slot name='tip' />
       </div>
     </transition>
   </component>
@@ -51,6 +51,7 @@ export default {
        */
     position: {
       type: String,
+      default: 'bottom',
       validator: (val) => Object.keys(anchorMap).includes(val),
     },
   },
@@ -130,27 +131,27 @@ export default {
   ```jsx
   <div class='flex justify-around mb-5'>
     <ToolTip position='right'>
-      <p>Do these look right?</p>
-      <template #trigger>
-        <p class='py-1 px-2 rounded border'>Right</p>
+      <p class='py-1 px-2 rounded border'>Right</p>
+      <template #tip>
+        <p>Tooltip Right</p>
       </template>
     </ToolTip>
     <ToolTip position='bottom'>
-      <p>Bottom of the barrel?</p>
-      <template #trigger>
-        <p class='py-1 px-2 rounded border'>Bottom</p>
-      </template>
-    </ToolTip>
-    <ToolTip position='top'>
-      <p>Or a cut above the rest?</p>
-      <template #trigger>
-        <p class='py-1 px-2 rounded border'>Top</p>
+      <p class='py-1 px-2 rounded border'>Bottom</p>
+      <template #tip>
+        <p>Tooltip Bottom</p>
       </template>
     </ToolTip>
     <ToolTip position='left'>
-      <p>Anything left out?</p>
-      <template #trigger>
-        <p class='py-1 px-2 rounded border'>Left</p>
+      <p class='py-1 px-2 rounded border'>Left</p>
+      <template #tip>
+        <p>Tooltip Left</p>
+      </template>
+    </ToolTip>
+    <ToolTip position='top'>
+      <p class='py-1 px-2 rounded border'>Top</p>
+      <template #tip>
+        <p>Tooltip Top</p>
       </template>
     </ToolTip>
   </div>
