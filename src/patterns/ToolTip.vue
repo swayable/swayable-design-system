@@ -1,0 +1,158 @@
+<template>
+  <component
+    :is='type'
+    class='inline-block relative'
+    :class='`tooltip-${position}-wrapper`'
+  >
+    <span
+      @mouseover='show = true'
+      @mouseleave='show = false'
+    >
+      <slot name='trigger' />
+    </span>
+    <transition name='expand'>
+      <div
+        v-show='show'
+        class='tooltip absolute bg-dark text-white z-40 rounded text-center py-1 px-2 whitespace-no-wrap'
+        :class='`tooltip-${position}`'
+      >
+        <slot />
+      </div>
+    </transition>
+  </component>
+</template>
+
+<script>
+const bottom = { top: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)'  }
+const top = { bottom: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)' }
+const right = { left: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)' }
+const left = { right: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)'  }
+const anchorMap = {
+  top,
+  bottom,
+  left,
+  right,
+}
+
+export default {
+  name: 'ToolTip',
+  status: 'prototype',
+  release: '0.1.0',
+  props: {
+    /**
+       * The html element used.
+       */
+    type: {
+      type: String,
+      default: 'div',
+    },
+    /**
+       * The html element used.
+       */
+    position: {
+      type: String,
+      validator: (val) => Object.keys(anchorMap).includes(val),
+    },
+  },
+  data() {
+    return { show: false }
+  },
+}
+</script>
+
+<style lang="scss">
+.tooltip:after {
+  content: ' ';
+  position: absolute;
+  background: inherit;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.tooltip-top-wrapper, .tooltip-bottom-wrapper {
+  .expand-enter-active { animation: expandY .2s }
+  .expand-leave-active { animation: expandY .2s reverse }
+}
+@keyframes expandY {
+  0% { transform: scale(0) translateX(-50%) translateY(0%); }
+  50% { transform: scale(1.1) translateX(-50%) translateY(0%); }
+  100% { transform: scale(1) translateX(-50%) translateY(0%); }
+}
+
+.tooltip-left-wrapper, .tooltip-right-wrapper {
+  .expand-enter-active { animation: expandX .2s }
+  .expand-leave-active { animation: expandX .2s reverse }
+}
+@keyframes expandX {
+  0% { transform: scale(0) translateX(0%) translateY(-50%); }
+  50% { transform: scale(1.1) translateX(0% translateY(-50%)); }
+  100% { transform: scale(1) translateX(0%) translateY(-50%); }
+}
+
+.tooltip-top {
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform-origin: bottom left;
+  transform: translateX(-50%) translateY(0%);
+  &:after { top: calc(100% - 8px) }
+}
+.tooltip-bottom {
+  top: calc(100% + 4px);
+  left: 50%;
+  transform-origin: top left;
+  transform: translateX(-50%) translateY(0%);
+  &:after { bottom: calc(100% - 8px) }
+}
+.tooltip-left {
+  top: 50%;
+  right: calc(100% + 4px);
+  transform-origin: top right;
+  transform: translateX(0%) translateY(-50%);
+  &:after {
+    top: calc(50% - 4px);
+    left: calc(100% - 8px);
+  }
+}
+.tooltip-right {
+  top: 50%;
+  left: calc(100% + 4px);
+  transform-origin: top left;
+  transform: translateX(0%) translateY(-50%);
+  &:after {
+    top: calc(50% - 4px);
+    right: calc(100% - 8px);
+  }
+}
+</style>
+
+<docs>
+  ```jsx
+  <div class='flex justify-around mb-5'>
+    <ToolTip position='right'>
+      <p>Do these look right?</p>
+      <template #trigger>
+        <p class='py-1 px-2 rounded border'>Right</p>
+      </template>
+    </ToolTip>
+    <ToolTip position='bottom'>
+      <p>Bottom of the barrel?</p>
+      <template #trigger>
+        <p class='py-1 px-2 rounded border'>Bottom</p>
+      </template>
+    </ToolTip>
+    <ToolTip position='top'>
+      <p>Or a cut above the rest?</p>
+      <template #trigger>
+        <p class='py-1 px-2 rounded border'>Top</p>
+      </template>
+    </ToolTip>
+    <ToolTip position='left'>
+      <p>Anything left out?</p>
+      <template #trigger>
+        <p class='py-1 px-2 rounded border'>Left</p>
+      </template>
+    </ToolTip>
+  </div>
+  ```
+</docs>

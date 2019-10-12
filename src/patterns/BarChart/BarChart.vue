@@ -8,7 +8,7 @@
       v-bind='originSpacerBinding'
     >
       <div class='absolute right-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
-        {{ this.leftLabel }}
+        {{ leftLabel }}
       </div>
     </div>
     <div
@@ -41,7 +41,7 @@
     </div>
     <div class='flex-grow flex items-center relative bg-inherit'>
       <div class='absolute left-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
-        {{ this.rightLabel }}
+        {{ rightLabel }}
       </div>
     </div>
   </div>
