@@ -2,47 +2,69 @@
   <div
     class='w-full flex bg-inherit'
     :style='`height: ${thickness}px`'
+    :class='`bar-chart-${direction}`'
   >
     <div
       class='flex-shrink-0 flex relative items-center bg-inherit'
       v-bind='originSpacerBinding'
     >
-      <div class='absolute right-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
-        {{ leftLabel }}
-      </div>
+      <transition name='data-label'>
+        <div
+          v-show='show'
+          class='right-1'
+          :class='dataLabelClassList'
+        >
+          {{ leftLabel }}
+        </div>
+      </transition>
     </div>
-    <div
-      v-bind='barWidthBinding'
-      class='h-full flex-shrink-0 relative bg-inherit'
-    >
+    <transition name='bar-chart'>
       <div
-        v-bind='barBackgroundBinding'
-        class='absolute w-full h-full z-10 bg-grey-200'
-      />
-      <div class='w-full h-full bg-inherit overflow-hidden relative'>
-        <div
-          v-bind='arrowTopBinding'
-          class='rotate-1/8 h-full z-20 bg-inherit absolute'
-        />
-        <div
-          v-bind='arrowBottomBinding'
-          class='rotate-7/8 h-full z-20 bg-inherit absolute'
-        />
-      </div>
-      <div
-        v-if='error'
-        class='absolute h-full flex flex-col items-stretch top-0'
-        v-bind='errorBarBinding'
+        v-show='show'
+        v-bind='barWidthBinding'
+        class='h-full flex-shrink-0 relative bg-inherit'
       >
-        <span class='flex-grow' />
-        <span class='flex-grow bg-grey-700 opacity-25 opacity z-30' />
-        <span class='flex-grow' />
+        <div
+          v-bind='barBackgroundBinding'
+          class='absolute w-full h-full z-10 bg-grey-200'
+        />
+        <div class='w-full h-full bg-inherit overflow-hidden relative'>
+          <div
+            v-bind='arrowTopBinding'
+            class='rotate-1/8 h-full z-10 bg-inherit absolute'
+          />
+          <div
+            v-bind='arrowBottomBinding'
+            class='rotate-7/8 h-full z-10 bg-inherit absolute'
+          />
+        </div>
+        <transition name='error-bar'>
+          <div
+            v-if='error'
+            v-show='show'
+            class='error-bar absolute h-full flex flex-col items-stretch top-0  z-20'
+            v-bind='errorBarBinding'
+          >
+            <span class='flex-grow' />
+            <span class='flex-grow bg-grey-700 opacity-25' />
+            <span class='flex-grow' />
+          </div>
+        </transition>
       </div>
-    </div>
-    <div class='flex-grow flex items-center relative bg-inherit'>
-      <div class='absolute left-1 whitespace-no-wrap text-xs font-semibold bg-inherit z-40 px-px'>
-        {{ rightLabel }}
-      </div>
+    </transition>
+    <div
+      class='flex-grow flex items-center relative bg-inherit
+    '
+    >
+      <transition name='data-label'>
+        <div
+          v-show='show'
+          class='left-1'
+          :class='dataLabelClassList'
+        >
+          {{ rightLabel }}
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -110,6 +132,18 @@ export default {
       validator: (val) => ['baseline', 'delta'].includes(val),
     },
   },
+  data() {
+    const dataLabelClassList = [
+      'absolute',
+      'whitespace-no-wrap',
+      'text-xs',
+      'font-semibold',
+      'bg-inherit',
+      'z-40',
+      'px-px',
+    ]
+    return { show: false, dataLabelClassList }
+  },
   computed: {
     positive() {
       return this.delta >= 0
@@ -167,16 +201,18 @@ export default {
     arrowBottomBinding() {
       return { style: this.buildArrowCSS('bottom') }
     },
+    direction() {
+      return  this.positive
+        ? 'right'
+        : 'left'
+    },
     errorBarBinding() {
       const errorRatio = (this.error * 2) / this.width
       const width = errorRatio * 100
-      const direction = this.positive
-        ? 'right'
-        : 'left'
       return {
         style: {
           width: `${width}%`,
-          [direction]: `-${width / 2}%`,
+          [this.direction]: `-${width / 2}%`,
         },
       }
     },
@@ -206,6 +242,9 @@ export default {
         : `linear-gradient(to right, ${deltaColor}, ${baselineColor})`
     },
   },
+  mounted() {
+    this.show = true
+  },
   methods: {
     buildArrowCSS(yAnchor) {
       const xOffset = this.thickness / 3
@@ -221,6 +260,44 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@keyframes grow-in {
+  0% { transform: scale3d(0, 1, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+$cubic-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+.bar-chart-enter-active {
+  animation: grow-in 1s $cubic-ease;
+}
+.bar-chart-left {
+  .bar-chart-enter-active { transform-origin: right }
+}
+.bar-chart-right {
+  .bar-chart-enter-active { transform-origin: left }
+}
+
+.data-label-enter { opacity: 0; }
+.data-label-enter-active {
+  transition: opacity 0.8s;
+  transition-delay: 1.1s;
+}
+
+.error-bar-enter {
+  opacity: 0;
+}
+.error-bar-enter-active {
+  transition: opacity 0.3s;
+  transition-delay: 0.9s;
+}
+.error-bar-enter-to {
+  opacity: 1;
+  animation: grow-in 1s $cubic-ease;
+  animation-delay: 0.9s;
+}
+</style>
 
 <docs>
   ```jsx
