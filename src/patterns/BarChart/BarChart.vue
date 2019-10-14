@@ -141,6 +141,7 @@ export default {
       'bg-inherit',
       'z-40',
       'px-px',
+      'opacity-75',
     ]
     return { show: false, dataLabelClassList }
   },
@@ -281,15 +282,15 @@ $cubic-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
 
 .data-label-enter { opacity: 0; }
 .data-label-enter-active {
-  transition: opacity 0.8s;
-  transition-delay: 1.1s;
+  transition: opacity 0.3s;
+  transition-delay: 1s;
 }
 
 .error-bar-enter {
   opacity: 0;
 }
 .error-bar-enter-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.4s;
   transition-delay: 0.9s;
 }
 .error-bar-enter-to {
