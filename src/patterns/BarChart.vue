@@ -62,7 +62,7 @@
 
 <script>
 import _pick from 'lodash/pick'
-import GradientPercentColor from './GradientPercentColor'
+import GradientPercentColor from '../utils/GradientPercentColor'
 
 /**
  * Draws a single horizontal bar.

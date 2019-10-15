@@ -1,20 +1,20 @@
-import tokens from '../../utils/tokens'
+import tokens from './tokens'
 
 const LEFT_RGB = tokens.getColorRGB('pink')
 const RIGHT_RGB = tokens.getColorRGB('blue')
 
 class GradientPercentColor {
-  constructor(percent, gradStart=20, gradStop=80) {
+  constructor(percent, gradientStart=20, gradientStop=80) {
     this.percent = percent
-    this.gradStart = gradStart
-    this.gradStop = gradStop
+    this.gradientStart = gradientStart
+    this.gradientStop = gradientStop
   }
 
-
   get weight() {
-    const { percent, gradStart, gradStop } = this
-    const reversePercent = ((100 + gradStop) * 100 / gradStop) - 100
-    return (percent * (reversePercent / 100) - gradStart) / gradStop
+    const { percent, gradientStart, gradientStop } = this
+    const range = gradientStop - gradientStart
+    const weightedRatio = Math.max(percent - gradientStart, 0)
+    return Math.min(weightedRatio / range, 1)
   }
 
   get inverseWeight() {

@@ -1,0 +1,27 @@
+import GradientPercentColor from '../GradientPercentColor'
+
+describe('GradientPercentColor', () => {
+  describe('cssValue', () => {
+    it('has a constant color between 0 and gradStart', () => {
+      expect.assertions(2)
+
+      const colorAtZero = new GradientPercentColor(0, 20, 80).cssValue
+      const colorAtGradStart = new GradientPercentColor(20, 20, 80).cssValue
+      const colorBeyondGradStart = new GradientPercentColor(21, 20, 80).cssValue
+
+      expect(colorAtZero).toEqual(colorAtGradStart)
+      expect(colorBeyondGradStart).not.toEqual(colorAtGradStart)
+    })
+
+    it('has a constant color between graphStop and 100', () => {
+      expect.assertions(2)
+
+      const colorAtHundred = new GradientPercentColor(100, 20, 80).cssValue
+      const colorAtGradStop = new GradientPercentColor(80, 20, 80).cssValue
+      const colorBeforeGradStop = new GradientPercentColor(79, 20, 80).cssValue
+
+      expect(colorAtHundred).toEqual(colorAtGradStop)
+      expect(colorBeforeGradStop).not.toEqual(colorAtGradStop)
+    })
+  })
+})
