@@ -237,13 +237,13 @@ export default {
 
       const scaleToPercent = 100 / this.scale
 
-      const baselineColor = new GradientPercentColor(this.baseline * scaleToPercent).cssValue
-      const deltaPos = (this.baseline + this.delta)
-      const deltaColor = new GradientPercentColor(deltaPos * scaleToPercent).cssValue
+      const gradientPoints = [
+        this.baseline * scaleToPercent,
+        (this.baseline + this.delta) * scaleToPercent,
+      ]
 
-      return this.positive
-        ? `linear-gradient(to right, ${baselineColor}, ${deltaColor})`
-        : `linear-gradient(to right, ${deltaColor}, ${baselineColor})`
+      if (!this.positive) gradientPoints.reverse()
+      return GradientPercentColor.drawGradient(...gradientPoints)
     },
   },
   watch: {

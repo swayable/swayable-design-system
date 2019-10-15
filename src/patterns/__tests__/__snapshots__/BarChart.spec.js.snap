@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BarChart.vue insignificant matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 19.555555555555557%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      -2.4%
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-left" style="width: 2.6666666666666665%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200" style="background: transparent;"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 508.3333333333333%; left: -254.16666666666666%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BarChart.vue negative baseline matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 4.400000000000002%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      -14.1%
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-left" style="width: 14.099999999999998%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 170.2127659574468%; left: -85.1063829787234%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      ◀ 18.5%
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BarChart.vue negative delta matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 6.555555555555556%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      -14.1%
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-left" style="width: 15.666666666666664%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 170.2127659574468%; left: -85.1063829787234%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BarChart.vue positive baseline matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 38.5%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      38.5% ▶
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-right" style="width: 44.2%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 40.723981900452486%; right: -20.361990950226243%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      +44.2%
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BarChart.vue positive delta matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 22.22222222222222%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-right" style="width: 49.111111111111114%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 40.723981900452486%; right: -20.361990950226243%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      +44.2%
+    </div>
+  </div>
+</div>
+`;

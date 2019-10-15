@@ -54,13 +54,6 @@ export default {
       default: 'bottom',
       validator: (val) => Object.keys(anchorMap).includes(val),
     },
-    /**
-     * Displays an arrow like a speech bubble
-     */
-    showArrow: {
-      type: Boolean,
-      default: true,
-    },
   },
   data() {
     return { show: false }
