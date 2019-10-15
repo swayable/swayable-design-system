@@ -14,7 +14,7 @@
         {{ leftLabel }}
       </div>
     </div>
-    <transition name='grow'>
+    <transition :name='transitionName'>
       <div
         v-show='show'
         v-bind='barWidthBinding'
@@ -35,7 +35,7 @@
             class='arrow rotate-7/8 h-full z-10 bg-inherit absolute'
           />
         </div>
-        <transition name='grow'>
+        <transition :name='transitionName'>
           <div
             v-show='show'
             v-if='error'
@@ -112,7 +112,11 @@ export default {
     /**
      * Bar is grey rather than a gradient
      */
-    insignificant: { type: Boolean },
+    insignificant: { type: Boolean, default: false },
+    /**
+     * Animates drawing the graph
+     */
+    animate: { type: Boolean, default: true },
     /**
      * `'delta'` mode is used to show the relative difference between bars; baselines are aligned.
      * `'baseline'` mode is used to show absolute differences between bars; baselines are plotted
@@ -127,7 +131,13 @@ export default {
     return { show: false }
   },
   computed: {
+    transitionName() {
+      return this.animate ? 'grow' : ''
+    },
     dataLabelClassList() {
+      const opacity = !this.show && this.animate
+        ? 'opacity-0'
+        : 'opacity-75'
       return [
         'data-label',
         'whitespace-no-wrap',
@@ -136,7 +146,7 @@ export default {
         'bg-inherit',
         'z-40',
         'px-px',
-        (this.show ? 'opacity-75' : 'opacity-0'),
+        opacity,
       ]
     },
     positive() {
@@ -339,9 +349,9 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     otherwise no direction (arrow) will be shown.
   </p>
   <div class='flex mt-2 mb-5'>
-    <BarChart class='bg-white' mode='baseline' :baseline='25' :delta='50' />
+    <BarChart class='bg-white' mode='baseline' :baseline='25' :delta='50' :animate='false'  />
     <span>vs.</span>
-    <BarChart mode='baseline' :baseline='25' :delta='50' />
+    <BarChart mode='baseline' :baseline='25' :delta='50' :animate='false' />
   </div>
   ```
 </docs>
