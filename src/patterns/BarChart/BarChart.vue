@@ -1,28 +1,25 @@
 <template>
   <div
-    class='w-full flex bg-inherit'
+    class='bar-chart w-full flex bg-inherit'
     :style='`height: ${thickness}px`'
-    :class='`bar-chart-${direction}`'
   >
     <div
-      class='flex-shrink-0 flex relative items-center bg-inherit'
+      class='flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse'
       v-bind='originSpacerBinding'
     >
-      <transition name='data-label'>
-        <div
-          v-show='show'
-          class='right-1'
-          :class='dataLabelClassList'
-        >
-          {{ leftLabel }}
-        </div>
-      </transition>
+      <div
+        :class='dataLabelClassList'
+        class='mr-1'
+      >
+        {{ leftLabel }}
+      </div>
     </div>
-    <transition name='bar-chart'>
+    <transition name='grow'>
       <div
         v-show='show'
         v-bind='barWidthBinding'
         class='h-full flex-shrink-0 relative bg-inherit'
+        :class='`grow-${direction}`'
       >
         <div
           v-bind='barBackgroundBinding'
@@ -31,18 +28,18 @@
         <div class='w-full h-full bg-inherit overflow-hidden relative'>
           <div
             v-bind='arrowTopBinding'
-            class='rotate-1/8 h-full z-10 bg-inherit absolute'
+            class='arrow rotate-1/8 h-full z-10 bg-inherit absolute'
           />
           <div
             v-bind='arrowBottomBinding'
-            class='rotate-7/8 h-full z-10 bg-inherit absolute'
+            class='arrow rotate-7/8 h-full z-10 bg-inherit absolute'
           />
         </div>
-        <transition name='error-bar'>
+        <transition name='grow'>
           <div
-            v-if='error'
             v-show='show'
-            class='error-bar absolute h-full flex flex-col items-stretch top-0  z-20'
+            v-if='error'
+            class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-30'
             v-bind='errorBarBinding'
           >
             <span class='flex-grow' />
@@ -52,19 +49,13 @@
         </transition>
       </div>
     </transition>
-    <div
-      class='flex-grow flex items-center relative bg-inherit
-    '
-    >
-      <transition name='data-label'>
-        <div
-          v-show='show'
-          class='left-1'
-          :class='dataLabelClassList'
-        >
-          {{ rightLabel }}
-        </div>
-      </transition>
+    <div class='flex-grow flex items-center relative bg-inherit'>
+      <div
+        :class='dataLabelClassList'
+        class='ml-1'
+      >
+        {{ rightLabel }}
+      </div>
     </div>
   </div>
 </template>
@@ -133,19 +124,21 @@ export default {
     },
   },
   data() {
-    const dataLabelClassList = [
-      'absolute',
-      'whitespace-no-wrap',
-      'text-xs',
-      'font-semibold',
-      'bg-inherit',
-      'z-40',
-      'px-px',
-      'opacity-75',
-    ]
-    return { show: false, dataLabelClassList }
+    return { show: false }
   },
   computed: {
+    dataLabelClassList() {
+      return [
+        'data-label',
+        'whitespace-no-wrap',
+        'text-xs',
+        'font-semibold',
+        'bg-inherit',
+        'z-40',
+        'px-px',
+        (this.show ? 'opacity-75' : 'opacity-0'),
+      ]
+    },
     positive() {
       return this.delta >= 0
     },
@@ -243,6 +236,12 @@ export default {
         : `linear-gradient(to right, ${deltaColor}, ${baselineColor})`
     },
   },
+  watch: {
+    mode() {
+      this.show = false
+      this.$nextTick(() => { this.show = true })
+    },
+  },
   mounted() {
     this.show = true
   },
@@ -268,40 +267,30 @@ export default {
   100% { transform: scale3d(1, 1, 1); }
 }
 
-$cubic-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
-
-.bar-chart-enter-active {
-  animation: grow-in 1s $cubic-ease;
+$timing: 1s;
+$cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
+.bar-chart, .bar-chart .arrow {
+  transition: all 0.3s ease-out;
 }
-.bar-chart-left {
-  .bar-chart-enter-active { transform-origin: right }
-}
-.bar-chart-right {
-  .bar-chart-enter-active { transform-origin: left }
-}
-
-.data-label-enter { opacity: 0; }
-.data-label-enter-active {
-  transition: opacity 0.3s;
-  transition-delay: 1s;
-}
-
-.error-bar-enter {
-  opacity: 0;
-}
-.error-bar-enter-active {
-  transition: opacity 0.4s;
-  transition-delay: 0.9s;
-}
-.error-bar-enter-to {
-  opacity: 1;
-  animation: grow-in 1s $cubic-ease;
-  animation-delay: 0.9s;
+.bar-chart {
+  overflow-x: hidden;
+  .grow-enter-active { animation: grow-in $timing $cubic-ease }
+  .grow-enter-active
+  .grow-left.grow-enter-active { transform-origin: right }
+  .grow-right.grow-enter-active { transform-origin: left }
+  .grow-delay { animation-delay: $timing; }
+  .grow-delay.grow-enter-to { transition: opacity 0.3s }
+  .grow-enter-active .grow-delay { opacity: 0 !important }
+  .data-label {
+    transition: opacity 0.15s;
+    transition-delay: $timing;
+  }
 }
 </style>
 
 <docs>
   ```jsx
+  const modes = ['delta', 'baseline']
   const shared = { insignificant:  false, max: 7, min: -2, scale: 10, }
   const props1 = { ...shared, deltaLabel: '+44.2%', baselineLabel: '38.5% ▶', baseline: 3.85, delta: 4.42, error: 0.9 }
   const props2 = { ...shared, baselineLabel: '◀ 54.5%', deltaLabel: '-2.4%', baseline: 5.45, delta: -0.24, insignificant: true, error: 0.31 }
@@ -317,21 +306,31 @@ $cubic-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
       <BarChart class='mt-px' :delta='75' />
     </div>
   </div>
-  <Heading type='h5' class='mt-10 text-center'>The same data shown in Delta vs. Baseline modes</Heading>
-  <div class='bg-grey-100 py-1 mt-1'>
-    <p class='text-center'>Delta mode</p>
-    <div class='mt-2 bg-inherit overflow-hidden'>
-      <BarChart class='mt-px' v-bind='props1' />
-      <BarChart class='mt-px' v-bind='props2' />
-      <BarChart class='mt-px' v-bind='props3' />
-    </div>
-  </div>
-  <div class='bg-grey-100 py-1 mt-3'>
-    <p class='text-center'>Baseline mode</p>
-    <div class='mt-2 bg-inherit overflow-hidden'>
-      <BarChart class='mt-px' mode='baseline' v-bind='props1' />
-      <BarChart class='mt-px' mode='baseline' v-bind='props2' />
-      <BarChart class='mt-px' mode='baseline' v-bind='props3' />
+  <Heading type='h5' class='mt-10 text-center'>
+    The same data shown in Delta vs. Baseline modes
+  </Heading>
+  <button @click='() => modes.reverse()'>Reverse Modes</button>
+  <div
+    v-for='mode in modes'
+   class='bg-grey-100 py-1 mt-1'
+  >
+    <p class='text-center capitalize'>{{ mode }} mode</p>
+    <div class='mt-2 bg-inherit'>
+      <BarChart
+        class='mt-px'
+        :mode='mode'
+        v-bind='props1'
+      />
+      <BarChart
+        class='mt-px'
+        :mode='mode'
+        v-bind='props2'
+      />
+      <BarChart
+        class='mt-px'
+        :mode='mode'
+        v-bind='props3'
+      />
     </div>
   </div>
   <Heading type='h5' class='mt-10 text-center'>Gotcha</Heading>
