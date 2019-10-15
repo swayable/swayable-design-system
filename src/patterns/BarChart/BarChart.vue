@@ -39,7 +39,7 @@
           <div
             v-show='show'
             v-if='error'
-            class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-30'
+            class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-20'
             v-bind='errorBarBinding'
           >
             <span class='flex-grow' />
@@ -144,7 +144,7 @@ export default {
         'text-xs',
         'font-semibold',
         'bg-inherit',
-        'z-40',
+        'z-30',
         'px-px',
         opacity,
       ]
