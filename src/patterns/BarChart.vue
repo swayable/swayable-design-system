@@ -1,15 +1,15 @@
 <template>
   <div
-    class='bar-chart w-full flex bg-inherit'
+    class='bar-chart w-full flex bg-inherit relative'
     :style='`height: ${thickness}px`'
   >
     <div
-      class='flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse'
-      v-bind='originSpacerBinding'
+      class='flex absolute items-center bg-inherit h-full'
+      :style='{ left: pointToPercent(origin) }'
     >
       <div
         :class='dataLabelClassList'
-        class='mr-1'
+        class='absolute dataLabelLeft'
       >
         {{ leftLabel }}
       </div>
@@ -17,21 +17,21 @@
     <transition :name='transitionName'>
       <div
         v-show='show'
-        v-bind='barWidthBinding'
-        class='h-full flex-shrink-0 relative bg-inherit'
+        :style='{ width: pointToPercent(width), left: pointToPercent(origin) }'
+        class='h-full flex-shrink-0 absolute bg-inherit'
         :class='`grow-${direction}`'
       >
         <div
-          v-bind='barBackgroundBinding'
+          :style='{ background }'
           class='absolute w-full h-full z-10 bg-grey-200'
         />
         <div class='w-full h-full bg-inherit overflow-hidden relative'>
           <div
-            v-bind='arrowTopBinding'
+            :style='buildArrowStyles("top")'
             class='arrow rotate-1/8 h-full z-10 bg-inherit absolute'
           />
           <div
-            v-bind='arrowBottomBinding'
+            :style='buildArrowStyles("bottom")'
             class='arrow rotate-7/8 h-full z-10 bg-inherit absolute'
           />
         </div>
@@ -40,7 +40,7 @@
             v-show='show'
             v-if='error'
             class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-20'
-            v-bind='errorBarBinding'
+            :style='errorBarStyles'
           >
             <span class='flex-grow' />
             <span class='flex-grow bg-grey-700 opacity-25' />
@@ -49,7 +49,10 @@
         </transition>
       </div>
     </transition>
-    <div class='flex-grow flex items-center relative bg-inherit'>
+    <div
+      class='flex absolute items-center bg-inherit h-full'
+      :style='{ left: pointToPercent(origin + width) }'
+    >
       <div
         :class='dataLabelClassList'
         class='ml-1'
@@ -71,60 +74,62 @@ export default {
   name: 'BarChart',
   props: {
     /**
-     * Shown next to the baseline (only visible when mode is 'baseline')
+     * Displayed next to the baseline.
      */
     baselineLabel: { type: String, default: '' },
     /**
-     * Shown next to the delta (visible in all modes)
+     * Displayed next to the delta.
      */
     deltaLabel: { type: String, default: '' },
     /**
-     * The termination point of the bar. `baseline + delta` should be within min to max range.
+     * The termination point of the bar.
      */
     delta: { type: Number, required: true },
     /**
-     * The origin point of the bar. `baseline` should be within min to max range.
+     * The origin point of the bar.
      */
     baseline: { type: Number, required: false, default: 0 },
     /**
-     * The margin of error in the delta
+     * The margin of error in the delta.
      */
     error: { type: Number },
     /**
-     * The px thickness of the bar
+     * The px thickness of the bar.
      */
     thickness: { type: Number, default: 20 },
     /**
-     * The number represented at extreme left of the graph in delta mode
-     * (in 'baseline' mode min is always 0)
+     * Extreme left point of the graph.
      */
     min: { type: Number, default: 0 },
     /**
-     * The number represented at extreme right of the graph in delta mode
-     * (in 'baseline' mode max is always scale).
-     * Defaults to `scale`
+     * Defaults to `scale`. Extreme right point of the graph.
      */
     max: { type: Number },
     /**
-     * The scale at which the baseline and delta are represented.
+     * The scale that baseline and delta measures.
+     * This should not be confused with min/max.
+     *
+     * e.g. when charting a likert scale with 5 choices and
+     * all data points happen to be either `2`, `3`, or `4`, your `scale` should be `5`,
+     * even though may choose a `min` of `2` and a `max` `4` if you desire.
+     *
      */
     scale: { type: Number, default: 100 },
     /**
-     * Bar is grey rather than a gradient
+     * Removes the color gradient of the bar.
      */
     insignificant: { type: Boolean, default: false },
     /**
-     * Animates drawing the graph
+     * Whether to animate drawing the graph.
      */
     animate: { type: Boolean, default: true },
     /**
-     * `'delta'` mode is used to show the relative difference between bars; baselines are aligned.
-     * `'baseline'` mode is used to show absolute differences between bars; baselines are plotted
+     * Aligned baselines demonstrates relative differences between bars,
+     * otherwise demonstrates absolute differences by plotting baselines.
      */
-    mode: {
-      type: String,
-      default: 'delta',
-      validator: (val) => ['baseline', 'delta'].includes(val),
+    alignBaselines: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -152,79 +157,55 @@ export default {
     positive() {
       return this.delta >= 0
     },
-    isDelta() {
-      return this.mode == 'delta'
-    },
     width() {
       return Math.abs(this.delta)
     },
+    minPoint() {
+      return this.min
+    },
+    maxPoint() {
+      return this.max || this.scale
+    },
     totalWidth() {
-      if (!this.isDelta) return this.scale
-      return (this.max || this.scale) - this.min
+      return this.maxPoint - this.minPoint
     },
     origin() {
-      return this.isDelta
-        ? this.deltaModeOrigin
-        : this.baselineModeOrigin
+      return this.alignBaselines
+        ? this.alignedOrigin
+        : this.baselineOrigin
     },
-    deltaModePivot() {
-      return Math.abs(this.min)
+    alignedOrigin() {
+      const pivot = this.minPoint * -1
+      return this.positive
+        ? pivot
+        : pivot - this.width
     },
-    deltaModeOrigin() {
-      const origin = this.positive
-        ? this.deltaModePivot
-        : this.deltaModePivot - this.width
-      return origin
-    },
-    baselineModeOrigin() {
+    baselineOrigin() {
       const origin = this.positive
         ? this.baseline
         : this.baseline + this.delta
-      return Math.abs(origin)
-    },
-    originSpacerBinding() {
-      const originRatio = this.origin / this.totalWidth
-      const width = `${originRatio * 100}%`
-      return { style: { width } }
-    },
-    barWidthBinding() {
-      const widthRatio = this.width / this.totalWidth
-      const width = `${widthRatio * 100}%`
-      return { style: { width } }
-    },
-    barBackgroundBinding() {
-      const { background } = this
-      return { style: { background } }
-    },
-    arrowTopBinding() {
-      return { style: this.buildArrowCSS('top') }
-    },
-    arrowBottomBinding() {
-      return { style: this.buildArrowCSS('bottom') }
+      return origin - this.minPoint
     },
     direction() {
       return  this.positive
         ? 'right'
         : 'left'
     },
-    errorBarBinding() {
+    errorBarStyles() {
+      if (this.error === undefined) return {}
       const errorRatio = (this.error * 2) / this.width
       const width = errorRatio * 100
       return {
-        style: {
-          width: `${width}%`,
-          [this.direction]: `-${width / 2}%`,
-        },
+        width: `${width}%`,
+        [this.direction]: `-${width / 2}%`,
       }
     },
     leftLabel() {
-      if (this.isDelta && this.positive) return ''
       return this.positive
         ? this.baselineLabel
         : this.deltaLabel
     },
     rightLabel() {
-      if (this.isDelta && !this.positive) return ''
       return this.positive
         ? this.deltaLabel
         : this.baselineLabel
@@ -232,11 +213,9 @@ export default {
     background() {
       if (this.insignificant) return 'transparent'
 
-      const scaleToPercent = this.scale / 100
-
       const gradientPoints = [
-        this.baseline * scaleToPercent,
-        (this.baseline + this.delta) * scaleToPercent,
+        this.baseline / this.scale,
+        (this.baseline + this.delta) / this.scale,
       ]
 
       if (!this.positive) gradientPoints.reverse()
@@ -244,7 +223,7 @@ export default {
     },
   },
   watch: {
-    mode() {
+    alignBaselines() {
       this.show = false
       this.$nextTick(() => { this.show = true })
     },
@@ -253,7 +232,7 @@ export default {
     this.show = true
   },
   methods: {
-    buildArrowCSS(yAnchor) {
+    buildArrowStyles(yAnchor) {
       const xOffset = this.thickness / 3
       const xAnchor = this.positive
         ? 'left'
@@ -264,11 +243,17 @@ export default {
         [xAnchor]: `calc(100% - ${xOffset}px)`,
       }
     },
+    pointToPercent(point) {
+      const ratio = point / this.totalWidth
+      return `${ratio * 100}%`
+    },
   },
 }
 </script>
 
 <style lang="scss">
+.dataLabelLeft { right: calc(100% + theme('spacing.1')) }
+
 @keyframes grow-in {
   0% { transform: scale3d(0, 1, 1); }
   100% { transform: scale3d(1, 1, 1); }
@@ -297,11 +282,33 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
 
 <docs>
   ```jsx
-  const modes = ['delta', 'baseline']
-  const shared = { insignificant:  false, max: 7, min: -2, scale: 10, }
-  const props1 = { ...shared, deltaLabel: '+44.2%', baselineLabel: '38.5% ▶', baseline: 3.85, delta: 4.42, error: 0.9 }
-  const props2 = { ...shared, baselineLabel: '◀ 54.5%', deltaLabel: '-2.4%', baseline: 5.45, delta: -0.24, insignificant: true, error: 0.31 }
-  const props3 = { ...shared, baselineLabel: '◀ 18.5%', deltaLabel: '-14.1%', baseline: 1.85, delta: -1.41, error: 1.2 }
+  const sharedProps = { scale: 10, max: 9, min: -3 }
+  const props1 = {
+    ...sharedProps,
+    deltaLabel: '+44.2%',
+    baselineLabel: '38.5% ▶',
+    baseline: 3.85,
+    delta: 4.42,
+    error: 0.9,
+  }
+  const props2 = {
+    ...sharedProps,
+    baselineLabel: '◀ 54.5%',
+    deltaLabel: '-2.4%',
+    baseline: 5.45,
+    delta: -0.24,
+    insignificant: true,
+    error: 0.31,
+  }
+  const props3 = {
+    ...sharedProps,
+    baselineLabel: '◀ 18.5%',
+    deltaLabel: '-14.1%',
+    baseline: 1.85,
+    delta: -1.41,
+    error: 1.2,
+  }
+  let show = true
 
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
   <div class='bg-grey-100 py-1 my-1'>
@@ -314,30 +321,46 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     </div>
   </div>
   <Heading type='h5' class='mt-10 text-center'>
-    The same data shown in Delta vs. Baseline modes
+    The same data shown in Aligned vs. Absolute baselines
   </Heading>
-  <button @click='() => modes.reverse()'>Reverse Modes</button>
-  <div
-    v-for='mode in modes'
-   class='bg-grey-100 py-1 mt-1'
-  >
-    <p class='text-center capitalize'>{{ mode }} mode</p>
-    <div class='mt-2 bg-inherit'>
-      <BarChart
-        class='mt-px'
-        :mode='mode'
-        v-bind='props1'
-      />
-      <BarChart
-        class='mt-px'
-        :mode='mode'
-        v-bind='props2'
-      />
-      <BarChart
-        class='mt-px'
-        :mode='mode'
-        v-bind='props3'
-      />
+  <button @click='() => { show = false; $nextTick(() => show = true) }'>Animate</button>
+  <div v-if='show'>
+    <div class='bg-grey-100 py-1 mt-1'>
+      <p class='text-center capitalize'>Aligned Baselines</p>
+      <div class='mt-2 bg-inherit'>
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props1'
+        />
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props2'
+        />
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props3'
+        />
+      </div>
+    </div>
+    <div class='bg-grey-100 py-1 mt-1'>
+      <p class='text-center capitalize'>Absolute Baselines</p>
+      <div class='mt-2 bg-inherit'>
+        <BarChart
+          class='mt-px'
+          v-bind='props1'
+        />
+        <BarChart
+          class='mt-px'
+          v-bind='props2'
+        />
+        <BarChart
+          class='mt-px'
+          v-bind='props3'
+        />
+      </div>
     </div>
   </div>
   <Heading type='h5' class='mt-10 text-center'>Gotcha</Heading>
@@ -346,9 +369,9 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     otherwise no direction (arrow) will be shown.
   </p>
   <div class='flex mt-2 mb-5'>
-    <BarChart class='bg-white' mode='baseline' :baseline='25' :delta='50' :animate='false'  />
+    <BarChart class='bg-white' :baseline='25' :delta='50' :animate='false'  />
     <span>vs.</span>
-    <BarChart mode='baseline' :baseline='25' :delta='50' :animate='false' />
+    <BarChart :baseline='25' :delta='50' :animate='false' />
   </div>
   ```
 </docs>

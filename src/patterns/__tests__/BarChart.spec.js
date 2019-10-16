@@ -48,6 +48,13 @@ describe('BarChart.vue', () => {
     mode: 'baseline',
   }
 
+  describe('a very basic chart', () => {
+    it('matches the snapshot', () => {
+      const wrapper = shallowMount(BarChart, { propsData: { delta: 50 } })
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
   describe('insignificant', () => {
     it('matches the snapshot', () => {
       const wrapper = shallowMount(BarChart, { propsData: insignificantProps })
