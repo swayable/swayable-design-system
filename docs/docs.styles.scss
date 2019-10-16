@@ -304,6 +304,7 @@ pre[class^="rsg--pre"],
 
 // VUE & HTML Code tabs
 div[class^="rsg--tab"] {
+  margin-top: theme('spacing.6');
   position: relative;
   .vueds-tabs {
     z-index: 5;
