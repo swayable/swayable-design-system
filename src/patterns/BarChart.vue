@@ -159,10 +159,8 @@ export default {
       return Math.abs(this.delta)
     },
     totalWidth() {
-      const max = this.max || this.scale
-      return this.isDelta
-        ? max - this.min
-        : this.scale
+      if (!this.isDelta) return this.scale
+      return (this.max || this.scale) - this.min
     },
     origin() {
       return this.isDelta
@@ -170,8 +168,7 @@ export default {
         : this.baselineModeOrigin
     },
     deltaModePivot() {
-      const ratio = Math.abs(this.min) / this.totalWidth
-      return this.totalWidth * ratio
+      return Math.abs(this.min)
     },
     deltaModeOrigin() {
       const origin = this.positive
@@ -235,7 +232,7 @@ export default {
     background() {
       if (this.insignificant) return 'transparent'
 
-      const scaleToPercent = 100 / this.scale
+      const scaleToPercent = this.scale / 100
 
       const gradientPoints = [
         this.baseline * scaleToPercent,

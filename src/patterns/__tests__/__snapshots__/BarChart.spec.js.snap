@@ -114,3 +114,26 @@ exports[`BarChart.vue positive delta matches the snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`BarChart.vue using a unusual scale matches the snapshot 1`] = `
+<div class="bar-chart w-full flex bg-inherit" style="height: 20px;">
+  <div class="flex-shrink-0 flex relative items-center bg-inherit flex-row-reverse" style="width: 47.36363636363636%;">
+    <div class="mr-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      -2.4%
+    </div>
+  </div>
+  <div class="h-full flex-shrink-0 relative bg-inherit grow-left" style="width: 2.1818181818181817%; display: none;" name="grow">
+    <div class="absolute w-full h-full z-10 bg-grey-200"></div>
+    <div class="w-full h-full bg-inherit overflow-hidden relative">
+      <div class="arrow rotate-1/8 h-full z-10 bg-inherit absolute" style="width: 20px; top: 50%;"></div>
+      <div class="arrow rotate-7/8 h-full z-10 bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
+    </div>
+    <div class="grow-delay absolute h-full flex flex-col items-stretch top-0 z-20" style="width: 508.3333333333333%; left: -254.16666666666666%; display: none;" name="grow"><span class="flex-grow"></span> <span class="flex-grow bg-grey-700 opacity-25"></span> <span class="flex-grow"></span></div>
+  </div>
+  <div class="flex-grow flex items-center relative bg-inherit">
+    <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit z-30 px-px opacity-0">
+      ◀ 54.5%
+    </div>
+  </div>
+</div>
+`;

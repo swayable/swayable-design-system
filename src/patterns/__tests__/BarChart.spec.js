@@ -36,6 +36,18 @@ describe('BarChart.vue', () => {
     scale: 10,
   }
 
+  const unusualScaleProps = {
+    baselineLabel: '◀ 54.5%',
+    deltaLabel: '-2.4%',
+    baseline: 5.45,
+    delta: -0.24,
+    error: 0.61,
+    max: 7,
+    min: -2,
+    scale: 11,
+    mode: 'baseline',
+  }
+
   describe('insignificant', () => {
     it('matches the snapshot', () => {
       const wrapper = shallowMount(BarChart, { propsData: insignificantProps })
@@ -75,6 +87,13 @@ describe('BarChart.vue', () => {
         mode: 'baseline',
       }
       const wrapper = shallowMount(BarChart, { propsData })
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
+  describe('using a unusual scale', () => {
+    it('matches the snapshot', () => {
+      const wrapper = shallowMount(BarChart, { propsData: unusualScaleProps })
       expect(wrapper.html()).toMatchSnapshot()
     })
   })

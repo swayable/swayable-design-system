@@ -40,15 +40,15 @@ export default {
   release: '0.1.0',
   props: {
     /**
-       * The html element used.
-       */
+     * The html element used.
+     */
     type: {
       type: String,
       default: 'div',
     },
     /**
-       * The html element used.
-       */
+     * Tooltip position in relation to the element
+     */
     position: {
       type: String,
       default: 'bottom',
@@ -85,44 +85,28 @@ export default {
 }
 
 .tooltip-top {
-  bottom: calc(100% + 4px);
+  bottom: calc(100% + theme('spacing.1'));
   left: 50%;
   transform-origin: bottom left;
   transform: translateX(-50%) translateY(0%);
-  &:after {
-    left: calc(50% - 4px);
-    top: calc(100% - 8px);
-  }
 }
 .tooltip-bottom {
-  top: calc(100% + 4px);
+  top: calc(100% + theme('spacing.1'));
   left: 50%;
   transform-origin: top left;
   transform: translateX(-50%) translateY(0%);
-  &:after {
-    left: calc(50% - 4px);
-    bottom: calc(100% - 8px);
-  }
 }
 .tooltip-left {
   top: 50%;
-  right: calc(100% + 4px);
+  right: calc(100% + theme('spacing.1'));
   transform-origin: top right;
   transform: translateX(0%) translateY(-50%);
-  &:after {
-    top: calc(50% - 4px);
-    left: calc(100% - 8px);
-  }
 }
 .tooltip-right {
   top: 50%;
-  left: calc(100% + 4px);
+  left: calc(100% + theme('spacing.1'));
   transform-origin: top left;
   transform: translateX(0%) translateY(-50%);
-  &:after {
-    top: calc(50% - 4px);
-    right: calc(100% - 8px);
-  }
 }
 </style>
 

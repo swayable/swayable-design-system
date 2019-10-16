@@ -9,13 +9,13 @@ const RIGHT_RGB = tokens.getColorRGB('blue')
  * `gradientMin` and `gradientMax` allow ~mid segments to be more dramatic
  *
  * e.g. a gradient drawn with args
- * `GradientPercentColor(45, 0, 100)` to `GradientPercentColor(55, 0, 100)`
+ * `GradientPercentColor(.45, 0, 1)` to `GradientPercentColor(55, 0, 1)`
  *  will be less visible than with args
- * `GradientPercentColor(45, 20, 80)` to `GradientPercentColor(55, 20, 80)`
+ * `GradientPercentColor(.45, .2, .8)` to `GradientPercentColor(55, .2, .8)`
 */
 
 class GradientPercentColor {
-  constructor(percent, gradientMin=20, gradientMax=80) {
+  constructor(percent, gradientMin=0.2, gradientMax=0.8) {
     this.percent = percent
     this.gradientMin = gradientMin
     this.gradientMax = gradientMax
@@ -32,30 +32,20 @@ class GradientPercentColor {
     return 1 - this.weight
   }
 
-  get red() {
-    const right = RIGHT_RGB[0] * this.weight
-    const left = LEFT_RGB[0] * this.inverseWeight
-    return Math.round(right + left)
-  }
+  get red() { return this.colorValue(0) }
 
-  get green() {
-    const right = RIGHT_RGB[1] * this.weight
-    const left = LEFT_RGB[1] * this.inverseWeight
-    return Math.round(right + left)
-  }
+  get green() { return this.colorValue(1) }
 
-  get blue() {
-    const right = RIGHT_RGB[2] * this.weight
-    const left = LEFT_RGB[2] * this.inverseWeight
-    return Math.round(right + left)
-  }
-
-  get rgb() {
-    return [this.red, this.green, this.blue]
-  }
+  get blue() { return this.colorValue(2) }
 
   get cssValue() {
     return `rgb(${this.red},${this.green},${this.blue})`
+  }
+
+  colorValue(rgbIndex) {
+    const right = RIGHT_RGB[rgbIndex] * this.weight
+    const left = LEFT_RGB[rgbIndex] * this.inverseWeight
+    return Math.round(right + left)
   }
 
   static drawGradient(gradientStart, gradientStop) {
