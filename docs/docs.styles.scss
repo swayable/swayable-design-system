@@ -78,11 +78,11 @@ td[class^="rsg--cell"] p {
 
 // Sidebar logo
 div[class^="rsg--logo"] {
-  border-bottom: 1px solid var(--nav-color);
-  h1[class^="rsg--heading"] {
-    color: var(--nav-color-active);
+  border-bottom: 0px;
+  margin-top: theme('spacing.5');
+  h1 {
+    color: var(--nav-color-active) !important;
     font-size: theme('fontSize.lg') !important;
-    margin-top: theme('spacing.5');
   }
 }
 
@@ -101,6 +101,7 @@ p[class^="rsg--version"] {
 
 // Sidebar search
 div[class^="rsg--search"] input {
+  border-radius: theme('borderRadius.lg');
   padding: theme('spacing.2') theme('spacing.3');
   color: var(--nav-color-active);
   border: 1px solid transparent;
@@ -142,6 +143,9 @@ div[class^="rsg--sidebar"] {
       height: auto;
     }
   }
+
+  // Hides '/GettingStarted/Components' link from the sidebar
+  li[class^="rsg--item"]:first-child ul { display: none; } 
 
   // Sidebar list item
   li[class^="rsg--item"] {
@@ -433,20 +437,19 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
     right: theme('spacing.6');
   }
   &-ready {
-    background: theme('colors.orange');
+    background: theme('colors.green');
     color: theme('colors.light');
   }
-  &-review,
-  &-under-review {
+  &-review {
     background: theme('colors.yellow');
     color: theme('colors.dark');
   }
-  &-prototype {
+  &-planned {
     background: theme('colors.blue');
     color: theme('colors.light');
   }
-  &-deprecated {
-    background: theme('colors.blue');
+  &-red {
+    background: theme('colors.red');
     color: theme('colors.light');
   }
 }

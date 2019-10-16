@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     class='min-h-screen page'
   >
     <header>
@@ -49,17 +49,6 @@
         The organized principles, tools, patterns &amp; practices providing foundation for our
         product design.
       </p>
-      <p class='mt-4'>
-        Check out
-        <button
-          class='link'
-          @click='toggleTheme'
-        >
-          <span v-if='darkTheme'>light theme</span>
-          <span v-else>dark theme</span>
-        </button>
-      </p>
-
       <section class='mt-10'>
         <Heading type='h2'>
           Typography
@@ -166,7 +155,6 @@
  */
 export default {
   name: 'Index',
-  release: '0.1.0',
   metaInfo: {
     title: 'Swayable Design System',
     htmlAttrs: {
@@ -177,30 +165,9 @@ export default {
     /**
      * The html element name used for the component.
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
-    },
-  },
-  data() {
-    const darkTheme = document
-      .querySelector('html')
-      .getAttribute('data-theme') === 'dark'
-    return { darkTheme }
-  },
-  mounted() {
-    const toggleTheme = window.location.href.includes('theme=toggle')
-    if (toggleTheme) this.toggleTheme()
-  },
-  methods: {
-    toggleTheme() {
-      this.darkTheme = !this.darkTheme
-      const page = document.querySelector('html')
-      if (this.darkTheme) {
-        page.setAttribute('data-theme', 'dark')
-      } else {
-        page.removeAttribute('data-theme')
-      }
     },
   },
 }

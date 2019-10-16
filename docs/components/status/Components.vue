@@ -1,136 +1,44 @@
 <template>
-  <div>
-    <div class='flex'>
-      <span class='w-1/5 flex items-center'>
-        <p class='mr-2'>Ready</p>
-        <Icon
-          :fill='fill.ready'
-          name='ready'
-          size='small'
-        />
-      </span>
-      <span class='w-1/5 flex items-center'>
-        <p class='mr-2'>Under review</p>
-        <Icon
-          :fill='fill.review'
-          name='review'
-          size='small'
-        />
-      </span>
-      <span class='w-1/5 flex items-center'>
-        <p class='mr-2'>Deprecated</p>
-        <Icon
-          :fill='fill.deprecated'
-          name='deprecated'
-          size='small'
-        />
-      </span>
-      <span class='w-1/5 flex items-center'>
-        <p class='mr-2'>Prototype</p>
-        <Icon
-          :fill='fill.prototype'
-          name='prototype'
-          size='small'
-        />
-      </span>
-      <span class='w-1/5 flex items-center'>
-        <p class='mr-2'>Not applicable</p>
-        <span class='w-6 h-6'>—</span>
-      </span>
-    </div>
-    <div class='mt-5'>
-      <div class='flex text-grey-600'>
-        <span
-          v-if='show === "all"'
-          class='w-1/3'
-        >
-          Component Name
-        </span>
-        <span
-          v-if='show === "elements"'
-          class='w-1/3'
-        >
-          Element Name
-        </span>
-        <span
-          v-if='show === "patterns"'
-          class='w-1/3'
-        >
-          Pattern Name
-        </span>
-        <span
-          v-if='show === "templates"'
-          class='w-1/3'
-        >
-          Template Name
-        </span>
-        <span class='w-1/3'>Released in</span>
-        <span class='w-1/3'>Status</span>
-      </div>
-      <div class='mt-1'>
+  <div class='components'>
+    <p>
+      Themes are still in the review stage, but you can change to
+      <button
+        class='link'
+        @click='toggleTheme'
+      >
+        <span v-if='darkTheme'>light theme</span>
+        <span v-else>dark theme</span>
+      </button>
+      now.
+    </p>
+    <div
+      v-for='(components, group) in componentGroups'
+      :key='group'
+      class='mt-5'
+    >
+      <h3
+        v-if='show === "all"'
+        class='group capitalize font-heading text-xl'
+      >
+        {{ group }}
+      </h3>
+      <div class='mt-3'>
         <div
           v-for='(component, index) in components'
-          :key='index'
-          class='flex'
+          :key='component.name'
+          class='component flex w-full p-2'
+          :class='index % 2 === 0 ? "even" : "odd"'
         >
-          <span
-            v-if='component.name'
-            class='w-1/3'
-          >
-            <code class='name'>{{ component.name }}</code>
+          <span class='flex-grow'>
+            <a
+              :href='component.href'
+            >
+              {{ component.name }}
+            </a>
           </span>
-          <span
-            v-else
-            class='w-1/3'
-          >
-            N/A
-          </span>
-          <span
-            v-if='component.release'
-            class='w-1/3'
-          >
-            {{ component.release }}
-          </span>
-          <span
-            v-else
-            class='w-1/3'
-          >
-            N/A
-          </span>
-          <span
-            v-if='component.status'
-            class='w-1/3'
-          >
-            <Icon
-              v-if='component.status === "ready"'
-              :fill='fill.ready'
-              name='ready'
-              size='small'
-            />
-            <Icon
-              v-if='component.status === "under-review" || component.status === "review"'
-              :fill='fill.review'
-              name='review'
-              size='small'
-            />
-            <Icon
-              v-if='component.status === "prototype"'
-              :fill='fill.prototype'
-              name='prototype'
-              size='small'
-            />
-            <Icon
-              v-if='component.status === "deprecated"'
-              :fill='fill.deprecated'
-              name='deprecated'
-              size='small'
-            />
-          </span>
-          <span
-            v-else
-            class='w-1/3'
-          >
-            <span>&nbsp;—</span>
+          <span class='component-status capitalize text-sm'>{{ component.status }}</span>
+          <span class='ml-1'>
+            {{ statusIcons[component.status] }}
           </span>
         </div>
       </div>
@@ -142,7 +50,8 @@
 // If you want to use your own tokens here, change the following line to:
 // import designTokens from "@/assets/tokens/tokens.raw.json"
 // import designTokens from '../../docs.tokens.json'
-import orderBy from 'lodash/orderBy'
+import _orderBy from 'lodash/orderBy'
+import _pick from 'lodash/pick'
 
 export default {
   name: 'Components',
@@ -156,47 +65,91 @@ export default {
     },
   },
   data() {
-    return {
-      components: this.orderData(this.getComponents()),
-      fill: {
-        ready: 'text-green',
-        review: 'text-orange',
-        deprecated: 'text-red-dark',
-        prototype: 'text-blue',
-      },
+    const darkTheme = document
+      .querySelector('html')
+      .getAttribute('data-theme') === 'dark'
+    const statusIcons = {
+      ready: '✅',
+      review: '👀',
+      planned: '✏️',
+      deprecated: '❌',
     }
+
+    return { darkTheme, statusIcons }
+  },
+  computed: {
+    elements() {
+      const context = require.context('@/elements/', true, /\.vue$/)
+      return this.getComponents(context)
+    },
+    patterns() {
+      const context = require.context('@/patterns/', true, /\.vue$/)
+      return this.getComponents(context)
+    },
+    templates() {
+      const context = require.context('@/templates/', true, /\.vue$/)
+      return this.getComponents(context)
+    },
+    componentGroups() {
+      const groups = this.show === 'all'
+        ? ['elements', 'patterns', 'templates']
+        : [this.show]
+      return _pick(this, groups)
+    },
+  },
+  mounted() {
+    const toggleTheme = window.location.href.includes('theme=toggle')
+    if (toggleTheme) this.toggleTheme()
   },
   methods: {
-    getComponents: function() {
-      let contexts
-
-      if (this.show === 'all') {
-        contexts = [
-          require.context('@/elements/', true, /\.vue$/),
-          require.context('@/patterns/', true, /\.vue$/),
-          require.context('@/templates/', true, /\.vue$/),
-        ]
-      } else if (this.show === 'elements') {
-        contexts = [require.context('@/elements/', true, /\.vue$/)]
-      } else if (this.show === 'patterns') {
-        contexts = [require.context('@/patterns/', true, /\.vue$/)]
-      } else if (this.show === 'templates') {
-        contexts = [require.context('@/templates/', true, /\.vue$/)]
-      }
-
-      const components = []
-      contexts.forEach(context => {
-        context.keys().forEach(key => components.push(context(key).default))
-      })
-
-      return components
+    hrefFromPath(path) {
+      const parts = path.replace('src', '/#')
+        .replace('.vue', '')
+        .split('')
+      parts[3] = parts[3].toUpperCase()
+      return parts.join('')
     },
-    orderData: function(data) {
-      return orderBy(data, 'name', 'asc')
+    getComponents(context) {
+      const components = context.keys().map(key => {
+        const component = context(key).default
+        component.href = this.hrefFromPath(component.__file)
+        return component
+      })
+      return _orderBy(components, 'name', 'asc')
+    },
+    toggleTheme() {
+      this.darkTheme = !this.darkTheme
+      const page = document.querySelector('html')
+      if (this.darkTheme) {
+        page.setAttribute('data-theme', 'dark')
+      } else {
+        page.removeAttribute('data-theme')
+      }
     },
   },
 }
 </script>
+
+<style lang="scss">
+  .components {
+    .component-status { @apply text-grey }
+    .group { @apply text-dark }
+    .component {
+      &.odd { @apply bg-grey-100 }
+      &.even { @apply bg-grey-200 }
+    }
+  }
+  [data-theme='dark'] {
+    .components {
+      .component-status { @apply text-dark }
+      .group { @apply text-grey-100 }
+      .component {
+        &.odd { @apply bg-grey-400 }
+        &.even { @apply bg-grey-500 }
+      }
+    }
+  }
+</style>
 
 <docs>
   ```jsx

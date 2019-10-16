@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     :class='`flex items-stretch justify-between shadow z-20 nav-bar ${altClass}`'
   >
     <slot />
@@ -14,12 +14,11 @@
 export default {
   name: 'NavBar',
   status: 'ready',
-  release: '0.3.0',
   props: {
     /**
      * The html element used for the nav bar.
      */
-    type: {
+    element: {
       type: String,
       default: 'nav',
     },

@@ -1,10 +1,10 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     class='relative nav-drop'
   >
     <NavItem
-      type='button'
+      element='button'
       aria-label='Expand Menu'
       :class='`pr-1 sm:pr-2 md:pr-3 lg:pr-4 h-full`'
       @click='toggleOpen'
@@ -44,12 +44,11 @@
 export default {
   name: 'NavDrop',
   status: 'ready',
-  release: '0.3.0',
   props: {
     /**
      * The html element used for component
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
     },

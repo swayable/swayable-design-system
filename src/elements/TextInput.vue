@@ -18,6 +18,7 @@
  */
 export default {
   name: 'TextInput',
+  status: 'ready',
   props: {
     /**
      * The type of the form input field.

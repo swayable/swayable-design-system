@@ -13,12 +13,11 @@
 export default {
   name: 'NavLogo',
   status: 'ready',
-  release: '0.3.0',
   props: {
     /**
      * The html element
      */
-    type: {
+    element: {
       type: String,
     },
     /**

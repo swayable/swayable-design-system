@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     class='min-h-screen'
   >
     <header>
@@ -46,7 +46,6 @@
  */
 export default {
   name: 'NotFound',
-  release: '0.1.0',
   metaInfo: {
     title: 'Swayable Design System',
     htmlAttrs: {
@@ -57,7 +56,7 @@ export default {
     /**
      * The html element name used for the component.
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
     },

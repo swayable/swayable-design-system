@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
   <component
-    :is='type'
+    :is='element'
     :aria-label='ariaLabel'
     :class='`self-center flex justify-center items-center icon ${size}`'
     v-html='svg'
@@ -19,8 +19,7 @@ const req = require.context('@/assets/icons/', true, /^\.\/.*\.svg$/)
  */
 export default {
   name: 'Icon',
-  status: 'prototype',
-  release: '0.1.0',
+  status: 'review',
   props: {
     /**
      * The name of the icon to display.
@@ -47,7 +46,7 @@ export default {
     /**
      * The html element name used for the icon.
      */
-    type: {
+    element: {
       type: String,
       default: 'span',
     },
