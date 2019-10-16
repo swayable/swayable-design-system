@@ -17,8 +17,7 @@
  */
 export default {
   name: 'Button',
-  status: 'prototype',
-  release: '0.1.0',
+  status: 'planned',
   props: {
     /**
      * The html element used for the button.

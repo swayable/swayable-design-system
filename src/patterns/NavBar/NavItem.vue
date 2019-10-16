@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='smartType'
+    :is='smartElement'
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
@@ -22,12 +22,11 @@
 export default {
   name: 'NavItem',
   status: 'ready',
-  release: '0.3.0',
   props: {
     /**
      * The html element
      */
-    type: {
+    element: {
       type: String,
     },
     /**
@@ -75,15 +74,15 @@ export default {
         ? 'interactive'
         : ''
     },
-    smartType() {
-      if (this.type) return this.type
+    smartElement() {
+      if (this.element) return this.element
       if (this.to) return 'router-link'
       if (this.href) return 'a'
       return 'span'
     },
     navigation() {
-      if (this.smartType === 'router-link') return { to: (this.to || this.href) }
-      if (this.smartType === 'a') return { href: this.href }
+      if (this.smartElement === 'router-link') return { to: (this.to || this.href) }
+      if (this.smartElement === 'a') return { href: this.href }
       return {}
     },
   },

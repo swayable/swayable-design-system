@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     class='word-chart leading-none'
   >
     <a
@@ -45,8 +45,7 @@ const NOT_ALPHANUMERIC = /[^\w ]|_/g
  */
 export default {
   name: 'WordChart',
-  status: 'prototype',
-  release: '0.1.0',
+  status: 'review',
   props: {
     /**
      * The body of text word incidence will be measured in
@@ -65,7 +64,7 @@ export default {
     /**
      * The html element used for the word chart container
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
     },

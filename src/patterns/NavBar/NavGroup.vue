@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     class='flex h-full nav-group'
   >
     <slot />
@@ -14,12 +14,11 @@
 export default {
   name: 'NavGroup',
   status: 'ready',
-  release: '0.3.0',
   props: {
     /**
      * The html element used
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
     },

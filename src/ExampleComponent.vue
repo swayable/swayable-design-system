@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     :class='["example", variation]'
   >
     <div id='Example-container'>
@@ -27,15 +27,10 @@ export default {
    *
    * deprecated     Red        Component is deprecated
    * prototype      Blue       Prototype, do not implement!
-   * under-review   Yellow     Component is currently being reviewed
+   * review         Yellow     Component is currently being reviewed
    * ready          Green      Ready to be used
    */
   status: 'prototype',
-  /**
-   * Release indicates when this component was added into the system.
-   * (in which design system version)
-   */
-  release: '0.1.0',
   /**
    * Prop definitions should be as detailed as possible, specifying at least
    * type(s). See examples below:
@@ -44,7 +39,7 @@ export default {
     /**
      * The html element name used for the container of Example component.
      */
-    type: {
+    element: {
       type: String,
       default: 'div',
     },

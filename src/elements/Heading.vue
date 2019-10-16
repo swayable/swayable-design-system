@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='type'
+    :is='element'
     :class='["font-heading", "font-medium", textClass]'
   >
     <slot />
@@ -13,8 +13,7 @@
  */
 export default {
   name: 'Heading',
-  status: 'prototype',
-  release: '0.1.0',
+  status: 'ready',
   props: {
     /**
      * The heading type used for the heading.
