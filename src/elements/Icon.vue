@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/no-v-html -->
   <component
     :is='type'
     :aria-label='ariaLabel'
