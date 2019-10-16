@@ -3,7 +3,7 @@
     :disabled='disabled'
     :type='type'
     :value='value'
-    class='p-2 rounded-lg border border-grey-200 shadow-inner focus:shadow-outline hover:border-grey focus:border-blue'
+    class='text-input p-2 rounded-lg border shadow-inner'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -17,9 +17,7 @@
  * formats including numbers. For longer input, use the form `Textarea` element.
  */
 export default {
-  name: 'Input',
-  status: 'prototype',
-  release: '0.1.0',
+  name: 'TextInput',
   props: {
     /**
      * The type of the form input field.
@@ -67,16 +65,41 @@ export default {
     },
     variantClasses() {
       return this.disabled
-        ? 'cursor-not-allowed text-grey-600 bg-grey-100'
-        : 'bg-white'
+        ? 'cursor-not-allowed text-grey-600 bg-grey-100 disabled'
+        : 'focus:shadow-outline focus:border-blue'
     },
   },
 }
 </script>
 
+<style lang="scss">
+:root {
+  --input-bg-color: theme('colors.white');
+  --input-border-color: theme('colors.grey-200');
+  --disabled-input-bg-color: theme('colors.grey-100');
+  --hovered-input-border-color: theme('colors.grey-500');
+}
+
+[data-theme='dark'] {
+  --input-bg-color: theme('colors.black');
+  --input-border-color: theme('colors.grey-900');
+  --disabled-input-bg-color: theme('colors.grey-800');
+}
+.text-input {
+  background-color: var(--input-bg-color);
+  border-color: var(--input-border-color);
+  &:hover:not(.disabled) {
+    border-color: var(--hovered-input-border-color);
+  }
+  &.disabled {
+    background-color: var(--disabled-input-bg-color) !important;
+  }
+}
+</style>
+
 <docs>
   ```jsx
-    <Input placeholder="Default Input" />
-    <Input placeholder="Disabled Input" disabled />
+    <TextInput placeholder="Default Input" />
+    <TextInput placeholder="Disabled Input" disabled />
   ```
 </docs>

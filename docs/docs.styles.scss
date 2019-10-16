@@ -453,15 +453,6 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
 
 /* TABLES
 --------------------------------------------- */
-
-// Global tr setting so that vueds custom components use this as well
-tr {
-  transition: background-color 0.1s ease;
-  &:hover {
-    background: theme('colors.light');
-  }
-}
-
 table[class^="rsg--table"] {
   border-collapse: collapse;
   border-spacing: 0;

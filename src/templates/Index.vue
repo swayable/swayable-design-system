@@ -60,22 +60,17 @@
         </button>
       </p>
 
-      <section>
+      <section class='mt-10'>
         <Heading type='h2'>
           Typography
         </Heading>
-
-        <Heading type='h3'>
+        <Heading
+          type='h3'
+          class='mt-2'
+        >
           Headings
         </Heading>
-
         <table>
-          <thead>
-            <tr>
-              <th>Heading</th>
-              <th>Example</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               <td><code>&lt;Heading type='h1'&gt;&lt;/Heading&gt;</code></td>
@@ -129,33 +124,30 @@
         </table>
       </section>
 
-      <section>
+      <section class='mt-10'>
         <Heading type='h2'>
           Form Controls
         </Heading>
 
-        <Heading type='h3'>
-          Input
+        <Heading
+          type='h3'
+          class='mt-2'
+        >
+          TextInput
         </Heading>
 
         <table>
-          <thead>
-            <tr>
-              <th>Input</th>
-              <th>Example</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
-              <td><code>&lt;Input placeholder='Placeholder' /&gt;</code></td>
+              <td><code>&lt;TextInput placeholder='Placeholder' /&gt;</code></td>
               <td>
-                <Input placeholder='Placeholder' />
+                <TextInput placeholder='Placeholder' />
               </td>
             </tr>
             <tr>
-              <td><code>&lt;Input disabled placeholder='Disabled' /&gt;</code></td>
+              <td><code>&lt;TextInput disabled placeholder='Disabled' /&gt;</code></td>
               <td>
-                <Input
+                <TextInput
                   disabled
                   placeholder='Disabled'
                 />
