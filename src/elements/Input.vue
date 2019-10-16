@@ -1,13 +1,12 @@
 <template>
   <input
-    :id='id'
+    v-on='eventBindings'
     :disabled='disabled'
     :type='type'
     :value='value'
-    :class='["p-2", "rounded", style]'
+    class='p-2 rounded-lg border border-grey-200 shadow-inner focus:shadow-outline hover:border-grey focus:border-blue'
+    :class='variantClasses'
     :placeholder='placeholder'
-    @input='onInput($event.target.value)'
-    @focus='onFocus($event.target.value)'
   >
 </template>
 
@@ -24,13 +23,13 @@ export default {
   props: {
     /**
      * The type of the form input field.
-     * `text, number, email`
+     * `text, number, email, password, search`
      */
     type: {
       type: String,
       default: 'text',
       validator: value => {
-        return value.match(/(text|number|email)/)
+        return value.match(/(text|number|email|password|search)/)
       },
     },
     /**
@@ -48,13 +47,6 @@ export default {
       default: null,
     },
     /**
-     * Unique identifier of the form input field.
-     */
-    id: {
-      type: String,
-      default: null,
-    },
-    /**
      * Whether the form input field is disabled or not.
      * `true, false`
      */
@@ -64,25 +56,19 @@ export default {
     },
   },
   computed: {
-    style() {
-      if (this.disabled) return ['cursor-not-allowed', 'text-grey']
-
-      return [
-        'shadow-inner',
-        'focus:shadow-outline',
-        'border',
-        'border-grey-0',
-        'hover:border-grey',
-        'focus:border-blue',
-      ]
+    eventBindings() {
+      // $listeners emits all events to parent component
+      // input event is a hack to make v-model work
+      // see https://github.com/vuejs/vue/issues/7042#issuecomment-344948474
+      return {
+        ...this.$listeners,
+        input: e => this.$emit('input', e.target.value),
+      }
     },
-  },
-  methods: {
-    onInput(value) {
-      this.$emit('change', value)
-    },
-    onFocus(value) {
-      this.$emit('focus', value)
+    variantClasses() {
+      return this.disabled
+        ? 'cursor-not-allowed text-grey-600 bg-grey-100'
+        : 'bg-white'
     },
   },
 }
@@ -90,9 +76,7 @@ export default {
 
 <docs>
   ```jsx
-  <div>
-    <Input placeholder="Default Input" id="input-1" />
-    <Input disabled value="Disabled" id="input-4" />
-  </div>
+    <Input placeholder="Default Input" />
+    <Input placeholder="Disabled Input" disabled />
   ```
 </docs>
