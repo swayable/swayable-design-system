@@ -1,12 +1,12 @@
 <template>
   <input
-    v-on='eventBindings'
     :disabled='disabled'
     :type='type'
     :value='value'
     class='p-2 rounded-lg border border-grey-200 shadow-inner focus:shadow-outline hover:border-grey focus:border-blue'
     :class='variantClasses'
     :placeholder='placeholder'
+    v-on='eventBindings'
   >
 </template>
 
