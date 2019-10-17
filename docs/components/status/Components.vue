@@ -80,15 +80,15 @@ export default {
   computed: {
     elements() {
       const context = require.context('@/elements/', true, /\.vue$/)
-      return this.getComponents(context)
+      return this.getComponents(context, 'Elements')
     },
     patterns() {
       const context = require.context('@/patterns/', true, /\.vue$/)
-      return this.getComponents(context)
+      return this.getComponents(context, 'Patterns')
     },
     templates() {
       const context = require.context('@/templates/', true, /\.vue$/)
-      return this.getComponents(context)
+      return this.getComponents(context, 'Templates')
     },
     componentGroups() {
       const groups = this.show === 'all'
@@ -102,17 +102,10 @@ export default {
     if (toggleTheme) this.toggleTheme()
   },
   methods: {
-    hrefFromPath(path) {
-      const parts = path.replace('src', '/#')
-        .replace('.vue', '')
-        .split('')
-      parts[3] = parts[3].toUpperCase()
-      return parts.join('')
-    },
-    getComponents(context) {
+    getComponents(context, groupPath) {
       const components = context.keys().map(key => {
         const component = context(key).default
-        component.href = this.hrefFromPath(component.__file)
+        component.href =  `/#/${groupPath}/${component.name}`
         return component
       })
       return _orderBy(components, 'name', 'asc')
