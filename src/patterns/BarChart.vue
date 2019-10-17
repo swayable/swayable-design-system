@@ -1,0 +1,377 @@
+<template>
+  <div
+    class='bar-chart w-full flex bg-inherit relative'
+    :style='`height: ${thickness}px`'
+  >
+    <div
+      class='flex absolute items-center bg-inherit h-full'
+      :style='{ left: pointToPercent(origin) }'
+    >
+      <div
+        :class='dataLabelClassList'
+        class='absolute dataLabelLeft'
+      >
+        {{ leftLabel }}
+      </div>
+    </div>
+    <transition :name='transitionName'>
+      <div
+        v-show='show'
+        :style='{ width: pointToPercent(width), left: pointToPercent(origin) }'
+        class='h-full flex-shrink-0 absolute bg-inherit'
+        :class='`grow-${direction}`'
+      >
+        <div
+          :style='{ background }'
+          class='absolute w-full h-full z-10 bg-grey-200'
+        />
+        <div class='w-full h-full bg-inherit overflow-hidden relative'>
+          <div
+            :style='buildArrowStyles("top")'
+            class='arrow rotate-1/8 h-full z-10 bg-inherit absolute'
+          />
+          <div
+            :style='buildArrowStyles("bottom")'
+            class='arrow rotate-7/8 h-full z-10 bg-inherit absolute'
+          />
+        </div>
+        <transition :name='transitionName'>
+          <div
+            v-show='show'
+            v-if='error'
+            class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-20'
+            :style='errorBarStyles'
+          >
+            <span class='flex-grow' />
+            <span class='flex-grow bg-grey-700 opacity-25' />
+            <span class='flex-grow' />
+          </div>
+        </transition>
+      </div>
+    </transition>
+    <div
+      class='flex absolute items-center bg-inherit h-full'
+      :style='{ left: pointToPercent(origin + width) }'
+    >
+      <div
+        :class='dataLabelClassList'
+        class='ml-1'
+      >
+        {{ rightLabel }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import _pick from 'lodash/pick'
+import GradientPercentColor from '../utils/GradientPercentColor'
+
+/**
+ * Draws a single horizontal bar.
+ */
+export default {
+  name: 'BarChart',
+  props: {
+    /**
+     * Displayed next to the baseline.
+     */
+    baselineLabel: { type: String, default: '' },
+    /**
+     * Displayed next to the delta.
+     */
+    deltaLabel: { type: String, default: '' },
+    /**
+     * The termination point of the bar.
+     */
+    delta: { type: Number, required: true },
+    /**
+     * The origin point of the bar.
+     */
+    baseline: { type: Number, required: false, default: 0 },
+    /**
+     * The margin of error in the delta.
+     */
+    error: { type: Number },
+    /**
+     * The px thickness of the bar.
+     */
+    thickness: { type: Number, default: 20 },
+    /**
+     * Extreme left point of the graph.
+     */
+    min: { type: Number, default: 0 },
+    /**
+     * Defaults to `scale`. Extreme right point of the graph.
+     */
+    max: { type: Number },
+    /**
+     * The scale that baseline and delta measures.
+     * This should not be confused with min/max.
+     *
+     * e.g. when charting a likert scale with 5 choices and
+     * all data points happen to be either `2`, `3`, or `4`, your `scale` should be `5`,
+     * even though may choose a `min` of `2` and a `max` `4` if you desire.
+     *
+     */
+    scale: { type: Number, default: 100 },
+    /**
+     * Removes the color gradient of the bar.
+     */
+    insignificant: { type: Boolean, default: false },
+    /**
+     * Whether to animate drawing the graph.
+     */
+    animate: { type: Boolean, default: true },
+    /**
+     * Aligned baselines demonstrates relative differences between bars,
+     * otherwise demonstrates absolute differences by plotting baselines.
+     */
+    alignBaselines: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return { show: false }
+  },
+  computed: {
+    transitionName() {
+      return this.animate ? 'grow' : ''
+    },
+    dataLabelClassList() {
+      const opacity = !this.show && this.animate
+        ? 'opacity-0'
+        : 'opacity-75'
+      return [
+        'data-label',
+        'whitespace-no-wrap',
+        'text-xs',
+        'font-semibold',
+        'bg-inherit',
+        'z-30',
+        'px-px',
+        opacity,
+      ]
+    },
+    positive() {
+      return this.delta >= 0
+    },
+    width() {
+      return Math.abs(this.delta)
+    },
+    minPoint() {
+      return this.min
+    },
+    maxPoint() {
+      return this.max || this.scale
+    },
+    totalWidth() {
+      return this.maxPoint - this.minPoint
+    },
+    origin() {
+      return this.alignBaselines
+        ? this.alignedOrigin
+        : this.baselineOrigin
+    },
+    alignedOrigin() {
+      const pivot = this.minPoint * -1
+      return this.positive
+        ? pivot
+        : pivot - this.width
+    },
+    baselineOrigin() {
+      const origin = this.positive
+        ? this.baseline
+        : this.baseline + this.delta
+      return origin - this.minPoint
+    },
+    direction() {
+      return  this.positive
+        ? 'right'
+        : 'left'
+    },
+    errorBarStyles() {
+      if (this.error === undefined) return {}
+      const errorRatio = (this.error * 2) / this.width
+      const width = errorRatio * 100
+      return {
+        width: `${width}%`,
+        [this.direction]: `-${width / 2}%`,
+      }
+    },
+    leftLabel() {
+      return this.positive
+        ? this.baselineLabel
+        : this.deltaLabel
+    },
+    rightLabel() {
+      return this.positive
+        ? this.deltaLabel
+        : this.baselineLabel
+    },
+    background() {
+      if (this.insignificant) return 'transparent'
+
+      const gradientPoints = [
+        this.baseline / this.scale,
+        (this.baseline + this.delta) / this.scale,
+      ]
+
+      if (!this.positive) gradientPoints.reverse()
+      return GradientPercentColor.drawGradient(...gradientPoints)
+    },
+  },
+  watch: {
+    alignBaselines() {
+      this.show = false
+      this.$nextTick(() => { this.show = true })
+    },
+  },
+  mounted() {
+    this.show = true
+  },
+  methods: {
+    buildArrowStyles(yAnchor) {
+      const xOffset = this.thickness / 3
+      const xAnchor = this.positive
+        ? 'left'
+        : 'right'
+      return {
+        width: `${this.thickness}px`,
+        [yAnchor]: '50%',
+        [xAnchor]: `calc(100% - ${xOffset}px)`,
+      }
+    },
+    pointToPercent(point) {
+      const ratio = point / this.totalWidth
+      return `${ratio * 100}%`
+    },
+  },
+}
+</script>
+
+<style lang="scss">
+.dataLabelLeft { right: calc(100% + theme('spacing.1')) }
+
+@keyframes grow-in {
+  0% { transform: scale3d(0, 1, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+$timing: 1s;
+$cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
+.bar-chart, .bar-chart .arrow {
+  transition: all 0.3s ease-out;
+}
+.bar-chart {
+  overflow-x: hidden;
+  .grow-enter-active { animation: grow-in $timing $cubic-ease }
+  .grow-enter-active
+  .grow-left.grow-enter-active { transform-origin: right }
+  .grow-right.grow-enter-active { transform-origin: left }
+  .grow-delay { animation-delay: $timing; }
+  .grow-delay.grow-enter-to { transition: opacity 0.3s }
+  .grow-enter-active .grow-delay { opacity: 0 !important }
+  .data-label {
+    transition: opacity 0.15s;
+    transition-delay: $timing;
+  }
+}
+</style>
+
+<docs>
+  ```jsx
+  const sharedProps = { scale: 10, max: 9, min: -3 }
+  const props1 = {
+    ...sharedProps,
+    deltaLabel: '+44.2%',
+    baselineLabel: '38.5% ▶',
+    baseline: 3.85,
+    delta: 4.42,
+    error: 0.9,
+  }
+  const props2 = {
+    ...sharedProps,
+    baselineLabel: '◀ 54.5%',
+    deltaLabel: '-2.4%',
+    baseline: 5.45,
+    delta: -0.24,
+    insignificant: true,
+    error: 0.31,
+  }
+  const props3 = {
+    ...sharedProps,
+    baselineLabel: '◀ 18.5%',
+    deltaLabel: '-14.1%',
+    baseline: 1.85,
+    delta: -1.41,
+    error: 1.2,
+  }
+  let show = true
+
+  <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
+  <div class='bg-grey-100 py-1 my-1'>
+    <div class='mt-1 bg-inherit'>
+      <BarChart class='mt-px' :delta='25' />
+      <BarChart class='mt-px' :delta='0.5' />
+      <BarChart class='mt-px' :delta='100' />
+      <BarChart class='mt-px' :delta='50' />
+      <BarChart class='mt-px' :delta='75' />
+    </div>
+  </div>
+  <Heading type='h5' class='mt-10 text-center'>
+    The same data shown in Aligned vs. Absolute baselines
+  </Heading>
+  <button @click='() => { show = false; $nextTick(() => show = true) }'>Animate</button>
+  <div v-if='show'>
+    <div class='bg-grey-100 py-1 mt-1'>
+      <p class='text-center capitalize'>Aligned Baselines</p>
+      <div class='mt-2 bg-inherit'>
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props1'
+        />
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props2'
+        />
+        <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props3'
+        />
+      </div>
+    </div>
+    <div class='bg-grey-100 py-1 mt-1'>
+      <p class='text-center capitalize'>Absolute Baselines</p>
+      <div class='mt-2 bg-inherit'>
+        <BarChart
+          class='mt-px'
+          v-bind='props1'
+        />
+        <BarChart
+          class='mt-px'
+          v-bind='props2'
+        />
+        <BarChart
+          class='mt-px'
+          v-bind='props3'
+        />
+      </div>
+    </div>
+  </div>
+  <Heading type='h5' class='mt-10 text-center'>Gotcha</Heading>
+  <p class='text-center text-medium'>
+    It is important for the bar or the direct parent of a bar to have a background,
+    otherwise no direction (arrow) will be shown.
+  </p>
+  <div class='flex mt-2 mb-5'>
+    <BarChart class='bg-white' :baseline='25' :delta='50' :animate='false'  />
+    <span>vs.</span>
+    <BarChart :baseline='25' :delta='50' :animate='false' />
+  </div>
+  ```
+</docs>

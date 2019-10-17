@@ -4,10 +4,22 @@ import designTokens from '@/assets/tokens/tokens.raw.json'
 
 const orderedTokens = _orderBy(designTokens.props, ['order', 'category', 'name'])
 
-export default {
+const Tokens = {
+  getColor(colorName) {
+    return this.colors.find(c => c.name === `color_${colorName}`)
+  },
+
+  getColorRGB(colorName) {
+    const { value } = this.getColor(colorName)
+    return value
+      .replace('rgb(', '')
+      .replace(')', '')
+      .split(',')
+  },
+
   get colors() {
     const tokens = Object.values(orderedTokens)
-    return tokens.filter(c => c.type === 'color')
+    return tokens.filter(t => t.type === 'color')
   },
   
   get primaryColors() {
@@ -18,3 +30,5 @@ export default {
     return this.colors.filter(c => c.category === 'color-secondary')
   },
 }
+
+export default Tokens
