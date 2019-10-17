@@ -72,6 +72,7 @@ import GradientPercentColor from '../utils/GradientPercentColor'
  */
 export default {
   name: 'BarChart',
+  status: 'ready',
   props: {
     /**
      * Displayed next to the baseline.
