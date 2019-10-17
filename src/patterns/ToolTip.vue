@@ -36,8 +36,7 @@ const anchorMap = {
 
 export default {
   name: 'ToolTip',
-  status: 'prototype',
-  release: '0.1.0',
+  status: 'ready',
   props: {
     /**
      * The html element used.
