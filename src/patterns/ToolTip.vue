@@ -3,16 +3,14 @@
     :is='type'
     class='relative'
     :class='`tooltip-${position}-wrapper`'
+    @mouseover='activate'
+    @mouseleave='deactivate'
   >
-    <span
-      @mouseover='show = true'
-      @mouseleave='show = false'
-    >
-      <slot />
-    </span>
+    <slot />
     <transition name='expand'>
       <div
         v-show='show'
+        :style='crossAxisPosition'
         class='tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap'
         :class='`tooltip-${position}`'
       >
@@ -23,15 +21,10 @@
 </template>
 
 <script>
-const bottom = { top: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)'  }
-const top = { bottom: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)' }
-const right = { left: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)' }
-const left = { right: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)'  }
-const anchorMap = {
-  top,
-  bottom,
-  left,
-  right,
+const STATE = {
+  closed: 0,
+  opening: 1,
+  open: 2,
 }
 
 export default {
@@ -50,12 +43,59 @@ export default {
      */
     position: {
       type: String,
-      default: 'bottom',
-      validator: (val) => Object.keys(anchorMap).includes(val),
+      default: 'top',
+      validator: (val) => [
+        'top',
+        'bottom',
+        'left',
+        'right',
+      ].includes(val),
+    },
+    /**
+     * Opens aligned with the cursor. Otherwise is centered. 
+     */
+    cursorAlign: {
+      type: Boolean,
+      default: true,
+    },
+    /**
+     * Milliseconds between mouseover and opening
+     */
+    delay: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
-    return { show: false }
+    return {
+      state: STATE.closed,
+      crossAxisPosition: {},
+    }
+  },
+  computed: {
+    show() {
+      return this.state === STATE.open
+    },
+  },
+  methods: {
+    activate(e) {
+      if (this.cursorAlign) {
+        const positionTopOrBottom = ['top', 'bottom'].includes(this.position)
+        this.crossAxisPosition = positionTopOrBottom
+          ? { left: `${e.layerX}px`}
+          : { top: `${e.layerY}px`}
+      }
+
+      this.state = STATE.opening
+      setTimeout(() => {
+        if (this.state === STATE.opening) {
+          this.state = STATE.open
+        }
+      }, this.delay);
+    },
+    deactivate() {
+      this.state = STATE.closed
+    },
   },
 }
 </script>
@@ -112,7 +152,7 @@ export default {
 <docs>
   ```jsx
   <div class='flex justify-around mb-5'>
-    <ToolTip position='right'>
+    <ToolTip position='right' :cursorAlign='false' >
       <p class='py-1 px-2 rounded border'>Right</p>
       <template #tip>
         <p>Tooltip Right</p>
@@ -124,7 +164,7 @@ export default {
         <p>Tooltip Bottom</p>
       </template>
     </ToolTip>
-    <ToolTip position='left'>
+    <ToolTip position='left' :cursorAlign='false'>
       <p class='py-1 px-2 rounded border'>Left</p>
       <template #tip>
         <p>Tooltip Left</p>
@@ -134,6 +174,12 @@ export default {
       <p class='py-1 px-2 rounded border'>Top</p>
       <template #tip>
         <p>Tooltip Top</p>
+      </template>
+    </ToolTip>
+    <ToolTip :delay='1000'>
+      <p class='py-1 px-2 rounded border'>Delayed</p>
+      <template #tip>
+        <p>by 1 second</p>
       </template>
     </ToolTip>
   </div>

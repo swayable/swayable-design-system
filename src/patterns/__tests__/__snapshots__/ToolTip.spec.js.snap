@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolTip.vue position bottom matches the snapshot 1`] = `
-<div class="relative tooltip-bottom-wrapper"><span></span>
+<div class="relative tooltip-bottom-wrapper">
   <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-bottom" style="display: none;" name="expand"></div>
 </div>
 `;
 
 exports[`ToolTip.vue position left matches the snapshot 1`] = `
-<div class="relative tooltip-left-wrapper"><span></span>
+<div class="relative tooltip-left-wrapper">
   <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-left" style="display: none;" name="expand"></div>
 </div>
 `;
 
 exports[`ToolTip.vue position right matches the snapshot 1`] = `
-<div class="relative tooltip-right-wrapper"><span></span>
+<div class="relative tooltip-right-wrapper">
   <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-right" style="display: none;" name="expand"></div>
 </div>
 `;
 
 exports[`ToolTip.vue position top matches the snapshot 1`] = `
-<div class="relative tooltip-top-wrapper"><span></span>
+<div class="relative tooltip-top-wrapper">
   <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-top" style="display: none;" name="expand"></div>
 </div>
 `;
