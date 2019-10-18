@@ -52,7 +52,7 @@ export default {
       ].includes(val),
     },
     /**
-     * Opens aligned with the cursor. Otherwise is centered. 
+     * Opens aligned with the cursor. Otherwise is centered.
      */
     cursorAlign: {
       type: Boolean,
@@ -91,7 +91,7 @@ export default {
         if (this.state === STATE.opening) {
           this.state = STATE.open
         }
-      }, this.delay);
+      }, this.delay)
     },
     deactivate() {
       this.state = STATE.closed
