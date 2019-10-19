@@ -1,6 +1,7 @@
 <template>
   <component
     :is='type'
+    ref='trigger'
     class='relative'
     :class='`tooltip-${position}-wrapper`'
     @mouseover='activate'
@@ -52,11 +53,11 @@ export default {
       ].includes(val),
     },
     /**
-     * Opens aligned with the cursor. Otherwise is centered.
+     * Causes tooltip to open aligned with the cursor. Otherwise is centered.
      */
     cursorAlign: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     /**
      * Milliseconds between mouseover and opening
@@ -78,12 +79,14 @@ export default {
     },
   },
   methods: {
-    activate(e) {
+    activate({ clientX, clientY }) {
       if (this.cursorAlign) {
+        const { left, top } = this.$refs.trigger.getBoundingClientRect()
         const positionTopOrBottom = ['top', 'bottom'].includes(this.position)
+
         this.crossAxisPosition = positionTopOrBottom
-          ? { left: `${e.layerX}px`}
-          : { top: `${e.layerY}px`}
+          ? { left: `${clientX - left}px`}
+          : { top: `${clientY - top}px`}
       }
 
       this.state = STATE.opening
@@ -152,7 +155,7 @@ export default {
 <docs>
   ```jsx
   <div class='flex justify-around mb-5'>
-    <ToolTip position='right' :cursorAlign='false' >
+    <ToolTip position='right'>
       <p class='py-1 px-2 rounded border'>Right</p>
       <template #tip>
         <p>Tooltip Right</p>
@@ -164,7 +167,7 @@ export default {
         <p>Tooltip Bottom</p>
       </template>
     </ToolTip>
-    <ToolTip position='left' :cursorAlign='false'>
+    <ToolTip position='left'>
       <p class='py-1 px-2 rounded border'>Left</p>
       <template #tip>
         <p>Tooltip Left</p>
@@ -176,10 +179,10 @@ export default {
         <p>Tooltip Top</p>
       </template>
     </ToolTip>
-    <ToolTip :delay='1000'>
+    <ToolTip :delay='500'>
       <p class='py-1 px-2 rounded border'>Delayed</p>
       <template #tip>
-        <p>by 1 second</p>
+        <p>by half a second</p>
       </template>
     </ToolTip>
   </div>
