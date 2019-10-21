@@ -4,8 +4,8 @@
     ref='trigger'
     class='relative'
     :class='`tooltip-${position}-wrapper`'
-    @mouseover='activate'
-    @mouseleave='deactivate'
+    @mouseover='onMouseover'
+    @mouseleave='onMouseleave'
   >
     <slot />
     <transition name='expand'>
@@ -79,25 +79,26 @@ export default {
     },
   },
   methods: {
-    activate({ clientX, clientY }) {
-      if (this.cursorAlign) {
-        const { left, top } = this.$refs.trigger.getBoundingClientRect()
-        const positionTopOrBottom = ['top', 'bottom'].includes(this.position)
-
-        this.crossAxisPosition = positionTopOrBottom
-          ? { left: `${clientX - left}px`}
-          : { top: `${clientY - top}px`}
-      }
-
+    onMouseleave() { this.state = STATE.closed },
+    onMouseover(e) {
+      if (this.cursorAlign) this.alignWithCursor(e)
+      const open = this.delay ? this.openWithDelay : this.open
+      open()
+    },
+    open() { this.state = STATE.open },
+    openWithDelay() {
       this.state = STATE.opening
       setTimeout(() => {
-        if (this.state === STATE.opening) {
-          this.state = STATE.open
-        }
+        if (this.state === STATE.opening) this.open()
       }, this.delay)
     },
-    deactivate() {
-      this.state = STATE.closed
+    alignWithCursor({ clientX, clientY }) {
+      const { left, top } = this.$refs.trigger.getBoundingClientRect()
+      const positionTopOrBottom = ['top', 'bottom'].includes(this.position)
+
+      this.crossAxisPosition = positionTopOrBottom
+        ? { left: `${clientX - left}px`}
+        : { top: `${clientY - top}px`}
     },
   },
 }
