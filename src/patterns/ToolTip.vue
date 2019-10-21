@@ -1,18 +1,17 @@
 <template>
   <component
     :is='type'
+    ref='trigger'
     class='relative'
     :class='`tooltip-${position}-wrapper`'
+    @mouseover='onMouseover'
+    @mouseleave='onMouseleave'
   >
-    <span
-      @mouseover='show = true'
-      @mouseleave='show = false'
-    >
-      <slot />
-    </span>
+    <slot />
     <transition name='expand'>
       <div
         v-show='show'
+        :style='crossAxisPosition'
         class='tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap'
         :class='`tooltip-${position}`'
       >
@@ -23,15 +22,10 @@
 </template>
 
 <script>
-const bottom = { top: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)'  }
-const top = { bottom: '100%', left: 'auto', right: '50%', transform: 'translateX(50%)' }
-const right = { left: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)' }
-const left = { right: '100%', top: 'auto', bottom: '50%', transform: 'translateY(50%)'  }
-const anchorMap = {
-  top,
-  bottom,
-  left,
-  right,
+const STATE = {
+  closed: 0,
+  opening: 1,
+  open: 2,
 }
 
 export default {
@@ -50,12 +44,62 @@ export default {
      */
     position: {
       type: String,
-      default: 'bottom',
-      validator: (val) => Object.keys(anchorMap).includes(val),
+      default: 'top',
+      validator: (val) => [
+        'top',
+        'bottom',
+        'left',
+        'right',
+      ].includes(val),
+    },
+    /**
+     * Causes tooltip to open aligned with the cursor. Otherwise is centered.
+     */
+    cursorAlign: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Milliseconds between mouseover and opening
+     */
+    delay: {
+      type: Number,
+      default: 0,
     },
   },
   data() {
-    return { show: false }
+    return {
+      state: STATE.closed,
+      crossAxisPosition: {},
+    }
+  },
+  computed: {
+    show() {
+      return this.state === STATE.open
+    },
+  },
+  methods: {
+    onMouseleave() { this.state = STATE.closed },
+    onMouseover(e) {
+      if (this.cursorAlign) this.alignWithCursor(e)
+      const open = this.delay ? this.openWithDelay : this.open
+      open()
+    },
+    open() { this.state = STATE.open },
+    openWithDelay() {
+      this.state = STATE.opening
+      setTimeout(() => {
+        if (this.state === STATE.opening) this.open()
+      }, this.delay)
+    },
+    alignWithCursor({ clientX, clientY }) {
+      const { left, top } = this.$refs.trigger.getBoundingClientRect()
+      const positionTopOrBottom = ['top', 'bottom'].includes(this.position)
+
+      this.crossAxisPosition = positionTopOrBottom
+        ? { left: `${clientX - left}px`}
+        : { top: `${clientY - top}px`}
+    },
   },
 }
 </script>
@@ -134,6 +178,12 @@ export default {
       <p class='py-1 px-2 rounded border'>Top</p>
       <template #tip>
         <p>Tooltip Top</p>
+      </template>
+    </ToolTip>
+    <ToolTip :delay='500'>
+      <p class='py-1 px-2 rounded border'>Delayed</p>
+      <template #tip>
+        <p>by half a second</p>
       </template>
     </ToolTip>
   </div>
