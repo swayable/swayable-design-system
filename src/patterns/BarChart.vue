@@ -266,7 +266,6 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
   transition: all 0.3s ease-out;
 }
 .bar-chart {
-  overflow-x: hidden;
   .grow-enter-active { animation: grow-in $timing $cubic-ease }
   .grow-enter-active
   .grow-left.grow-enter-active { transform-origin: right }
