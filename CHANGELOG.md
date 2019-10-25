@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/swayable/swayable-design-system/compare/v0.6.0...v0.6.1) (2019-10-25)
+
+
+### Bug Fixes
+
+* **BarChart:** style fix ([593680a](https://github.com/swayable/swayable-design-system/commit/593680a))
+
+
+
 ## [0.6.0](https://github.com/swayable/swayable-design-system/compare/v0.5.1...v0.6.0) (2019-10-21)
 
 
