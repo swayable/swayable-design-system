@@ -66,7 +66,7 @@ module.exports = {
       inset: sizeMap,
       colors,
       boxShadow: {
-        outline: `0 0 0 2px ${colors['blue-fade']}`,
+        outline: `0 0 0 2px ${colors['azure-light']}`,
       },
     },
     rotate: {

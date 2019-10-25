@@ -1,8 +1,9 @@
 import _orderBy from 'lodash/orderBy'
+import _map from 'lodash/map'
 
 import designTokens from '@/assets/tokens/tokens.raw.json'
 
-const orderedTokens = _orderBy(designTokens.props, ['order', 'category', 'name'])
+const orderedTokens = _orderBy( designTokens.props, ['order', 'category', 'name'])
 
 const Tokens = {
   getColor(colorName) {
@@ -28,6 +29,10 @@ const Tokens = {
 
   get secondaryColors() {
     return this.colors.filter(c => c.category === 'color-secondary')
+  },
+
+  get basicColors() {
+    return this.colors.filter(c => c.category === 'color-basic')
   },
 }
 

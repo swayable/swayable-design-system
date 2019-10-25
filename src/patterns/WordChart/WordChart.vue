@@ -15,7 +15,7 @@
     </a>
     <p
       v-if='showDroppedWordCount'
-      class='m-4 text-right text-sm text-grey-600'
+      class='m-4 text-right text-sm text-grey-darker'
     >
       {{ droppedWords.length }} trivial and low-frequency words not shown
     </p>

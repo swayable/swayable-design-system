@@ -13,7 +13,7 @@
         v-show='show'
         :style='crossAxisPosition'
         class='tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap'
-        :class='`tooltip-${position}`'
+        :class='`tooltip-${position} ${classNames}`'
       >
         <slot name='tip' />
       </div>
@@ -64,7 +64,13 @@ export default {
      */
     delay: {
       type: Number,
-      default: 0,
+      default: 200,
+    },
+    /**
+     * Class names are applied to the tooltip
+     */
+    classNames: {
+      type: String,
     },
   },
   data() {
@@ -105,7 +111,7 @@ export default {
 </script>
 
 <style lang="scss">
-.tooltip { background: adjust-color($color-dark, $alpha: -0.1) }
+.tooltip { background: adjust-color($color-blue-dark, $alpha: -0.1) }
 
 .tooltip-top-wrapper, .tooltip-bottom-wrapper {
   .expand-enter-active { animation: expandY .15s }
