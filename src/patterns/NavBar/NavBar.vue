@@ -49,7 +49,7 @@ export default {
   --logo-light: url(https://images.swayable.com/logos/light.svg);
   --logo-url: var(--logo-small);
   --logo-width: 33px;
-  --nav-bg: theme('colors.dark');
+  --nav-bg: theme('colors.blue-dark');
   --nav-color: theme('colors.grey');
   --nav-color-active: theme('colors.white');
   --nav-active-filter: var(--filter-bright);
@@ -58,7 +58,7 @@ export default {
 [data-theme='dark'] {
   .nav-bar.nav-alt {
     --nav-color: theme('colors.grey');
-    --nav-bg: theme('colors.darker');
+    --nav-bg: theme('colors.blue-dark');
     --nav-active-filter: var(--filter-bright);
     --nav-color-active: theme('colors.white');
     @media (min-width: 640px) {
@@ -73,9 +73,9 @@ export default {
   }
 
   &.nav-alt{
-    --nav-bg: theme('colors.light');
+    --nav-bg: theme('colors.grey-lighter');
     --nav-color: theme('colors.grey.700');
-    --nav-color-active: theme('colors.dark');
+    --nav-color-active: theme('colors.blue-dark');
     --nav-active-filter: var(--filter-dim);
     @media (min-width: 640px) {
       --logo-url: var(--logo-light)

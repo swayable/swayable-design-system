@@ -1,6 +1,6 @@
 <template>
   <component
-    :is='element'
+    :is='type'
     :class='["font-heading", "font-medium", textClass]'
   >
     <slot />

@@ -37,7 +37,7 @@
             </a>
           </span>
           <span class='component-status capitalize text-sm'>{{ component.status }}</span>
-          <span class='ml-1'>
+          <span class='ml-2'>
             {{ statusIcons[component.status] }}
           </span>
         </div>
@@ -125,20 +125,20 @@ export default {
 
 <style lang="scss">
   .components {
-    .component-status { @apply text-grey }
-    .group { @apply text-dark }
+    .component-status { @apply text-grey-darker }
+    .group { @apply text-blue-dark }
     .component {
-      &.odd { @apply bg-grey-100 }
-      &.even { @apply bg-grey-200 }
+      &.odd { @apply bg-grey-lighter }
+      &.even { @apply bg-grey-light }
     }
   }
   [data-theme='dark'] {
     .components {
-      .component-status { @apply text-dark }
-      .group { @apply text-grey-100 }
+      .component-status { @apply text-blue-dark }
+      .group { @apply text-grey-lighter }
       .component {
-        &.odd { @apply bg-grey-400 }
-        &.even { @apply bg-grey-500 }
+        &.odd { @apply bg-grey-dark }
+        &.even { @apply bg-grey-darker }
       }
     }
   }

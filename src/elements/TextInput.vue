@@ -66,7 +66,7 @@ export default {
     },
     variantClasses() {
       return this.disabled
-        ? 'cursor-not-allowed text-grey-600 bg-grey-100 disabled'
+        ? 'cursor-not-allowed text-grey-dark bg-grey-lighter disabled'
         : 'focus:shadow-outline focus:border-blue'
     },
   },
@@ -76,15 +76,15 @@ export default {
 <style lang="scss">
 :root {
   --input-bg-color: theme('colors.white');
-  --input-border-color: theme('colors.grey-200');
-  --disabled-input-bg-color: theme('colors.grey-100');
-  --hovered-input-border-color: theme('colors.grey-500');
+  --input-border-color: theme('colors.grey-light');
+  --disabled-input-bg-color: theme('colors.grey-lightest');
+  --hovered-input-border-color: theme('colors.grey');
 }
 
 [data-theme='dark'] {
   --input-bg-color: theme('colors.black');
-  --input-border-color: theme('colors.grey-900');
-  --disabled-input-bg-color: theme('colors.grey-800');
+  --input-border-color: theme('colors.grey-darker');
+  --disabled-input-bg-color: theme('colors.grey-darker');
 }
 .text-input {
   background-color: var(--input-bg-color);

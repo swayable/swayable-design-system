@@ -13,9 +13,9 @@ pre, code {
 }
 
 :root {
-  --bg-color: theme('colors.light');
+  --bg-color: theme('colors.grey-lighter');
   --text-color: theme('colors.black');
-  --heading-color: theme('colors.dark');
+  --heading-color: theme('colors.blue-dark');
   --link-color: theme('colors.blue');
 
   --filter-dim: brightness(50%);

@@ -23,7 +23,7 @@
       >
         <div
           :style='{ background }'
-          class='absolute w-full h-full z-10 bg-grey-200'
+          class='absolute w-full h-full z-10 bg-grey'
         />
         <div class='w-full h-full bg-inherit overflow-hidden relative'>
           <div
@@ -43,7 +43,7 @@
             :style='errorBarStyles'
           >
             <span class='flex-grow' />
-            <span class='flex-grow bg-grey-700 opacity-25' />
+            <span class='flex-grow bg-black opacity-25' />
             <span class='flex-grow' />
           </div>
         </transition>
@@ -311,7 +311,7 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
   let show = true
 
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
-  <div class='bg-grey-100 py-1 my-1'>
+  <div class='bg-grey-lighter py-1 my-1'>
     <div class='mt-1 bg-inherit'>
       <BarChart class='mt-px' :delta='25' />
       <BarChart class='mt-px' :delta='0.5' />
@@ -325,13 +325,14 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
   </Heading>
   <button @click='() => { show = false; $nextTick(() => show = true) }'>Animate</button>
   <div v-if='show'>
-    <div class='bg-grey-100 py-1 mt-1'>
+    <div class='bg-grey-lighter py-1 mt-1'>
       <p class='text-center capitalize'>Aligned Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
           :alignBaselines='true'
           class='mt-px'
           v-bind='props1'
+          :insignificant='true'
         />
         <BarChart
           :alignBaselines='true'
@@ -345,7 +346,7 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
         />
       </div>
     </div>
-    <div class='bg-grey-100 py-1 mt-1'>
+    <div class='bg-grey-lighter py-1 mt-1'>
       <p class='text-center capitalize'>Absolute Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
