@@ -36,6 +36,7 @@
       "last"
     ],
     "no-console": "off",
+    "vue/no-textarea-mustache": "off",
     "vue/require-default-prop": "off",
     "vue/html-quotes": ["error", "single"],
     "vue/max-attributes-per-line": ["error", {
