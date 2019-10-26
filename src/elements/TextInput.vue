@@ -3,7 +3,7 @@
     :disabled='disabled'
     :type='type'
     :value='value'
-    class='text-input p-2 rounded-lg border shadow-inner'
+    class='text-input text-sm p-2 rounded border border-grey font-medium leading-tight'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -66,41 +66,33 @@ export default {
     },
     variantClasses() {
       return this.disabled
-        ? 'cursor-not-allowed text-grey-dark bg-grey-lighter disabled'
-        : 'focus:shadow-outline focus:border-blue'
+        ? 'bg-grey-light text-grey-darker cursor-not-allowed disabled'
+        : 'bg-white text-blue-dark focus:shadow-outline focus:border-blue'
     },
   },
 }
 </script>
 
 <style lang="scss">
-:root {
-  --input-bg-color: theme('colors.white');
-  --input-border-color: theme('colors.grey-light');
-  --disabled-input-bg-color: theme('colors.grey-lightest');
-  --hovered-input-border-color: theme('colors.grey');
-}
-
-[data-theme='dark'] {
-  --input-bg-color: theme('colors.black');
-  --input-border-color: theme('colors.grey-darker');
-  --disabled-input-bg-color: theme('colors.grey-darker');
-}
 .text-input {
-  background-color: var(--input-bg-color);
-  border-color: var(--input-border-color);
+  ::placeholder {
+    @apply text-grey;
+  }
   &:hover:not(.disabled) {
-    border-color: var(--hovered-input-border-color);
   }
   &.disabled {
-    background-color: var(--disabled-input-bg-color) !important;
+    @apply bg-grey;
   }
+}
+[data-theme='dark'] {
+ 
 }
 </style>
 
 <docs>
   ```jsx
-    <TextInput placeholder="Default Input" />
-    <TextInput placeholder="Disabled Input" disabled />
+    <TextInput placeholder="Placeholder" />
+    <TextInput value="Text Input" />
+    <TextInput value="Disabled" disabled />
   ```
 </docs>
