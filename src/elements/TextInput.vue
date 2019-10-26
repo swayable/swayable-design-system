@@ -1,5 +1,16 @@
 <template>
+  <!-- eslint-disable vue/multiline-html-element-content-newline -->
+  <textarea
+    v-if='type === "textarea"'
+    :disabled='disabled'
+    :type='type'
+    class='text-input text-sm p-2 rounded border border-grey font-medium leading-tight'
+    :class='variantClasses'
+    :placeholder='placeholder'
+    v-on='eventBindings'
+  >{{ value }}</textarea>
   <input
+    v-else
     :disabled='disabled'
     :type='type'
     :value='value'
@@ -12,9 +23,7 @@
 
 <script>
 /**
- * Form Inputs are used to allow users to provide text input when the expected
- * input is short. Form Input has a range of options and supports several text
- * formats including numbers. For longer input, use the form `Textarea` element.
+ * Provides various types of short text input, and also textarea for longer input.
  */
 export default {
   name: 'TextInput',
@@ -22,13 +31,13 @@ export default {
   props: {
     /**
      * The type of the form input field.
-     * `text, number, email, password, search`
+     * `text, number, email, password, search, textarea`
      */
     type: {
       type: String,
       default: 'text',
       validator: value => {
-        return value.match(/(text|number|email|password|search)/)
+        return value.match(/(text|number|email|password|search|textarea)/)
       },
     },
     /**
@@ -73,26 +82,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.text-input {
-  ::placeholder {
-    @apply text-grey;
-  }
-  &:hover:not(.disabled) {
-  }
-  &.disabled {
-    @apply bg-grey;
-  }
-}
-[data-theme='dark'] {
- 
-}
-</style>
-
 <docs>
   ```jsx
-    <TextInput placeholder="Placeholder" />
-    <TextInput value="Text Input" />
-    <TextInput value="Disabled" disabled />
+  <div class='flex'>
+    <TextInput class='flex-grow m-1' placeholder="Placeholder" />
+    <TextInput class='flex-grow m-1' value="Text Input" />
+    <TextInput class='flex-grow m-1' value="Disabled" disabled />
+  </div>
+  <div class='flex'>
+    <TextInput class='flex-grow m-1' type="textarea" placeholder="Placeholder" />
+    <TextInput class='flex-grow m-1' type="textarea" value="Text Area" />
+    <TextInput class='flex-grow m-1' value="Disabled" type="textarea" disabled />
+  </div>
   ```
 </docs>
