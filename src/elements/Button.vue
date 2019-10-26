@@ -1,9 +1,9 @@
 <template>
   <component
-    :is='type'
-    :href='href'
-    :type='submit'
-    :class='["button", size, state, variation]'
+    :is='element'
+    :class='classes'
+    :disabled='disabled'
+    v-on='$listeners'
   >
     <slot />
   </component>
@@ -17,17 +17,17 @@
  */
 export default {
   name: 'Button',
-  status: 'planned',
+  status: 'ready',
   props: {
     /**
      * The html element used for the button.
-     * `button, a`
+     * `button, a, input`
      */
-    type: {
+    element: {
       type: String,
       default: 'button',
       validator: value => {
-        return value.match(/(button|a)/)
+        return value.match(/(button|a|input)/)
       },
     },
     /**
@@ -42,43 +42,37 @@ export default {
       },
     },
     /**
-     * When setting the button’s type to a link, use this option to give a href.
-     */
-    href: {
-      type: String,
-      default: null,
-    },
-    /**
-     * Set the button’s type to “submit”.
-     */
-    submit: {
-      type: String,
-      default: null,
-      validator: value => {
-        return value.match(/(null|submit)/)
-      },
-    },
-    /**
-     * Manually trigger various states of the button.
-     * `hover, active, focus`
-     */
-    state: {
-      type: String,
-      default: null,
-      validator: value => {
-        return value.match(/(hover|active|focus)/)
-      },
-    },
-    /**
      * Style variation to give additional meaning.
-     * `primary, secondary`
      */
-    variation: {
-      type: String,
-      default: null,
-      validator: value => {
-        return value.match(/(primary|secondary)/)
-      },
+    primary: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Whether the form input field is disabled or not.
+     * `true, false`
+     */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classes() {
+      const variation = () => {
+        if (this.primary) return 'text-white bg-blue-dark'
+        if (this.disabled) return 'text-grey-darker bg-grey-light cursor-not-allowed disabled'
+        return 'text-black bg-white border border-grey'
+      }
+      const size = {
+        small: '',
+        medium: '',
+        large: '',
+      }[this.size]
+      const classes = ['button', 'rounded', 'py-2 px-3', 'text-sm', 'font-medium', 'leading-snug']
+      classes.push(variation())
+      classes.push(size)
+      return classes
     },
   },
 }
@@ -86,15 +80,8 @@ export default {
 
 <docs>
   ```jsx
-  <div>
-    <Button variation="primary" size="large">Primary Button</Button>
-    <Button variation="primary" size="medium">Medium</Button>
-    <Button variation="primary" size="small">Small</Button>
-    <br />
-    <Button>Default Button</Button>
-    <Button state="hover">:hover</Button>
-    <Button state="active">:active</Button>
-    <Button state="focus">:focus</Button>
-  </div>
+  <Button primary>Primary</Button>
+  <Button>Normal</Button>
+  <Button disabled>Disabled</Button>
   ```
 </docs>
