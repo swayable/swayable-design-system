@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/swayable/swayable-design-system/compare/v0.6.1...v0.7.0) (2019-10-26)
+
+
+### Features
+
+* **Button:** match figma designs ([0dd4b0a](https://github.com/swayable/swayable-design-system/commit/0dd4b0a))
+* **Colors:** match colors to figma design system ([db32d3e](https://github.com/swayable/swayable-design-system/commit/db32d3e))
+* **DropDown:** add dropdown pattern ([4808a33](https://github.com/swayable/swayable-design-system/commit/4808a33))
+* **elements/TextInput:** match figma designs ([b3dee01](https://github.com/swayable/swayable-design-system/commit/b3dee01))
+* **Icon:** match figma designs ([f2c2fee](https://github.com/swayable/swayable-design-system/commit/f2c2fee))
+* **TextArea:** combine textarea and textinput elements ([2a1ba86](https://github.com/swayable/swayable-design-system/commit/2a1ba86))
+
+
+
 ### [0.6.1](https://github.com/swayable/swayable-design-system/compare/v0.6.0...v0.6.1) (2019-10-25)
 
 
