@@ -1,9 +1,13 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
-  <component
-    :is='element'
+  <svg
+    :height='sizeNum'
+    :width='sizeNum'
     :aria-label='ariaLabel'
-    :class='`self-center flex justify-center items-center icon ${size}`'
+    xmlns='http://www.w3.org/2000/svg'
+    viewBox='0 0 24 24'
+    class='icon self-center flex justify-center items-center inline-block fill-current'
+    :class='fill'
     v-html='svg'
   />
 </template>
@@ -12,14 +16,11 @@
 const req = require.context('@/assets/icons/', true, /^\.\/.*\.svg$/)
 
 /**
- * Icons are used to visually communicate core parts of the product and
- * available actions. They can act as wayfinding tools to help users more
- * easily understand where they are in the product. They come in three sizes,
- * and respond to text color utility classes.
+ * Icons represent actions and concepts through out the product. They come in three sizes and response to utility classes such as `text-<color>` and `rotate-<fraction>`.
  */
 export default {
   name: 'Icon',
-  status: 'review',
+  status: 'ready',
   props: {
     /**
      * The name of the icon to display.
@@ -63,40 +64,40 @@ export default {
     },
   },
   data() {
-    const sizeNum = {
-      small: '14',
-      medium: '24',
-      large: '48',
-    }[this.size]
     return {
-      svg: req('./' + this.name + '.svg').replace(/^<svg /, `<svg viewBox="0 0 24 24" height="${sizeNum}" width="${sizeNum}" height="${sizeNum}" class="fill-current ${this.fill} inline-block`),
+      svg: req('./' + this.name + '.svg'),
     }
+  },
+  computed: {
+    sizeNum() {
+      return {
+        small: '14',
+        medium: '24',
+        large: '48',
+      }[this.size]
+    },
   },
 }
 </script>
 
 <docs>
   ```jsx
-  <div class="my-5 flex justify-around flex-wrap flex-grow">
-    <div class="flex items-center">
-      <span class="px-3">Chevron</span>
-      <Icon name="chevron" size="small" class="rotate-1/4" />
-    </div>
-    <div class="flex items-center">
-      <span class="px-3">Menu</span>
-      <Icon name="menu" />
-    </div>
-    <div class="flex items-center">
-      <span class="px-3">Respondents</span>
-      <Icon name="respondents" size="large" />
-    </div>
-    <div class="flex items-center">
-      <span class="px-3">Tests</span>
-      <Icon name="tests" />
-    </div>
-    <div class="flex items-center">
-      <span class="px-3">Library</span>
-      <Icon name="library" class="text-blue" />
+  const icons = [
+    'check',
+    'chevron',
+    'cross',
+    'library',
+    'menu',
+    'respondents',
+    'tests',
+  ]
+  <div class='mt-2 -mx-4 flex flex-wrap flex-grow'>
+    <div
+      v-for='icon in icons'
+      class='flex items-center mt-2 mx-2 p-2 rounded bg-grey-lighter border border-grey-light'
+    >
+      <span class='capitalize flex-grow text-sm'>{{ icon }}</span>
+      <Icon :name='icon' class='text-blue-dark ml-3' />
     </div>
   </div>
   ```
