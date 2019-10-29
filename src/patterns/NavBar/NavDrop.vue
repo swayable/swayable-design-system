@@ -1,14 +1,15 @@
 <template>
-  <component
-    :is='element'
-    class='relative nav-drop'
+  <DropDown
+    class='nav-drop'
+    :open='open'
+    @close='open = false'
   >
     <NavItem
       element='button'
       aria-label='Expand Menu'
-      :class='`pr-1 sm:pr-2 md:pr-3 lg:pr-4 h-full`'
-      @click='toggleOpen'
-      v-on='$listeners'
+      class='pr-1 sm:pr-2 md:pr-3 lg:pr-4 h-full'
+      :class='open && "z-20"'
+      @click='open = !open'
     >
       <span class='flex items-center'>
         <slot>{{ name }}</slot>
@@ -16,25 +17,25 @@
           <Icon
             name='chevron'
             size='small'
-            class='rotate-1/4'
           />
         </span>
       </span>
     </NavItem>
-    <div
-      v-show='open'
-      ref='navMenuDropdown'
-      :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 shadow ${align}-0 nav-drop-dropdown`'
-    >
-      <slot name='dropdown'>
-        <NavItem
-          v-for='item in navItems'
-          :key='item.name'
-          v-bind='item'
-        />
-      </slot>
-    </div>
-  </component>
+
+    <template #dropdown>
+      <div
+        :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 shadow ${align}-0 nav-drop-dropdown`'
+      >
+        <slot name='dropdown'>
+          <NavItem
+            v-for='item in navItems'
+            :key='item.name'
+            v-bind='item'
+          />
+        </slot>
+      </div>
+    </template>
+  </DropDown>
 </template>
 
 <script>
@@ -79,33 +80,7 @@ export default {
   data() {
     return {
       open: false,
-      elementsList: [],
     }
-  },
-  mounted() {
-    this.populateElementsList()
-    window.addEventListener('click', this.windowClick)
-  },
-  beforeDestroy() {
-    window.removeEventListener('click', this.windowClick)
-  },
-  methods: {
-    populateElementsList() {
-      const flatten = arr => arr.reduce((a, b) => a.concat(b), [])
-      const getChildElements = el =>
-        flatten(
-          Array.from(el.children)
-            .map(getChildElements)
-            .concat(el)
-        )
-      this.elementsList = getChildElements(this.$el)
-    },
-    windowClick({ target }) {
-      if (!this.elementsList.includes(target)) this.open = false
-    },
-    toggleOpen() {
-      this.open = !this.open
-    },
   },
 }
 </script>

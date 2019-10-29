@@ -1,5 +1,8 @@
 <template>
-  <div class='relative inline-block'>
+  <div
+    class='inline-block'
+    :class='align && `relative`'
+  >
     <span
       class='relative'
       :class='open && "z-20"'
@@ -7,8 +10,8 @@
       <slot />
     </span>
     <div
-      class='w-auto min-w-full absolute flex-col z-20'
-      :class='`${align}-0`'
+      class='w-auto min-w-full flex-col z-20'
+      :class='align && `absolute ${align}-0`'
     >
       <slot
         v-if='open'
@@ -48,7 +51,6 @@ export default {
      */
     align: {
       type: String,
-      default: 'left',
       validator: value => ['right', 'left'].includes(value),
     },
   },
@@ -59,10 +61,11 @@ export default {
   ```jsx
   const leftOpen = false
   const rightOpen = false
+  const open = false
 
   <div class='flex justify-between'>
-    <DropDown :open='leftOpen' @close='leftOpen = false'>
-      <Button @click='leftOpen = !leftOpen'>Left Dropdown</Button>
+    <DropDown :open='leftOpen' @close='leftOpen = false' align='left'>
+      <Button primary @click='leftOpen = !leftOpen'>Left Dropdown</Button>
       <template #dropdown>
         <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
@@ -71,7 +74,7 @@ export default {
     </DropDown>
 
     <DropDown :open='rightOpen' @close='rightOpen = false' align='right'>
-      <Button @click='rightOpen = !rightOpen'>Right Dropdown</Button>
+      <Button primary @click='rightOpen = !rightOpen'>Right Dropdown</Button>
       <template #dropdown>
         <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
@@ -79,5 +82,13 @@ export default {
       </template>
     </DropDown>
   </div>
+  <DropDown :open='open' @close='open = false' class='mt-2'>
+      <Button @click='open = !open'>Collapsable content</Button>
+      <template #dropdown>
+        <p class='py-2'>
+          Notice that without an `align` prop, the expanded content is not absolutely positioned and displaces content in the normal page flow.
+        </p>
+      </template>
+    </DropDown>
   ```
 </docs>
