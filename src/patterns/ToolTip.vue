@@ -12,10 +12,15 @@
       <div
         v-show='show'
         :style='crossAxisPosition'
-        class='tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap'
-        :class='`tooltip-${position} ${classNames}`'
+        :class='`tooltip-${position}`'
+        class='absolute z-50'
       >
-        <slot name='tip' />
+        <div
+          class='tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap'
+          :class='classNames'
+        >
+          <slot name='tip' />
+        </div>
       </div>
     </transition>
   </component>
@@ -71,6 +76,7 @@ export default {
      */
     classNames: {
       type: String,
+      default: '',
     },
   },
   data() {
@@ -85,18 +91,17 @@ export default {
     },
   },
   methods: {
-    onMouseleave() { this.state = STATE.closed },
     onMouseover(e) {
-      if (this.cursorAlign) this.alignWithCursor(e)
-      const open = this.delay ? this.openWithDelay : this.open
-      open()
-    },
-    open() { this.state = STATE.open },
-    openWithDelay() {
-      this.state = STATE.opening
+      if (this.state === STATE.closed) this.state = STATE.opening
       setTimeout(() => {
-        if (this.state === STATE.opening) this.open()
+        if (this.state === STATE.opening) {
+          if (this.cursorAlign) this.alignWithCursor(e)
+          this.state = STATE.open
+        }
       }, this.delay)
+    },
+    onMouseleave() {
+      this.state = STATE.closed
     },
     alignWithCursor({ clientX, clientY }) {
       const { left, top } = this.$refs.trigger.getBoundingClientRect()
@@ -111,7 +116,10 @@ export default {
 </script>
 
 <style lang="scss">
-.tooltip { background: adjust-color($color-blue-dark, $alpha: -0.1) }
+.tooltip {
+  background: adjust-color($color-blue-dark, $alpha: -0.1);
+  position: relative;
+}
 
 .tooltip-top-wrapper, .tooltip-bottom-wrapper {
   .expand-enter-active { animation: expandY .15s }
@@ -134,28 +142,32 @@ export default {
 }
 
 .tooltip-top {
-  bottom: calc(100% + theme('spacing.1'));
+  bottom: calc(100% - theme('spacing.1'));
   left: 50%;
   transform-origin: bottom left;
   transform: translateX(-50%) translateY(0%);
+  .tooltip { bottom: theme('spacing.2') }
 }
 .tooltip-bottom {
-  top: calc(100% + theme('spacing.1'));
+  top: calc(100% - theme('spacing.1'));
   left: 50%;
   transform-origin: top left;
   transform: translateX(-50%) translateY(0%);
+  .tooltip { top: theme('spacing.2') }
 }
 .tooltip-left {
   top: 50%;
-  right: calc(100% + theme('spacing.1'));
+  right: calc(100% - theme('spacing.1'));
   transform-origin: top right;
   transform: translateX(0%) translateY(-50%);
+  .tooltip { right: theme('spacing.2') }
 }
 .tooltip-right {
   top: 50%;
-  left: calc(100% + theme('spacing.1'));
+  left: calc(100% - theme('spacing.1'));
   transform-origin: top left;
   transform: translateX(0%) translateY(-50%);
+  .tooltip { left: theme('spacing.2') }
 }
 </style>
 
@@ -186,10 +198,16 @@ export default {
         <p>Tooltip Top</p>
       </template>
     </ToolTip>
-    <ToolTip :delay='500'>
+    <ToolTip :delay='500' position='bottom'>
       <p class='py-1 px-2 rounded border'>Delayed</p>
       <template #tip>
         <p>by half a second</p>
+      </template>
+    </ToolTip>
+    <ToolTip :delay='0' position='bottom'>
+      <p class='py-1 px-2 rounded border'>Not Delayed</p>
+      <template #tip>
+        <p>at all</p>
       </template>
     </ToolTip>
   </div>
