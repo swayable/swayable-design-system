@@ -74,8 +74,8 @@
     }
   },
   "dependencies": {
-    "buefy": "^0.7.10",
     "lodash": "^4.17.15",
+    "postcss-color-mod-function": "^3.0.3",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-url": "^8.0.0",
