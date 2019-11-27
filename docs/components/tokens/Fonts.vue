@@ -47,15 +47,8 @@ export default {
     return {
       tokens: this.orderData(designTokens.props),
       weightMap: {
-        '100': 'hairline',
-        '200': 'thin',
-        '300': 'light',
         '400': 'normal',
-        '500': 'medium',
         '600': 'semibold',
-        '700': 'bold',
-        '800': 'extrabold',
-        '900': 'black',
       },
     }
   },

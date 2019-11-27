@@ -310,7 +310,7 @@ div[class^="rsg--tab"] {
   .vueds-tabs {
     z-index: 5;
     border-radius: theme('borderRadius.sm');
-    box-shadow: 0 2px 8px theme('colors.grey.800');
+    box-shadow: 0 2px 8px theme('colors.grey-darker');
     overflow: hidden;
     position: absolute;
     top: theme('spacing.6');
@@ -321,7 +321,7 @@ div[class^="rsg--tab"] {
       letter-spacing: theme('letterSpacing.tight');
       font-size: 1rem;
       font-weight: 400;
-      font-family: $font-text;
+      font-family: $font-body;
       line-height: theme('lineHeight.snug');
       padding: theme('spacing.4');
       cursor: pointer;
@@ -415,7 +415,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   align-self: flex-end;
   cursor: help;
   line-height: theme('lineHeight.none');
-  background: theme('colors.grey.600');
+  background: theme('colors.grey-dark');
   padding: theme('spacing.2') theme('spacing.4') theme('spacing.2')/1.2;
   text-transform: uppercase;
   letter-spacing: 1px;

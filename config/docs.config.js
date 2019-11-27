@@ -17,9 +17,9 @@ module.exports = {
     maxWidth: '100%',
     sidebarWidth: 240,
     fontFamily: {
-      base: '"roboto",sans-serif',
-      mono: '"roboto-mono",monospace',
-      title: '"azo-sans-web",sans-serif',
+      base: '"acumin-pro",sans-serif',
+      mono: '"din-2014",sans-serif',
+      title: '"acumin-pro",sans-serif',
     },
   },
   renderRootJsx: path.join(__dirname, '../docs/components/Preview.js'),

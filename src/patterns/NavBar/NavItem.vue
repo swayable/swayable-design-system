@@ -4,7 +4,7 @@
     v-bind='navigation'
     :class='active && "active"'
     :title='title'
-    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative whitespace-no-wrap flex font-medium items-stretch max-w-full text-sm min-h-12'
+    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative whitespace-no-wrap flex font-semibold items-stretch max-w-full min-h-12'
     v-on='$listeners'
   >
     <span class='flex flex-grow max-w-full relative items-center'>
@@ -95,7 +95,7 @@ export default {
     <NavBar>
       <NavItem name='Item 1' :active='true' />
       <NavItem name='Item 2' title='The only item with a title' noninteractive />
-      <NavItem>Item 3</NavItem>
+      <NavItem element='button'>Item 3</NavItem>
     </NavBar>
   </div>
   ```

@@ -1,7 +1,7 @@
 <template>
   <component
     :is='type'
-    :class='["font-heading", "font-medium", textClass]'
+    :class='["heading", "font-heading", "font-semibold", textClass]'
   >
     <slot />
   </component>

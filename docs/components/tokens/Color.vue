@@ -24,7 +24,7 @@
                 :class='`bg-${prop.classSuffix} shadow rounded-full inline-block p-16 swatch`'
               />
               <div class='px-6 pt-4'>
-                <div class='font-bold text-lg mb-2 capitalize font-heading text-blue-dark'>
+                <div class='font-semibold text-lg mb-2 capitalize font-heading text-blue-dark'>
                   {{ prop.title }}
                 </div>
               </div>

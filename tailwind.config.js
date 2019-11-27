@@ -55,8 +55,12 @@ module.exports = {
     fontSize,
     fontFamily: {
       heading: designTokens.props.font_heading.originalValue,
-      body: designTokens.props.font_text.originalValue,
+      body: designTokens.props.font_body.originalValue,
       mono: designTokens.props.font_mono.originalValue,
+    },
+    fontWeight: {
+      normal: 400,
+      semibold: 600,
     },
     extend: {
       minHeight: sizeMap,
