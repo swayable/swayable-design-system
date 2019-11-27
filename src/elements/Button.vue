@@ -49,6 +49,13 @@ export default {
       default: false,
     },
     /**
+     * Style variation for nesting in menus
+     */
+    menu: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Whether the form input field is disabled or not.
      * `true, false`
      */
@@ -60,8 +67,10 @@ export default {
   computed: {
     classes() {
       const variation = () => {
-        if (this.primary) return 'text-white bg-blue-dark'
-        if (this.disabled) return 'text-grey-darker bg-grey-light cursor-not-allowed disabled'
+        if (this.menu && this.disabled) return 'bg-transparent text-grey-dark'
+        if (this.menu) return 'bg-transparent text-blue-dark hover:bg-grey-lighter'
+        if (this.disabled) return 'text-grey-darker border border-grey-light bg-grey-light cursor-not-allowed disabled'
+        if (this.primary) return 'text-white bg-blue-dark border border-blue-dark'
         return 'text-black bg-white border border-grey'
       }
       const size = {
@@ -69,7 +78,8 @@ export default {
         medium: '',
         large: '',
       }[this.size]
-      const classes = ['button', 'rounded', 'py-2 px-3', 'text-sm', 'font-medium', 'leading-snug']
+      const classes = ['button', 'py-2 px-3', 'text-sm', 'leading-snug']
+      if (!this.menu) classes.push('rounded')
       classes.push(variation())
       classes.push(size)
       return classes
@@ -83,5 +93,6 @@ export default {
   <Button primary>Primary</Button>
   <Button>Normal</Button>
   <Button disabled>Disabled</Button>
+  <Button menu>Menu</Button>
   ```
 </docs>
