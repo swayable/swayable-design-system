@@ -52,7 +52,7 @@ export default {
         medium: '',
         large: '',
       }[this.size]
-      const classes = ['label', 'py-2 px-3', 'text-sm', 'leading-snug', 'rounded']
+      const classes = ['label', 'py-2 px-3', 'text-sm', 'leading-snug', 'rounded', 'inline-block']
       classes.push(variation())
       classes.push(size)
       return classes

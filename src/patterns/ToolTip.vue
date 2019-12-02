@@ -175,37 +175,37 @@ export default {
   ```jsx
   <div class='flex justify-around mb-5'>
     <ToolTip position='right'>
-      <p class='py-1 px-2 rounded border'>Right</p>
+      <Label>Right</Label>
       <template #tip>
         <p>Tooltip Right</p>
       </template>
     </ToolTip>
     <ToolTip position='bottom'>
-      <p class='py-1 px-2 rounded border'>Bottom</p>
+      <Label>Bottom</Label>
       <template #tip>
         <p>Tooltip Bottom</p>
       </template>
     </ToolTip>
     <ToolTip position='left'>
-      <p class='py-1 px-2 rounded border'>Left</p>
+      <Label>Left</Label>
       <template #tip>
         <p>Tooltip Left</p>
       </template>
     </ToolTip>
     <ToolTip position='top'>
-      <p class='py-1 px-2 rounded border'>Top</p>
+      <Label>Top</Label>
       <template #tip>
         <p>Tooltip Top</p>
       </template>
     </ToolTip>
     <ToolTip :delay='500' position='bottom'>
-      <p class='py-1 px-2 rounded border'>Delayed</p>
+      <Label>Delayed</Label>
       <template #tip>
         <p>by half a second</p>
       </template>
     </ToolTip>
     <ToolTip :delay='0' position='bottom'>
-      <p class='py-1 px-2 rounded border'>Not Delayed</p>
+      <Label>Not Delayed</Label>
       <template #tip>
         <p>at all</p>
       </template>

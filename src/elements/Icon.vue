@@ -53,13 +53,13 @@ export default {
     },
     /**
      * The size of the icon. Defaults to medium.
-     * `small, medium, large`
+     * `xs, sm, md, lg`
      */
     size: {
       type: String,
-      default: 'medium',
+      default: 'md',
       validator: value => {
-        return value.match(/(small|medium|large)/)
+        return value.match(/(xs|sm|md|lg)/)
       },
     },
   },
@@ -71,9 +71,10 @@ export default {
   computed: {
     sizeNum() {
       return {
-        small: '14',
-        medium: '24',
-        large: '48',
+        xs: '12',
+        sm: '14',
+        md: '24',
+        lg: '48',
       }[this.size]
     },
   },

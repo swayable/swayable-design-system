@@ -1,6 +1,6 @@
 <template>
   <DropDown
-    class='nav-drop'
+    class='nav-drop sm:relative'
     :open='open'
     @close='open = false'
   >
@@ -16,7 +16,7 @@
         <span class='ml-2 flex'>
           <Icon
             name='chevron'
-            size='small'
+            size='sm'
           />
         </span>
       </span>
@@ -24,7 +24,7 @@
 
     <template #dropdown>
       <div
-        :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 shadow ${align}-0 nav-drop-dropdown`'
+        :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 ${align}-0 nav-drop-dropdown`'
       >
         <slot name='dropdown'>
           <NavItem
