@@ -72,7 +72,7 @@ export default {
     sizeNum() {
       return {
         xs: '12',
-        sm: '14',
+        sm: '16',
         md: '24',
         lg: '48',
       }[this.size]
