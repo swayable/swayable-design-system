@@ -53,7 +53,7 @@ export default {
       const base = 'border rounded'
       if (this.custom) return base
       if (this.menu && this.disabled) return 'bg-transparent text-grey-dark rounded disabled'
-      if (this.menu) return 'bg-transparent text-blue-dark hover:bg-grey-lighter'
+      if (this.menu) return 'bg-transparent text-blue-dark'
       if (this.disabled) return `${base} text-grey-darker border-grey-light bg-grey-light cursor-not-allowed disabled`
       if (this.primary) return `${base} text-white bg-blue-dark border-blue-dark`
       return `${base} text-black bg-white border-grey`

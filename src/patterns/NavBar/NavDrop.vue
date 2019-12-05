@@ -16,7 +16,7 @@
         <span class='ml-2 flex'>
           <Icon
             name='chevron'
-            size='sm'
+            size='xs'
           />
         </span>
       </span>

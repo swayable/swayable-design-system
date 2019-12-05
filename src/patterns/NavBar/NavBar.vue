@@ -60,9 +60,11 @@ export default {
 [data-theme='dark'] {
   .nav-bar.nav-light {
     --nav-color: theme('colors.grey');
-    --nav-bg: theme('colors.blue-dark');
+    --nav-bg: theme('colors.black');
     --nav-active-filter: var(--filter-bright);
     --nav-color-active: theme('colors.white');
+    --nav-border-color: theme('colors.grey-darker');
+
     @media (min-width: 640px) {
       --logo-url: var(--logo-dark)
     }
@@ -75,6 +77,7 @@ export default {
   }
 
   &.nav-light{
+    @apply border-b;
     --nav-bg: theme('colors.white');
     --nav-color: color-mod(theme('colors.blue-dark') alpha(60%));
     --nav-color-active: theme('colors.blue-dark');

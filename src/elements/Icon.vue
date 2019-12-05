@@ -52,12 +52,12 @@ export default {
       default: 'span',
     },
     /**
-     * The size of the icon. Defaults to medium.
+     * The size of the icon
      * `xs, sm, md, lg`
      */
     size: {
       type: String,
-      default: 'md',
+      default: 'sm',
       validator: value => {
         return value.match(/(xs|sm|md|lg)/)
       },
