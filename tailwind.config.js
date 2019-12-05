@@ -5,24 +5,15 @@ const _filter = require('lodash/filter')
 const designTokens = require('./src/assets/tokens/tokens.raw.json')
 
 const sizeMap = {
-  '-20': '-5rem',
-  '-16': '-4rem',
-  '-12': '-3rem',
-  '-10': '-2.5rem',
-  '-8': '-2rem',
-  '-6': '-1.5rem',
-  '-5': '-1.25rem',
-  '-4': '-1rem',
-  '-3': '-0.75rem',
-  '-2': '-0.5rem',
-  '-1': '-0.25rem',
   '1': '0.25rem',
   '2': '0.5rem',
   '3': '0.75rem',
   '4': '1rem',
   '5': '1.25rem',
   '6': '1.5rem',
+  '7': '1.75rem',
   '8': '2rem',
+  '9': '2.3rem',
   '10': '2.5rem',
   '12': '3rem',
   '16': '4rem',
@@ -31,6 +22,7 @@ const sizeMap = {
   '1/3': '33.3333%',
   '2/3': '66.6666%',
   '1/4': '25%',
+  '1/5': '20%',
   '3/4': '75%',
 }
 
@@ -63,6 +55,8 @@ module.exports = {
       semibold: 600,
     },
     extend: {
+      height: sizeMap,
+      width: sizeMap,
       minHeight: sizeMap,
       minWidth: sizeMap,
       maxHeight: sizeMap,

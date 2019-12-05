@@ -1,6 +1,7 @@
 <template>
   <component
     :is='element'
+    class='leading-snug rounded inline-block min-w-5 text-center'
     :class='classes'
   >
     <slot />
@@ -23,14 +24,14 @@ export default {
       default: 'span',
     },
     /**
-     * The size of the label. Defaults to medium.
-     * `small, medium, large`
+     * The size of the label. Defaults to md.
+     * `xs, sm, md, lg`
      */
     size: {
       type: String,
-      default: 'medium',
+      default: 'md',
       validator: value => {
-        return value.match(/(small|medium|large)/)
+        return value.match(/(xs|sm|md|lg)/)
       },
     },
     /**
@@ -40,22 +41,36 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Set true when specifying colors through utility classes (normally text, bg, and border)
+     */
+    custom: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    const sizeClasses = {
+      xs: 'py-px px-1 text-xs',
+      sm: 'py-1 px-2 text-xs',
+      md: 'py-2 px-3 text-sm',
+      lg: 'py-3 px-5 text-md',
+    }
+    return { sizeClasses }
   },
   computed: {
     classes() {
-      const variation = () => {
-        if (this.primary) return 'text-white bg-blue-dark border border-blue-dark'
-        return 'text-blue-dark border bg-grey-light border-grey-light'
-      }
-      const size = {
-        small: '',
-        medium: '',
-        large: '',
-      }[this.size]
-      const classes = ['label', 'py-2 px-3', 'text-sm', 'leading-snug', 'rounded', 'inline-block']
-      classes.push(variation())
-      classes.push(size)
-      return classes
+      const variant = this.classesForVariant()
+      const size = this.sizeClasses[this.size]
+      return `${size} ${variant}`
+    },
+  },
+  methods: {
+    classesForVariant() {
+      if (this.custom) return 'border'
+      return this.primary
+        ? 'text-white bg-blue-dark border border-blue-dark'
+        : 'text-blue-dark border bg-grey-light border-grey-light'
     },
   },
 }
@@ -65,5 +80,10 @@ export default {
   ```jsx
   <Label primary>Primary</Label>
   <Label>Normal</Label>
+  <Label size='xs'>x-small</Label>
+  <Label size='sm'>small</Label>
+  <Label size='md'>medium</Label>
+  <Label size='lg'>large</Label>
+  <Label custom size='xs' class='rounded-full bg-grey-darker border-grey-darker text-white font-semibold font-mono'>98,345</Label>
   ```
 </docs>

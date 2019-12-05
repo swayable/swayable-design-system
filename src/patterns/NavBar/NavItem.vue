@@ -2,9 +2,12 @@
   <component
     :is='smartElement'
     v-bind='navigation'
-    :class='active && "active"'
+    :class='{
+      active,
+      "pl-2": true,
+    }'
     :title='title'
-    class='nav-item px-2 sm:px-3 md:px-4 lg:px-5 relative whitespace-no-wrap flex font-semibold items-stretch max-w-full min-h-12'
+    class='nav-item relative whitespace-no-wrap flex font-semibold items-stretch max-w-full min-h-12'
     v-on='$listeners'
   >
     <span class='flex flex-grow max-w-full relative items-center'>
@@ -64,6 +67,13 @@ export default {
      * Removes hover/active/focus filter.
      */
     noninteractive: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Automatically pads
+     */
+    noPadding: {
       type: Boolean,
       default: false,
     },

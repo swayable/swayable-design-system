@@ -11,7 +11,7 @@ div.rsg--root-1 {
 }
 [data-theme='dark'] {
   div.rsg--root-1 {
-    background: theme('colors.blue-dark');
+    background: theme('colors.black');
   }
 }
 // Main content
@@ -71,6 +71,13 @@ h4[class^="rsg--heading"] {
 // Paragraphs inside table cells
 td[class^="rsg--cell"] p {
   width: 100%;
+}
+
+// Fullscreen button
+@media (max-width: theme('screens.sm')) {
+  [aria-label="Open isolated"] {
+    display: none;
+  }
 }
 
 /* SIDEBAR
@@ -278,6 +285,7 @@ pre[class^="rsg--pre"],
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   height: auto;
+  max-width: 100%;
   border: 0;
   font-family: Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 1rem;
@@ -310,11 +318,10 @@ div[class^="rsg--tab"] {
   .vueds-tabs {
     z-index: 5;
     border-radius: theme('borderRadius.sm');
-    box-shadow: 0 2px 8px theme('colors.grey-darker');
     overflow: hidden;
     position: absolute;
-    top: theme('spacing.6');
-    right: theme('spacing.6');
+    top: theme('spacing.2');
+    right: theme('spacing.2');
     .vueds-tab {
       border: 0;
       margin: 0;
@@ -322,16 +329,13 @@ div[class^="rsg--tab"] {
       font-size: 1rem;
       font-weight: 400;
       font-family: $font-body;
-      line-height: theme('lineHeight.snug');
-      padding: theme('spacing.4');
+      line-height: theme('lineHeight.none');
+      padding: theme('spacing.2') theme('spacing.3');
       cursor: pointer;
       background: theme('colors.azure-dark');
       color: theme('colors.grey-lighter');
       &:active {
         background: theme('colors.blue');
-      }
-      &:focus {
-        outline: none;
       }
       &--active {
         background: theme('colors.blue');

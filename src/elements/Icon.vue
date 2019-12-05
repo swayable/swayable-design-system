@@ -6,7 +6,7 @@
     :aria-label='ariaLabel'
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 24 24'
-    class='icon self-center flex justify-center items-center inline-block fill-current'
+    class='icon self-center inline-block fill-current'
     :class='fill'
     v-html='svg'
   />
