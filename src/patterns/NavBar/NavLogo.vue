@@ -1,9 +1,7 @@
 <template>
-  <NavItem
-    v-bind='props'
-    class='nav-logo p-0 mx-2 sm:mx-3 md:mx-4 lg:mx-5 bg-contain bg-center bg-no-repeat self-center'
-    noninteractive
-  />
+  <NavItem v-bind='props'>
+    <div class='nav-logo bg-contain bg-center bg-no-repeat self-center' />
+  </NavItem>
 </template>
 
 <script>
@@ -19,6 +17,7 @@ export default {
      */
     element: {
       type: String,
+      default: 'div',
     },
     /**
      * Router link
@@ -49,7 +48,7 @@ export default {
 <style lang="scss">
 .nav-logo {
   width: var(--logo-width);
-  height: 30px !important;
+  height: 20px !important;
   background-image: var(--logo-url);
 }
 </style>

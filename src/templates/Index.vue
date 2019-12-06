@@ -9,13 +9,13 @@
           <NavLogo href='#' />
         </NavGroup>
         <NavGroup>
-          <NavItem class='mr-4'>
+          <NavItem>
             <span class='flex items-center'>
               <Icon name='tests' />
               <span class='ml-2 flex'>Tests</span>
             </span>
           </NavItem>
-          <NavItem class='mr-4'>
+          <NavItem>
             <span class='flex items-center'>
               <Icon name='library' />
               <span class='ml-2 flex'>Library</span>
@@ -43,7 +43,7 @@
       </NavBar>
       <NavBar>
         <NavGroup class='flex-grow'>
-          <NavItem noninteractive>
+          <NavItem>
             <Heading type='h3'>
               Project Title
             </Heading>
@@ -51,17 +51,17 @@
         </NavGroup>
         <NavGroup>
           <NavItem
-            class='mr-3 pt-1 text-base'
+            class='pt-1 text-base'
             href='#'
             name='Content'
           />
           <NavItem
-            class='mr-3 pt-1 text-base'
+            class='pt-1 text-base'
             href='#'
             name='Survey'
           />
           <NavItem
-            class='mr-3 pt-1 text-base'
+            class='pt-1 text-base'
             href='#'
             name='Results'
             active
@@ -70,7 +70,7 @@
       </NavBar>
       <NavBar class='py-2'>
         <NavGroup>
-          <NavItem noninteractive>
+          <NavItem>
             <SelectSingle
               primary
               title='Quantitative'
@@ -81,8 +81,8 @@
             />
           </NavItem>
           <NavItem
-            noninteractive
-            class='ml-1'
+            flush
+            class='ml-2'
           >
             <SelectMultiple
               title='Metrics'
@@ -92,7 +92,10 @@
               ]'
             />
           </NavItem>
-          <NavItem noninteractive>
+          <NavItem
+            flush
+            class='ml-1'
+          >
             <SelectMultiple
               title='Content'
               :options='[
@@ -101,7 +104,10 @@
               ]'
             />
           </NavItem>
-          <NavItem noninteractive>
+          <NavItem
+            flush
+            class='ml-1'
+          >
             <SelectMultiple
               title='Segments'
               :options='[
@@ -111,8 +117,8 @@
             />
           </NavItem>
           <NavItem
-            noninteractive
-            class='ml-1'
+            class='ml-2'
+            flush
           >
             <ButtonGroup>
               <Button
@@ -138,7 +144,10 @@
               </Button>
             </ButtonGroup>
           </NavItem>
-          <NavItem noninteractive>
+          <NavItem
+            class='ml-2'
+            flush
+          >
             <ButtonGroup>
               <Button
                 class='h-9 px-3 flex border-r-0'
@@ -165,7 +174,7 @@
           </NavItem>
         </NavGroup>
         <NavGroup>
-          <NavItem noninteractive>
+          <NavItem flush>
             <Button
               class='h-9'
               size='sm'
@@ -177,7 +186,10 @@
               />
             </Button>
           </NavItem>
-          <NavItem noninteractive>
+          <NavItem
+            flush
+            class='ml-2'
+          >
             <Label class='flex items-center justify-center h-9'>
               <Icon
                 name='respondents'

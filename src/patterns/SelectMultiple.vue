@@ -29,7 +29,8 @@
         >
           <Button
             menu
-            class='hover:bg-white'
+            class='hover:bg-white pl-3'
+            size='sm'
             @click='toggle(i)'
             @mouseover='togglePreview(i)'
             @mouseout='clearPreview'
@@ -41,7 +42,7 @@
           </Button>
           <Button
             menu
-            class='text-left flex-grow'
+            class='text-left flex-grow pl-1'
             @click='select(i)'
             @mouseover='selectPreview(i)'
             @mouseout='clearPreview'

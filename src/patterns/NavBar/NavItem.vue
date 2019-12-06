@@ -4,14 +4,17 @@
     v-bind='navigation'
     :class='{
       active,
-      "pl-2": true,
+      spaced: !flush,
     }'
     :title='title'
-    class='nav-item relative whitespace-no-wrap flex font-semibold items-stretch max-w-full min-h-12'
+    class='nav-item relative whitespace-no-wrap flex font-semibold items-stretch max-w-full'
     v-on='$listeners'
   >
     <span class='flex flex-grow max-w-full relative items-center'>
-      <span :class='`flex-grow max-w-full items-center flex-col ${interactionClass}`'>
+      <span
+        class='flex-grow max-w-full items-center flex-col'
+        :class='{ interactive }'
+      >
         <slot>{{ name }}</slot>
       </span>
     </span>
@@ -64,25 +67,18 @@ export default {
       type: String,
     },
     /**
-     * Removes hover/active/focus filter.
+     * Removes horizontal spacing around NavItem
      */
-    noninteractive: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Automatically pads
-     */
-    noPadding: {
+    flush: {
       type: Boolean,
       default: false,
     },
   },
   computed: {
-    interactionClass() {
-      return this.noninteractive === false
-        ? 'interactive'
-        : ''
+    interactive() {
+      const noninteractive = [undefined, null].includes(this.to)
+        && [undefined, null].includes(this.href)
+      return !noninteractive
     },
     smartElement() {
       if (this.element) return this.element
@@ -104,7 +100,7 @@ export default {
   <div>
     <NavBar>
       <NavItem name='Item 1' :active='true' />
-      <NavItem name='Item 2' title='The only item with a title' noninteractive />
+      <NavItem name='Item 2' title='The only item with a title' />
       <NavItem element='button'>Item 3</NavItem>
     </NavBar>
   </div>

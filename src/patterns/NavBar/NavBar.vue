@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    :class='`flex items-stretch justify-between z-20 nav-bar ${variant}`'
+    :class='`flex items-stretch justify-between z-20 nav-bar h-12 ${variant}`'
   >
     <slot />
   </component>
@@ -65,15 +65,28 @@ export default {
     --nav-color-active: theme('colors.white');
     --nav-border-color: theme('colors.grey-darker');
 
-    @media (min-width: 640px) {
+    @screen md {
       --logo-url: var(--logo-dark)
     }
   }
 }
 .nav-bar {
-  @media (min-width: 640px) {
+  .spaced {
+    @apply pl-1;
+    @screen sm {
+      @apply pl-2;
+    }
+    @screen md {
+      @apply pl-3;
+    }
+    @screen lg {
+      @apply pl-4;
+    }
+  }
+
+  @screen md {
     --logo-url: var(--logo-dark);
-    --logo-width: 180px;
+    --logo-width: 120px;
   }
 
   &.nav-light{
@@ -85,7 +98,7 @@ export default {
     --nav-heading-color: theme('colors.blue-dark');
     --nav-border-color: theme('colors.grey');
 
-    @media (min-width: 640px) {
+    @screen md {
       --logo-url: var(--logo-light);
     }
   }
@@ -101,11 +114,11 @@ export default {
   // Space for scrollbar
   > .nav-drop:last-child > .nav-item,
   > .nav-group:last-child > .nav-drop:last-child > .nav-item {
-    padding-right: theme('spacing.4') !important;
+    padding-right: theme('spacing.5') !important;
   }
   > .nav-item:last-child,
   > .nav-group:last-child > .nav-item:last-child {
-    padding-right: theme('spacing.5') !important;
+    padding-right: theme('spacing.6') !important;
   }
 
   .nav-item {
@@ -131,6 +144,9 @@ export default {
         right:0;
       }
     }
+  }
+  .nav-drop-dropdown .nav-item {
+    @apply min-h-10;
   }
   .nav-drop-dropdown .nav-item, .nav-logo {
     // Remove active indicator
