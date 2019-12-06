@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/swayable/swayable-design-system/compare/v0.7.1...v0.8.0) (2019-12-06)
+
+
+### Features
+
+* add ButtonGroup component ([4c20d36](https://github.com/swayable/swayable-design-system/commit/4c20d36))
+* add Pill component ([7b64942](https://github.com/swayable/swayable-design-system/commit/7b64942))
+* add SelectMultiple ([9236215](https://github.com/swayable/swayable-design-system/commit/9236215))
+
+
+
 ### [0.7.1](https://github.com/swayable/swayable-design-system/compare/v0.7.0...v0.7.1) (2019-10-29)
 
 
