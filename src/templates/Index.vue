@@ -1,82 +1,317 @@
 <template>
   <component
     :is='element'
-    class='min-h-screen page'
+    class='min-h-screen page font-body'
   >
     <header>
-      <NavBar>
+      <NavBar primary>
         <NavGroup class='flex-grow'>
-          <NavLogo />
-          <NavItem>Home</NavItem>
-          <NavItem>About</NavItem>
+          <NavLogo href='#' />
         </NavGroup>
-        <NavDrop>
-          Account
-          <template #dropdown>
-            <NavItem name='Profile' />
-            <NavItem name='Settings' />
-            <hr class='border-t m-0'>
-            <NavItem name='Logout' />
-          </template>
-        </NavDrop>
-      </NavBar>
-      <NavBar
-        class='h-16'
-        alt
-        noheading
-      >
         <NavGroup>
-          <NavDrop align='left'>
-            Results
+          <NavItem class='mr-4'>
+            <span class='flex items-center'>
+              <Icon name='tests' />
+              <span class='ml-2 flex'>Tests</span>
+            </span>
+          </NavItem>
+          <NavItem class='mr-4'>
+            <span class='flex items-center'>
+              <Icon name='library' />
+              <span class='ml-2 flex'>Library</span>
+            </span>
+          </NavItem>
+          <NavDrop>
+            Organization
             <template #dropdown>
-              <NavItem name='Qualitative' />
-              <NavItem name='Quantitative' />
-              <NavItem name='Labs' />
+              <NavItem
+                href='#'
+                name='Profile'
+              />
+              <NavItem
+                href='#'
+                name='Settings'
+              />
+              <hr class='border-t m-0'>
+              <NavItem
+                href='#'
+                name='Logout'
+              />
             </template>
           </NavDrop>
-          <NavItem :active='true'>
-            Design
+        </NavGroup>
+      </NavBar>
+      <NavBar>
+        <NavGroup class='flex-grow'>
+          <NavItem noninteractive>
+            <Heading type='h3'>
+              Project Title
+            </Heading>
           </NavItem>
-          <NavItem>Audience</NavItem>
+        </NavGroup>
+        <NavGroup>
+          <NavItem
+            class='mr-3 pt-1 text-base'
+            href='#'
+            name='Content'
+          />
+          <NavItem
+            class='mr-3 pt-1 text-base'
+            href='#'
+            name='Survey'
+          />
+          <NavItem
+            class='mr-3 pt-1 text-base'
+            href='#'
+            name='Results'
+            active
+          />
+        </NavGroup>
+      </NavBar>
+      <NavBar class='py-2'>
+        <NavGroup>
+          <NavItem noninteractive>
+            <SelectSingle
+              primary
+              title='Quantitative'
+              :options='[
+                "Qualitative",
+                "2D Quantitative",
+              ]'
+            />
+          </NavItem>
+          <NavItem
+            noninteractive
+            class='ml-1'
+          >
+            <SelectMultiple
+              title='Metrics'
+              :options='[
+                "Support",
+                "Mobilization",
+              ]'
+            />
+          </NavItem>
+          <NavItem noninteractive>
+            <SelectMultiple
+              title='Content'
+              :options='[
+                "Video",
+                "Image",
+              ]'
+            />
+          </NavItem>
+          <NavItem noninteractive>
+            <SelectMultiple
+              title='Segments'
+              :options='[
+                "18-44",
+                "44+",
+              ]'
+            />
+          </NavItem>
+          <NavItem
+            noninteractive
+            class='ml-1'
+          >
+            <ButtonGroup>
+              <Button
+                class='h-9 px-3 flex border-r-0'
+                size='xs'
+              >
+                <Icon
+                  name='bar-equal'
+                  class='text-blue-dark'
+                />
+              </Button>
+              <span class='w-px border-t border-b py-2 border-grey flex items-stretch'>
+                <span class='w-px border-r border-grey inline-block' />
+              </span>
+              <Button
+                class='h-9 px-3 flex'
+                size='xs'
+              >
+                <Icon
+                  name='bar-float'
+                  class='text-grey'
+                />
+              </Button>
+            </ButtonGroup>
+          </NavItem>
+          <NavItem noninteractive>
+            <ButtonGroup>
+              <Button
+                class='h-9 px-3 flex border-r-0'
+                size='xs'
+              >
+                <Icon
+                  name='bar-equal'
+                  class='text-blue-dark'
+                />
+              </Button>
+              <span class='w-px border-t border-b py-2 border-grey flex items-stretch'>
+                <span class='w-px border-r border-grey inline-block' />
+              </span>
+              <Button
+                class='h-9 px-3 flex'
+                size='xs'
+              >
+                <Icon
+                  name='bar-distribute'
+                  class='text-grey'
+                />
+              </Button>
+            </ButtonGroup>
+          </NavItem>
+        </NavGroup>
+        <NavGroup>
+          <NavItem noninteractive>
+            <Button
+              class='h-9'
+              size='sm'
+            >
+              <Icon
+                name='download'
+                class='text-grey-darker mt-px'
+                size='md'
+              />
+            </Button>
+          </NavItem>
+          <NavItem noninteractive>
+            <Label class='flex items-center justify-center h-9'>
+              <Icon
+                name='respondents'
+                class='text-grey-darker'
+                size='md'
+              />
+              <span class='ml-1 font-mono text-base'>2907</span>
+            </Label>
+          </NavItem>
         </NavGroup>
       </NavBar>
     </header>
     <article class='p-4 md:p-6'>
-      <Heading type='h1'>
-        Swayable Design System
-      </Heading>
-      <p class='mt-4'>
-        The organized principles, tools, patterns &amp; practices providing foundation for our
-        product design.
-      </p>
-
-      <section class='mt-10'>
-        <Heading type='h2'>
-          Form Controls
+      <section>
+        <Heading type='h4'>
+          Single
         </Heading>
-
-        <Heading
-          type='h3'
-          class='mt-2'
-        >
-          TextInput
+        <div class='bg-white border rounded mt-2 flex items-center overflow-hidden'>
+          <div class='border-r p-3 w-1/5'>
+            <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+            <span class='font-mono'>Alex Morgan</span>
+          </div>
+          <div class='border-r p-3 w-1/5'>
+            <span class='font-mono'>Female</span>
+          </div>
+          <div class='p-3 bg-inherit flex-grow'>
+            <BarChart v-bind='stats[0]' />
+          </div>
+        </div>
+      </section>
+      <section class='mt-5'>
+        <Heading type='h4'>
+          Breakdown
         </Heading>
-
-        <TextInput
-          class='min-w-full md:inline-block mt-1'
-          placeholder='Try this text input'
-        />
-        <TextInput
-          class='min-w-full md:inline-block mt-1'
-          type='textarea'
-          placeholder='I&apos;m just another type of text input'
-        />
+        <div class='bg-white border rounded mt-2 flex items-stretch overflow-hidden'>
+          <div class='border-r p-3 w-1/5'>
+            <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+            <span class='font-mono'>Alex Morgan</span>
+          </div>
+          <div class='border-r w-1/5 flex flex-col'>
+            <div class='flex-grow p-3 border-b'>
+              <span class='font-mono'>Female</span>
+            </div>
+            <div class='flex-grow p-3'>
+              <span class='font-mono'>male</span>
+            </div>
+          </div>
+          <div class='bg-inherit flex flex-col flex-grow'>
+            <div class='bg-inherit flex-grow p-3 border-b'>
+              <BarChart v-bind='stats[0]' />
+            </div>
+            <div class='bg-inherit flex-grow p-3'>
+              <BarChart v-bind='stats[1]' />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='mt-5'>
+        <Heading type='h4'>
+          Multiple Breakdown
+        </Heading>
+        <div class='bg-white border rounded mt-2 flex items-stretch overflow-hidden'>
+          <div class='border-r w-1/5 flex flex-col'>
+            <div class='flex-grow p-3 border-b'>
+              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='font-mono'>Alex Morgan</span>
+            </div>
+            <div class='flex-grow p-3'>
+              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='font-mono'>Colin Kaepernick</span>
+            </div>
+          </div>
+          <div class='border-r w-1/5 flex flex-col'>
+            <div class='flex-grow p-3 border-b'>
+              <span class='font-mono'>Female</span>
+            </div>
+            <div class='flex-grow p-3 border-b'>
+              <span class='font-mono'>male</span>
+            </div>
+            <div class='flex-grow p-3 border-b'>
+              <span class='font-mono'>Female</span>
+            </div>
+            <div class='flex-grow p-3'>
+              <span class='font-mono'>male</span>
+            </div>
+          </div>
+          <div class='bg-inherit flex flex-col flex-grow'>
+            <div class='bg-inherit flex-grow p-3 border-b'>
+              <BarChart v-bind='stats[0]' />
+            </div>
+            <div class='bg-inherit flex-grow p-3 border-b'>
+              <BarChart v-bind='stats[1]' />
+            </div>
+            <div class='bg-inherit flex-grow p-3 border-b'>
+              <BarChart v-bind='stats[2]' />
+            </div>
+            <div class='bg-inherit flex-grow p-3'>
+              <BarChart v-bind='stats[1]' />
+            </div>
+          </div>
+        </div>
       </section>
     </article>
   </component>
 </template>
 
 <script>
+const sharedProps = { scale: 10, max: 9, min: -3 }
+const stats = [{
+  ...sharedProps,
+  deltaLabel: '+44.2%',
+  baselineLabel: '38.5% ▶',
+  baseline: 3.85,
+  delta: 4.42,
+  error: 0.9,
+},
+{
+  ...sharedProps,
+  baselineLabel: '◀ 54.5%',
+  deltaLabel: '-2.4%',
+  baseline: 5.45,
+  delta: -0.24,
+  insignificant: true,
+  error: 0.31,
+},
+{
+  ...sharedProps,
+  baselineLabel: '◀ 18.5%',
+  deltaLabel: '-14.1%',
+  baseline: 1.85,
+  delta: -1.41,
+  error: 1.2,
+}]
+
 /**
  * Shows how to layout and structure a page.
  */
@@ -96,6 +331,11 @@ export default {
       type: String,
       default: 'div',
     },
+  },
+  data() {
+    return {
+      stats,
+    }
   },
 }
 </script>
