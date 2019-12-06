@@ -212,31 +212,31 @@
     "font_heading": {
       "type": "...",
       "category": "font",
-      "value": "\"azo-sans-web\",sans-serif",
+      "value": "\"acumin-pro\",sans-serif",
       "class": "heading",
-      "weights": "300,400,500,700",
+      "weights": "400,600",
       "order": -1,
-      "originalValue": "\"azo-sans-web\",sans-serif",
+      "originalValue": "\"acumin-pro\",sans-serif",
       "name": "font_heading"
     },
-    "font_text": {
+    "font_body": {
       "type": "...",
       "category": "font",
-      "value": "\"roboto\",sans-serif",
+      "value": "\"acumin-pro\",sans-serif",
       "class": "body",
-      "weights": "300,400,500,700",
+      "weights": "400,600",
       "order": -1,
-      "originalValue": "\"roboto\",sans-serif",
-      "name": "font_text"
+      "originalValue": "\"acumin-pro\",sans-serif",
+      "name": "font_body"
     },
     "font_mono": {
       "type": "...",
       "category": "font",
-      "value": "\"roboto-mono\",monospace",
+      "value": "\"din-2014\",monospace",
       "class": "mono",
-      "weights": "300,400",
+      "weights": "400,600",
       "order": -1,
-      "originalValue": "\"roboto-mono\",monospace",
+      "originalValue": "\"din-2014\",monospace",
       "name": "font_mono"
     },
     "size_2xl": {
