@@ -9,66 +9,74 @@
           <NavLogo href='#' />
         </NavGroup>
         <NavGroup>
-          <NavItem>
+          <NavItem href='#'>
             <span class='flex items-center'>
               <Icon name='tests' />
               <span class='ml-2 flex'>Tests</span>
             </span>
           </NavItem>
-          <NavItem>
+          <NavItem href='#'>
             <span class='flex items-center'>
               <Icon name='library' />
               <span class='ml-2 flex'>Library</span>
             </span>
           </NavItem>
           <NavDrop>
-            Organization
+            <span class='truncate max-w-16 sm:max-w-full'>Organization</span>
             <template #dropdown>
-              <NavItem
-                href='#'
-                name='Profile'
-              />
-              <NavItem
-                href='#'
-                name='Settings'
-              />
+              <NavItem href='#'>
+                Profile
+              </NavItem>
+              <NavItem href='#'>
+                Settings
+              </NavItem>
               <hr class='border-t m-0'>
-              <NavItem
-                href='#'
-                name='Logout'
-              />
+              <NavItem href='#'>
+                Logout
+              </NavItem>
             </template>
           </NavDrop>
         </NavGroup>
       </NavBar>
       <NavBar>
         <NavGroup class='flex-grow'>
-          <NavItem>
+          <NavDrop align='left'>
             <Heading type='h3'>
               Project Title
             </Heading>
+            <template #dropdown>
+              <NavItem href='#'>
+                Project 2
+              </NavItem>
+              <NavItem href='#'>
+                Project 3
+              </NavItem>
+            </template>
+          </NavDrop>
+        </NavGroup>
+        <NavGroup class='hidden sm:flex'>
+          <NavItem
+            class='pt-1 text-base'
+            href='#'
+          >
+            Content
+          </NavItem>
+          <NavItem
+            class='pt-1 text-base'
+            href='#'
+          >
+            Survey
+          </NavItem>
+          <NavItem
+            class='pt-1 text-base'
+            href='#'
+            active
+          >
+            Results
           </NavItem>
         </NavGroup>
-        <NavGroup>
-          <NavItem
-            class='pt-1 text-base'
-            href='#'
-            name='Content'
-          />
-          <NavItem
-            class='pt-1 text-base'
-            href='#'
-            name='Survey'
-          />
-          <NavItem
-            class='pt-1 text-base'
-            href='#'
-            name='Results'
-            active
-          />
-        </NavGroup>
       </NavBar>
-      <NavBar class='py-2'>
+      <NavBar class='h-14'>
         <NavGroup>
           <NavItem>
             <SelectSingle

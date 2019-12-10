@@ -5,12 +5,12 @@
   >
     <span
       class='relative'
-      :class='open && "z-20"'
+      :class='open && "z-30"'
     >
       <slot />
     </span>
     <div
-      class='w-auto min-w-full flex-col z-20'
+      class='w-auto min-w-full flex-col z-30'
       :class='align && `absolute ${align}-0`'
     >
       <slot

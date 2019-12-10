@@ -11,7 +11,9 @@
       @click='open = !open'
     >
       <slot>
-        <span class='flex-grow font-semibold'>{{ title }}</span>
+        <span class='flex-grow self-center'>
+          {{ title }}
+        </span>
         <Icon
           class='ml-2 text-grey-dark'
           name='chevron'
@@ -75,11 +77,11 @@ export default {
       default: false,
     },
     /**
-     * Attach utility classes to the buttons (i.e. `text-sm`).
+     * Attach utility classes to the buttons.
      */
     buttonClasses: {
       type: String,
-      default: '',
+      default: 'text-xs',
     },
   },
   data() {

@@ -7,23 +7,23 @@
       <NavBar>
         <NavGroup>
           <NavItem
-            name='Template'
             href='/#/Templates/Index'
             :active='true'
-          />
-          <NavItem
-            name='Documentation'
-            href='/#/'
-          />
+          >
+            Documentation
+          </NavItem>
+          <NavItem href='/#/'>
+            Template
+          </NavItem>
         </NavGroup>
         <NavGroup>
           <NavDrop>
             Account
             <template #dropdown>
-              <NavItem name='Profile' />
-              <NavItem name='Settings' />
+              <NavItem>Profile</NavItem>
+              <NavItem>Settings</NavItem>
               <hr class='border-t m-0'>
-              <NavItem name='Logout' />
+              <NavItem>Logout</NavItem>
             </template>
           </NavDrop>
         </NavGroup>

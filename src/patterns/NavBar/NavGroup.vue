@@ -30,11 +30,11 @@ export default {
   ```jsx
   <NavBar>
     <NavGroup class='flex-grow'>
-      <NavItem name='Home' :active='true' />
-      <NavItem name='About' />
+      <NavItem :active='true'>Home</NavItem>
+      <NavItem>About</NavItem>
     </NavGroup>
     <NavGroup>
-      <NavItem name='Sign in' />
+      <NavItem>Sign in</NavItem>
     </NavGroup>
   </NavBar>
   ```

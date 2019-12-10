@@ -2,20 +2,14 @@
   <component
     :is='smartElement'
     v-bind='navigation'
-    :class='{
-      active,
-      spaced: !flush,
-    }'
     :title='title'
-    class='nav-item relative whitespace-no-wrap flex font-semibold items-stretch max-w-full'
+    :class='{ active, spaced: !flush }'
+    class='nav-item flex items-stretch max-w-full relative whitespace-no-wrap font-semibold'
     v-on='$listeners'
   >
     <span class='flex flex-grow max-w-full relative items-center'>
-      <span
-        class='flex-grow max-w-full items-center flex-col'
-        :class='{ interactive }'
-      >
-        <slot>{{ name }}</slot>
+      <span class='flex-grow max-w-full items-center flex-col'>
+        <slot />
       </span>
     </span>
   </component>
@@ -23,7 +17,7 @@
 
 <script>
 /**
- * The links used in NavBar.
+ * Item used in NavBar; link, button, or wrapper of more complex component.
  */
 export default {
   name: 'NavItem',
@@ -34,6 +28,9 @@ export default {
      */
     element: {
       type: String,
+      validator: value => {
+        return value.match(/(button|a|input)/)
+      },
     },
     /**
      * Router link
@@ -55,12 +52,6 @@ export default {
       default: false,
     },
     /**
-     * Displayed text (overriden by default slot)
-     */
-    name: {
-      type: String,
-    },
-    /**
      * Description of link (usually displayed on hover)
      */
     title: {
@@ -75,11 +66,6 @@ export default {
     },
   },
   computed: {
-    interactive() {
-      const noninteractive = [undefined, null].includes(this.to)
-        && [undefined, null].includes(this.href)
-      return !noninteractive
-    },
     smartElement() {
       if (this.element) return this.element
       if (this.to) return 'router-link'
@@ -97,11 +83,13 @@ export default {
 
 <docs>
   ```jsx
+  let clicks = 0
   <div>
-    <NavBar>
-      <NavItem name='Item 1' :active='true' />
-      <NavItem name='Item 2' title='The only item with a title' />
-      <NavItem element='button'>Item 3</NavItem>
+    <NavBar primary>
+      <NavItem href='#' :active='true'>Active Link</NavItem>
+      <NavItem href='#' title='Another one!'>Other Link</NavItem>
+      <NavItem @click='clicks += 1' element='button'>Button {{ clicks }}</NavItem>
+      <NavItem><Button>Wrap a button</Button></NavItem>
     </NavBar>
   </div>
   ```

@@ -6,11 +6,13 @@
     @close='open = false'
   >
     <Button
-      :class='`flex`'
+      :class='`flex ${buttonClasses}`'
       @click='open = !open'
     >
       <slot>
-        <span class='flex-grow font-semibold'>{{ title }}</span>
+        <span class='flex-grow self-center'>
+          {{ title }}
+        </span>
         <Pill
           :value='count'
           class='ml-2'
@@ -80,6 +82,13 @@ export default {
      * Includes option to select/deselect all Options
      */
     allowSelectAll: { type: Boolean, default: true },
+    /**
+     * Attach utility classes to the buttons (i.e. `text-sm`).
+     */
+    buttonClasses: {
+      type: String,
+      default: 'text-xs',
+    },
   },
   data() {
     const items = this.options.map(option => {
@@ -121,7 +130,7 @@ export default {
   },
   watch: {
     selectedValues(values) {
-      this.$emit('change', values)
+      this.$emit('change', values.filter(v => v !== 'all'))
     },
   },
   methods: {

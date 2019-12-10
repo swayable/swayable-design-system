@@ -2,7 +2,7 @@
   <Label
     custom
     :element='element'
-    class='text-white rounded-full inline-block font-mono text-sm tracking-wider'
+    class='text-white rounded-full inline-block font-mono text-sm'
     :class='background'
     size='xs'
   >

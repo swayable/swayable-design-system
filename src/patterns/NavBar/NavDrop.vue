@@ -7,8 +7,8 @@
     <NavItem
       element='button'
       aria-label='Expand Menu'
-      class='pr-1 sm:pr-2 md:pr-3 lg:pr-4 h-full'
-      :class='open && "z-20"'
+      class='nav-drop-trigger h-full'
+      :flush='flush'
       @click='open = !open'
     >
       <span class='flex items-center'>
@@ -24,7 +24,8 @@
 
     <template #dropdown>
       <div
-        :class='`w-screen sm:w-auto min-w-full absolute flex-col z-30 ${align}-0 nav-drop-dropdown`'
+        :class='dropdownClass'
+        class='nav-drop-dropdown w-screen sm:w-auto min-w-full absolute flex-col z-30 border-b border-t border-grey-dark sm:border-r sm:border-l sm:border-t-0'
       >
         <slot name='dropdown'>
           <NavItem
@@ -76,11 +77,25 @@ export default {
       default: 'right',
       validator: value => ['right', 'left'].includes(value),
     },
+    /**
+     * Removes horizontal spacing around NavDrop trigger
+     */
+    flush: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       open: false,
     }
+  },
+  computed: {
+    dropdownClass() {
+      return this.align === 'right'
+        ? 'right-0 border-r-0'
+        : 'left-0 border-l-0'
+    },
   },
 }
 </script>
@@ -101,10 +116,10 @@ export default {
       <NavDrop>
         Account
         <template #dropdown>
-          <NavItem name="Profile" />
-          <NavItem name="Settings" />
+          <NavItem>Profile<NavItem/>
+          <NavItem>Settings<NavItem/>
           <hr class="border-t m-0" />
-          <NavItem name="Logout" />
+          <NavItem>Logout<NavItem/>
         </template>
       </NavDrop>
     </NavGroup>

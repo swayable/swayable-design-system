@@ -150,7 +150,7 @@ export default {
         'text-xs',
         'font-semibold',
         'bg-inherit',
-        'z-30',
+        'z-20',
         'px-px',
         opacity,
       ]

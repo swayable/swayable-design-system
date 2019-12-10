@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    :class='`flex items-stretch justify-between z-20 nav-bar h-12 ${variant}`'
+    :class='`flex items-stretch justify-between z-20 nav-bar ${variant}`'
   >
     <slot />
   </component>
@@ -71,16 +71,12 @@ export default {
   }
 }
 .nav-bar {
+  height: 50px;
+
   .spaced {
-    @apply pl-1;
+    @apply px-2;
     @screen sm {
-      @apply pl-2;
-    }
-    @screen md {
-      @apply pl-3;
-    }
-    @screen lg {
-      @apply pl-4;
+      @apply px-3;
     }
   }
 
@@ -111,24 +107,39 @@ export default {
   .heading { color: var(--nav-heading-color) }
 
 
-  // Space for scrollbar
-  > .nav-drop:last-child > .nav-item,
-  > .nav-group:last-child > .nav-drop:last-child > .nav-item {
-    padding-right: theme('spacing.5') !important;
+  // - Override the padding of far left and right nav-items
+  // - rather than padding the navbar in order to have flush navdrops
+  // Right
+                          > .nav-item:last-child,
+  > .nav-group:last-child > .nav-item:last-child,
+                          > .nav-drop:last-child .nav-item,
+  > .nav-group:last-child > .nav-drop:last-child .nav-item {
+    @apply pr-5;
   }
-  > .nav-item:last-child,
-  > .nav-group:last-child > .nav-item:last-child {
-    padding-right: theme('spacing.6') !important;
+
+  // Left
+                          > .nav-item:first-child,
+  > .nav-group:first-child > .nav-item:first-child,
+                          > .nav-drop:first-child .nav-item,
+  > .nav-group:first-child > .nav-drop:first-child .nav-item {
+     @screen sm {
+      @apply pl-3;
+    }
+    @screen md {
+      @apply pl-5;
+    }
+  }
+
+  a.nav-item, button.nav-item {
+    &:hover, &:active, &:focus {
+      filter: var(--nav-active-filter);
+    }
   }
 
   .nav-item {
     @apply text-sm;
     color: var(--nav-color);
-    &:hover, &:active, &:focus {
-      .interactive {
-        filter: var(--nav-active-filter);
-      }
-    }
+    
     &.active, &.router-link-active {
       > * {
         color: var(--nav-color-active);
@@ -146,7 +157,7 @@ export default {
     }
   }
   .nav-drop-dropdown .nav-item {
-    @apply min-h-10;
+    @apply min-h-12;
   }
   .nav-drop-dropdown .nav-item, .nav-logo {
     // Remove active indicator
@@ -164,32 +175,32 @@ export default {
   <NavBar primary>
     <NavLogo />
     <NavGroup class='flex-grow'>
-      <NavItem name='Default Nav' :active='true' />
-      <NavItem name='About' />
+      <NavItem :active='true'>Default Nav</NavItem>
+      <NavItem>About</NavItem>
     </NavGroup>
     <NavGroup>
-      <NavItem name='Sign in' />
+      <NavItem>Sign in</NavItem>
     </NavGroup>
   </NavBar>
   <NavBar>
     <NavLogo />
     <NavGroup class='flex-grow'>
-      <NavItem name='Default Nav' :active='true' />
-      <NavItem name='About' />
+      <NavItem :active='true'>Default Nav</NavItem>
+      <NavItem>About</NavItem>
     </NavGroup>
     <NavGroup>
-      <NavItem name='Sign in' />
+      <NavItem>Sign in</NavItem>
     </NavGroup>
   </NavBar>
   <div data-theme='dark'>
     <NavBar>
       <NavLogo />
       <NavGroup class='flex-grow'>
-        <NavItem name='Default Nav' :active='true' />
-        <NavItem name='About' />
+        <NavItem :active='true'>Default Nav</NavItem>
+        <NavItem>About</NavItem>
       </NavGroup>
       <NavGroup>
-        <NavItem name='Sign in' />
+        <NavItem>Sign in</NavItem>
       </NavGroup>
     </NavBar>
   </div>
