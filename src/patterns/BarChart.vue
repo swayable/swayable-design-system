@@ -286,14 +286,14 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
   const props1 = {
     ...sharedProps,
     deltaLabel: '+44.2%',
-    baselineLabel: '38.5% ▶',
+    baselineLabel: '38.5%',
     baseline: 3.85,
     delta: 4.42,
     error: 0.9,
   }
   const props2 = {
     ...sharedProps,
-    baselineLabel: '◀ 54.5%',
+    baselineLabel: '54.5%',
     deltaLabel: '-2.4%',
     baseline: 5.45,
     delta: -0.24,
@@ -302,7 +302,7 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
   }
   const props3 = {
     ...sharedProps,
-    baselineLabel: '◀ 18.5%',
+    baselineLabel: '18.5%',
     deltaLabel: '-14.1%',
     baseline: 1.85,
     delta: -1.41,

@@ -54,6 +54,18 @@
             </template>
           </NavDrop>
         </NavGroup>
+        <NavGroup class='sm:hidden'>
+          <NavItem>
+            <SelectSingle
+              primary
+              title='Quantitative'
+              :options='[
+                "Qualitative",
+                "2D Quantitative",
+              ]'
+            />
+          </NavItem>
+        </NavGroup>
         <NavGroup class='hidden sm:flex'>
           <NavItem
             class='pt-1 text-base'
@@ -77,8 +89,8 @@
         </NavGroup>
       </NavBar>
       <NavBar class='h-14'>
-        <NavGroup>
-          <NavItem>
+        <NavGroup class='flex-grow'>
+          <NavItem class='hidden sm:flex'>
             <SelectSingle
               primary
               title='Quantitative'
@@ -125,7 +137,7 @@
             />
           </NavItem>
           <NavItem
-            class='ml-2'
+            class='ml-2 hidden sm:flex'
             flush
           >
             <ButtonGroup>
@@ -153,7 +165,7 @@
             </ButtonGroup>
           </NavItem>
           <NavItem
-            class='ml-2'
+            class='ml-2 hidden sm:flex'
             flush
           >
             <ButtonGroup>
@@ -181,7 +193,7 @@
             </ButtonGroup>
           </NavItem>
         </NavGroup>
-        <NavGroup>
+        <NavGroup class='hidden sm:flex'>
           <NavItem flush>
             <Button
               class='h-9'
@@ -210,95 +222,200 @@
         </NavGroup>
       </NavBar>
     </header>
-    <article class='p-4 md:p-6'>
+    <article class='p-4 md:p-6 w-full overflow-x-scroll'>
       <section>
-        <Heading type='h4'>
-          Single
-        </Heading>
-        <div class='bg-white border rounded mt-2 flex items-center overflow-hidden'>
-          <div class='border-r p-3 w-1/5'>
-            <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
-            <span class='font-mono'>Alex Morgan</span>
-          </div>
-          <div class='border-r p-3 w-1/5'>
-            <span class='font-mono'>Female</span>
-          </div>
-          <div class='p-3 bg-inherit flex-grow'>
-            <BarChart v-bind='stats[0]' />
-          </div>
-        </div>
-      </section>
-      <section class='mt-5'>
-        <Heading type='h4'>
-          Breakdown
-        </Heading>
-        <div class='bg-white border rounded mt-2 flex items-stretch overflow-hidden'>
-          <div class='border-r p-3 w-1/5'>
-            <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
-            <span class='font-mono'>Alex Morgan</span>
-          </div>
-          <div class='border-r w-1/5 flex flex-col'>
-            <div class='flex-grow p-3 border-b'>
-              <span class='font-mono'>Female</span>
-            </div>
-            <div class='flex-grow p-3'>
-              <span class='font-mono'>male</span>
-            </div>
-          </div>
-          <div class='bg-inherit flex flex-col flex-grow'>
-            <div class='bg-inherit flex-grow p-3 border-b'>
-              <BarChart v-bind='stats[0]' />
-            </div>
-            <div class='bg-inherit flex-grow p-3'>
-              <BarChart v-bind='stats[1]' />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class='mt-5'>
-        <Heading type='h4'>
-          Multiple Breakdown
-        </Heading>
-        <div class='bg-white border rounded mt-2 flex items-stretch overflow-hidden'>
-          <div class='border-r w-1/5 flex flex-col'>
-            <div class='flex-grow p-3 border-b'>
+        <Table class='min-w-screen-sm'>
+          <template slot='head'>
+            <TableRow>
+              <TableCell head>
+                <Heading
+                  type='h5'
+                  class='text-blue-dark'
+                >
+                  Single
+                </Heading>
+              </TableCell>
+              <TableCell head>
+                Segment
+              </TableCell>
+              <TableCell
+                head
+                grow
+              >
+                Brand Lift
+              </TableCell>
+            </TableRow>
+          </template>
+          <TableRow>
+            <TableCell class='border-b rounded-bl'>
               <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Alex Morgan</span>
-            </div>
-            <div class='flex-grow p-3'>
+            </TableCell>
+            <TableCell class='border-b'>
+              <span class='font-mono'>Female</span>
+            </TableCell>
+            <TableCell
+              grow
+              class='border-b'
+            >
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell
+              grow
+              class='border-b rounded-br'
+            >
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[1]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell head>
+              <Heading
+                type='h5'
+                class='text-blue-dark mt-5'
+              >
+                Breakdown
+              </Heading>
+            </TableCell>
+            <TableCell head />
+            <TableCell
+              head
+              grow
+            />
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='font-mono'>Alex Morgan</span>
+            </TableCell>
+            <TableCell>
+              <span class='font-mono'>Female</span>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[1]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell class='merge-t border-b rounded-bl' />
+            <TableCell class='border-b'>
+              <span class='font-mono'>Male</span>
+            </TableCell>
+            <TableCell
+              grow
+              class='border-b'
+            >
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[2]' />
+              </div>
+            </TableCell>
+            <TableCell
+              grow
+              class='border-b rounded-br'
+            >
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[1]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell head>
+              <Heading
+                type='h5'
+                class='text-blue-dark mt-5'
+              >
+                Multiple Breakdown
+              </Heading>
+            </TableCell>
+            <TableCell head />
+            <TableCell
+              head
+              grow
+            />
+          </TableRow>
+          <TableRow>
+            <TableCell class='rounded-tl'>
+              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='font-mono'>Alex Morgan</span>
+            </TableCell>
+            <TableCell>
+              <span class='font-mono'>Female</span>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell
+              grow
+              class='rounded-tr'
+            >
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell class='merge-t' />
+            <TableCell>
+              <span class='font-mono'>Male</span>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
               <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Colin Kaepernick</span>
-            </div>
-          </div>
-          <div class='border-r w-1/5 flex flex-col'>
-            <div class='flex-grow p-3 border-b'>
+            </TableCell>
+            <TableCell>
               <span class='font-mono'>Female</span>
-            </div>
-            <div class='flex-grow p-3 border-b'>
-              <span class='font-mono'>male</span>
-            </div>
-            <div class='flex-grow p-3 border-b'>
-              <span class='font-mono'>Female</span>
-            </div>
-            <div class='flex-grow p-3'>
-              <span class='font-mono'>male</span>
-            </div>
-          </div>
-          <div class='bg-inherit flex flex-col flex-grow'>
-            <div class='bg-inherit flex-grow p-3 border-b'>
-              <BarChart v-bind='stats[0]' />
-            </div>
-            <div class='bg-inherit flex-grow p-3 border-b'>
-              <BarChart v-bind='stats[1]' />
-            </div>
-            <div class='bg-inherit flex-grow p-3 border-b'>
-              <BarChart v-bind='stats[2]' />
-            </div>
-            <div class='bg-inherit flex-grow p-3'>
-              <BarChart v-bind='stats[1]' />
-            </div>
-          </div>
-        </div>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell class='merge-t' />
+            <TableCell>
+              <span class='font-mono'>Male</span>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+            <TableCell grow>
+              <div class='bg-inherit px-5'>
+                <BarChart v-bind='stats[0]' />
+              </div>
+            </TableCell>
+          </TableRow>
+        </Table>
       </section>
     </article>
   </component>
@@ -309,14 +426,14 @@ const sharedProps = { scale: 10, max: 9, min: -3 }
 const stats = [{
   ...sharedProps,
   deltaLabel: '+44.2%',
-  baselineLabel: '38.5% ▶',
+  baselineLabel: '38.5%',
   baseline: 3.85,
   delta: 4.42,
   error: 0.9,
 },
 {
   ...sharedProps,
-  baselineLabel: '◀ 54.5%',
+  baselineLabel: '54.5%',
   deltaLabel: '-2.4%',
   baseline: 5.45,
   delta: -0.24,
@@ -325,7 +442,7 @@ const stats = [{
 },
 {
   ...sharedProps,
-  baselineLabel: '◀ 18.5%',
+  baselineLabel: '18.5%',
   deltaLabel: '-14.1%',
   baseline: 1.85,
   delta: -1.41,

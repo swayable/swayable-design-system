@@ -59,7 +59,12 @@ module.exports = {
       height: sizeMap,
       width: sizeMap,
       minHeight: sizeMap,
-      minWidth: sizeMap,
+      minWidth: {
+        ...sizeMap,
+        'screen-sm': '640px',
+        'screen-md': '1024px',
+        'screen-lg': '1280px',
+      },
       maxHeight: sizeMap,
       maxWidth: sizeMap,
       inset: sizeMap,
