@@ -1,8 +1,9 @@
 <template>
   <component
-    :is='element'
+    :is='smartElement'
     :class='`button inline-block ${classes}`'
     :disabled='disabled'
+    v-bind='navigation'
     v-on='$listeners'
   >
     <slot />
@@ -27,10 +28,21 @@ export default {
      */
     element: {
       type: String,
-      default: 'button',
       validator: value => {
         return value.match(/(button|a|input)/)
       },
+    },
+    /**
+     * Router link
+     */
+    to: {
+      type: Object,
+    },
+    /**
+     * Web link
+     */
+    href: {
+      type: String,
     },
     /**
      * Style variation for nesting in menus
@@ -46,6 +58,19 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    smartElement() {
+      if (this.element) return this.element
+      if (this.to) return 'router-link'
+      if (this.href) return 'a'
+      return 'button'
+    },
+    navigation() {
+      if (this.smartElement === 'router-link') return { to: (this.to || this.href) }
+      if (this.smartElement === 'a') return { href: this.href }
+      return {}
     },
   },
   methods: {
