@@ -3,7 +3,7 @@
     :is='element'
     class='cell p-2 overflow-hidden text-left'
     :class='{
-      "w-1/2": grow,
+      "w-full": grow,
       "w-px": !grow,
       "whitespace-no-wrap": !wrap,
     }'
