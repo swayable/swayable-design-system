@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    class='cell p-2 overflow-hidden text-left'
+    class='cell p-2 text-left'
     :class='{
       "w-full": grow,
       "w-px": !grow,
