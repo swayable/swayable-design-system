@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.2](https://github.com/swayable/swayable-design-system/compare/v0.11.1...v0.11.2) (2019-12-19)
+
+
+### Bug Fixes
+
+* allow visible overflow from table cells ([ce81d43](https://github.com/swayable/swayable-design-system/commit/ce81d43))
+
+
+
 ### [0.11.1](https://github.com/swayable/swayable-design-system/compare/v0.11.0...v0.11.1) (2019-12-14)
 
 
