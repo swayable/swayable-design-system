@@ -1,6 +1,6 @@
 <template>
   <div
-    class='bar-chart w-full flex bg-inherit relative'
+    class='bar-chart w-full flex bg-inherit relative font-mono'
     :style='`height: ${thickness}px`'
   >
     <div

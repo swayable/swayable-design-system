@@ -1,9 +1,9 @@
 <template>
   <component
     :is='element'
-    class='cell p-2 text-left'
+    class='cell text-left'
     :class='{
-      "w-full": grow,
+      "p-2": !flush,
       "w-px": !grow,
       "whitespace-no-wrap": !wrap,
     }'
@@ -37,6 +37,13 @@ export default {
      * `true, false`
      */
     wrap: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Removes padding inside cell
+     */
+    flush: {
       type: Boolean,
       default: false,
     },
