@@ -1,7 +1,7 @@
 <template>
   <div
-    class='bar-chart w-full flex bg-inherit relative font-mono'
-    :style='`height: ${thickness}px`'
+    class='bar-chart w-full flex bg-inherit relative font-mono items-center'
+    :style='`min-height: ${thickness}px`'
   >
     <div
       class='flex absolute items-center bg-inherit h-full'
@@ -17,8 +17,8 @@
     <transition :name='transitionName'>
       <div
         v-show='show'
-        :style='{ width: pointToPercent(width), left: pointToPercent(origin) }'
-        class='h-full flex-shrink-0 absolute bg-inherit'
+        :style='{ height: `${thickness}px`, width: pointToPercent(width), left: pointToPercent(origin) }'
+        class='flex-shrink-0 absolute bg-inherit'
         :class='`grow-${direction}`'
       >
         <div
@@ -150,7 +150,7 @@ export default {
         'text-xs',
         'font-semibold',
         'bg-inherit',
-        'z-20',
+        'z-30',
         'px-px',
         opacity,
       ]
