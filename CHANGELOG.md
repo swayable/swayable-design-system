@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.4](https://github.com/swayable/swayable-design-system/compare/v0.11.3...v0.11.4) (2020-01-03)
+
+
+### Bug Fixes
+
+* **BarChart:** allow thin bars without clipping labels ([7fef1cb](https://github.com/swayable/swayable-design-system/commit/7fef1cb))
+
+
+
 ### [0.11.3](https://github.com/swayable/swayable-design-system/compare/v0.11.2...v0.11.3) (2019-12-20)
 
 
