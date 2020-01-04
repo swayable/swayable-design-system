@@ -1,5 +1,5 @@
 <template>
-  <table class='table-table w-full'>
+  <table class='table-table'>
     <thead>
       <slot name='head' />
     </thead>

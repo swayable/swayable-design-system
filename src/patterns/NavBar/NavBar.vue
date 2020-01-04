@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    :class='`flex items-stretch justify-between z-20 nav-bar ${variant}`'
+    :class='`flex items-stretch justify-between nav-bar ${variant}`'
   >
     <slot />
   </component>

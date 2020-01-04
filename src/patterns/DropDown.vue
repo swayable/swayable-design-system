@@ -5,13 +5,13 @@
   >
     <span
       class='relative'
-      :class='open && "z-30"'
+      :class='open && "z-50"'
     >
       <slot />
     </span>
     <div
-      class='w-auto min-w-full flex-col z-30'
-      :class='align && `absolute ${align}-0`'
+      class='w-auto min-w-full flex-col z-50'
+      :class='align ? `absolute ${align}-0` : "relative"'
     >
       <slot
         v-if='open'
@@ -21,7 +21,7 @@
     <button
       v-if='open'
       :aria-label='closeAriaLabel'
-      class='fixed w-screen h-screen top-0 left-0 opacity-0 z-10 cursor-default'
+      class='fixed w-screen h-screen top-0 left-0 opacity-0 z-40 cursor-default'
       @click='$emit("close")'
     />
   </div>

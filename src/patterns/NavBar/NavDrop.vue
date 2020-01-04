@@ -25,7 +25,7 @@
     <template #dropdown>
       <div
         :class='dropdownClass'
-        class='nav-drop-dropdown w-screen sm:w-auto min-w-full absolute flex-col z-30 border-b border-t border-grey-dark sm:border-r sm:border-l sm:border-t-0'
+        class='nav-drop-dropdown w-screen sm:w-auto min-w-full absolute flex-col border-b border-t border-grey-dark sm:border-t-0'
       >
         <slot name='dropdown'>
           <NavItem
@@ -93,8 +93,8 @@ export default {
   computed: {
     dropdownClass() {
       return this.align === 'right'
-        ? 'right-0 border-r-0'
-        : 'left-0 border-l-0'
+        ? 'right-0 sm:border-l'
+        : 'left-0 sm:border-r'
     },
   },
 }
