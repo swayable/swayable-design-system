@@ -27,10 +27,20 @@
           v-for='option in options'
           :key='option'
           :primary='primary'
-          :class='`text-left hover:${hoverClass} ${buttonClasses}`'
+          :class='`flex text-left hover:${hoverClass} ${buttonClasses}`'
           @click='$emit("change", option)'
         >
-          {{ option }}
+          <Icon
+            v-if='selected === option'
+            name='check'
+            class='mr-2'
+          />
+          <span
+            class='pl-1'
+            :class='{ "ml-6": selected && selected !== option }'
+          >
+            {{ option }}
+          </span>
         </Button>
       </ButtonGroup>
     </template>
@@ -83,6 +93,12 @@ export default {
       type: String,
       default: 'text-xs',
     },
+    /**
+     * Indicates selected option
+     */
+    selected: {
+      type: String,
+    },
   },
   data() {
     return { open: false }
@@ -101,26 +117,31 @@ export default {
   ```jsx
   let title1 = 'Single Select'
   let title2 = 'Single Select'
-
+  let selected
+  const options = [
+    "Option 1",
+    "Option 2",
+    "Option 3",
+  ]
+    
   <SelectSingle
     :title='title1'
-    :options='[
-      "Option 1",
-      "Option 2",
-      "Option 3",
-    ]'
+    :options='options'
     @change='option => title1 = option'
   />
 
   <SelectSingle
     primary
     :title='title2'
-    :options='[
-      "Option 1",
-      "Option 2",
-      "Option 3",
-    ]'
+    :options='options'
     @change='option => title2 = option'
+  />
+
+  <SelectSingle
+    title='Checks Selected'
+    :options='options'
+    :selected='selected'
+    @change='option => selected = option'
   />
   ```
 </docs>
