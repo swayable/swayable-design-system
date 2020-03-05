@@ -83,22 +83,16 @@ export default {
 
 <docs>
   ```jsx
-  const icons = [
-    'check',
-    'chevron',
-    'cross',
-    'library',
-    'menu',
-    'respondents',
-    'tests',
-  ]
-  <div class='mt-2 -mx-4 flex flex-wrap flex-grow'>
-    <div
-      v-for='icon in icons'
-      class='flex items-center mt-2 mx-2 p-2 rounded bg-grey-lighter border border-grey-light'
-    >
-      <span class='capitalize flex-grow text-sm'>{{ icon }}</span>
-      <Icon :name='icon' class='text-blue-dark ml-3' />
+  const icons = [ 'tests', 'metric', 'segment', 'content', 'library', 'respondents', 'active', 'complete', 'bar-distribute', 'bar-equal', 'bar-float', 'check', 'chevron', 'cross', 'download', 'ellipsis', 'ellipsis-active', 'menu' ]
+ 
+  <div class='flex flex-wrap'>
+    <div class='m-2'  v-for='icon in icons'>
+      <ToolTip>
+        <template #tip>
+          <span class='text-sm'>{{ icon }}</span>
+        </template>
+        <Icon :name='icon' size='md' class='text-blue' />
+      </ToolTip>
     </div>
   </div>
   ```
