@@ -54,12 +54,17 @@ module.exports = {
         ...theme('spacing'),
         ...spacing,
       }),
-      minWidth: {
+      minWidth: theme => ({
+        ...theme('spacing'),
+        ...spacing,
         'screen-sm': '640px',
         'screen-md': '1024px',
         'screen-lg': '1280px',
-      },
+      }),
       colors,
+      zIndex: {
+        '999': '999',
+      },
     },
     rotate: {
       '1/8': '45deg',
@@ -69,9 +74,6 @@ module.exports = {
       '5/8': '225deg',
       '3/4': '270deg',
       '7/8': '315deg',
-    },
-    zIndex: {
-      '999': '999',
     },
   },
   plugins: [
