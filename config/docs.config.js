@@ -29,6 +29,7 @@ module.exports = {
   editorConfig: {
     theme: 'night',
   },
+  simpleEditor: false,
   /**
    * Path to static assets directory
    */
@@ -66,14 +67,6 @@ module.exports = {
       exampleMode: 'hide',
       usageMode: 'hide',
     },
-    // TODO: write voice and tone
-    // {
-    //   name: 'Voice & Tone',
-    //   content: '../docs/voice-and-tone.md',
-    //   sectionDepth: 1,
-    //   exampleMode: 'hide',
-    //   usageMode: 'hide',
-    // },
     {
       name: 'Design Tokens',
       content: '../docs/tokens.md',
