@@ -42,6 +42,13 @@ export default {
       default: false,
     },
     /**
+     * Style variation to give additional meaning.
+     */
+    dark: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Set true when specifying colors through utility classes (normally text, bg, and border)
      */
     custom: {
@@ -68,8 +75,9 @@ export default {
   methods: {
     classesForVariant() {
       if (this.custom) return 'border'
-      return this.primary
-        ? 'text-white bg-blue-dark border border-blue-dark'
+      const darkModifier = this.dark ? '-dark' : ''
+      return this.primary || this.dark
+        ? `text-white border bg-blue${darkModifier} border-blue${darkModifier}`
         : 'text-blue-dark border bg-grey-light border-grey-light'
     },
   },
@@ -78,8 +86,9 @@ export default {
 
 <docs>
   ```jsx
-  <Label primary>Primary</Label>
   <Label>Normal</Label>
+  <Label primary>Primary</Label>
+  <Label dark>Dark</Label>
   <Label size='xs'>x-small</Label>
   <Label size='sm'>small</Label>
   <Label size='md'>medium</Label>

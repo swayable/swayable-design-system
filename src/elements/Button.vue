@@ -80,7 +80,8 @@ export default {
       if (this.menu && this.disabled) return 'bg-transparent text-grey-dark rounded disabled'
       if (this.menu) return 'bg-transparent text-blue-dark'
       if (this.disabled) return `${base} text-grey-darker border-grey-light bg-grey-light cursor-not-allowed disabled`
-      if (this.primary) return `${base} text-white bg-blue-dark border-blue-dark`
+      if (this.dark) return `${base} text-white bg-blue-dark border-blue-dark`
+      if (this.primary) return `${base} text-white bg-blue border-blue`
       return `${base} text-black bg-white border-grey`
     },
   },
@@ -100,6 +101,7 @@ export default {
     <Button>Normal</Button>
     <Button disabled>Disabled</Button>
     <Button primary>Primary</Button>
+    <Button dark>Dark</Button>
     <Button menu>Menu</Button>
     <Button menu disabled>Disabled Menu</Button>
     <Button custom class='bg-pink border-pink text-white'>Custom</Button>

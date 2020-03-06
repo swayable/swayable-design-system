@@ -8,6 +8,7 @@
     <Button
       :class='`flex ${buttonClasses}`'
       :primary='primary'
+      :dark='dark'
       @click='open = !open'
     >
       <slot>
@@ -27,6 +28,7 @@
           v-for='option in options'
           :key='option'
           :primary='primary'
+          :dark='dark'
           :class='`flex text-left hover:${hoverClass} ${buttonClasses}`'
           @click='$emit("change", option)'
         >
@@ -87,6 +89,13 @@ export default {
       default: false,
     },
     /**
+     * Style variation to give additional meaning.
+     */
+    dark: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Attach utility classes to the buttons.
      */
     buttonClasses: {
@@ -105,9 +114,9 @@ export default {
   },
   computed: {
     hoverClass() {
-      return this.primary
-        ? 'bg-blue-dark'
-        : 'bg-grey-lighter'
+      if (this.dark) return 'bg-blue-dark'
+      if (this.primary) return 'bg-blue'
+      return 'bg-grey-lighter'
     },
   },
 }
@@ -138,6 +147,7 @@ export default {
   />
 
   <SelectSingle
+    dark
     title='Checks Selected'
     :options='options'
     :selected='selected'
