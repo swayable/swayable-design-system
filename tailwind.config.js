@@ -4,21 +4,14 @@ const _filter = require('lodash/filter')
 
 const designTokens = require('./src/assets/tokens/tokens.raw.json')
 
-const sizeMap = {
-  '1': '0.25rem',
-  '2': '0.5rem',
-  '3': '0.75rem',
-  '4': '1rem',
-  '5': '1.25rem',
-  '6': '1.5rem',
+const spacing = {
   '7': '1.75rem',
-  '8': '2rem',
   '9': '2.3rem',
-  '10': '2.5rem',
-  '12': '3rem',
   '14': '3.5rem',
+  '15': '3.75rem',
   '16': '4rem',
-  '20': '5rem',
+  '128': '32rem',
+  '256': '64rem',
   '1/2': '50%',
   '1/3': '33.3333%',
   '2/3': '66.6666%',
@@ -56,22 +49,17 @@ module.exports = {
       semibold: 600,
     },
     extend: {
-      height: sizeMap,
-      width: sizeMap,
-      minHeight: sizeMap,
+      spacing,
+      minHeight: theme => ({
+        ...theme('spacing'),
+        ...spacing,
+      }),
       minWidth: {
-        ...sizeMap,
         'screen-sm': '640px',
         'screen-md': '1024px',
         'screen-lg': '1280px',
       },
-      maxHeight: sizeMap,
-      maxWidth: sizeMap,
-      inset: sizeMap,
       colors,
-      boxShadow: {
-        outline: `0 0 0 2px ${colors['azure-light']}`,
-      },
     },
     rotate: {
       '1/8': '45deg',
@@ -81,6 +69,9 @@ module.exports = {
       '5/8': '225deg',
       '3/4': '270deg',
       '7/8': '315deg',
+    },
+    zIndex: {
+      '999': '999',
     },
   },
   plugins: [
@@ -95,5 +86,6 @@ module.exports = {
 
       addUtilities(rotateUtilities)
     },
+    require('@tailwindcss/ui'),
   ],
 }
