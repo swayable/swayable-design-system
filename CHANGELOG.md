@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/swayable/swayable-design-system/compare/v0.11.5...v0.13.0) (2020-03-06)
+
+
+### Features
+
+* **Button:** add brighter primary button ([ab523d8](https://github.com/swayable/swayable-design-system/commit/ab523d8))
+* **Icon:** add new icons ([924364b](https://github.com/swayable/swayable-design-system/commit/924364b))
+* **Modal:** add modal element ([d86f6a7](https://github.com/swayable/swayable-design-system/commit/d86f6a7))
+
+
+
+## 0.12.0 (2020-01-30)
+
+
+### Build System
+
+* **deps:** bump handlebars from 4.1.2 to 4.5.3 ([bb488a6](https://github.com/swayable/swayable-design-system/commit/bb488a6))
+
+
+### Features
+
+* **SingleSelect:** add ability to show indicate selected option ([e4ccfac](https://github.com/swayable/swayable-design-system/commit/e4ccfac))
+
+
+
 ## [0.12.0](https://github.com/swayable/swayable-design-system/compare/v0.11.5...v0.12.0) (2020-01-30)
 
 
