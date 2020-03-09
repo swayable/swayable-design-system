@@ -57,7 +57,7 @@
         <NavGroup class='sm:hidden'>
           <NavItem>
             <SelectSingle
-              primary
+              dark
               title='Quantitative'
               :options='[
                 "Qualitative",
@@ -88,11 +88,11 @@
           </NavItem>
         </NavGroup>
       </NavBar>
-      <NavBar class='h-14'>
+      <NavBar class='h-14 bg-transparent border-0'>
         <NavGroup class='flex-grow'>
           <NavItem class='hidden sm:flex'>
             <SelectSingle
-              primary
+              dark
               title='Quantitative'
               :options='[
                 "Qualitative",
@@ -210,21 +210,21 @@
             flush
             class='ml-2'
           >
-            <Label class='flex items-center justify-center h-9'>
+            <Button class='flex items-center justify-center h-9'>
               <Icon
                 name='respondents'
                 class='text-grey-darker'
                 size='md'
               />
               <span class='ml-1 font-mono text-base'>2907</span>
-            </Label>
+            </Button>
           </NavItem>
         </NavGroup>
       </NavBar>
     </header>
     <article class='p-4 md:p-6 w-full overflow-x-scroll'>
       <section>
-        <Table class='min-w-screen-sm'>
+        <Table class='min-w-screen-sm w-full'>
           <template slot='head'>
             <TableRow>
               <TableCell head>
