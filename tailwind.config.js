@@ -36,7 +36,7 @@ const fontSize = _reduce(
 )
 
 module.exports = {
-  important: '#app',
+  important: true,
   theme: {
     fontSize,
     fontFamily: {
