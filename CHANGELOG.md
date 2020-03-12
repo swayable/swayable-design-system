@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.14.0](https://github.com/swayable/swayable-design-system/compare/v0.13.0...v0.14.0) (2020-03-12)
+
+
+### Bug Fixes
+
+* **Styleguidist:** tailwindcss works in styleguide ([68269b5](https://github.com/swayable/swayable-design-system/commit/68269b5))
+
+
+### Features
+
+* **Icon:** add tag icon ([1a501e5](https://github.com/swayable/swayable-design-system/commit/1a501e5))
+
+
+
 ## [0.13.0](https://github.com/swayable/swayable-design-system/compare/v0.11.5...v0.13.0) (2020-03-06)
 
 
