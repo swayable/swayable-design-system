@@ -21,3 +21,5 @@ yarn-error.log*
 
 # Ignore compiled tokens
 src/assets/tokens/
+
+.now
