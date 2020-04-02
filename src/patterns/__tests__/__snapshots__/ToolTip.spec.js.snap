@@ -2,24 +2,32 @@
 
 exports[`ToolTip.vue position bottom matches the snapshot 1`] = `
 <div class="relative tooltip-bottom-wrapper">
-  <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-bottom undefined" style="display: none;" name="expand"></div>
+  <div class="absolute z-50 tooltip-bottom" style="display: none;">
+    <div class="tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap"></div>
+  </div>
 </div>
 `;
 
 exports[`ToolTip.vue position left matches the snapshot 1`] = `
 <div class="relative tooltip-left-wrapper">
-  <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-left undefined" style="display: none;" name="expand"></div>
+  <div class="absolute z-50 tooltip-left" style="display: none;">
+    <div class="tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap"></div>
+  </div>
 </div>
 `;
 
 exports[`ToolTip.vue position right matches the snapshot 1`] = `
 <div class="relative tooltip-right-wrapper">
-  <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-right undefined" style="display: none;" name="expand"></div>
+  <div class="absolute z-50 tooltip-right" style="display: none;">
+    <div class="tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap"></div>
+  </div>
 </div>
 `;
 
 exports[`ToolTip.vue position top matches the snapshot 1`] = `
 <div class="relative tooltip-top-wrapper">
-  <div class="tooltip text-white absolute z-50 rounded-lg py-1 px-2 whitespace-no-wrap tooltip-top undefined" style="display: none;" name="expand"></div>
+  <div class="absolute z-50 tooltip-top" style="display: none;">
+    <div class="tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap"></div>
+  </div>
 </div>
 `;

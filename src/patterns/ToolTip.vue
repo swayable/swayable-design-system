@@ -8,21 +8,19 @@
     @mouseleave='onMouseleave'
   >
     <slot />
-    <transition name='expand'>
+    <div
+      v-show='show'
+      :style='crossAxisPosition'
+      :class='`tooltip-${position}`'
+      class='absolute z-50'
+    >
       <div
-        v-show='show'
-        :style='crossAxisPosition'
-        :class='`tooltip-${position}`'
-        class='absolute z-50'
+        class='tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap'
+        :class='classNames'
       >
-        <div
-          class='tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap'
-          :class='classNames'
-        >
-          <slot name='tip' />
-        </div>
+        <slot name='tip' />
       </div>
-    </transition>
+    </div>
   </component>
 </template>
 
@@ -119,26 +117,6 @@ export default {
 .tooltip {
   background: adjust-color($color-blue-dark, $alpha: -0.1);
   position: relative;
-}
-
-.tooltip-top-wrapper, .tooltip-bottom-wrapper {
-  .expand-enter-active { animation: expandY .15s }
-  .expand-leave-active { animation: expandY .15s reverse }
-}
-@keyframes expandY {
-  0% { transform: scale(0.5) translateX(-50%) translateY(0%); }
-  50% { transform: scale(1.1) translateX(-50%) translateY(0%); }
-  100% { transform: scale(1) translateX(-50%) translateY(0%); }
-}
-
-.tooltip-left-wrapper, .tooltip-right-wrapper {
-  .expand-enter-active { animation: expandX .15s }
-  .expand-leave-active { animation: expandX .15s reverse }
-}
-@keyframes expandX {
-  0% { transform: scale(0.5) translateX(0%) translateY(-50%); }
-  50% { transform: scale(1.1) translateX(0% translateY(-50%)); }
-  100% { transform: scale(1) translateX(0%) translateY(-50%); }
 }
 
 .tooltip-top {

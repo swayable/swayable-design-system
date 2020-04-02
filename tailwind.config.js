@@ -49,7 +49,18 @@ module.exports = {
       semibold: 600,
     },
     extend: {
+      opacity: {
+        '10': '0.1',
+      },
       spacing,
+      maxWidth: theme => ({
+        ...theme('spacing'),
+        ...spacing,
+      }),
+      maxHeight: theme => ({
+        ...theme('spacing'),
+        ...spacing,
+      }),
       minHeight: theme => ({
         ...theme('spacing'),
         ...spacing,

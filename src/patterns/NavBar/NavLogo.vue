@@ -48,7 +48,7 @@ export default {
 <style lang="scss">
 .nav-logo {
   width: var(--logo-width);
-  height: 20px !important;
+  height: 24px !important;
   background-image: var(--logo-url);
 }
 </style>

@@ -82,7 +82,7 @@ export default {
 
   @screen md {
     --logo-url: var(--logo-dark);
-    --logo-width: 120px;
+    --logo-width: 140px;
   }
 
   &.nav-light{

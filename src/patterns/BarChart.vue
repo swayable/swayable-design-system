@@ -1,63 +1,75 @@
 <template>
   <div
     class='bar-chart w-full flex bg-inherit relative font-mono items-center'
-    :style='`min-height: ${thickness}px`'
+    :style='`height: ${thickness}px`'
   >
     <div
-      class='flex absolute items-center bg-inherit h-full'
-      :style='{ left: pointToPercent(origin) }'
+      :style='deltaBarStyles'
+      class='delta bg-inherit overflow-hidden relative'
     >
       <div
-        :class='dataLabelClassList'
-        class='absolute dataLabelLeft'
-      >
-        {{ leftLabel }}
-      </div>
-    </div>
-    <transition :name='transitionName'>
+        :style='{ background }'
+        class='h-full'
+      />
       <div
-        v-show='show'
-        :style='{ height: `${thickness}px`, width: pointToPercent(width), left: pointToPercent(origin) }'
-        class='flex-shrink-0 absolute bg-inherit'
-        :class='`grow-${direction}`'
+        :style='buildArrowStyles("top")'
+        class='arrow rotate-1/8 h-full bg-inherit absolute'
+      />
+      <div
+        :style='buildArrowStyles("bottom")'
+        class='arrow rotate-7/8 h-full bg-inherit absolute'
+      />
+    </div>
+
+    <div
+      v-if='error'
+      class='error absolute h-full flex flex-col items-stretch top-0'
+      :style='errorBarStyles'
+    >
+      <span class='flex-grow' />
+      <span class='flex-grow bg-black opacity-10' />
+      <span class='flex-grow' />
+    </div>
+
+    <div class='labels absolute w-full h-full flex items-stretch'>
+      <div
+        class='absolute flex items-center bg-inherit h-full'
+        :style='{ right: `${100 - pointToPct(origin)}%` }'
       >
         <div
-          :style='{ background }'
-          class='absolute w-full h-full z-10 bg-grey'
-        />
-        <div class='w-full h-full bg-inherit overflow-hidden relative'>
-          <div
-            :style='buildArrowStyles("top")'
-            class='arrow rotate-1/8 h-full z-10 bg-inherit absolute'
-          />
-          <div
-            :style='buildArrowStyles("bottom")'
-            class='arrow rotate-7/8 h-full z-10 bg-inherit absolute'
-          />
+          :class='dataLabelClassList'
+          class='absolute dataLabelLeft'
+        >
+          {{ leftLabel }}
         </div>
-        <transition :name='transitionName'>
-          <div
-            v-show='show'
-            v-if='error'
-            class='grow-delay absolute h-full flex flex-col items-stretch top-0 z-20'
-            :style='errorBarStyles'
-          >
-            <span class='flex-grow' />
-            <span class='flex-grow bg-black opacity-25' />
-            <span class='flex-grow' />
-          </div>
-        </transition>
       </div>
-    </transition>
-    <div
-      class='flex absolute items-center bg-inherit h-full'
-      :style='{ left: pointToPercent(origin + width) }'
-    >
       <div
-        :class='dataLabelClassList'
-        class='ml-1'
+        v-if='showTooltip'
+        class='absolute h-full'
+        :style='tooltipStyles'
       >
-        {{ rightLabel }}
+        <ToolTip
+          class='h-full'
+          :delay='600'
+          :position='tooltipDown ? "bottom" : "top"'
+          :cursor-align='true'
+        >
+          <template #tip>
+            <slot />
+          </template>
+        </ToolTip>
+      </div>
+
+      <div
+        class='absolute flex items-center bg-inherit h-full'
+        :style='{ left: `${pointToPct(origin + width)}%` }'
+      >
+        <div
+          :class='dataLabelClassList'
+          class='ml-1'
+        >
+          {{ rightLabel }}
+        </div>
       </div>
     </div>
   </div>
@@ -121,10 +133,6 @@ export default {
      */
     insignificant: { type: Boolean, default: false },
     /**
-     * Whether to animate drawing the graph.
-     */
-    animate: { type: Boolean, default: true },
-    /**
      * Aligned baselines demonstrates relative differences between bars,
      * otherwise demonstrates absolute differences by plotting baselines.
      */
@@ -132,27 +140,24 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return { show: false }
+    /**
+     * Controls direction tooltip opens
+     */
+    tooltipDown: { type: Boolean, default: true },
   },
   computed: {
-    transitionName() {
-      return this.animate ? 'grow' : ''
+    showTooltip() {
+      return !!this.$slots.default
     },
     dataLabelClassList() {
-      const opacity = !this.show && this.animate
-        ? 'opacity-0'
-        : 'opacity-75'
       return [
         'data-label',
         'whitespace-no-wrap',
         'text-xs',
         'font-semibold',
         'bg-inherit',
-        'z-30',
         'px-px',
-        opacity,
+        'opacity-75',
       ]
     },
     positive() {
@@ -188,17 +193,55 @@ export default {
       return origin - this.minPoint
     },
     direction() {
-      return  this.positive
+      return this.positive
         ? 'right'
         : 'left'
     },
+    deltaBarStyles() {
+      const marginLeft = this.pointToPct(this.origin)
+      const width = this.pointToPct(this.width)
+      const marginRight = 100 - marginLeft - width
+      return {
+        height: `${this.thickness}px`,
+        marginLeft: `${marginLeft}%`,
+        width: `${width}%`,
+        marginRight: `${marginRight}%`,
+      }
+    },
+    tooltipStyles() {
+      const left = this.pointToPct(this.origin)
+      const width = this.pointToPct(this.width)
+      return {
+        left: `${left}%`,
+        width: `${width}%`,
+      }
+    },
+    errorOrigin() {
+      return this.positive
+        ? this.origin + this.width
+        : this.origin
+    },
+    errorLeft() {
+      return this.errorOrigin - this.error
+    },
+    errorRight() {
+      return this.errorOrigin + this.error
+    },
+    errorWidth() {
+      return this.error * 2
+    },
     errorBarStyles() {
       if (this.error === undefined) return {}
-      const errorRatio = (this.error * 2) / this.width
-      const width = errorRatio * 100
+      const right = this.pointToPct(this.errorRight)
+      const left = this.pointToPct(this.errorLeft)
+      const boundaryViolationRight = Math.max((right - 100), 0)
+      const boundaryViolationLeft = Math.min(left, 0)
+      const width = this.pointToPct(this.errorWidth)
+        - boundaryViolationRight
+        + boundaryViolationLeft
       return {
         width: `${width}%`,
-        [this.direction]: `-${width / 2}%`,
+        left: `${left - boundaryViolationLeft}%`,
       }
     },
     leftLabel() {
@@ -223,15 +266,6 @@ export default {
       return GradientPercentColor.drawGradient(...gradientPoints)
     },
   },
-  watch: {
-    alignBaselines() {
-      this.show = false
-      this.$nextTick(() => { this.show = true })
-    },
-  },
-  mounted() {
-    this.show = true
-  },
   methods: {
     buildArrowStyles(yAnchor) {
       const xOffset = this.thickness / 3
@@ -244,9 +278,9 @@ export default {
         [xAnchor]: `calc(100% - ${xOffset}px)`,
       }
     },
-    pointToPercent(point) {
+    pointToPct(point) {
       const ratio = point / this.totalWidth
-      return `${ratio * 100}%`
+      return ratio * 100
     },
   },
 }
@@ -254,30 +288,6 @@ export default {
 
 <style lang="scss">
 .dataLabelLeft { right: calc(100% + theme('spacing.1')) }
-
-@keyframes grow-in {
-  0% { transform: scale3d(0, 1, 1); }
-  100% { transform: scale3d(1, 1, 1); }
-}
-
-$timing: 1s;
-$cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
-.bar-chart, .bar-chart .arrow {
-  transition: all 0.3s ease-out;
-}
-.bar-chart {
-  .grow-enter-active { animation: grow-in $timing $cubic-ease }
-  .grow-enter-active
-  .grow-left.grow-enter-active { transform-origin: right }
-  .grow-right.grow-enter-active { transform-origin: left }
-  .grow-delay { animation-delay: $timing; }
-  .grow-delay.grow-enter-to { transition: opacity 0.3s }
-  .grow-enter-active .grow-delay { opacity: 0 !important }
-  .data-label {
-    transition: opacity 0.15s;
-    transition-delay: $timing;
-  }
-}
 </style>
 
 <docs>
@@ -289,7 +299,7 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     baselineLabel: '38.5%',
     baseline: 3.85,
     delta: 4.42,
-    error: 0.9,
+    error: 4.42,
   }
   const props2 = {
     ...sharedProps,
@@ -308,23 +318,23 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     delta: -1.41,
     error: 1.2,
   }
-  let show = true
 
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
   <div class='bg-grey-lighter py-1 my-1'>
     <div class='mt-1 bg-inherit'>
-      <BarChart class='mt-px' :delta='25' />
+      <BarChart class='mt-px' :delta='25' :error='30' />
+      <BarChartTwo class='mt-px' :delta='25' :error='30' />
       <BarChart class='mt-px' :delta='0.5' />
-      <BarChart class='mt-px' :delta='100' />
-      <BarChart class='mt-px' :delta='50' />
+      <BarChart class='mt-px' :delta='100' :error='50' />
+      <BarChart class='mt-px' :delta='50' :error='50' />
+      <BarChart class='mt-px' :baseline='100' :delta='-50' :error='50' />
       <BarChart class='mt-px' :delta='75' />
     </div>
   </div>
   <Heading type='h5' class='mt-10 text-center'>
     The same data shown in Aligned vs. Absolute baselines
   </Heading>
-  <button @click='() => { show = false; $nextTick(() => show = true) }'>Animate</button>
-  <div v-if='show'>
+  <div>
     <div class='bg-grey-lighter py-1 mt-1'>
       <p class='text-center capitalize'>Aligned Baselines</p>
       <div class='mt-2 bg-inherit'>
@@ -332,14 +342,33 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
           :alignBaselines='true'
           class='mt-px'
           v-bind='props1'
-          :insignificant='true'
+        >
+
+          This is significant
+        </BarChart>
+        <BarChartTwo
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props1'
         />
         <BarChart
           :alignBaselines='true'
           class='mt-px'
           v-bind='props2'
+        >
+          This is insignificant
+        </BarChart>
+        <BarChartTwo
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props2'
         />
         <BarChart
+          :alignBaselines='true'
+          class='mt-px'
+          v-bind='props3'
+        />
+        <BarChartTwo
           :alignBaselines='true'
           class='mt-px'
           v-bind='props3'
@@ -370,9 +399,9 @@ $cubic-ease: cubic-bezier(0.21, 0.61, 0.35, 1);
     otherwise no direction (arrow) will be shown.
   </p>
   <div class='flex mt-2 mb-5'>
-    <BarChart class='bg-white' :baseline='25' :delta='50' :animate='false'  />
+    <BarChart class='bg-white' :baseline='25' :delta='50' />
     <span>vs.</span>
-    <BarChart :baseline='25' :delta='50' :animate='false' />
+    <BarChart :baseline='25' :delta='50' />
   </div>
   ```
 </docs>
