@@ -18,7 +18,7 @@
     >
       <h3
         v-if='show === "all"'
-        class='group capitalize font-heading text-xl'
+        class='group capitalize text-xl'
       >
         {{ group }}
       </h3>

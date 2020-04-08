@@ -328,7 +328,7 @@ div[class^="rsg--tab"] {
       letter-spacing: theme('letterSpacing.tight');
       font-size: 1rem;
       font-weight: 400;
-      font-family: $font-body;
+      font-family: '"Inter", sans-serif';
       line-height: theme('lineHeight.none');
       padding: theme('spacing.2') theme('spacing.3');
       cursor: pointer;
@@ -553,7 +553,7 @@ h5[class^="rsg--heading"], h5[class^="rsg--heading"] > * {
   font-size: theme('fontSize.lg') !important;
 }
 code {
-  font-family: $font-mono !important;
+  font-variant: common-ligatures tabular-nums;
   color: theme('colors.red') !important;
   font-weight: theme('fontWeight.thin') !important;
   background-color: var(--bg-color) !important;
