@@ -3,25 +3,20 @@
     :is='smartElement'
     v-bind='navigation'
     :title='title'
-    :class='{ active, spaced: !flush }'
-    class='nav-item flex items-stretch max-w-full relative whitespace-no-wrap font-semibold'
+    :class='classes'
+    class='classes'
     v-on='$listeners'
   >
-    <span class='flex flex-grow max-w-full relative items-center'>
-      <span class='flex-grow max-w-full items-center flex-col'>
-        <slot />
-      </span>
-    </span>
+    <slot />
   </component>
 </template>
 
 <script>
 /**
- * Item used in NavBar; link, button, or wrapper of more complex component.
+ * Used in NavBar main slot
  */
 export default {
   name: 'NavItem',
-  status: 'ready',
   props: {
     /**
      * The html element
@@ -76,6 +71,16 @@ export default {
       if (this.smartElement === 'router-link') return { to: (this.to || this.href) }
       if (this.smartElement === 'a') return { href: this.href }
       return {}
+    },
+    classes() {
+      const commonClasses = ['px-2', 'sm:px-4', 'py-2', 'rounded', 'text-sm', 'font-medium', 'sm:leading-5', 'focus:outline-none', 'focus:text-white', 'focus:bg-gray-700', 'transition', 'duration-150', 'ease-in-out', 'block', 'sm:inline-block']
+      
+      const activeClasses = ['text-white', 'bg-gray-900']
+      const inactiveClasses = ['sm:ml-2', 'text-gray-300', 'hover:text-white', 'hover:bg-gray-700']
+
+      return this.active
+        ? [...commonClasses, ...activeClasses]
+        : [...commonClasses, ...inactiveClasses]
     },
   },
 }

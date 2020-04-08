@@ -1,7 +1,7 @@
 import tokens from './tokens'
 
 const LEFT_RGB = tokens.getColorRGB('pink')
-const RIGHT_RGB = tokens.getColorRGB('blue')
+const RIGHT_RGB = tokens.getColorRGB('azure')
 
 /**
  * Finds the color at a given point in a gradient of pink-blue

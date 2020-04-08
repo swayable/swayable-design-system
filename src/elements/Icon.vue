@@ -83,7 +83,7 @@ export default {
 
 <docs>
   ```jsx
-  const icons = [ 'tests', 'metric', 'segment', 'content', 'library', 'respondents', 'active', 'complete', 'bar-distribute', 'bar-equal', 'bar-float', 'check', 'chevron', 'cross', 'download', 'ellipsis', 'ellipsis-active', 'menu', 'tag' ]
+  const icons = [ 'tests', 'metric', 'segment', 'content', 'library', 'respondents', 'active', 'complete', 'bar-distribute', 'bar-equal', 'bar-float', 'check', 'chevron', 'cross', 'download', 'ellipsis', 'ellipsis-active', 'menu', 'tag', 'user']
  
   <div class='flex flex-wrap'>
     <div class='m-2'  v-for='icon in icons'>

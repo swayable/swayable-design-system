@@ -82,6 +82,7 @@
     "postcss-url": "^8.0.0",
     "tailwindcss": "^1.2.0",
     "vue": "^2.6.10",
+    "vue-clickaway": "^2.2.2",
     "vue-meta": "^1.5.6",
     "vue-router": "^3.0.2",
     "webfontloader": "^1.6.28"

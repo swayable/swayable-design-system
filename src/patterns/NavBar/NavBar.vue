@@ -1,207 +1,240 @@
 <template>
-  <component
-    :is='element'
-    :class='`flex items-stretch justify-between nav-bar ${variant}`'
+  <nav
+    v-on-clickaway='closeMenu'
+    class='bg-blue-dark'
   >
-    <slot />
-  </component>
+    <div class='max-w-full mx-auto px-4 sm:px-6 lg:px-8'>
+      <div class='flex justify-between h-13'>
+        <div class='flex'>
+          <div class='-ml-2 mr-2 flex items-center md:hidden'>
+            <button
+              class='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out'
+              @click='menuOpen = !menuOpen'
+            >
+              <svg
+                :class='{ hidden: menuOpen, block: !menuOpen }'
+                class='h-6 w-6'
+                stroke='currentColor'
+                fill='none'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M4 6h16M4 12h16M4 18h16'
+                />
+              </svg>
+              <svg
+                :class='{ hidden: !menuOpen, block: menuOpen }'
+                class='h-6 w-6'
+                stroke='currentColor'
+                fill='none'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-width='2'
+                  d='M6 18L18 6M6 6l12 12'
+                />
+              </svg>
+            </button>
+          </div>
+          <a
+            href='/'
+            class='flex-shrink-0 flex items-center'
+          >
+            <img
+              class='block lg:hidden h-5 w-auto'
+              src='//images.swayable.com/logos/motif.svg'
+              alt=''
+            >
+            <img
+              class='hidden lg:block h-5 w-auto'
+              src='//images.swayable.com/logos/dark.svg'
+              alt=''
+            >
+          </a>
+          <div class='hidden sm:block ml-5 w-px h-6 self-center bg-gradient' />
+          <div class='hidden md:ml-6 md:flex md:items-center'>
+            <slot />
+          </div>
+        </div>
+        <div class='flex items-center'>
+          <div class='flex-shrink-0'>
+            <slot name='right' />
+          </div>
+          <div class='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
+            <div class='ml-3 relative'>
+              <div>
+                <button
+                  class='flex text-sm border-2 border-transparent rounded-full text-grey-lighter focus:text-white focus:outline-none focus:border-grey-dark transition duration-150 ease-in-out'
+                  @click='menuOpen = !menuOpen'
+                >
+                  <Icon
+                    name='user'
+                    size='md'
+                  />
+                </button>
+              </div>
+              <div
+                v-show='menuOpen'
+                x-transition:enter='transition ease-out duration-200'
+                x-transition:enter-start='transform opacity-0 scale-95'
+                x-transition:enter-end='transform opacity-100 scale-100'
+                x-transition:leave='transition ease-in duration-75'
+                x-transition:leave-start='transform opacity-100 scale-100'
+                x-transition:leave-end='transform opacity-0 scale-95'
+                class='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg'
+              >
+                <div class='py-1 rounded-md bg-white shadow-xs'>
+                  <router-link
+                    :to='{ name: "tests" }'
+                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
+                  >
+                    Tests
+                  </router-link>
+                  <a
+                    :to='{ name: "library" }'
+                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
+                  >
+                    Library
+                  </a>
+                  <a
+                    href='#'
+                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
+                  >
+                    Preferences
+                  </a>
+                  <a
+                    href='#'
+                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none hover:text-white focus:text-white hover:bg-red focus:bg-red transition duration-150 ease-in-out'
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      :class='{ block: menuOpen, hidden: !menuOpen}'
+      class='md:hidden'
+    >
+      <div class='px-2 pt-2 pb-3 sm:px-3'>
+        <slot />
+      </div>
+      <div class='pt-4 pb-3 border-t border-gray-700'>
+        <div class='flex items-center px-5 sm:px-6'>
+          <div class='flex-shrink-0'>
+            <img
+              class='h-10 w-10 rounded-full'
+              src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+              alt=''
+            >
+          </div>
+          <div class='ml-3'>
+            <div class='text-base font-medium leading-6 text-white'>
+              Tom Cook
+            </div>
+            <div class='text-sm font-medium leading-5 text-gray-400'>
+              tom@example.com
+            </div>
+          </div>
+        </div>
+        <div class='mt-3 px-2 sm:px-3'>
+          <a
+            href='#'
+            class='block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out'
+          >
+            Media
+          </a>
+          <a
+            href='#'
+            class='block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out'
+          >
+            Tests
+          </a>
+          <a
+            href='#'
+            class='mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out'
+          >
+            Settings
+          </a>
+          <a
+            href='#'
+            class='mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out'
+          >
+            Sign out
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
+import tokens from '@/utils/tokens'
+
+const START_RGB = tokens.getColorRGB('pink')
+const END_RGB = tokens.getColorRGB('azure')
+
+import { directive as onClickaway } from 'vue-clickaway'
+
 /**
- * Used as main page navigation in templates. Three style variants are primary, default, and dark mode default.
- */
+ * Used as main page navigation in templates.
+ * */
 export default {
   name: 'NavBar',
-  status: 'ready',
+  directives: { onClickaway },
   props: {
-    /**
-     * The html element used for the nav bar.
-     */
-    element: {
-      type: String,
-      default: 'nav',
-    },
-    /**
-     * Dark background
-     */
-    primary: {
-      type: Boolean,
-      default: false,
-    },
+    username: { type: String, required: false },
+    email: { type: String, required: false },
+    signInTo: { type: Object, required: false },
+    signOutTo: { type: Object, required: false },
+    preferencesTo: { type: Object, required: false},
   },
-  computed: {
-    variant() {
-      return this.primary
-        ? ''
-        : 'nav-light'
+  data() {
+    return {
+      menuOpen: false,
+    }
+  },
+  methods: {
+    closeMenu() {
+      this.menuOpen = false
     },
   },
 }
 </script>
 
 <style lang="scss">
-// Variables
-
-:root {
-  --logo-small: url(https://images.swayable.com/logos/motif.svg);
-  --logo-dark: url(https://images.swayable.com/logos/dark.svg);
-  --logo-light: url(https://images.swayable.com/logos/light.svg);
-  --logo-url: var(--logo-small);
-  --logo-width: 33px;
-  --nav-bg: theme('colors.blue-dark');
-  --nav-color: theme('colors.grey-darker');
-  --nav-color-active: theme('colors.grey');
-  --nav-active-filter: var(--filter-bright);
-  --nav-heading-color: theme('colors.white');
-  --nav-border-color: theme('colors.blue-dark');
-}
-
-[data-theme='dark'] {
-  .nav-bar.nav-light {
-    --nav-color: theme('colors.grey');
-    --nav-bg: theme('colors.black');
-    --nav-active-filter: var(--filter-bright);
-    --nav-color-active: theme('colors.white');
-    --nav-border-color: theme('colors.grey-darker');
-
-    @screen md {
-      --logo-url: var(--logo-dark)
-    }
+  .bg-gradient {
+    background-image: linear-gradient(to bottom, $color-pink, $color-azure);
   }
-}
-.nav-bar {
-  height: 50px;
-
-  .spaced {
-    @apply px-2;
-    @screen sm {
-      @apply px-3;
-    }
-  }
-
-  @screen md {
-    --logo-url: var(--logo-dark);
-    --logo-width: 140px;
-  }
-
-  &.nav-light{
-    @apply border-b;
-    --nav-bg: theme('colors.white');
-    --nav-color: color-mod(theme('colors.blue-dark') alpha(60%));
-    --nav-color-active: theme('colors.blue-dark');
-    --nav-active-filter: var(--filter-dim);
-    --nav-heading-color: theme('colors.blue-dark');
-    --nav-border-color: theme('colors.grey');
-
-    @screen md {
-      --logo-url: var(--logo-light);
-    }
-  }
-
-  // Styles
-  background-color: var(--nav-bg);
-  border-color: var(--nav-border-color);
-
-  .nav-drop-dropdown { background-color: var(--nav-bg); }
-  .heading { color: var(--nav-heading-color) }
-
-
-  // - Override the padding of far left and right nav-items
-  // - rather than padding the navbar in order to have flush navdrops
-  // Right
-                          > .nav-item:last-child,
-  > .nav-group:last-child > .nav-item:last-child,
-                          > .nav-drop:last-child .nav-item,
-  > .nav-group:last-child > .nav-drop:last-child .nav-item {
-    @apply pr-5;
-  }
-
-  // Left
-                          > .nav-item:first-child,
-  > .nav-group:first-child > .nav-item:first-child,
-                          > .nav-drop:first-child .nav-item,
-  > .nav-group:first-child > .nav-drop:first-child .nav-item {
-     @screen sm {
-      @apply pl-3;
-    }
-    @screen md {
-      @apply pl-5;
-    }
-  }
-
-  a.nav-item, button.nav-item {
-    &:hover, &:active, &:focus {
-      filter: var(--nav-active-filter);
-    }
-  }
-
-  .nav-item {
-    @apply text-sm;
-    color: var(--nav-color);
-    
-    &.active, &.router-link-active {
-      > * {
-        color: var(--nav-color-active);
-      }
-      > *:after {
-        // Add active indicator
-        content: ' ';
-        position: absolute;
-        height: 0.25rem;
-        background-color: var(--nav-color-active);
-        bottom: 0;
-        left: 0;
-        right:0;
-      }
-    }
-  }
-  .nav-drop-dropdown .nav-item {
-    @apply min-h-12;
-  }
-  .nav-drop-dropdown .nav-item, .nav-logo {
-    // Remove active indicator
-    &.active, &.router-link-active {
-      > *:after {
-        height: 0;
-      }
-    }
-  }
-}
 </style>
 
 <docs>
   ```jsx
-  <NavBar primary>
-    <NavLogo />
-    <NavGroup class='flex-grow'>
-      <NavItem :active='true'>Default Nav</NavItem>
-      <NavItem>About</NavItem>
-    </NavGroup>
-    <NavGroup>
-      <NavItem>Sign in</NavItem>
-    </NavGroup>
-  </NavBar>
-  <NavBar>
-    <NavLogo />
-    <NavGroup class='flex-grow'>
-      <NavItem :active='true'>Default Nav</NavItem>
-      <NavItem>About</NavItem>
-    </NavGroup>
-    <NavGroup>
-      <NavItem>Sign in</NavItem>
-    </NavGroup>
-  </NavBar>
-  <div data-theme='dark'>
+  <div class='mb-64'>
     <NavBar>
-      <NavLogo />
-      <NavGroup class='flex-grow'>
-        <NavItem :active='true'>Default Nav</NavItem>
-        <NavItem>About</NavItem>
-      </NavGroup>
-      <NavGroup>
-        <NavItem>Sign in</NavItem>
-      </NavGroup>
+      <NavItem active>
+        Setup
+      </NavItem>
+      <NavItem>
+        Responses
+      </NavItem>
+      <NavItem>
+        Results
+      </NavItem>
+      <template slot='right'>
+        <Button primary>
+          Request New
+        </Button>
+      </template>
     </NavBar>
   </div>
   ```
