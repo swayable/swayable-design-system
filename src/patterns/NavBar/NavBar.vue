@@ -86,33 +86,27 @@
                 x-transition:leave='transition ease-in duration-75'
                 x-transition:leave-start='transform opacity-100 scale-100'
                 x-transition:leave-end='transform opacity-0 scale-95'
-                class='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg'
+                class='origin-top-right absolute right-0 mt-4 w-48 rounded shadow-lg'
               >
-                <div class='py-1 rounded-md bg-white shadow-xs'>
+                <div class='py-1 rounded bg-white shadow-xs'>
                   <router-link
-                    :to='{ name: "tests" }'
-                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
+                    :to='{ profile}'
+                    class='block px-6 py-3 text-sm leading-5 text-gray-700 focus:outline-none hover:text-white focus:text-white hover:bg-blue focus:bg-blue transition duration-150 ease-in-out'
                   >
-                    Tests
+                    {{ organizationName }}
+                    <div class='text-xs'>
+                      {{ emailAddress }}
+                    </div>
                   </router-link>
-                  <a
-                    :to='{ name: "library" }'
-                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
+                  <router-link
+                    v-for='(displayName, name) in menuLinks'
+                    :key='name'
+                    :to='{ name }'
+                    class='block px-6 py-3 text-sm leading-5 text-gray-700 focus:outline-none hover:text-white focus:text-white transition duration-150 ease-in-out'
+                    :class='displayName === "Log Out" ? "hover:bg-red focus:bg-red" : "hover:bg-blue focus:bg-blue"'
                   >
-                    Library
-                  </a>
-                  <a
-                    href='#'
-                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'
-                  >
-                    Preferences
-                  </a>
-                  <a
-                    href='#'
-                    class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none hover:text-white focus:text-white hover:bg-red focus:bg-red transition duration-150 ease-in-out'
-                  >
-                    Sign out
-                  </a>
+                    {{ displayName }}
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -192,15 +186,18 @@ export default {
   name: 'NavBar',
   directives: { onClickaway },
   props: {
-    username: { type: String, required: false },
-    email: { type: String, required: false },
-    signInTo: { type: Object, required: false },
-    signOutTo: { type: Object, required: false },
-    preferencesTo: { type: Object, required: false},
+    emailAddress: { type: String, default: 'jane@doe.com'},
+    organizationName: { type: String, default:'Doe inc'},
   },
   data() {
     return {
       menuOpen: false,
+      menuLinks: {
+        tests: 'Tests',
+        library: 'Library',
+        preferences: 'Preferences',
+        'sign-out': 'Log Out',
+      },
     }
   },
   methods: {
