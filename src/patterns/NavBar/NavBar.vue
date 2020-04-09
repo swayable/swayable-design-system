@@ -116,46 +116,54 @@
         </div>
       </div>
     </div>
-
-    <div
-      :class='{ block: menuOpen, hidden: !menuOpen}'
-      class='md:hidden'
+    <transition
+      enter-active-class='transition ease-out duration-200'
+      leave-active-class='transition ease-in duration-75'
+      enter-class='transform opacity-0 scale-95'
+      enter-to-class='transform opacity-100 scale-100'
+      leave-class='transform opacity-100 scale-100'
+      leave-to-class='transform opacity-0 scale-95'
     >
-      <div class='pb-3'>
-        <div
-          v-if='this.$slots.default'
-          class='px-2 pt-2 pb-3 sm:px-3 border-t border-gray-700'
-        >
-          <slot />
-        </div>
-        <div class='flex items-center px-5 py-4 border-t border-gray-700'>
-          <div class='text-grey-light flex-shrink-0'>
-            <Icon
-              name='user'
-              size='lg'
-            />
-          </div>
-          <div class='ml-3'>
-            <div class='text-grey-light leading-5'>
-              {{ organizationName }}
-            </div>
-            <div class='text-sm text-grey-darker leading-4'>
-              {{ emailAddress }}
-            </div>
-          </div>
-        </div>
-        <div class='px-2 sm:px-3'>
-          <NavItem
-            v-for='(displayName, name) in menuLinks'
-            :key='name'
-            :to='{ name }'
-            :class='displayName === "Log Out" && "text-red"'
+      <div
+        v-show='menuOpen'
+        class='md:hidden'
+      >
+        <div class='pb-3'>
+          <div
+            v-if='this.$slots.default'
+            class='px-2 pt-2 pb-3 sm:px-3 border-t border-gray-700'
           >
-            {{ displayName }}
-          </NavItem>
+            <slot />
+          </div>
+          <div class='flex items-center px-5 py-4 border-t border-gray-700'>
+            <div class='text-grey-light flex-shrink-0'>
+              <Icon
+                name='user'
+                size='lg'
+              />
+            </div>
+            <div class='ml-3'>
+              <div class='text-grey-light leading-5'>
+                {{ organizationName }}
+              </div>
+              <div class='text-sm text-grey-darker leading-4'>
+                {{ emailAddress }}
+              </div>
+            </div>
+          </div>
+          <div class='px-2 sm:px-3'>
+            <NavItem
+              v-for='(displayName, name) in menuLinks'
+              :key='name'
+              :to='{ name }'
+              :class='displayName === "Log Out" && "text-red"'
+            >
+              {{ displayName }}
+            </NavItem>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
