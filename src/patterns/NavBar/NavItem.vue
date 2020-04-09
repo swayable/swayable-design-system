@@ -4,7 +4,6 @@
     v-bind='navigation'
     :title='title'
     :class='classes'
-    class='classes'
     v-on='$listeners'
   >
     <slot />
@@ -73,10 +72,10 @@ export default {
       return {}
     },
     classes() {
-      const commonClasses = ['px-2', 'sm:px-4', 'py-2', 'rounded', 'text-sm', 'font-medium', 'sm:leading-5', 'focus:outline-none', 'focus:text-white', 'focus:bg-gray-700', 'transition', 'duration-150', 'ease-in-out', 'block', 'sm:inline-block']
+      const commonClasses = ['px-5 sm:px-4', 'py-3 sm:py-2', 'rounded', 'text-sm', 'font-medium', 'sm:leading-5', 'focus:outline-none', 'focus:text-white', 'focus:bg-gray-700', 'transition', 'duration-150', 'ease-in-out', 'block', 'sm:inline-block']
       
       const activeClasses = ['text-white', 'bg-gray-900']
-      const inactiveClasses = ['sm:ml-2', 'text-gray-300', 'hover:text-white', 'hover:bg-gray-700']
+      const inactiveClasses = ['sm:ml-2', 'text-grey-light', 'hover:text-white', 'hover:bg-gray-700']
 
       return this.active
         ? [...commonClasses, ...activeClasses]
