@@ -1,5 +1,6 @@
 <template>
   <div
+    v-on-clickaway='close'
     class='inline-block'
     :class='align && `relative`'
   >
@@ -13,29 +14,32 @@
       class='w-auto min-w-full flex-col z-50'
       :class='align ? `absolute ${align}-0` : "relative"'
     >
-      <slot
-        v-if='open'
-        name='dropdown'
-      />
+      <transition
+        enter-active-class='transition ease-out duration-100'
+        leave-active-class='transition ease-in duration-75'
+        enter-class='transform opacity-0 scale-95'
+        enter-to-class='transform opacity-100 scale-100'
+        leave-class='transform opacity-100 scale-100'
+        leave-to-class='transform opacity-0 scale-95'
+      >
+        <slot
+          v-if='open'
+          name='dropdown'
+        />
+      </transition>
     </div>
-    <button
-      v-if='open'
-      :aria-label='closeAriaLabel'
-      class='fixed w-screen h-screen top-0 left-0 opacity-0 z-40 cursor-default'
-      @click='$emit("close")'
-    />
   </div>
 </template>
 
 <script>
+import { directive as onClickaway } from 'vue-clickaway'
+
 /**
  * DropDown provides a pattern for building dropdowns, such as menus, autocompletes, etc.
- *
- * Importantly, it does not manage it's own state, but it does emit 'close' when the cursor clicks
- * outside the dropdown content.
  */
 export default {
   name: 'DropDown',
+  directives: { onClickaway },
   status: 'ready',
   props: {
     /**
@@ -43,16 +47,15 @@ export default {
      */
     open: { type: Boolean, default: false, required: true },
     /**
-     * Accessibility label for button to emit close event
-     */
-    closeAriaLabel: { type: String, default: 'Close Dropdown' },
-    /**
      * Dropdown originates from the right or left
      */
     align: {
       type: String,
       validator: value => ['right', 'left'].includes(value),
     },
+  },
+  methods: {
+    close() { this.$emit('close') },
   },
 }
 </script>
