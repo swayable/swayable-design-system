@@ -287,7 +287,6 @@ pre[class^="rsg--pre"],
   height: auto;
   max-width: 100%;
   border: 0;
-  font-family: Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 1rem;
   margin: 0;
   min-height: theme('spacing.48') / 1.5;
@@ -325,10 +324,10 @@ div[class^="rsg--tab"] {
     .vueds-tab {
       border: 0;
       margin: 0;
-      letter-spacing: theme('letterSpacing.tight');
+      letter-spacing: theme('letterSpacing.normal');
       font-size: 1rem;
       font-weight: 400;
-      font-family: '"Inter", sans-serif';
+      font-family: "Inter", sans-serif;
       line-height: theme('lineHeight.none');
       padding: theme('spacing.2') theme('spacing.3');
       cursor: pointer;

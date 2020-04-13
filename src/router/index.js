@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/templates/Index'
-import NotFound from '@/templates/NotFound'
+import Demo from '@/templates/Demo'
 
 Vue.use(Router)
 
@@ -13,9 +13,9 @@ export default new Router({
       component: Index,
     },
     {
-      path: '*',
-      name: 'NotFound',
-      component: NotFound,
+      path: '/demo',
+      name: 'Demo',
+      component: Demo,
     },
   ],
 })

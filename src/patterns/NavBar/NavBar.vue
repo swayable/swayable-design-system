@@ -12,7 +12,7 @@
               @click='menuOpen = !menuOpen'
             >
               <svg
-                :class='{ hidden: menuOpen, block: !menuOpen }'
+                v-show='!menuOpen'
                 class='h-6 w-6'
                 stroke='currentColor'
                 fill='none'
@@ -26,7 +26,7 @@
                 />
               </svg>
               <svg
-                :class='{ hidden: !menuOpen, block: menuOpen }'
+                v-show='menuOpen'
                 class='h-6 w-6'
                 stroke='currentColor'
                 fill='none'
@@ -57,13 +57,37 @@
             >
           </a>
           <div class='hidden md:block ml-5 w-px h-6 self-center bg-gradient' />
-          <div class='hidden md:ml-6 md:flex md:items-center'>
-            <slot />
+          <div class='hidden md:flex ml-6 items-center'>
+            <slot v-if='alignRight' />
+            <template v-else>
+              <NavItem
+                v-for='(link, title) in links'
+                :key='title'
+                v-bind='link'
+              >
+                {{ title }}
+              </NavItem>
+            </template>
           </div>
         </div>
         <div class='flex items-center'>
-          <div class='flex-shrink-0'>
-            <slot name='right' />
+          <div
+            class='flex-shrink-0'
+            :class='alignRight ? "flex md:hidden": "flex"'
+          >
+            <slot />
+          </div>
+          <div
+            v-if='alignRight'
+            class='hidden md:flex flex-shrink-0'
+          >
+            <NavItem
+              v-for='(link, title) in links'
+              :key='title'
+              v-bind='link'
+            >
+              {{ title }}
+            </NavItem>
           </div>
           <div class='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
             <div class='ml-3 relative'>
@@ -93,10 +117,10 @@
                   <div class='pb-2 rounded bg-white shadow-xs'>
                     <div class='block px-8 py-6 mb-2'>
                       <div class='text-blue-dark leading-5'>
-                        {{ organizationName }}
+                        {{ organization }}
                       </div>
                       <div class='text-sm text-grey-darker leading-4'>
-                        {{ emailAddress }}
+                        {{ user }}
                       </div>
                     </div>
                     <router-link
@@ -130,10 +154,16 @@
       >
         <div class='pb-3'>
           <div
-            v-if='this.$slots.default'
+            v-if='Object.keys(links).length'
             class='px-2 pt-2 pb-3 sm:px-3 border-t border-gray-700'
           >
-            <slot />
+            <NavItem
+              v-for='(link, title) in links'
+              :key='title'
+              v-bind='link'
+            >
+              {{ title }}
+            </NavItem>
           </div>
           <div class='flex items-center px-5 py-4 border-t border-gray-700'>
             <div class='text-grey-light flex-shrink-0'>
@@ -144,10 +174,10 @@
             </div>
             <div class='ml-3'>
               <div class='text-grey-light leading-5'>
-                {{ organizationName }}
+                {{ organization }}
               </div>
               <div class='text-sm text-grey-darker leading-4'>
-                {{ emailAddress }}
+                {{ user }}
               </div>
             </div>
           </div>
@@ -182,8 +212,10 @@ export default {
   name: 'NavBar',
   directives: { onClickaway },
   props: {
-    emailAddress: { type: String, default: 'jane@doe.com'},
-    organizationName: { type: String, default:'Doe inc'},
+    user: { type: String, default: 'jane@doe.com'},
+    organization: { type: String, default:'Doe inc'},
+    links: { type: Object, default: () => ({}) },
+    alignRight: { type: Boolean, default: false  },
   },
   data() {
     return {
@@ -212,22 +244,16 @@ export default {
 
 <docs>
   ```jsx
+  const links = {
+    Setup: { to: { name: 'Demo' }, active: true },
+    Responses: { to: { name: 'Demo' } },
+    Results: { to: { name: 'Demo' } },
+  }
   <div class='mb-64'>
-    <NavBar>
-      <NavItem active>
-        Setup
-      </NavItem>
-      <NavItem>
-        Responses
-      </NavItem>
-      <NavItem>
-        Results
-      </NavItem>
-      <template slot='right'>
-        <Button primary>
-          Request New
-        </Button>
-      </template>
+    <NavBar :links='links'>
+      <Button primary>
+        Request New
+      </Button>
     </NavBar>
   </div>
   ```
