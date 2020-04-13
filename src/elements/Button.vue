@@ -1,7 +1,7 @@
 <template>
   <component
     :is='smartElement'
-    :class='`button inline-block ${classes}`'
+    :class='`button leading-4 focus:outline-none focus:shadow-outline ${classes}`'
     :disabled='disabled'
     v-bind='navigation'
     v-on='$listeners'
@@ -14,13 +14,15 @@
 import Label from './Label'
 
 /**
- * Buttons are generally used for interface actions. Suitable for all-purpose use.
- * Defaults to appearance that has white background with grey border.
- * Primary style should be used only once per view for main call-to-action.
+ * Buttons are generally used for interface actions.
+ * Event handlers can be attached like any other button.
+ *
+ * Including `props.to` will cause the element to become a `<router-link>`
+ *
+ * Including `props.href` will cause the element to become an `<a>`
  */
 export default {
   name: 'Button',
-  extends: Label,
   status: 'ready',
   props: {
     /**
@@ -29,33 +31,53 @@ export default {
     element: {
       type: String,
       validator: value => {
-        return value.match(/(button|a|input)/)
+        return value.match(/(button|a|input|router-link)/)
       },
     },
     /**
-     * Router link
+     * Element will be &lt;router-link&gt;
      */
     to: {
       type: Object,
     },
     /**
-     * Web link
+     * Element with be &lt;a&gt;
      */
     href: {
       type: String,
     },
     /**
-     * Style variation for nesting in menus
+     * Style variation to warn users
      */
-    menu: {
+    destructive: {
       type: Boolean,
       default: false,
     },
     /**
-     * Disables interaction
-     * `true, false`
+     * Disables interaction (overrides destructive).
      */
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Smaller button
+     */
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Alternative styles
+     */
+    alt: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Strips colors
+     */
+    custom: {
       type: Boolean,
       default: false,
     },
@@ -72,26 +94,25 @@ export default {
       if (this.smartElement === 'a') return { href: this.href }
       return {}
     },
-  },
-  methods: {
-    classesForVariant() {
+    classes() {
+      let color
+      if (this.disabled) color = 'grey-dark'
+      else if (this.destructive) color = 'red'
+      else color = 'blue'
+
       const base = 'border rounded'
-      if (this.custom) return base
-      if (this.menu && this.disabled) return 'bg-transparent text-grey-dark rounded disabled'
-      if (this.menu) return 'bg-transparent text-blue-dark'
-      if (this.disabled) return `${base} text-grey-darker border-grey-light bg-grey-light cursor-not-allowed disabled`
-      if (this.dark) return `${base} text-white bg-blue-dark border-blue-dark`
-      if (this.primary) return `${base} text-white bg-blue border-blue`
-      return `${base} text-black bg-white border-grey`
+      const size = this.small ? 'text-xs p-1' : 'text-sm p-2'
+      const disabled = this.disabled ? 'disabled cursor-not-allowed' : ''
+      const alt = this.alt ? `text-${color}` : `text-white bg-${color}`
+      return `${base} ${this.custom ? '' : alt} ${size} ${disabled}`
     },
   },
 }
 </script>
 
 <style>
-.button:focus {
-  position: relative;
-  z-index: 1;
+.button.alt {
+  border-color: rgba(40, 48, 64, 0.16) !important;
 }
 </style>
 
@@ -99,16 +120,21 @@ export default {
   ```jsx
   <div class='flex justify-between items-center flex-wrap'>
     <Button>Normal</Button>
+    <Button custom>Custom</Button>
+    <Button destructive>Destructive</Button>
     <Button disabled>Disabled</Button>
-    <Button primary>Primary</Button>
-    <Button dark>Dark</Button>
-    <Button menu>Menu</Button>
-    <Button menu disabled>Disabled Menu</Button>
-    <Button custom class='bg-pink border-pink text-white'>Custom</Button>
-    <Button size='xs'>x-small</Button>
-    <Button size='sm'>small</Button>
-    <Button size='md'>medium</Button>
-    <Button size='lg'>large</Button>
+    <Button alt>Alternative</Button>
+    <Button alt destructive>Destructive Alt</Button>
+    <Button alt disabled>Disabled Alt</Button>
+  </div>
+  <div class='mt-4 flex justify-between items-center flex-wrap'>
+    <Button small>Small Primary</Button>
+    <Button small custom>Custom</Button>
+    <Button small destructive>Small Destructive</Button>
+    <Button small disabled>Small Disabled</Button>
+    <Button small alt>Small Alternative</Button>
+    <Button small alt destructive>Small Destructive Alt</Button>
+    <Button small alt disabled>Small Disabled Alt</Button>
   </div>
   ```
 </docs>

@@ -59,31 +59,3 @@ export default {
   </div>
   ```
 </docs>
-
-<style lang="scss">
-.button-group {
-  &.horizontal {
-    :not(:first-child) {
-      border-left: 0 !important;
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
-    }
-    :not(:last-child) {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
-    }
-  }
-  &.vertical {
-    flex-direction: column;
-    :not(:first-child) {
-      border-top: 0 !important;
-      border-top-left-radius: 0 !important;
-      border-top-right-radius: 0 !important;
-    }
-    :not(:last-child) {
-      border-bottom-left-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
-    }
-  }
-}
-</style>
