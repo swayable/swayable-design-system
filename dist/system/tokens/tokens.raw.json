@@ -209,36 +209,6 @@
       "originalValue": "#14c8c8",
       "name": "color_cyan"
     },
-    "font_heading": {
-      "type": "...",
-      "category": "font",
-      "value": "\"acumin-pro\",sans-serif",
-      "class": "heading",
-      "weights": "400,600",
-      "order": -1,
-      "originalValue": "\"acumin-pro\",sans-serif",
-      "name": "font_heading"
-    },
-    "font_body": {
-      "type": "...",
-      "category": "font",
-      "value": "\"acumin-pro\",sans-serif",
-      "class": "body",
-      "weights": "400,600",
-      "order": -1,
-      "originalValue": "\"acumin-pro\",sans-serif",
-      "name": "font_body"
-    },
-    "font_mono": {
-      "type": "...",
-      "category": "font",
-      "value": "\"din-2014\",monospace",
-      "class": "mono",
-      "weights": "400,600",
-      "order": -1,
-      "originalValue": "\"din-2014\",monospace",
-      "name": "font_mono"
-    },
     "size_2xl": {
       "type": "number",
       "category": "font-size",

@@ -5,20 +5,25 @@
 
 /* BASE
 --------------------------------------------- */
+html {
+  background: theme('colors.grey-light');
+}
 // Background of page
 div.rsg--root-1 {
-  background: theme('colors.white');
-}
-[data-theme='dark'] {
-  div.rsg--root-1 {
-    background: theme('colors.black');
-  }
+  background: theme('colors.grey-light');
+  position: relative;
 }
 // Main content
 main[class^="rsg--content"] {
   padding: theme('spacing.4') theme('spacing.6');
   @media (min-width: theme('screens.md')) {
     padding: theme('spacing.4') theme('spacing.16');
+  }
+}
+
+[data-testid='section-design-tokens'] {
+  .vueds-tabs, .CodeMirror {
+    display: none !important;
   }
 }
 
@@ -35,22 +40,24 @@ main section section > div > div[class^="rsg--root"] {
   flex-direction: column;
 }
 
+img[title='Code Repo'] {
+  width: 40px;
+  border: 1px solid theme('colors.grey');
+  border-radius: 100%;
+  display: inline-block;
+}
+
 /* TYPOGRAPHY
 --------------------------------------------- */
 
-// Remove extra margins from all headers
-// header[class^="rsg--header"] {
-//   margin: 0;
-// }
-
-// Links inside h1
 [class^="rsg--heading"], [class^="rsg--heading"] a {
-  color: var(--heading-color) !important;
+  color: theme('colors.blue-dark') !important;
+  margin-top: theme('spacing.5') !important;
 }
 
 // // Paragraphs
 html, body, code, [class^="rsg--para"] {
-  color: var(--text-color) !important;
+  color: theme('colors.blue-dark') !important;
 }
 
 // Type layout adjustments
@@ -87,32 +94,43 @@ td[class^="rsg--cell"] p {
 div[class^="rsg--logo"] {
   border-bottom: 0px;
   margin-top: theme('spacing.5');
+  
   h1 {
-    color: var(--nav-color-active) !important;
+    color: rgba(0, 0, 0, 0);
+    background-image: url('//images.swayable.com/logos/light.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 7px center;
     font-size: theme('fontSize.lg') !important;
   }
 }
 
 // Sidebar version
 p[class^="rsg--version"] {
-  display: inline-block;
   padding: theme('spacing.1') theme('spacing.2');
-  margin-top: theme('spacing.3');
-  color: var(--nav-color);
+  margin-top: theme('spacing.1');
+  margin-right: theme('spacing.4');
   line-height: theme('lineHeight.none');
-  border: 1px solid var(--nav-color);
   letter-spacing: theme('letterSpacing.wide');
-  font-size: theme('fontSize.sm');
+  font-size: theme('fontSize.xs');
   border-radius: theme('borderRadius.sm');
+  &:before {
+    content: 'v';
+  }
+  text-align: right;
 }
 
 // Sidebar search
+div[class^="rsg--search"] {
+  padding: 0;
+  margin: 0 16px 16px;
+}
 div[class^="rsg--search"] input[class^="rsg--input"] {
   border-radius: 4px;
   padding: theme('spacing.2') theme('spacing.3');
   color: var(--nav-color-active);
-  border: 1px solid theme('colors.grey-dark');
-  background: theme('colors.blue-dark');
+  border: 1px solid theme('colors.grey');
+  background: theme('colors.colors.grey-lighter');
   &:focus {
     border: 1px solid theme('colors.blue');
     &::-webkit-textfield-decoration-container {
@@ -130,37 +148,43 @@ div[class^="rsg--search"] input[class^="rsg--input"] {
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  background: var(--nav-bg);
+  min-height: 100%;
+  position: absolute;
+  bottom: unset;
+  top: 0;
   color: var(--nav-color);
+  background-color: theme('colors.grey-light');
   border: 0;
   @media (max-width: theme('screens.md')) {
     padding-bottom: theme('spacing.12');
   }
 
- 
-
-  // Sidebar sub navigations
-  ul ul[class^="rsg--list"] {
-    max-height: 0;
-    transition: max-height 0.25s ease-out;
-    &.vueds-visible {
-      height: auto;
-    }
+  a[class^="rsg--heading"] {
+    display: none;
   }
+
+  // // Sidebar sub navigations
+  // ul ul[class^="rsg--list"] {
+  //  max-height: 0;
+  //   transition: max-height 0.25s ease-out;
+  //   &.vueds-visible {
+  //     height: auto;
+  //   }
+  // }
 
   // Hides '/GettingStarted/Components' link from the sidebar
   li[class^="rsg--item"]:first-child ul { display: none; } 
 
   // Sidebar list item
-  li[class^="rsg--item"] {
-    margin: 0;
-    display: block;
-    &:focus {
-      ul[class^="rsg--list"] {
-        max-height: 400px !important;
-      }
-    }
-  }
+  // li[class^="rsg--item"] {
+  //   margin: 0;
+  //   display: block;
+  //   &:focus {
+  //     ul[class^="rsg--list"] {
+  //       max-height: 400px !important;
+  //     }
+  //   }
+  // }
 
   // Sidebar first level links
   a[class^="rsg--link"] {
@@ -213,10 +237,11 @@ div[class^="rsg--sidebar"] {
 
       // Sidebar second level link
       a[class*="rsg--link"] {
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: theme('fontSize.sm');
+        font-weight: theme('fontWeight.normal');
         -webkit-font-smoothing: subpixel-antialiased;
         -moz-osx-font-smoothing: auto;
+        color: theme('colors.blue-dark');
         @media (max-width: #{theme('screens.sm')}) {
           float: left;
           padding: 0 theme('spacing.2') 0 0;
@@ -243,8 +268,7 @@ div[class^="rsg--preview"] {
 
 // If you edit the component categories, you have to edit
 // these to match as well.
-div[data-preview="Elements"],
-div[data-preview="Patterns"],
+div[data-preview="Components"],
 div[data-preview="Templates"] {
   background: transparent;
   box-shadow: none;
@@ -272,6 +296,12 @@ table[class^="rsg--table"] {
 }
 thead[class^="rsg--tableHead"] {
   border: 0;
+}
+
+.CodeMirror-sizer {
+  // undo whack inline min-height being put on codemirror
+  max-height: 800px;
+  min-height: 0px !important;
 }
 
 // Codemirror and markdown code blocks
@@ -537,19 +567,19 @@ ul a[href*="/#/Private Components"] {
 
 
 h1[class^="rsg--heading"], h1[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.4xl') !important;
-}
-h2[class^="rsg--heading"], h2[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.3xl') !important;
-}
-h3[class^="rsg--heading"], h3[class^="rsg--heading"] > * {
   font-size: theme('fontSize.2xl') !important;
 }
-h4[class^="rsg--heading"], h4[class^="rsg--heading"] > * {
+h2[class^="rsg--heading"], h2[class^="rsg--heading"] > * {
   font-size: theme('fontSize.xl') !important;
 }
-h5[class^="rsg--heading"], h5[class^="rsg--heading"] > * {
+h3[class^="rsg--heading"], h3[class^="rsg--heading"] > * {
   font-size: theme('fontSize.lg') !important;
+}
+h4[class^="rsg--heading"], h4[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.md') !important;
+}
+h5[class^="rsg--heading"], h5[class^="rsg--heading"] > * {
+  font-size: theme('fontSize.sm') !important;
 }
 code {
   font-variant: common-ligatures tabular-nums;
@@ -561,9 +591,9 @@ code {
   font-size: theme('fontSize.sm') !important;
   border-radius: theme('borderRadius.none')
 }
-.page {
-  @include pagestyle;
-}
+// .page {
+//   @include pagestyle;
+// }
 
 input {
   background: var(--bg-color);

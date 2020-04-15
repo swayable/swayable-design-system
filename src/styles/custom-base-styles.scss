@@ -1,39 +1,39 @@
 // Custom Base Styles
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-}
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   font-family: 'Inter', sans-serif;
+// }
 
-pre, code, .font-mono { 
-  font-variant: common-ligatures tabular-nums;
-}
+// pre, code, .font-mono { 
+//   font-variant: common-ligatures tabular-nums;
+// }
 
-:root {
-  --bg-color: theme('colors.grey-lighter');
-  --text-color: theme('colors.black');
-  --heading-color: theme('colors.blue-dark');
-  --link-color: theme('colors.blue');
+// :root {
+//   --bg-color: theme('colors.grey-lighter');
+//   --text-color: theme('colors.black');
+//   --heading-color: theme('colors.blue-dark');
+//   --link-color: theme('colors.blue');
 
-  --filter-dim: brightness(50%);
-  --filter-bright: brightness(150%);
-}
+//   --filter-dim: brightness(50%);
+//   --filter-bright: brightness(150%);
+// }
 
-[data-theme='dark'] {
-  --bg-color: theme('colors.black');
-  --heading-color: theme('colors.white');
-  --text-color: theme('colors.white');
-}
+// [data-theme='dark'] {
+//   --bg-color: theme('colors.black');
+//   --heading-color: theme('colors.white');
+//   --text-color: theme('colors.white');
+// }
 
-@mixin pagestyle {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+// @mixin pagestyle {
+//   background-color: var(--bg-color);
+//   color: var(--text-color);
 
-  a, button { cursor: pointer; }
-  a, .link { color: var(--link-color) }
-}
+//   a, button { cursor: pointer; }
+//   a, .link { color: var(--link-color) }
+// }
 
-html { @include pagestyle }
+// html { @include pagestyle }

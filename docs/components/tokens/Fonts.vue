@@ -48,7 +48,7 @@ export default {
       tokens: this.orderData(designTokens.props),
       weightMap: {
         '400': 'normal',
-        '600': 'semibold',
+        '600': 'bold',
       },
     }
   },

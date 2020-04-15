@@ -1,31 +1,21 @@
-Design tokens are the atoms of the system as [Salesforce describes them](https://www.lightningdesignsystem.com/design-tokens/). In Swayable Design System we rely on a [custom Tailwindcss theme](https://tailwindcss.com/docs/theme) for our design tokens, and strongly prefer Tailwindcss utlity classes over custom CSS. This makes our design consistent and easily maintained across our systems.
+Swayable relies on a custom [Tailwindcss theme](https://tailwindcss.com/docs/theme) for our design tokens.
 
-## Tailwind Utility Classes
-- [Padding](https://tailwindcss.com/docs/padding)
-- [Margin](https://tailwindcss.com/docs/margin)
-- [Flex](https://tailwindcss.com/docs/flex)
-- [Responsive Design](https://tailwindcss.com/docs/responsive-design/)
-- [See all](https://tailwindcss.com/docs)
+We strongly prefer utlity classes over custom CSS; it helps our designs stay consistent and easily maintained across systems.
 
-## Dark Theme
-Add `data-theme['dark']` to any element (preferably `<html>`).
-
-[Toggle Dark On/Off](/#/Templates/Index?theme=toggle)  
-
-## Fonts
-
-```js
-<fonts />
+```jsx
+<color />
 ```
+
+# [Inter Typeface](https://rsms.me/inter/)
+
+Inter is also the standard typeface used in [Tailwind UI](https://tailwindui.com/documentation#optional-add-the-inter-font-family).
+
+`.font-mono` <span class='font-mono text-sm'>makes statistics and data easier to read <span class='font-xs'>(especially when small)</span>.</span>
+
+`.font-bold` <span class='font-semibold'>leaves a heavy impression.</span>
 
 ## Font Sizes
 
 ```js
 <font-size />
-```
-
-## Color Palette
-
-```js
-<color />
 ```

@@ -68,7 +68,7 @@ export default {
 
   <div class='flex justify-between'>
     <DropDown :open='topLeftOpen' @close='topLeftOpen = false' align='left'>
-      <Button primary @click='topLeftOpen = !topLeftOpen'>Left Dropdown</Button>
+      <Button alt @click='topLeftOpen = !topLeftOpen'>Left Dropdown</Button>
       <template #dropdown>
         <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
@@ -77,7 +77,7 @@ export default {
     </DropDown>
 
     <DropDown :open='topRightOpen' @close='topRightOpen = false' align='right'>
-      <Button primary @click='topRightOpen = !topRightOpen'>Right Dropdown</Button>
+      <Button alt @click='topRightOpen = !topRightOpen'>Right Dropdown</Button>
       <template #dropdown>
         <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
@@ -87,7 +87,7 @@ export default {
   </div>
   <div class='flex justify-between'>
   <DropDown :open='bottomLeftOpen' @close='bottomLeftOpen = false' class='mt-2'>
-      <Button @click='bottomLeftOpen = !bottomLeftOpen'>Collapsable content</Button>
+      <Button alt @click='bottomLeftOpen = !bottomLeftOpen'>Collapsable content</Button>
       <template #dropdown>
         <p class='py-2'>
           Notice that without an `align` prop, the expanded content is not absolutely positioned and displaces content in the normal page flow.
