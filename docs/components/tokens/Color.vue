@@ -8,7 +8,7 @@
         type='h3'
         class='mt-5'
       >
-        {{ groupName }}
+        {{ groupName }} Colors
       </Heading>
       <div class='flex flex-wrap -mx-8'>
         <div
@@ -59,11 +59,11 @@
 import _filter from 'lodash/filter'
 import Token from '../../decorators/token'
 import tokens from '../../../src/utils/tokens'
-import ToolTip from '../../../src/patterns/ToolTip'
-import Heading from '../../../src/elements/Heading'
+import ToolTip from '../../../src/components/ToolTip'
+import Heading from '../../../src/components/Heading'
 
 /**
- * The colors found here are defined in [Swayable Designs by Gabriel Winer](https://www.figma.com/file/enhdfkmMOUqVOJHO7KrA14/Design-System?node-id=0%3A1).
+ * Blue is often used for links. The Swayable gradient is from Azure to Pink.
  */
 export default {
   name: 'Color',

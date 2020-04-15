@@ -1,25 +1,10 @@
-# Swayable Design System
+# Swayable Component Library & Design System
 
-The Design System for Swayable: [design.swayable.com](http://design.swayable.com/)
+[Docs at design.swayable.com](http://design.swayable.com/)
 
 ## Development Note
 
 - Must use npm (`yarn start` does not work)
-
-## Development Progress
-
-- [x] Add colors
-- [x] Add fonts
-- [ ] Finish writing/editing `docs/downloads.md`
-- [ ] Finish writing/editing `docs/elements.md`
-- [ ] Finish writing/editing `docs/faq.md`
-- [ ] Finish writing/editing `docs/getting-started.md`
-- [ ] Finish writing/editing `docs/patterns.md`
-- [ ] Finish writing/editing `docs/principles.md`
-- [ ] Finish writing/editing `docs/templates.md`
-- [ ] Finish writing/editing `docs/tokens.md`
-- [ ] Finish writing/editing `docs/voice-and-tone.md`
-- [ ] Choose components to port over & create tasks for them
 
 ## Inspiration
 
@@ -37,6 +22,7 @@ Deployed with [Netlify](https://www.netlify.com/) (via GitHub). To deploy, simpl
 
 ## Authors and License
 
-This is a fork of the [**Vue Design System**](https://vueds.com/), an open source tool for building UI Design Systems with [Vue.js](https://vuejs.org).
+
+[Forked from VueDS](vueds.com) which is largely based on [Vue Styleguidist](https://vue-styleguidist.github.io/), an open source tool for buiding [Vue.js](https://vuejs.org) style guides.
 
 Licensed under the [MIT license](https://github.com/swayable/swayable-design-system/blob/master/LICENSE).

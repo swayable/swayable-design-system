@@ -29,6 +29,7 @@ module.exports = {
   editorConfig: {
     theme: 'night',
   },
+  codeSplit: true,
   simpleEditor: false,
   /**
    * Path to static assets directory
@@ -49,12 +50,11 @@ module.exports = {
    * Enabling the following option splits sections into separate views.
    */
   pagePerSection: true,
+  // components: '../src/components/*.vue',
   sections: [
     {
       name: 'Getting Started',
       content: '../docs/getting-started.md',
-      // Needs to be loaded in somewhere as this is also shown in
-      // element, Pattern & Template overviews.
       components: '../docs/components/status/**/[A-Z]*.vue',
       sectionDepth: 1,
       exampleMode: 'hide',
@@ -71,26 +71,17 @@ module.exports = {
       name: 'Design Tokens',
       content: '../docs/tokens.md',
       sectionDepth: 1,
-      exampleMode: 'hide',
-      usageMode: 'hide',
+      exampleMode: 'expand',
+      usageMode: 'expand',
       components: () => [
         '../docs/components/tokens/Color.vue',
-        '../docs/components/tokens/Fonts.vue',
         '../docs/components/tokens/FontSize.vue',
       ],
     },
     {
-      name: 'Elements',
-      content: '../docs/elements.md',
-      components: '../src/elements/**/[A-Z]*.vue',
-      exampleMode: 'expand',
-      usageMode: 'expand',
-      sectionDepth: 2,
-    },
-    {
-      name: 'Patterns',
-      content: '../docs/patterns.md',
-      components: '../src/patterns/**/[A-Z]*.vue',
+      name: 'Components',
+      content: '../docs/components.md',
+      components: '../src/components/**/[A-Z]*.vue',
       exampleMode: 'expand',
       usageMode: 'expand',
       sectionDepth: 2,
@@ -102,20 +93,6 @@ module.exports = {
       exampleMode: 'expand',
       usageMode: 'expand',
       sectionDepth: 2,
-    },
-    {
-      name: 'Downloads',
-      content: '../docs/downloads.md',
-      exampleMode: 'hide',
-      usageMode: 'hide',
-      sectionDepth: 1,
-    },
-    {
-      name: 'FAQ',
-      content: '../docs/faq.md',
-      exampleMode: 'hide',
-      usageMode: 'hide',
-      sectionDepth: 1,
     },
   ],
   /**

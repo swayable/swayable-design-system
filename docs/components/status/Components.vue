@@ -1,30 +1,19 @@
 <template>
   <div class='components'>
-    <p>
-      Themes are still in the review stage, but you can change to
-      <button
-        class='link'
-        @click='toggleTheme'
-      >
-        <span v-if='darkTheme'>light theme</span>
-        <span v-else>dark theme</span>
-      </button>
-      now.
-    </p>
     <div
-      v-for='(components, group) in componentGroups'
-      :key='group'
+      v-for='(componentGroup, groupName) in componentGroups'
+      :key='groupName'
       class='mt-5'
     >
       <h3
         v-if='show === "all"'
         class='group capitalize text-xl'
       >
-        {{ group }}
+        {{ groupName }}
       </h3>
       <div class='mt-3'>
         <div
-          v-for='(component, index) in components'
+          v-for='(component, index) in componentGroup'
           :key='component.name'
           class='component flex w-full p-2'
           :class='index % 2 === 0 ? "even" : "odd"'
@@ -35,10 +24,6 @@
             >
               {{ component.name }}
             </a>
-          </span>
-          <span class='component-status capitalize text-sm'>{{ component.status }}</span>
-          <span class='ml-2'>
-            {{ statusIcons[component.status] }}
           </span>
         </div>
       </div>
@@ -60,7 +45,7 @@ export default {
       type: String,
       default: 'all',
       validator: value => {
-        return value.match(/(all|patterns|templates|elements)/)
+        return value.match(/(all|components|templates)/)
       },
     },
   },
@@ -78,13 +63,9 @@ export default {
     return { darkTheme, statusIcons }
   },
   computed: {
-    elements() {
-      const context = require.context('@/elements/', true, /\.vue$/)
-      return this.getComponents(context, 'Elements')
-    },
-    patterns() {
-      const context = require.context('@/patterns/', true, /\.vue$/)
-      return this.getComponents(context, 'Patterns')
+    components() {
+      const context = require.context('@/components/', true, /\.vue$/)
+      return this.getComponents(context, 'Components')
     },
     templates() {
       const context = require.context('@/templates/', true, /\.vue$/)
@@ -92,7 +73,7 @@ export default {
     },
     componentGroups() {
       const groups = this.show === 'all'
-        ? ['elements', 'patterns', 'templates']
+        ? ['components', 'templates']
         : [this.show]
       return _pick(this, groups)
     },
@@ -105,7 +86,7 @@ export default {
     getComponents(context, groupPath) {
       const components = context.keys().map(key => {
         const component = context(key).default
-        component.href =  `/#/${groupPath}/${component.name}`
+        component.href =  `/#/${component.name}`
         return component
       })
       return _orderBy(components, 'name', 'asc')
@@ -122,27 +103,6 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-  .components {
-    .component-status { @apply text-grey-darker }
-    .group { @apply text-blue-dark }
-    .component {
-      &.odd { @apply bg-grey-lighter }
-      &.even { @apply bg-grey-light }
-    }
-  }
-  [data-theme='dark'] {
-    .components {
-      .component-status { @apply text-blue-dark }
-      .group { @apply text-grey-lighter }
-      .component {
-        &.odd { @apply bg-grey-dark }
-        &.even { @apply bg-grey-darker }
-      }
-    }
-  }
-</style>
 
 <docs>
   ```jsx
