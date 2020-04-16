@@ -17,9 +17,9 @@ module.exports = {
     maxWidth: '100%',
     sidebarWidth: 240,
     fontFamily: {
-      base: '"acumin-pro",sans-serif',
-      mono: '"din-2014",sans-serif',
-      title: '"acumin-pro",sans-serif',
+      base: '"Inter",sans-serif',
+      mono: '"Inter",sans-serif',
+      title: '"Inter",sans-serif',
     },
   },
   renderRootJsx: path.join(__dirname, '../docs/components/Preview.js'),
@@ -50,7 +50,7 @@ module.exports = {
    * Enabling the following option splits sections into separate views.
    */
   pagePerSection: true,
-  // components: '../src/components/*.vue',
+  components: '../src/components/**/*/.vue',
   sections: [
     {
       name: 'Getting Started',
@@ -71,15 +71,15 @@ module.exports = {
       name: 'Design Tokens',
       content: '../docs/tokens.md',
       sectionDepth: 1,
-      exampleMode: 'expand',
-      usageMode: 'expand',
+      exampleMode: 'hide',
+      usageMode: 'hide',
       components: () => [
         '../docs/components/tokens/Color.vue',
         '../docs/components/tokens/FontSize.vue',
       ],
     },
     {
-      name: 'Components',
+      name: 'Component Library',
       content: '../docs/components.md',
       components: '../src/components/**/[A-Z]*.vue',
       exampleMode: 'expand',

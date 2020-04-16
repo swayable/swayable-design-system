@@ -99,7 +99,6 @@ div[class^="rsg--logo"] {
     color: rgba(0, 0, 0, 0);
     background-image: url('//images.swayable.com/logos/light.svg');
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: 7px center;
     font-size: theme('fontSize.lg') !important;
   }
@@ -107,16 +106,13 @@ div[class^="rsg--logo"] {
 
 // Sidebar version
 p[class^="rsg--version"] {
-  padding: theme('spacing.1') theme('spacing.2');
   margin-top: theme('spacing.1');
   margin-right: theme('spacing.4');
   line-height: theme('lineHeight.none');
   letter-spacing: theme('letterSpacing.wide');
   font-size: theme('fontSize.xs');
   border-radius: theme('borderRadius.sm');
-  &:before {
-    content: 'v';
-  }
+  &:before { content: 'v' }
   text-align: right;
 }
 
@@ -206,15 +202,15 @@ div[class^="rsg--sidebar"] {
   }
 
   // Sidebar active link
-  .vueds-active{
-    ul[class^="rsg--list"] {
-      max-height: 400px;
-    }
-    & > a,
-    & > a:hover {
-      color: var(--nav-color-active)
-    }
-  }
+  // .vueds-active{
+  //   ul[class^="rsg--list"] {
+  //     max-height: 400px;
+  //   }
+  //   & > a,
+  //   & > a:hover {
+  //     color: var(--nav-color-active)
+  //   }
+  // }
 
   // Sidebar list
   ul[class^="rsg--list"] {
