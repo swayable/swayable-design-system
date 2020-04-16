@@ -550,6 +550,11 @@ a[href="#private-components"] + ul {
   display: none !important;
 }
 
+// Hide components under tokens
+a[href="/#/Design%20Tokens"] + ul {
+  display: none !important;
+}
+
 // Hide Private components and placeholder sections
 ul a[href*="/#/Getting Started/Components"],
 ul a[href*="/#/Design Tokens/Color"],
