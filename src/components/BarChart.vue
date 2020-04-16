@@ -320,7 +320,7 @@ export default {
   }
 
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
-  <div class='bg-grey-lighter py-1 my-1'>
+  <div class='bg-grey-light py-1 my-1'>
     <div class='mt-1 bg-inherit'>
       <BarChart class='mt-px' :delta='25' :error='30' />
       <BarChartTwo class='mt-px' :delta='25' :error='30' />
@@ -335,7 +335,7 @@ export default {
     The same data shown in Aligned vs. Absolute baselines
   </Heading>
   <div>
-    <div class='bg-grey-lighter py-1 mt-1'>
+    <div class='bg-grey-light py-1 mt-1'>
       <p class='text-center capitalize'>Aligned Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
@@ -375,7 +375,7 @@ export default {
         />
       </div>
     </div>
-    <div class='bg-grey-lighter py-1 mt-1'>
+    <div class='bg-grey-light py-1 mt-1'>
       <p class='text-center capitalize'>Absolute Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
@@ -399,7 +399,7 @@ export default {
     otherwise no direction (arrow) will be shown.
   </p>
   <div class='flex mt-2 mb-5'>
-    <BarChart class='bg-white' :baseline='25' :delta='50' />
+    <BarChart class='bg-grey-light' :baseline='25' :delta='50' />
     <span>vs.</span>
     <BarChart :baseline='25' :delta='50' />
   </div>
