@@ -86,7 +86,7 @@ export default {
     getComponents(context, groupPath) {
       const components = context.keys().map(key => {
         const component = context(key).default
-        component.href =  `/#/${component.name}`
+        component.href =  `/#/${groupName}${component.name}`
         return component
       })
       return _orderBy(components, 'name', 'asc')
