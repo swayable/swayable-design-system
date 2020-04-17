@@ -1,3 +1,4 @@
+
 <template>
   <component
     :is='smartElement'
@@ -103,17 +104,44 @@ export default {
       const base = 'border rounded'
       const size = this.small ? 'text-xs p-1' : 'text-sm p-2'
       const disabled = this.disabled ? 'disabled cursor-not-allowed' : ''
-      const alt = this.alt ? `text-${color}` : `text-white bg-${color}`
-      return `${base} ${this.custom ? '' : alt} ${size} ${disabled}`
+      const alt = this.alt ? `alt text-${color}` : `text-white bg-${color}`
+      const destructive  = this.destructive ? 'destructive' : 'normal'
+      return `${base} ${this.custom ? '' : alt} ${size} ${disabled} ${destructive}`
     },
   },
 }
 </script>
 
-<style>
-.button.alt {
-  border-color: rgba(40, 48, 64, 0.16) !important;
+<style lang="scss">
+
+.button.alt { border-color: rgba(40, 48, 64, 0.16) }
+.button:not([disabled]) {
+  &.alt {
+    &.normal {
+      &:hover { background-color: rgba($color-blue, 0.05) }
+      &:active {
+        background-color: rgba($color-blue, 0.2);
+        border-color: rgba($color-blue, 0.2);
+      }
+    }
+    &.destructive {
+      &:hover { background-color: rgba($color-red, 0.05) }
+      &:active {
+        background-color: rgba($color-red, 0.2) !important;
+        border-color: rgba($color-red, 0.2) !important;
+      }
+   }
+    &:active {
+      background-color: rgba($color-blue, 0.2);
+      border-color: rgba($color-blue, 0.2) !important;
+    }
+  }
+  &:not(.alt) {
+    &:hover { filter: brightness(110%) }
+    &:active { filter: brightness(150%) }
+  }
 }
+
 </style>
 
 <docs>
