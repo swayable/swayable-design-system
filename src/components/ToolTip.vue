@@ -114,9 +114,17 @@ export default {
 </script>
 
 <style lang="scss">
+$tooltipColor: adjust-color($color-blue-dark, $alpha: -0.1);
 .tooltip {
-  background: adjust-color($color-blue-dark, $alpha: -0.1);
+  background: $tooltipColor;
   position: relative;
+  &:before {
+    content: ' ';
+    width: 0;
+    height: 0;
+    border: theme('spacing.1') solid transparent;
+    position: absolute;
+  }
 }
 
 .tooltip-top {
@@ -124,28 +132,56 @@ export default {
   left: 50%;
   transform-origin: bottom left;
   transform: translateX(-50%) translateY(0%);
-  .tooltip { bottom: theme('spacing.2') }
+  .tooltip {
+    bottom: theme('spacing.2');
+    &:before {
+      top: 100%;
+      left: calc(50% - theme('spacing.1'));
+      border-top-color: $tooltipColor;
+    }
+  }
 }
 .tooltip-bottom {
   top: calc(100% - theme('spacing.1'));
   left: 50%;
   transform-origin: top left;
   transform: translateX(-50%) translateY(0%);
-  .tooltip { top: theme('spacing.2') }
+  .tooltip {
+    top: theme('spacing.2');
+     &:before {
+      bottom: 100%;
+      left: calc(50% - theme('spacing.1'));
+      border-bottom-color: $tooltipColor;
+    }
+  }
 }
 .tooltip-left {
   top: 50%;
   right: calc(100% - theme('spacing.1'));
   transform-origin: top right;
   transform: translateX(0%) translateY(-50%);
-  .tooltip { right: theme('spacing.2') }
+  .tooltip {
+    right: theme('spacing.2');
+    &:before {
+      left: 100%;
+      top: calc(50% - theme('spacing.1'));
+      border-left-color: $tooltipColor;
+    }
+  }
 }
 .tooltip-right {
   top: 50%;
   left: calc(100% - theme('spacing.1'));
   transform-origin: top left;
   transform: translateX(0%) translateY(-50%);
-  .tooltip { left: theme('spacing.2') }
+  .tooltip {
+    left: theme('spacing.2');
+    &:before {
+      right: 100%;
+      top: calc(50% - theme('spacing.1'));
+      border-right-color: $tooltipColor;
+    }
+  }
 }
 </style>
 
