@@ -18,58 +18,49 @@ const END_RGB = tokens.getColorRGB('azure')
 import { directive as onClickaway } from 'vue-clickaway'
 
 /**
- * Used as main page navigation in templates.
+ * Used to control viewstate (sits under the navbar)
  * */
 export default {
   name: 'ToolBar',
-  props: {
-    emailAddress: { type: String, default: 'jane@doe.com'},
-    organizationName: { type: String, default:'Doe inc'},
-  },
-  data() {
-    return {
-      menuOpen: false,
-      menuLinks: {
-        tests: 'Tests',
-        library: 'Library',
-        preferences: 'Preferences',
-        'sign-out': 'Log Out',
-      },
-    }
-  },
-  methods: {
-    closeMenu() {
-      this.menuOpen = false
-    },
-  },
 }
 </script>
 
-<style lang="scss">
-  .bg-gradient {
-    background-image: linear-gradient(to bottom, $color-pink, $color-azure);
-  }
-</style>
-
 <docs>
   ```jsx
+
+  const options = ['Delta', 'Engagement']
+  const selected = options[0]
   <div class='mb-64'>
-    <NavBar>
-      <NavItem active>
-        Setup
-      </NavItem>
-      <NavItem>
-        Responses
-      </NavItem>
-      <NavItem>
-        Results
-      </NavItem>
+    <ToolBar>
+       <SelectMultiple
+        :options='[
+          { value: 1, text: "Mobilization", selected: true },
+          { value: 2, text: "Support", selected: false },
+        ]'
+      >
+        <Icon name='metric' size='xs' />
+        Metrics
+      </SelectMultiple>
+      <SelectMultiple
+        class='ml-1'
+        :options='[
+          { value: 1, text: "Age", selected: true },
+          { value: 2, text: "Gender", selected: true },
+          { value: 3, text: "Urbanicity", selected: true },
+        ]'
+      >
+        <Icon name='segment' size='xs' />
+        Segments
+      </SelectMultiple>
+      
       <template slot='right'>
-        <Button primary>
-          Request New
-        </Button>
+        <Toggle
+          :options='options'
+          :selected='selected'
+          @select='o => selected = o'
+        />
       </template>
-    </NavBar>
+    </ToolBar>
   </div>
   ```
 </docs>
