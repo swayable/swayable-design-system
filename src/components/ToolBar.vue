@@ -1,9 +1,9 @@
 <template>
-  <nav class='flex max-w-full mx-auto px-4 sm:px-6 py-2'>
+  <nav class='flex flex-col sm:flex-row max-w-full mx-auto px-4 sm:px-6 py-2'>
     <div class='flex flex-grow'>
       <slot />
     </div>
-    <div class='flex'>
+    <div class='flex mt-2 sm:mt-0'>
       <slot name='right' />
     </div>
   </nav>
