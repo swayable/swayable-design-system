@@ -12,7 +12,7 @@
       <slot />
     </Button>
     <template #dropdown>
-      <div class='flex bg-white flex-col border -mt-px rounded'>
+      <div class='flex bg-white flex-col border rounded mt-px'>
         <div
           v-for='(item, i) in items'
           :key='item.text'

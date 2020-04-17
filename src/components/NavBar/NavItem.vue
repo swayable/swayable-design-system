@@ -2,7 +2,6 @@
   <component
     :is='smartElement'
     v-bind='navigation'
-    :title='title'
     :class='classes'
     v-on='$listeners'
   >

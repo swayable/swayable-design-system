@@ -6,70 +6,44 @@
         align-right
       >
         <SelectSingle
-          dark
-          title='Nike Dream Crazy'
-          :options='[
-            "Just Do It",
-            "Another test",
-          ]'
+          :options='testOptions'
+          :selected='testOptions[0]'
         />
       </NavBar>
-      <ToolBar class='hidden md:flex'>
+      <ToolBar>
         <SelectMultiple
-          title='Content'
           :options='[
-            "Video",
-            "Image",
+            { value: 1, text: "Mobilization", selected: true },
+            { value: 2, text: "Support", selected: false },
           ]'
-        />
-        <SelectMultiple
-          class='ml-1'
-          title='Segments'
-          :options='[
-            "18-44",
-            "44+",
-          ]'
-        />
+        >
+          <Icon
+            name='metric'
+            size='xs'
+          />
+          Metrics
+        </SelectMultiple>
         <SelectMultiple
           class='ml-1'
-          title='Metrics'
           :options='[
-            "Support",
-            "Mobilization",
+            { value: 1, text: "Age", selected: true },
+            { value: 2, text: "Gender", selected: true },
+            { value: 3, text: "Urbanicity", selected: true },
           ]'
-        />
+        >
+          <Icon
+            name='segment'
+            size='xs'
+          />
+          Segments
+        </SelectMultiple>
+      
         <template slot='right'>
-          <ButtonGroup>
-            <Button
-              class='h-9 px-3 flex border-r-0'
-              size='xs'
-            >
-              <Icon
-                name='bar-equal'
-                class='text-blue-dark'
-              />
-            </Button>
-            <span class='w-px border-t border-b py-2 border-grey flex items-stretch'>
-              <span class='w-px border-r border-grey inline-block' />
-            </span>
-            <Button
-              class='h-9 px-3 flex'
-              size='xs'
-            >
-              <Icon
-                name='bar-float'
-                class='text-grey'
-              />
-            </Button>
-          </ButtonGroup>
-          <Button class='bg-grey-dark  ml-1 flex items-center justify-center h-9'>
-            <Icon
-              name='respondents'
-              class='text-blue-dark'
-              size='md'
-            />
-            <span class='ml-1 text-blue-dark'>2,907</span>
-          </Button>
+          <Toggle
+            :options='toggleOptions'
+            :selected='selectedToggle'
+            @select='o => selectedToggle = o'
+          />
         </template>
       </ToolBar>
     </template>
@@ -302,6 +276,13 @@ export default {
     },
   },
   data() {
+    const toggleOptions = ['Delta', 'Engagement']
+    const selectedToggle = toggleOptions[0]
+    const testOptions = [
+      'Nike Dream Crazy',
+      'Just Do It',
+      'Another test',
+    ]
     return {
       stats,
       links: {
@@ -309,6 +290,9 @@ export default {
         Responses: { href: '#' },
         Results: { href: '#' },
       },
+      toggleOptions,
+      selectedToggle,
+      testOptions,
     }
   },
 }

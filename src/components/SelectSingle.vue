@@ -21,12 +21,12 @@
       </slot>
     </Button>
     <template #dropdown>
-      <div class='flex bg-white flex-col border -mt-px rounded'>
+      <div class='bg-white flex-col border -mt-px rounded'>
         <Button
           v-for='option in options'
           :key='option'
           custom
-          class='whitespace-no-wrap pr-3'
+          class='flex whitespace-no-wrap pr-3'
           @click='$emit("change", option)'
         >
           <Icon
@@ -35,8 +35,8 @@
             size='xs'
           />
           <span
-            class='pl-1'
-            :class='{ "ml-4": selected && selected !== option }'
+            class='pl-2 flex-grow'
+            :class='{ "ml-3": selected && selected !== option }'
           >
             {{ option }}
           </span>
@@ -92,15 +92,12 @@ export default {
 
 <docs>
   ```jsx
-  let title1 = 'Single Select'
-  let title2 = 'Single Select'
   const options = [
     "Option 1",
     "Option 2",
     "Option 3",
   ]
   let selected = options[0]
-    
   <SelectSingle
     :selected='selected'
     :options='options'
