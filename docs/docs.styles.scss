@@ -7,7 +7,21 @@
 --------------------------------------------- */
 html {
   background: theme('colors.grey-light');
+  font-family: theme('fontFamily.sans') !important;
 }
+
+
+// HEADINGS
+h1, h2, h3, h4, h5, h6 { font-weight: 600 !important }
+h1 { font-size: theme('text-4xl') !important }
+h2 { font-size: theme('text-3xl') !important }
+h3 { font-size: theme('text-2xl') !important }
+h4 { font-size: theme('text-xl') !important }
+h5 { font-size: theme('text-lg') !important }
+[class^="rsg--heading"], h1[class^="rsg--heading"] > * {
+  font-style: normal !important;
+}
+
 // Background of page
 div.rsg--root-1 {
   background: theme('colors.grey-light');
@@ -567,21 +581,6 @@ ul a[href*="/#/Private Components"] {
 }
 
 
-h1[class^="rsg--heading"], h1[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.2xl') !important;
-}
-h2[class^="rsg--heading"], h2[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.xl') !important;
-}
-h3[class^="rsg--heading"], h3[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.lg') !important;
-}
-h4[class^="rsg--heading"], h4[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.md') !important;
-}
-h5[class^="rsg--heading"], h5[class^="rsg--heading"] > * {
-  font-size: theme('fontSize.sm') !important;
-}
 code {
   font-variant: common-ligatures tabular-nums;
   color: theme('colors.red') !important;

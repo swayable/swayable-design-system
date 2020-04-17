@@ -60,9 +60,9 @@ export default {
   <template slot='head'>
     <TableRow>
       <TableCell head>
-        <Heading type='h5' class='text-blue-dark'>
+        <h5 class='text-blue-dark'>
           Multiple Breakdown
-        </Heading>
+        </h5>
       </TableCell>
       <TableCell head>
         Segment

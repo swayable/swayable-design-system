@@ -4,12 +4,9 @@
       v-for='(colorGroup, groupName) in colors'
       :key='groupName'
     >
-      <Heading
-        type='h3'
-        class='mt-5'
-      >
+      <h3 class='mt-5'>
         {{ groupName }} Colors
-      </Heading>
+      </h3>
       <div class='flex flex-wrap -mx-8'>
         <div
           v-for='prop in colorGroup'
@@ -60,7 +57,6 @@ import _filter from 'lodash/filter'
 import Token from '../../decorators/token'
 import tokens from '../../../src/utils/tokens'
 import ToolTip from '../../../src/components/ToolTip'
-import Heading from '../../../src/components/Heading'
 
 /**
  * Blue is often used for links. The Swayable gradient is from Azure to Pink.
@@ -69,7 +65,6 @@ export default {
   name: 'Color',
   components: {
     ToolTip,
-    Heading,
   },
   computed: {
     colors() {

@@ -39,6 +39,10 @@ module.exports = {
   important: true,
   theme: {
     fontSize,
+    fontFamily: {
+      mono: ['Inter', 'monospace'],
+      sans: ['Inter', 'sans-serif'],
+    },
     fontWeight: {
       normal: 400,
       semibold: 600,

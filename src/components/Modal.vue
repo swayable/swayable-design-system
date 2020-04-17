@@ -50,7 +50,9 @@ export default {
     :open='open1'
     @close='open1 = false'
   >
-    Hello
+    This modal have a background and border.
+    <br/>
+    A custom modal does not.
   </Modal>
 
   <Modal

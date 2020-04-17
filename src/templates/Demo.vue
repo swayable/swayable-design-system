@@ -77,12 +77,9 @@
       <template slot='head'>
         <TableRow>
           <TableCell head>
-            <Heading
-              type='h5'
-              class='text-blue-dark'
-            >
+            <h5 class='text-blue-dark'>
               Single
-            </Heading>
+            </h5>
           </TableCell>
           <TableCell head>
             Segment
@@ -122,12 +119,9 @@
       </TableRow>
       <TableRow>
         <TableCell head>
-          <Heading
-            type='h5'
-            class='text-blue-dark mt-5'
-          >
+          <h5 class='text-blue-dark mt-5'>
             Breakdown
-          </Heading>
+          </h5>
         </TableCell>
         <TableCell head />
         <TableCell
@@ -178,12 +172,9 @@
       </TableRow>
       <TableRow>
         <TableCell head>
-          <Heading
-            type='h5'
-            class='text-blue-dark mt-5'
-          >
+          <h5 class='text-blue-dark mt-5'>
             Multiple Breakdown
-          </Heading>
+          </h5>
         </TableCell>
         <TableCell head />
         <TableCell

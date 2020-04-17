@@ -1,19 +1,17 @@
 <template>
   <DropDown
-    class='button-drop'
     :open='open'
     :align='align'
     @close='open = false'
   >
     <Button
-      :class='`flex ${buttonClasses}`'
-      :primary='primary'
-      :dark='dark'
+      custom
+      class='bg-white border rounded'
       @click='open = !open'
     >
       <slot>
         <span class='flex-grow self-center'>
-          {{ title }}
+          {{ selected }}
         </span>
         <Icon
           class='ml-2 text-grey-dark'
@@ -23,28 +21,27 @@
       </slot>
     </Button>
     <template #dropdown>
-      <ButtonGroup vertical>
+      <div class='flex bg-white flex-col border -mt-px rounded'>
         <Button
           v-for='option in options'
           :key='option'
-          :primary='primary'
-          :dark='dark'
-          :class='`flex text-left hover:${hoverClass} ${buttonClasses}`'
+          custom
+          class='whitespace-no-wrap pr-3'
           @click='$emit("change", option)'
         >
           <Icon
             v-if='selected === option'
             name='check'
-            class='mr-2'
+            size='xs'
           />
           <span
             class='pl-1'
-            :class='{ "ml-6": selected && selected !== option }'
+            :class='{ "ml-4": selected && selected !== option }'
           >
             {{ option }}
           </span>
         </Button>
-      </ButtonGroup>
+      </div>
     </template>
   </DropDown>
 </template>
@@ -66,41 +63,12 @@ export default {
      */
     options: { type: Array, required: true },
     /**
-     * Appears in the dropdown trigger button along with a down chevron.
-     * Override these with the default slot.
-     */
-    title: {
-      type: String,
-      default: '',
-    },
-    /**
      * Dropdown originates from the right or left
      */
     align: {
       type: String,
       default: 'left',
       validator: value => ['right', 'left'].includes(value),
-    },
-    /**
-     * Style variation to give additional meaning.
-     */
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Style variation to give additional meaning.
-     */
-    dark: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Attach utility classes to the buttons.
-     */
-    buttonClasses: {
-      type: String,
-      default: 'text-xs',
     },
     /**
      * Indicates selected option
@@ -126,31 +94,16 @@ export default {
   ```jsx
   let title1 = 'Single Select'
   let title2 = 'Single Select'
-  let selected
   const options = [
     "Option 1",
     "Option 2",
     "Option 3",
   ]
+  let selected = options[0]
     
   <SelectSingle
-    :title='title1'
-    :options='options'
-    @change='option => title1 = option'
-  />
-
-  <SelectSingle
-    primary
-    :title='title2'
-    :options='options'
-    @change='option => title2 = option'
-  />
-
-  <SelectSingle
-    dark
-    title='Checks Selected'
-    :options='options'
     :selected='selected'
+    :options='options'
     @change='option => selected = option'
   />
   ```

@@ -56,7 +56,6 @@
               alt=''
             >
           </a>
-          <div class='hidden md:block ml-5 w-px h-6 self-center bg-gradient' />
           <div class='hidden md:flex ml-6 items-center'>
             <slot v-if='alignRight' />
             <template v-else>
@@ -236,12 +235,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  .bg-gradient {
-    background-image: linear-gradient(to bottom, $color-pink, $color-azure);
-  }
-</style>
-
 <docs>
   ```jsx
   const links = {
@@ -251,7 +244,7 @@ export default {
   }
   <div class='mb-64'>
     <NavBar :links='links'>
-      <Button primary>
+      <Button>
         Request New
       </Button>
     </NavBar>

@@ -84,8 +84,7 @@
     "vue": "^2.6.10",
     "vue-clickaway": "^2.2.2",
     "vue-meta": "^1.5.6",
-    "vue-router": "^3.0.2",
-    "webfontloader": "^1.6.28"
+    "vue-router": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
