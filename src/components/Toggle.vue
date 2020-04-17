@@ -1,15 +1,20 @@
 <template>
   <div class='bg-grey inline-block rounded-md'>
-    <div class='flex p-1'>
-      <template v-for='option in options'>
-        <Button
-          :key='option'
-          class='p-1.5'
-          :class='option === selected ? "" : "bg-none border-transparent"'
-        >
-          {{ option }}
-        </Button>
-      </template>
+    <div class='flex p-0.5 toggle'>
+      <slot>
+        <template v-for='option in options'>
+          <Button
+            :key='option'
+            class='py-1.5 px-2'
+            :class='classesForOption(option)'
+            :custom='option !== selected'
+            :disabled='disabled'
+            @click='$emit("select", option)'
+          >
+            {{ option }}
+          </Button>
+        </template>
+      </slot>
     </div>
   </div>
 </template>
@@ -26,40 +31,25 @@ export default {
      */
     options: { type: Array, required: true },
     /**
-     * Two way binding for selected option
+     * Highlights selected option
      */
     selected: { type: String },
     /**
-     * Style variation to warn users
-     */
-    destructive: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Disables interaction (overrides destructive).
+     * Disables interaction
      */
     disabled: {
       type: Boolean,
       default: false,
     },
-    /**
-     * Smaller button
-     */
-    small: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Alternative styles
-     */
-    alt: {
-      type: Boolean,
-      default: false,
-    },
   },
-  data() {
-    return { open: false }
+  methods: {
+    classesForOption(option) {
+      if (option === this.selected) return ''
+      
+      const classes = ['border-transparent']
+      if (this.disabled) classes.push('text-grey-darker')
+      return classes
+    },
   },
 }
 </script>
@@ -68,39 +58,32 @@ export default {
   ```jsx
 
   const options = [
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Option1",
+    "Option2",
+    "Option3",
   ]
   let selected1 = options[0]
-  let selected2 = options[0]
+  let selected2 = null
   let selected3 = options[0]
-  let selected4 = options[0]
     
   <Toggle
     :options='options'
-    :selected.sync='selected1'
+    :selected='selected1'
+    @select='option => selected1 = option'
   />
 
-  <Toggle
-    class='mt-2'
-    alt
+   <Toggle
     :options='options'
-    :selected.sync='selected2'
-  />
-
-  <Toggle
-    class='mt-2'
-    destructive
-    :options='options'
-    :selected.sync='selected3'
+    :selected='selected2'
+    @select='option => selected2 = option'
   />
 
   <Toggle
     class='mt-2'
     disabled
     :options='options'
-    :selected.sync='selected4'
+    :selected='selected3'
+    @select='option => selected3 = option'
   />
   ```
 </docs>
