@@ -1,37 +1,26 @@
 <template>
   <DropDown
-    class='multiple-select'
     align='left'
     :open='open'
     @close='open = false'
   >
     <Button
-      :class='`flex ${buttonClasses}`'
+      custom
+      class='bg-white border rounded'
       @click='open = !open'
     >
-      <slot>
-        <span class='flex-grow self-center'>
-          {{ title }}
-        </span>
-        <Pill
-          :value='count'
-          class='ml-2'
-        />
-      </slot>
+      <slot />
     </Button>
     <template #dropdown>
-      <ButtonGroup vertical>
+      <div class='flex bg-white flex-col border -mt-px rounded'>
         <div
           v-for='(item, i) in items'
           :key='item.text'
-          class='bg-white flex border-l border-r rounded'
-          :class='{
-            "border-b": isAllItemIndex(i) || i === items.length-1,
-          }'
+          class='flex mt-0.5 mb-0.5'
         >
           <Button
-            menu
-            class='hover:bg-white pl-3'
+            custom
+            class='pl-3'
             size='sm'
             @click='toggle(i)'
             @mouseover='togglePreview(i)'
@@ -40,11 +29,12 @@
             <Icon
               name='check'
               :class='iconClassForIndex(i)'
+              size='xs'
             />
-          </Button>
+          </button>
           <Button
-            menu
-            class='text-left flex-grow pl-1'
+            custom
+            class='text-left flex-grow pl-1 pr-3 whitespace-no-wrap'
             @click='select(i)'
             @mouseover='selectPreview(i)'
             @mouseout='clearPreview'
@@ -52,28 +42,19 @@
             {{ item.text }}
           </Button>
         </div>
-      </ButtonGroup>
+      </div>
     </template>
   </DropDown>
 </template>
 
 <script>
 /**
- * SelectSingle provides a dropdown with a vertical button grouping.
- *
- * Selecting or toggling emits `'change'` with an array of selected values
- *
- * It manages it's own open state.
+ * SelectMultiple manages selecting a subgroup of options
  */
 export default {
   name: 'SelectMultiple',
   status: 'ready',
   props: {
-    /**
-     * Appears in the dropdown trigger button alongside the active count.
-     * Override these with the default slot.
-     */
-    title: { type: String, default: '', required: true },
     /**
      * Options to select/deselect `[{ text, value, selected }]` or `[value]`
      */
@@ -82,13 +63,6 @@ export default {
      * Includes option to select/deselect all Options
      */
     allowSelectAll: { type: Boolean, default: true },
-    /**
-     * Attach utility classes to the buttons (i.e. `text-sm`).
-     */
-    buttonClasses: {
-      type: String,
-      default: 'text-xs',
-    },
   },
   data() {
     const items = this.options.map(option => {
@@ -195,16 +169,18 @@ export default {
   ```jsx
   const log = values => console.log(values)
   <SelectMultiple
-    title='Multiple Select'
     :options='[
       { value: 1, text: "Select 1", selected: false },
       { value: 2, text: "Select 2", selected: false },
       { value: 3, text: "Select 3", selected: true },
     ]'
     @change='log'
-  />
+  >
+    Allow Select All
+  </SelectMultiple>
+
   <SelectMultiple
-    title='Without All'
+    class='ml-3'
     :options='[
       { value: 1, text: "Select 1", selected: false },
       { value: 2, text: "Select 2", selected: false },
@@ -212,6 +188,8 @@ export default {
     ]'
     :allowSelectAll='false'
     @change='log'
-  />
+  >
+    Disallow Select All
+  </SelectMultiple>
   ```
 </docs>

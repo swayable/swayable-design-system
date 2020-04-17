@@ -5,7 +5,6 @@ import App from '@/App'
 import router from '@/router'
 import Meta from 'vue-meta'
 import DesignSystem from '@/system'
-import '@/utils/webFontLoader'
 
 Vue.use(DesignSystem)
 Vue.use(Meta)

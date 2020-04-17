@@ -69,14 +69,7 @@ export default {
       default: false,
     },
     /**
-     * Alternative styles
-     */
-    alt: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Strips colors
+     * Strips styles
      */
     custom: {
       type: Boolean,
@@ -101,41 +94,18 @@ export default {
       else if (this.destructive) color = 'red'
       else color = 'blue'
 
-      const base = 'border rounded'
+      const base = this.custom ? '' : `border rounded text-white bg-${color} border-${color}`
       const size = this.small ? 'text-xs p-1' : 'text-sm p-2'
       const disabled = this.disabled ? 'disabled cursor-not-allowed' : ''
-      const alt = this.alt ? `alt text-${color}` : `text-white bg-${color}`
       const destructive  = this.destructive ? 'destructive' : 'normal'
-      return `${base} ${this.custom ? '' : alt} ${size} ${disabled} ${destructive}`
+      return `${base} ${size} ${disabled} ${destructive}`
     },
   },
 }
 </script>
 
 <style lang="scss">
-
-.button.alt { border-color: rgba(40, 48, 64, 0.16) }
 .button:not([disabled]) {
-  &.alt {
-    &.normal {
-      &:hover { background-color: rgba($color-blue, 0.05) }
-      &:active {
-        background-color: rgba($color-blue, 0.2);
-        border-color: rgba($color-blue, 0.2);
-      }
-    }
-    &.destructive {
-      &:hover { background-color: rgba($color-red, 0.05) }
-      &:active {
-        background-color: rgba($color-red, 0.2) !important;
-        border-color: rgba($color-red, 0.2) !important;
-      }
-   }
-    &:active {
-      background-color: rgba($color-blue, 0.2);
-      border-color: rgba($color-blue, 0.2) !important;
-    }
-  }
   &:not(.alt) {
     &:hover { filter: brightness(110%) }
     &:active { filter: brightness(150%) }
@@ -151,18 +121,12 @@ export default {
     <Button custom>Custom</Button>
     <Button destructive>Destructive</Button>
     <Button disabled>Disabled</Button>
-    <Button alt>Alternative</Button>
-    <Button alt destructive>Destructive Alt</Button>
-    <Button alt disabled>Disabled Alt</Button>
   </div>
   <div class='mt-4 flex justify-between items-center flex-wrap'>
     <Button small>Small Primary</Button>
     <Button small custom>Custom</Button>
     <Button small destructive>Small Destructive</Button>
     <Button small disabled>Small Disabled</Button>
-    <Button small alt>Small Alternative</Button>
-    <Button small alt destructive>Small Destructive Alt</Button>
-    <Button small alt disabled>Small Disabled Alt</Button>
   </div>
   ```
 </docs>

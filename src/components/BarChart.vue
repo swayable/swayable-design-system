@@ -163,6 +163,7 @@ export default {
         'px-px',
         'opacity-75',
         'color-blue-dark',
+        'font-mono',
       ]
     },
     positive() {
@@ -331,7 +332,7 @@ export default {
     error: 1.2,
   }
 
-  <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
+  <h5 class='text-center'>A Quick basic graph</h5>
   <div class='bg-grey-light py-1 my-1'>
     <div class='mt-1 bg-inherit'>
       <BarChart class='mt-px' :delta='25' :error='20' />
@@ -343,9 +344,9 @@ export default {
       <BarChart class='mt-px' :delta='75' />
     </div>
   </div>
-  <Heading type='h5' class='mt-10 text-center'>
+  <h5 class='mt-10 text-center'>
     The same data shown in Aligned vs. Absolute baselines
-  </Heading>
+  </h5>
   <div>
     <div class='bg-grey-light py-1 mt-1'>
       <p class='text-center capitalize'>Aligned Baselines</p>
@@ -405,7 +406,7 @@ export default {
       </div>
     </div>
   </div>
-  <Heading type='h5' class='mt-10 text-center'>Gotcha</Heading>
+  <h5 class='mt-10 text-center'>Gotcha</h5>
   <p class='text-center text-medium'>
     It is important for the bar or the direct parent of a bar to have a background,
     otherwise no direction (arrow) will be shown.

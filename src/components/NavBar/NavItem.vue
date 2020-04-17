@@ -12,28 +12,28 @@
 
 <script>
 /**
- * Used in NavBar main slot
+ * Displays options in the navbar
  */
 export default {
   name: 'NavItem',
   props: {
     /**
-     * The html element
+     * element/component - accepted values are `button`, `a`, and `router-link`
      */
     element: {
       type: String,
       validator: value => {
-        return value.match(/(button|a|input)/)
+        return value.match(/(button|a|router-link)/)
       },
     },
     /**
-     * Router link
+     * The component will be `<router-link />`
      */
     to: {
       type: Object,
     },
     /**
-     * Web link
+     * The component will be `<a />`
      */
     href: {
       type: String,
@@ -42,19 +42,6 @@ export default {
      * Indicates whether this is the current link
      */
     active: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Description of link (usually displayed on hover)
-     */
-    title: {
-      type: String,
-    },
-    /**
-     * Removes horizontal spacing around NavItem
-     */
-    flush: {
       type: Boolean,
       default: false,
     },
@@ -87,13 +74,11 @@ export default {
 
 <docs>
   ```jsx
-  let clicks = 0
   <div>
-    <NavBar primary>
-      <NavItem href='#' :active='true'>Active Link</NavItem>
-      <NavItem href='#' title='Another one!'>Other Link</NavItem>
-      <NavItem @click='clicks += 1' element='button'>Button {{ clicks }}</NavItem>
-      <NavItem><Button>Wrap a button</Button></NavItem>
+    <NavBar>
+      <NavItem href='/#/Component%20Library/NavItem' :active='true'>Anchor</NavItem>
+      <NavItem :to='{ name: "Index" }'>Router Link</NavItem>
+      <NavItem element='button'>Button</NavItem>
     </NavBar>
   </div>
   ```
