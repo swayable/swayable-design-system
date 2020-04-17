@@ -24,10 +24,13 @@
     <div
       v-if='error'
       class='error absolute h-full flex flex-col items-stretch top-0'
-      :style='errorBarStyles'
+      :style='errorBarWrapperStyles'
     >
       <span class='flex-grow' />
-      <span class='flex-grow bg-black opacity-10' />
+      <span
+        class='bg-black opacity-10'
+        :style='errorBarStyles'
+      />
       <span class='flex-grow' />
     </div>
 
@@ -78,7 +81,8 @@
 <script>
 import _pick from 'lodash/pick'
 import GradientPercentColor from '../utils/GradientPercentColor'
-
+const DEFAULT_BAR_HEIGHT = 20
+const MAX_ERROR_BAR_HEIGHT = DEFAULT_BAR_HEIGHT / 3
 /**
  * Draws a single horizontal bar.
  */
@@ -109,7 +113,7 @@ export default {
     /**
      * The px thickness of the bar.
      */
-    thickness: { type: Number, default: 20 },
+    thickness: { type: Number, default: DEFAULT_BAR_HEIGHT },
     /**
      * Extreme left point of the graph.
      */
@@ -158,6 +162,7 @@ export default {
         'bg-inherit',
         'px-px',
         'opacity-75',
+        'color-blue-dark',
       ]
     },
     positive() {
@@ -230,7 +235,7 @@ export default {
     errorWidth() {
       return this.error * 2
     },
-    errorBarStyles() {
+    errorBarWrapperStyles() {
       if (this.error === undefined) return {}
       const right = this.pointToPct(this.errorRight)
       const left = this.pointToPct(this.errorLeft)
@@ -239,10 +244,17 @@ export default {
       const width = this.pointToPct(this.errorWidth)
         - boundaryViolationRight
         + boundaryViolationLeft
+      
       return {
         width: `${width}%`,
         left: `${left - boundaryViolationLeft}%`,
       }
+    },
+    errorBarStyles() {
+      if (this.error === undefined) return {}
+
+      const height = Math.min(this.thickness / 3, MAX_ERROR_BAR_HEIGHT)
+      return { height: `${height}px` }
     },
     leftLabel() {
       return this.positive
@@ -255,7 +267,7 @@ export default {
         : this.baselineLabel
     },
     background() {
-      if (this.insignificant) return 'transparent'
+      if (this.insignificant) return 'rgba(0,0,0,0.1)'
 
       const gradientPoints = [
         this.baseline / this.scale,
@@ -322,7 +334,7 @@ export default {
   <Heading type='h5' class='text-center'>A Quick basic graph</Heading>
   <div class='bg-grey-light py-1 my-1'>
     <div class='mt-1 bg-inherit'>
-      <BarChart class='mt-px' :delta='25' :error='30' />
+      <BarChart class='mt-px' :delta='25' :error='20' />
       <BarChartTwo class='mt-px' :delta='25' :error='30' />
       <BarChart class='mt-px' :delta='0.5' />
       <BarChart class='mt-px' :delta='100' :error='50' />
