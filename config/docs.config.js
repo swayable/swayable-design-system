@@ -82,7 +82,7 @@ module.exports = {
       name: 'Component Library',
       content: '../docs/components.md',
       components: '../src/components/**/[A-Z]*.vue',
-      exampleMode: 'hide',
+      exampleMode: 'expand',
       usageMode: 'hide',
       sectionDepth: 2,
     },

@@ -27,7 +27,7 @@
           :key='option'
           custom
           class='flex whitespace-no-wrap pr-3'
-          @click='$emit("change", option)'
+          @click='$emit("select", option)'
         >
           <Icon
             v-if='selected === option'
@@ -48,11 +48,7 @@
 
 <script>
 /**
- * SelectSingle provides a dropdown with a vertical button grouping.
- *
- * Clicking an option emits `'change'` with `option`.
- *
- * It manages it's own open state.
+ * SelectSingle manages selecting a single option
  */
 export default {
   name: 'SelectSingle',
@@ -101,7 +97,7 @@ export default {
   <SelectSingle
     :selected='selected'
     :options='options'
-    @change='option => selected = option'
+    @select='option => selected = option'
   />
   ```
 </docs>

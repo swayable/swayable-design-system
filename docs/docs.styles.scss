@@ -131,30 +131,7 @@ p[class^="rsg--version"] {
 }
 
 // Sidebar search
-div[class^="rsg--search"] {
-  padding: 0;
-  margin: 0 16px 16px;
-}
-div[class^="rsg--search"] input[class^="rsg--input"] {
-  border-radius: 4px;
-  padding: theme('spacing.2') theme('spacing.3');
-  color: var(--nav-color-active);
-  border: 1px solid theme('colors.grey');
-  background: theme('colors.colors.grey-lighter');
-  &:focus {
-    border: 1px solid theme('colors.blue');
-    &::-webkit-textfield-decoration-container {
-      display: none !important;
-    }
-    &::-webkit-contacts-auto-fill-button {
-      display: none !important;
-    }
-  }
-  &::placeholder {
-    color: theme('colors.grey-darker') !important;
-    opacity: 1;
-  }
-}
+div[class^="rsg--search"] { display: none }
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
