@@ -2,11 +2,7 @@ Swayable relies on a custom [Tailwindcss theme](https://tailwindcss.com/docs/the
 
 We strongly prefer utlity classes over custom CSS; it helps our designs stay consistent and easily maintained across systems.
 
-```jsx
-<color />
-```
-
-# [Inter Typeface](https://rsms.me/inter/)
+## [Inter Typeface](https://rsms.me/inter/)
 
 Inter is also the standard typeface used in [Tailwind UI](https://tailwindui.com/documentation#optional-add-the-inter-font-family).
 
@@ -24,3 +20,8 @@ It should be always be used when displaying statistics (<span class='font-mono p
 `<h4>` <h4>How quickly daft jumping zebras vex!</h4>
 `<h5>` <h5>How quickly daft jumping zebras vex!</h5>
 `<h6>` <h6>How quickly daft jumping zebras vex!</h6>
+
+
+```jsx
+<color />
+```

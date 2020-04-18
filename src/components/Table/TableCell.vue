@@ -1,11 +1,12 @@
 <template>
   <component
     :is='element'
-    class='cell text-left'
+    class='cell text-left h-14'
     :class='{
       "p-2": !flush,
-      "w-px": !grow,
+      "px-15": chart,
       "whitespace-no-wrap": !wrap,
+      "align-bottom": head,
     }'
   >
     <slot />
@@ -25,10 +26,10 @@ export default {
       default: false,
     },
     /**
-     * Cell width takes up empty space, otherwise is minimum width for content.
+     * Optimizes cell to display a BarChart
      * `true, false`
      */
-    grow: {
+    chart: {
       type: Boolean,
       default: false,
     },

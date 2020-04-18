@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/no-v-html -->
   <nav
     v-on-clickaway='closeMenu'
     class='bg-blue-dark'
@@ -41,21 +42,13 @@
               </svg>
             </button>
           </div>
-          <a
-            href='/'
-            class='flex-shrink-0 flex items-center'
-          >
-            <img
-              class='block md:hidden h-5 w-auto'
-              src='//images.swayable.com/logos/motif.svg'
-              alt=''
-            >
-            <img
-              class='hidden md:block h-5 w-auto'
-              src='//images.swayable.com/logos/dark.svg'
-              alt=''
-            >
-          </a>
+          <div class='w-6 md:w-auto flex-shrink-0 flex overflow-hidden'>
+            <a
+              href='/'
+              class='flex items-center'
+              v-html='logo'
+            />
+          </div>
           <div class='hidden md:flex ml-6 items-center'>
             <slot v-if='alignRight' />
             <template v-else>
@@ -198,6 +191,7 @@
 
 <script>
 import tokens from '@/utils/tokens'
+import logo from '@/assets/logo.svg'
 
 const START_RGB = tokens.getColorRGB('pink')
 const END_RGB = tokens.getColorRGB('azure')
@@ -218,6 +212,7 @@ export default {
   },
   data() {
     return {
+      logo,
       menuOpen: false,
       menuLinks: {
         tests: 'Tests',

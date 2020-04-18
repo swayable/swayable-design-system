@@ -4,9 +4,9 @@
       v-for='(colorGroup, groupName) in colors'
       :key='groupName'
     >
-      <h3 class='mt-5'>
+      <h2 class='mt-20'>
         {{ groupName }} Colors
-      </h3>
+      </h2>
       <div class='flex flex-wrap -mx-8'>
         <div
           v-for='prop in colorGroup'
