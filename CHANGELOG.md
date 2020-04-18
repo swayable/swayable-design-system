@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://github.com/swayable/swayable-design-system/compare/v0.15.0...v0.17.0) (2020-04-18)
+
+
+### Bug Fixes
+
+* toolbar right slot should be in column on mobile ([0568779](https://github.com/swayable/swayable-design-system/commit/0568779))
+
+
+### Features
+
+* use Inter font ([48c20cb](https://github.com/swayable/swayable-design-system/commit/48c20cb))
+
+
+
 ## [0.16.0](https://github.com/swayable/swayable-design-system/compare/v0.15.0...v0.16.0) (2020-04-17)
 
 
