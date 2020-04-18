@@ -4,7 +4,7 @@
       v-for='(colorGroup, groupName) in colors'
       :key='groupName'
     >
-      <h2 class='mt-20'>
+      <h2 class='mt-20 capitalize'>
         {{ groupName }} Colors
       </h2>
       <div class='flex flex-wrap -mx-8'>
@@ -41,6 +41,9 @@
                   $color-{{ prop.classSuffix }}
                 </p>
                 <p>
+                  {{ prop.value }}
+                </p>
+                <p>
                   {{ prop.originalValue }}
                 </p>
               </div>
@@ -68,10 +71,13 @@ export default {
   },
   computed: {
     colors() {
-      const colors = {}
-      colors['Primary'] = tokens.primaryColors.map(Token.build)
-      colors['Secondary'] = tokens.secondaryColors.map(Token.build)
-      colors['Basic'] = tokens.basicColors.map(Token.build)
+      const colors = tokens.colors.reduce((acc, color) => {
+        const category = color.category.replace('color-', '').replace('-',  ' ')
+        acc[category] = acc[category] || []
+        acc[category].push(Token.build(color))
+        return acc
+      }, {})
+      console.log(colors)
       return colors
     },
   },

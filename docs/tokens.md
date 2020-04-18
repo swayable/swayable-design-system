@@ -14,12 +14,18 @@ It should be always be used when displaying statistics (<span class='font-mono p
 
 ## Headings
 
-`<h1>` <h1>How quickly daft jumping zebras vex!</h1>
-`<h2>` <h2>How quickly daft jumping zebras vex!</h2>
-`<h3>` <h3>How quickly daft jumping zebras vex!</h3>
-`<h4>` <h4>How quickly daft jumping zebras vex!</h4>
-`<h5>` <h5>How quickly daft jumping zebras vex!</h5>
-`<h6>` <h6>How quickly daft jumping zebras vex!</h6>
+`<h1>`
+# How quickly daft jumping zebras vex!
+`<h2>`
+## How quickly daft jumping zebras vex!
+`<h3>`
+### How quickly daft jumping zebras vex!
+`<h4>`
+#### How quickly daft jumping zebras vex!
+`<h5>`
+##### How quickly daft jumping zebras vex!
+`<h6>`
+###### How quickly daft jumping zebras vex!
 
 
 ```jsx

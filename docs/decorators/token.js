@@ -8,12 +8,6 @@ class Token {
     
     this.title = name.replace(/color|_/g, ' ')
     this.classSuffix = name.replace(/color_/g, '').replace(/_/g, '-')
-    if (this.tags) {
-      this.meta = tags.split(',')
-      this.bgClass = tinycolor(originalValue).getBrightness() > 130 ? 'bg-blue-dark' : ''
-    } else {
-      this.meta = []
-    }
   }
 
   matches(valueToFind) {

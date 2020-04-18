@@ -22,17 +22,10 @@ const Tokens = {
     const tokens = Object.values(orderedTokens)
     return tokens.filter(t => t.type === 'color')
   },
-  
+
   get primaryColors() {
     return this.colors.filter(c => c.category === 'color-primary')
-  },
-
-  get secondaryColors() {
-    return this.colors.filter(c => c.category === 'color-secondary')
-  },
-
-  get basicColors() {
-    return this.colors.filter(c => c.category === 'color-basic')
+      .concat(this.colors.filter(c => c.category === 'color-secondary'))
   },
 }
 

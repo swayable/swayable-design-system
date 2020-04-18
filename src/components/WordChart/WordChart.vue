@@ -29,7 +29,6 @@ import _orderBy from 'lodash/orderBy'
 import tokens from '../../utils/tokens'
 
 const COLORS = tokens.primaryColors
-  .concat(tokens.secondaryColors)
   .map(c => c.value)
 
 const WHITESPACE = /\s+/

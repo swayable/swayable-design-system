@@ -8,110 +8,150 @@
 #
 
 props:
-  color_blue:
-    value: '#6464dc'
-    category: 'color-primary'
+  color_black: 
+    value: 'hsl(240,10%,8%)'
+    category: 'color-grey-scale'
+    order: 0
+  color_grey_darkest: 
+    value: 'hsl(240,10%,16%)'
+    category: 'color-grey-scale'
     order: 1
-  color_magenta:
-    value: '#b43cb4'
-    category: 'color-primary'
+  color_grey_darker: 
+    value: 'hsl(240,10%,32%)'
+    category: 'color-grey-scale'
     order: 2
-  color_pink:
-    value: '#dc3c8c'
-    category: 'color-primary'
+  color_grey_dark: 
+    value: 'hsl(240,10%,50%)'
+    category: 'color-grey-scale'
     order: 3
-  color_red:
-    value: '#dc6464'
-    category: 'color-primary'
+  color_grey: 
+    value: 'hsl(240,10%,70%)'
+    category: 'color-grey-scale'
     order: 4
-  color_orange:
-    value: '#dca028'
-    category: 'color-primary'
+  color_grey_light: 
+    value: 'hsl(240,10%,88%)'
+    category: 'color-grey-scale'
     order: 5
-  color_yellow:
-    value: '#c8c814'
-    category: 'color-primary'
+  color_grey_lighter: 
+    value: 'hsl(240,10%,91%)'
+    category: 'color-grey-scale'
     order: 6
-  color_green:
-    value: '#78c864'
-    category: 'color-primary'
+  color_grey_lightest: 
+    value: 'hsl(240,10%,97%)'
+    category: 'color-grey-scale'
     order: 7
-  color_cyan:
-    value: '#14c8c8'
-    category: 'color-primary'
+  color_white:
+    value: 'hsl(240,10%,100%)'
+    category: 'color-grey-scale'
     order: 8
-  color_azure:
-    value: '#3c8cdc'
-    category: 'color-primary'
+  color_blue:
+    value: 'hsl(240,60%,60%)'
+    category: 'color-action'
     order: 9
-  color_azure_dark:
-    value: '#5078dc'
-    category: 'color-secondary'
+  color_blue_light:
+    value: 'hsl(240,60%,65%)'
+    category: 'color-action'
     order: 10
-  color_purple:
-    value: '#8c50c8'
-    category: 'color-secondary'
+  color_blue_lighter:
+    value: 'hsl(240,60%,70%)'
+    category: 'color-action'
     order: 11
-  color_rose_dark:
-    value: '#c8288c'
-    category: 'color-secondary'
+  color_blue_lightest:
+    value: 'hsl(240,60%,75%)'
+    category: 'color-action'
     order: 12
-  color_red_dark:
-    value: '#dc5064'
-    category: 'color-secondary'
+  color_blue_lighter_still:
+    value: 'hsl(240,60%,80%)'
+    category: 'color-action'
     order: 13
-  color_orange_dark:
-    value: '#dc8246'
-    category: 'color-secondary'
+  color_red:
+    value: 'hsl(360,60%,60%)'
+    category: 'color-destructive-action'
     order: 14
-  color_orange_light:
-    value: '#dcb414'
-    category: 'color-secondary'
+  color_red_light:
+    value: 'hsl(360,60%,65%)'
+    category: 'color-destructive-action'
     order: 15
-  color_green_light:
-    value: '#a0c83c'
-    category: 'color-secondary'
+  color_red_lighter:
+    value: 'hsl(360,60%,70%)'
+    category: 'color-destructive-action'
     order: 16
-  color_green_dark:
-    value: '#50c88c'
-    category: 'color-secondary'
+  color_red_lightest:
+    value: 'hsl(360,60%,75%)'
+    category: 'color-destructive-action'
     order: 17
-  color_azure_light:
-    value: '#28a0dc'
-    category: 'color-secondary'
+  color_red_lighter_still:
+    value: 'hsl(360,60%,80%)'
+    category: 'color-destructive-action'
     order: 18
   color_blue_dark: 
     value: '#283040'
-    category: 'color-basic'
+    category: 'color-primary'
     order: 19
-  color_grey_darker: 
-    value: '#999A9D'
-    category: 'color-basic'
+  color_magenta:
+    value: '#b43cb4'
+    category: 'color-primary'
+    order: 19
+  color_pink:
+    value: '#dc3c8c'
+    category: 'color-primary'
     order: 20
-  color_grey_dark: 
-    value: '#CCCDD0'
-    category: 'color-basic'
+  color_orange:
+    value: '#dca028'
+    category: 'color-primary'
     order: 21
-  color_grey: 
-    value: '#DDDEE1'
-    category: 'color-basic'
+  color_yellow:
+    value: '#c8c814'
+    category: 'color-primary'
     order: 22
-  color_grey_light: 
-    value: '#EAEBEE'
-    category: 'color-basic'
+  color_green:
+    value: '#78c864'
+    category: 'color-primary'
     order: 23
-  color_grey_lighter: 
-    value: '#F6F7FA'
-    category: 'color-basic'
+  color_cyan:
+    value: '#14c8c8'
+    category: 'color-primary'
     order: 24
-  color_white:
-    value: '#ffffff'
-    category: 'color-basic'
+  color_azure:
+    value: '#3c8cdc'
+    category: 'color-primary'
     order: 25
-  color_black: 
-    value: '#000000'
-    category: 'color-basic'
+  color_azure_dark:
+    value: '#5078dc'
+    category: 'color-secondary'
     order: 26
+  color_purple:
+    value: '#8c50c8'
+    category: 'color-secondary'
+    order: 27
+  color_rose_dark:
+    value: '#c8288c'
+    category: 'color-secondary'
+    order: 28
+  color_red_dark:
+    value: '#dc5064'
+    category: 'color-secondary'
+    order: 29
+  color_orange_dark:
+    value: '#dc8246'
+    category: 'color-secondary'
+    order: 30
+  color_orange_light:
+    value: '#dcb414'
+    category: 'color-secondary'
+    order: 31
+  color_green_light:
+    value: '#a0c83c'
+    category: 'color-secondary'
+    order: 32
+  color_green_dark:
+    value: '#50c88c'
+    category: 'color-secondary'
+    order: 33
+  color_azure_light:
+    value: '#28a0dc'
+    category: 'color-secondary'
+    order: 34
   
 global:
   type: color
