@@ -116,17 +116,17 @@ export default {
 
 <docs>
   ```jsx
-  <div class='flex justify-between items-center flex-wrap'>
-    <Button>Normal</Button>
-    <Button custom>Custom</Button>
-    <Button destructive>Destructive</Button>
-    <Button disabled>Disabled</Button>
+  <div class='flex flex-col sm:flex-row justify-between items-center flex-wrap'>
+    <Button class='mt-4'>Normal</Button>
+    <Button class='mt-4' custom>Custom</Button>
+    <Button class='mt-4' destructive>Destructive</Button>
+    <Button class='mt-4' disabled>Disabled</Button>
   </div>
-  <div class='mt-4 flex justify-between items-center flex-wrap'>
-    <Button small>Small Primary</Button>
-    <Button small custom>Custom</Button>
-    <Button small destructive>Small Destructive</Button>
-    <Button small disabled>Small Disabled</Button>
+  <div class='mt-4 flex flex-col sm:flex-row justify-between items-center flex-wrap'>
+    <Button class='mt-4' small>Small Primary</Button>
+    <Button class='mt-4' small custom>Custom</Button>
+    <Button class='mt-4' small destructive>Small Destructive</Button>
+    <Button class='mt-4' small disabled>Small Disabled</Button>
   </div>
   ```
 </docs>

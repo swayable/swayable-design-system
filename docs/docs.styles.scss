@@ -135,8 +135,11 @@ div[class^="rsg--search"] { display: none }
 
 // Sets sidebar background
 div[class^="rsg--sidebar"] {
-  min-height: 100%;
-  position: absolute;
+  @media (min-width: theme('screens.md')) {
+    min-height: 100%;
+    position: absolute;
+  }
+
   bottom: unset;
   top: 0;
   color: var(--nav-color);
@@ -212,12 +215,15 @@ div[class^="rsg--sidebar"] {
       padding-left: theme('spacing.4');
       line-height: theme('lineHeight.snug');
       @media (max-width: #{theme('screens.sm')}) {
+        @apply flex flex-wrap items-center justify-center;
         padding: 0 0 0 theme('spacing.12');
         width: 90%;
 
         // Sidebar sub-list item
         li {
-          display: inline;
+          // display: inline;
+          @apply flex-grow py-2;
+          min-width: 45%;
           line-height: theme('lineHeight.relaxed');
         }
       }
