@@ -3,11 +3,11 @@ import tinycolor from 'tinycolor2'
 
 
 class Token {
-  constructor({ type, description, category, value, order, originalValue, name, tags = '' }) {
-    Object.assign(this, { type, description, category, value, order, originalValue, name, tags })
+  constructor(args) {
+    Object.assign(this, args)
     
-    this.title = name.replace(/color|_/g, ' ')
-    this.classSuffix = name.replace(/color_/g, '').replace(/_/g, '-')
+    this.title = args.name.replace(/color|_/g, ' ')
+    this.classSuffix = args.name.replace(/color_/g, '').replace(/_/g, '-')
   }
 
   matches(valueToFind) {
@@ -16,6 +16,10 @@ class Token {
 
   get allInfo() {
     return `${this.name} ${this.tags} ${this.classSuffix} ${this.description} ${this.originalValue} ${this.value} ${this.category}`
+  }
+
+  get shortName() {
+    return this.title.split(' ').map(s => s[0]).join('')
   }
 
   static build(token) {

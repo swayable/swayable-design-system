@@ -43,10 +43,7 @@ module.exports = {
       mono: ['Inter', 'monospace'],
       sans: ['Inter', 'sans-serif'],
     },
-    fontWeight: {
-      normal: 400,
-      semibold: 600,
-    },
+    colors,
     extend: {
       opacity: {
         '10': '0.1',
@@ -71,7 +68,6 @@ module.exports = {
         'screen-md': '1024px',
         'screen-lg': '1280px',
       }),
-      colors,
       zIndex: {
         '999': '999',
       },

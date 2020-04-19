@@ -8,150 +8,197 @@
 #
 
 props:
-  color_black: 
+  color_dark_0: 
     value: 'hsl(240,10%,8%)'
     category: 'color-grey-scale'
     order: 0
-  color_grey_darkest: 
-    value: 'hsl(240,10%,16%)'
+    usage: 'Background (dark theme).'
+  color_dark_1: 
+    value: 'hsl(240,10%,12%)'
     category: 'color-grey-scale'
     order: 1
-  color_grey_darker: 
-    value: 'hsl(240,10%,32%)'
+    usage: 'Card sub-section (dark theme).'
+  color_dark_2: 
+    value: 'hsl(240,10%,16%)'
     category: 'color-grey-scale'
     order: 2
-  color_grey_dark: 
-    value: 'hsl(240,10%,50%)'
+    usage: 'Text Primary (light theme). Card (dark theme).'
+  color_dark_3: 
+    value: 'hsl(240,10%,24%)'
     category: 'color-grey-scale'
     order: 3
-  color_grey: 
-    value: 'hsl(240,10%,70%)'
+    usage: 'Card Hover (dark theme).'
+  color_dark_4: 
+    value: 'hsl(240,10%,32%)'
     category: 'color-grey-scale'
     order: 4
-  color_grey_light: 
-    value: 'hsl(240,10%,88%)'
+    usage: 'Text Secondary (light theme). Strokes / Separators (dark theme).'
+  color_dark_5: 
+    value: 'hsl(240,10%,40%)'
     category: 'color-grey-scale'
     order: 5
-  color_grey_lighter: 
-    value: 'hsl(240,10%,91%)'
+  color_dark_6: 
+    value: 'hsl(240,10%,50%)'
     category: 'color-grey-scale'
     order: 6
-  color_grey_lightest: 
-    value: 'hsl(240,10%,97%)'
+    usage: 'Text Tertiary (light theme).'
+  color_light_0: 
+    value: 'hsl(240,10%,60%)'
     category: 'color-grey-scale'
     order: 7
-  color_white:
-    value: 'hsl(240,10%,100%)'
+    usage: 'Text Quarternary (light theme).'
+  color_light_1: 
+    value: 'hsl(240,10%,70%)'
     category: 'color-grey-scale'
     order: 8
-  color_blue:
+  color_light_2: 
+    value: 'hsl(240,10%,80%)'
+    category: 'color-grey-scale'
+    order: 9
+    usage: 'Text Quarternary (dark theme).'
+  color_light_3: 
+    value: 'hsl(240,10%,88%)'
+    category: 'color-grey-scale'
+    order: 10
+    usage: 'Strokes / Separators (light theme). Text Tertiary (dark theme).'
+  color_light_4: 
+    value: 'hsl(240,10%,91%)'
+    category: 'color-grey-scale'
+    order: 11
+    usage: 'Background (light theme).'
+  color_light_5: 
+    value: 'hsl(240,10%,94%)'
+    category: 'color-grey-scale'
+    order: 12
+    usage: 'Card sub-section (light theme). Text Secondary (dark theme).'
+  color_light_6: 
+    value: 'hsl(240,10%,97%)'
+    category: 'color-grey-scale'
+    order: 13
+    usage: 'Card (light theme).'
+  color_white: 
+    value: 'hsl(240,10%,100%)'
+    category: 'color-grey-scale'
+    order: 14
+    usage: 'Card Hover (light theme).  Text Primary (dark theme).'
+  color_blue_1:
     value: 'hsl(240,60%,60%)'
     category: 'color-action'
-    order: 9
-  color_blue_light:
+    order: 15
+    usage: 'Action (light theme).'
+  color_blue_2:
     value: 'hsl(240,60%,65%)'
     category: 'color-action'
-    order: 10
-  color_blue_lighter:
+    order: 16
+    usage: 'Action Hover (light theme).'
+  color_blue_3:
     value: 'hsl(240,60%,70%)'
     category: 'color-action'
-    order: 11
-  color_blue_lightest:
+    order: 17
+    usage: 'Action Active (light theme). Action (dark theme).'
+  color_blue_4:
     value: 'hsl(240,60%,75%)'
     category: 'color-action'
-    order: 12
-  color_blue_lighter_still:
+    order: 18
+    usage: 'Action Hover (dark theme).'
+  color_blue_5:
     value: 'hsl(240,60%,80%)'
     category: 'color-action'
-    order: 13
-  color_red:
+    order: 19
+    usage: 'Action Active (dark theme).'
+  color_red_1:
     value: 'hsl(360,60%,60%)'
-    category: 'color-destructive-action'
-    order: 14
-  color_red_light:
+    category: 'color-action'
+    order: 20
+    usage: 'Destructive Action (light theme).'
+  color_red_2:
     value: 'hsl(360,60%,65%)'
-    category: 'color-destructive-action'
-    order: 15
-  color_red_lighter:
+    category: 'color-action'
+    order: 21
+    usage: 'Destructive Action Hover (light theme).'
+  color_red_3:
     value: 'hsl(360,60%,70%)'
-    category: 'color-destructive-action'
-    order: 16
-  color_red_lightest:
+    category: 'color-action'
+    order: 22
+    usage: 'Destructive Action Active (light theme). Destructive Action (dark theme).'
+  color_red_4:
     value: 'hsl(360,60%,75%)'
-    category: 'color-destructive-action'
-    order: 17
-  color_red_lighter_still:
+    category: 'color-action'
+    order: 23
+    usage: 'Destructive Action Hover (dark theme).'
+  color_red_5:
     value: 'hsl(360,60%,80%)'
-    category: 'color-destructive-action'
-    order: 18
+    category: 'color-action'
+    order: 24
+    usage: 'Destructive Action Active (dark theme).'
   color_blue_dark: 
     value: '#283040'
     category: 'color-primary'
-    order: 19
+    order: 25
   color_magenta:
     value: '#b43cb4'
     category: 'color-primary'
-    order: 19
+    order: 26
   color_pink:
     value: '#dc3c8c'
     category: 'color-primary'
-    order: 20
+    order: 27
   color_orange:
     value: '#dca028'
     category: 'color-primary'
-    order: 21
+    order: 28
   color_yellow:
     value: '#c8c814'
     category: 'color-primary'
-    order: 22
+    order: 29
   color_green:
     value: '#78c864'
     category: 'color-primary'
-    order: 23
+    order: 30
   color_cyan:
     value: '#14c8c8'
     category: 'color-primary'
-    order: 24
+    order: 31
   color_azure:
     value: '#3c8cdc'
     category: 'color-primary'
-    order: 25
+    order: 32
   color_azure_dark:
     value: '#5078dc'
     category: 'color-secondary'
-    order: 26
+    order: 33
   color_purple:
     value: '#8c50c8'
     category: 'color-secondary'
-    order: 27
+    order: 34
   color_rose_dark:
     value: '#c8288c'
     category: 'color-secondary'
-    order: 28
+    order: 35
   color_red_dark:
     value: '#dc5064'
     category: 'color-secondary'
-    order: 29
+    order: 36
   color_orange_dark:
     value: '#dc8246'
     category: 'color-secondary'
-    order: 30
+    order: 37
   color_orange_light:
     value: '#dcb414'
     category: 'color-secondary'
-    order: 31
+    order: 38
   color_green_light:
     value: '#a0c83c'
     category: 'color-secondary'
-    order: 32
+    order: 39
   color_green_dark:
     value: '#50c88c'
     category: 'color-secondary'
-    order: 33
+    order: 40
   color_azure_light:
     value: '#28a0dc'
     category: 'color-secondary'
-    order: 34
+    order: 41
   
 global:
   type: color

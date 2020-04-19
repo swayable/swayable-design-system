@@ -12,6 +12,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
+  @apply bg-light-4 text-dark-2 border-light-3;
+}
+
+.theme-dark-mode {
+  @apply bg-dark-0 text-white border-dark-4;
 }
 
 pre, code, .font-mono { 
@@ -38,5 +43,5 @@ h5 {
   @apply text-lg
 }
 h6 {
-  @apply text-base
+  @apply text-md
 }

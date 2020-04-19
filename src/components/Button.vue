@@ -2,7 +2,8 @@
 <template>
   <component
     :is='smartElement'
-    :class='`button leading-4 focus:outline-none focus:shadow-outline ${classes}`'
+    class='button inline-flex items-center rounded-md focus:outline-none transition ease-in-out duration-150'
+    :class='{ destructive, small, secondary, "color": !custom }'
     :disabled='disabled'
     v-bind='navigation'
     v-on='$listeners'
@@ -69,6 +70,13 @@ export default {
       default: false,
     },
     /**
+     * Alternative button style
+     */
+    secondary: {
+      type: Boolean,
+      default: false,
+    },
+    /**
      * Strips styles
      */
     custom: {
@@ -88,45 +96,271 @@ export default {
       if (this.smartElement === 'a') return { href: this.href }
       return {}
     },
-    classes() {
-      let color
-      if (this.disabled) color = 'grey-dark'
-      else if (this.destructive) color = 'red'
-      else color = 'blue'
-
-      const base = this.custom ? '' : `border rounded text-white bg-${color} border-${color}`
-      const size = this.small ? 'text-xs p-1' : 'text-sm p-2'
-      const disabled = this.disabled ? 'disabled cursor-not-allowed' : ''
-      const destructive  = this.destructive ? 'destructive' : 'normal'
-      return `${base} ${size} ${disabled} ${destructive}`
-    },
   },
 }
 </script>
 
 <style lang="scss">
-.button:not([disabled]) {
-  &:not(.alt) {
-    &:hover { filter: brightness(110%) }
-    &:active { filter: brightness(150%) }
+.button {
+  &:focus { @apply shadow-outline; }
+
+  &.small { @apply px-2 py-1.5 text-md leading-3 }
+  &:not(.small) { @apply px-3 py-1.5 text-lg leading-5 }
+  
+  &[disabled] {
+    @apply bg-light-3 text-light-0 cursor-not-allowed;
+    &.secondary {
+      @apply bg-white text-light-1 border border-light-3;
+    }
+  }
+  &:not([disabled]) {
+    &.color {
+      @apply bg-blue-1 text-white;
+      &:hover { @apply bg-blue-2; }
+      &:active { @apply bg-blue-3; }
+
+      &.destructive {
+        @apply bg-red-1;
+        &:hover { @apply bg-red-2; }
+        &:active { @apply bg-red-3; }
+      }
+
+      &.secondary {
+        @apply bg-white text-blue-1 border border-light-3;
+        &:hover { @apply text-blue-2; }
+        &:active { @apply text-blue-3; }
+       
+        &.destructive {
+          @apply bg-white text-red-1;
+          &:hover { @apply text-red-2; }
+          &:active { @apply text-red-3; }
+        }
+      }
+    }
   }
 }
+.theme-dark-mode {
+  .button {
+    &[disabled] {
+      @apply bg-dark-4 text-light-2;
+      &.secondary {
+        @apply bg-dark-1 text-dark-4 border border-dark-4;
+      }
+    }
+    &:not([disabled]) {
+      &.color {
+        @apply bg-blue-3 text-dark-0;
+        
+        &:hover { @apply bg-blue-4; }
+        &:active { @apply bg-blue-5; }
 
+        &.destructive {
+          @apply bg-red-3;
+          &:hover { @apply bg-red-4; }
+          &:active { @apply bg-red-5; }
+          &:focus { @apply shadow-outline; }
+        }
+
+        &.secondary {
+          @apply bg-dark-2 text-blue-3 border border-dark-4;
+          &:hover { @apply text-blue-4; }
+          &:active { @apply text-blue-5; }
+        
+          &.destructive {
+            @apply bg-dark-2 text-red-3;
+            &:hover { @apply text-red-4; }
+            &:active { @apply text-red-5; }
+          }
+        }
+      }
+    }
+  }
+}
 </style>
 
 <docs>
   ```jsx
-  <div class='flex flex-col sm:flex-row justify-between items-center flex-wrap'>
-    <Button class='mt-4'>Normal</Button>
-    <Button class='mt-4' custom>Custom</Button>
-    <Button class='mt-4' destructive>Destructive</Button>
-    <Button class='mt-4' disabled>Disabled</Button>
+  <div class='flex flex-col items-center justify-center'>
+    <Table>
+      <template slot="head">
+        <TableRow>
+          <TableCell head />
+          <TableCell head>
+            Normal
+          </TableCell>
+          <TableCell head>
+            Custom
+          </TableCell>
+          <TableCell head>
+            Destructive
+          </TableCell>
+          <TableCell head>
+            Disabled
+          </TableCell>
+        </TableRow>
+      </template>
+      <TableRow>
+        <TableCell head>
+          <span>Normal</span>
+        </TableCell>
+        <TableCell>
+          <Button>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          Small
+        </TableCell>
+        <TableCell>
+          <Button small>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          <span>Secondary</span>
+        </TableCell>
+        <TableCell>
+          <Button secondary>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          Secondary Small
+        </TableCell>
+        <TableCell>
+          <Button secondary small>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+    </Table>
   </div>
-  <div class='mt-4 flex flex-col sm:flex-row justify-between items-center flex-wrap'>
-    <Button class='mt-4' small>Small Primary</Button>
-    <Button class='mt-4' small custom>Custom</Button>
-    <Button class='mt-4' small destructive>Small Destructive</Button>
-    <Button class='mt-4' small disabled>Small Disabled</Button>
+
+  <div class='theme-dark-mode flex flex-col items-center jusify-center px-5 pb-10 mt-5'>
+    <h3 class='typography-2 mt-5 w-full text-center'>Dark Mode</h3>
+    <div>
+      <Table>
+        <template slot="head">
+          <TableRow>
+            <TableCell head />
+            <TableCell head>
+              Normal
+            </TableCell>
+            <TableCell head>
+              Custom
+            </TableCell>
+            <TableCell head>
+              Destructive
+            </TableCell>
+            <TableCell head>
+              Disabled
+            </TableCell>
+          </TableRow>
+        </template>
+        <TableRow>
+          <TableCell head>
+            <span>Normal</span>
+          </TableCell>
+          <TableCell>
+            <Button>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button custom>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button destructive>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button disabled>Button</Button>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell head>
+            Small
+          </TableCell>
+          <TableCell>
+            <Button small>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button small custom>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button small destructive>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button small disabled>Button</Button>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell head>
+            <span>Secondary</span>
+          </TableCell>
+          <TableCell>
+            <Button secondary>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary custom>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary destructive>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary disabled>Button</Button>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell head>
+            Secondary Small
+          </TableCell>
+          <TableCell>
+            <Button secondary small>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary small custom>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary small destructive>Button</Button>
+          </TableCell>
+          <TableCell>
+            <Button secondary small disabled>Button</Button>
+          </TableCell>
+        </TableRow>
+      </Table>
+    </div>
   </div>
   ```
 </docs>

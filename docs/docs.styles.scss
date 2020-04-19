@@ -2,29 +2,35 @@
  * These are style overrides for Vue Styleguidist
  * (the odd formatting hence most of the classes are dynamic)
  */
+@import '../src/styles/custom-base-styles.scss';
 
 /* BASE
 --------------------------------------------- */
 html {
-  background: theme('colors.grey-light');
   font-family: theme('fontFamily.sans') !important;
 }
 
-
 // HEADINGS
 h1, h2, h3, h4, h5, h6 { font-weight: 600 !important }
-h1 { font-size: theme('text-4xl') !important }
-h2 { font-size: theme('text-3xl') !important }
-h3 { font-size: theme('text-2xl') !important }
-h4 { font-size: theme('text-xl') !important }
-h5 { font-size: theme('text-lg') !important }
+h1 {
+  @apply text-4xl font-bold;
+  line-height: 58px;
+}
+h2 {
+  @apply text-3xl font-bold;
+  line-height: 29px;
+}
+h3 {
+  @apply text-2xl font-semibold;
+  line-height: 29px;
+}
 [class^="rsg--heading"], h1[class^="rsg--heading"] > * {
   font-style: normal !important;
 }
 
 // Background of page
 div.rsg--root-1 {
-  background: theme('colors.grey-light');
+  background: unset;
   position: relative;
 }
 // Main content
@@ -45,6 +51,7 @@ main[class^="rsg--content"] {
 header[class^="rsg--header"] > div[class^="rsg--wrapper"],
 section > div[class^="rsg--wrapper"] + article[class^="rsg--root"],
 article[class^="rsg--root"] div[class^="rsg--root"] {
+  background: unset;
   margin: 0 !important;
 }
 
@@ -56,7 +63,7 @@ main section section > div > div[class^="rsg--root"] {
 
 img[title='Code Repo'] {
   width: 40px;
-  border: 1px solid theme('colors.grey');
+  border: 1px solid theme('colors.light-3');
   border-radius: 100%;
   display: inline-block;
 }
@@ -114,6 +121,7 @@ div[class^="rsg--logo"] {
     background-repeat: no-repeat;
     background-position: 7px center;
     font-size: theme('fontSize.lg') !important;
+    min-height: 30px;
   }
 }
 
@@ -141,8 +149,8 @@ div[class^="rsg--sidebar"] {
 
   bottom: unset;
   top: 0;
-  color: var(--nav-color);
-  background-color: theme('colors.grey-light');
+  color: unset;
+  background-color: unset;
   border: 0;
   @media (max-width: theme('screens.md')) {
     padding-bottom: theme('spacing.12');
@@ -177,20 +185,21 @@ div[class^="rsg--sidebar"] {
 
   // Sidebar first level links
   a[class^="rsg--link"] {
+    @apply text-dark-2;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: theme('spacing.1') theme('spacing.6');
     font-weight: 500;
-    color: var(--nav-color);
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
     &:hover {
-      color: var(--nav-color-active)
+      @apply bg-blue-5;
     }
     &:active {
-      color: var(--nav-color-active)
+      @apply bg-blue-4;
     }
   }
 
@@ -207,11 +216,11 @@ div[class^="rsg--sidebar"] {
 
   // Sidebar list
   ul[class^="rsg--list"] {
-    padding-left: 0;
+    padding-left: 0 !important;
 
     // Sidebar sub-list
     ul {
-      padding-left: theme('spacing.4');
+      padding-left: 0 !important;
       line-height: theme('lineHeight.snug');
       @media (max-width: #{theme('screens.sm')}) {
         @apply flex flex-wrap items-center justify-center;
@@ -229,11 +238,10 @@ div[class^="rsg--sidebar"] {
 
       // Sidebar second level link
       a[class*="rsg--link"] {
-        font-size: theme('fontSize.sm');
+        padding-left: theme('spacing.10');
         font-weight: theme('fontWeight.normal');
         -webkit-font-smoothing: subpixel-antialiased;
         -moz-osx-font-smoothing: auto;
-        color: theme('colors.blue-dark');
         @media (max-width: #{theme('screens.sm')}) {
           float: left;
           padding: 0 theme('spacing.2') 0 0;
@@ -313,7 +321,7 @@ pre[class^="rsg--pre"],
   margin: 0;
   min-height: theme('spacing.48') / 1.5;
   margin-bottom: theme('spacing.6');
-  color: theme('colors.grey-lighter');
+  color: theme('colors.light-0');
   padding: theme('spacing.6');
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -323,7 +331,7 @@ pre[class^="rsg--pre"],
     overflow: hidden;
   }
   code {
-    color: theme('colors.grey-lighter');
+    color: theme('colors.light-0');
   }
 }
 
@@ -354,12 +362,12 @@ div[class^="rsg--tab"] {
       padding: theme('spacing.2') theme('spacing.3');
       cursor: pointer;
       background: theme('colors.azure-dark');
-      color: theme('colors.grey-lighter');
+      color: theme('colors.light-1');
       &:active {
-        background: theme('colors.blue');
+        background: theme('colors.blue-1');
       }
       &--active {
-        background: theme('colors.blue');
+        background: theme('colors.blue-1');
       }
     }
   }
@@ -389,7 +397,7 @@ div[class^="rsg--tab"] {
 .cm-s-night span.cm-tag,
 .hljs-tag,
 .hljs-name {
-  color: theme('colors.grey-lighter') !important;
+  color: theme('colors.light-0') !important;
 }
 .hljs-attribute,
 .hljs-keyword,
@@ -411,7 +419,7 @@ code.name {
 }
 span[class^="rsg--type"] code[class^="rsg--code"],
 code.type {
-  background: theme('colors.grey');
+  background: theme('colors.light-3');
   color: var(--text-color);
   padding: theme('spacing.1');
   border-radius: theme('borderRadius.sm');
@@ -440,7 +448,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   align-self: flex-end;
   cursor: help;
   line-height: theme('lineHeight.none');
-  background: theme('colors.grey-dark');
+  background: theme('colors.dark-3');
   padding: theme('spacing.2') theme('spacing.4') theme('spacing.2')/1.2;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -460,7 +468,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   }
   &-ready {
     background: theme('colors.green');
-    color: theme('colors.grey-lighter');
+    color: theme('colors.light-0');
   }
   &-review {
     background: theme('colors.yellow');
@@ -468,11 +476,11 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   }
   &-planned {
     background: theme('colors.blue');
-    color: theme('colors.grey-lighter');
+    color: theme('colors.light-0');
   }
   &-red {
     background: theme('colors.red');
-    color: theme('colors.grey-lighter');
+    color: theme('colors.light-0');
   }
 }
 
@@ -489,7 +497,7 @@ table[class^="rsg--table"] {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
-    background: theme('colors.grey-lighter');
+    background: theme('colors.light-0');
     color: theme('colors.blue');
     text-align: left;
   }
@@ -507,7 +515,7 @@ table[class^="rsg--table"] {
     }
   }
   tr {
-    border-bottom: 1px solid theme('colors.grey');
+    border-bottom: 1px solid theme('colors.light-3');
   }
   tbody tr:last-child {
     border-bottom: 0;

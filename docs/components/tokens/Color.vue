@@ -11,18 +11,26 @@
         <div
           v-for='prop in colorGroup'
           :key='prop.name'
-          :class='`p-8`'
+          class='py-4'
         >
           <ToolTip
             :delay='200'
           >
-            <div class='color overflow-hidden text-center'>
+            <div class='color overflow-hidden text-center flex flex-col max-w-48 items-center justify-center'>
               <div
-                :class='`bg-${prop.classSuffix} shadow rounded-full inline-block p-16 swatch`'
-              />
+                :class='`bg-${prop.classSuffix}`'
+                class='shadow rounded-full inline-block w-32 h-32 swatch flex items-center justify-center mx-8'
+              >
+                <div
+                  class='capitalize font-semibold text-3xl'
+                  :class='prop.name.includes("light") || prop.name.includes("white") ? "text-dark-2" : "text-white"'
+                >
+                  {{ prop.shortName }}
+                </div>
+              </div>
               <div class='px-6 pt-4'>
-                <div class='font-semibold text-lg mb-2 capitalize text-blue-dark'>
-                  {{ prop.title }}
+                <div class='text-center text-dark-4 text-xs mb-2'>
+                  {{ prop.usage }}
                 </div>
               </div>
             </div>

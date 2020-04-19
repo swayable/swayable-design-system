@@ -16,20 +16,25 @@ export default {
 </script>
 
 <style lang="scss">
+.theme-dark-mode {
+  .table-table {
+    td {
+      @apply border-dark-4;
+    }
+  }
+}
 .table-table {
   border-collapse: separate;
   border-spacing: 0;
   
   th {
-    @apply text-grey-darker;
     @apply text-sm;
   }
 
   td {
-    @apply border-grey;
+    @apply border-light-3;
     @apply border-t;
     @apply border-l;
-    @apply bg-white;
   }
   tr {
     td:last-child { @apply border-r }
@@ -46,10 +51,10 @@ export default {
   }
 
   td {
-    &.merge-t { border-top-color: $color-white !important }
-    &.merge-r { border-right-color: $color-white !important }
-    &.merge-b { border-bottom-color: $color-white !important }
-    &.merge-l { border-left-color: $color-white !important }
+    &.merge-t { border-top-color: transparent !important }
+    &.merge-r { border-right-color: transparent !important }
+    &.merge-b { border-bottom-color: transparent !important }
+    &.merge-l { border-left-color: transparent !important }
   }
 }
 </style>
