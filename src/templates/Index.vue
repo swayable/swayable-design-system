@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    class='min-h-screen page font-body bg-grey-light'
+    class='min-h-screen page font-body'
   >
     <header>
       <slot name='header'>

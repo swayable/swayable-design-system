@@ -70,7 +70,7 @@ export default {
     <DropDown :open='topLeftOpen' @close='topLeftOpen = false' align='left'>
       <Button alt @click='topLeftOpen = !topLeftOpen'>Left Dropdown</Button>
       <template #dropdown>
-        <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
+        <p class='border bg-light-5 py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
         </p>
       </template>
@@ -79,7 +79,7 @@ export default {
     <DropDown :open='topRightOpen' @close='topRightOpen = false' align='right'>
       <Button alt @click='topRightOpen = !topRightOpen'>Right Dropdown</Button>
       <template #dropdown>
-        <p class='border bg-grey-lighter py-2 px-4 whitespace-no-wrap mt-1'>
+        <p class='border bg-light-5 py-2 px-4 whitespace-no-wrap mt-1'>
           You can interact with this content without triggering the close event
         </p>
       </template>

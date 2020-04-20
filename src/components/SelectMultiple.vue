@@ -154,8 +154,8 @@ export default {
     iconClassForIndex(itemIndex) {
       const item = this.items[itemIndex]
       if (item.selected && item.preview) return 'text-grey'
-      if (item.selected) return 'text-black'
-      if (item.preview) return 'text-grey-darker'
+      if (item.selected) return 'text-dark-0'
+      if (item.preview) return 'text-dark-5'
       return 'text-white'
     },
     isAllItemIndex(itemIndex) {

@@ -32,10 +32,11 @@ h3 {
 div.rsg--root-1 {
   background: unset;
   position: relative;
+  overflow-x: hidden;;
 }
 // Main content
 main[class^="rsg--content"] {
-  padding: theme('spacing.4') theme('spacing.6');
+  padding: 0;
   @media (min-width: theme('screens.md')) {
     padding: theme('spacing.4') theme('spacing.16');
   }
@@ -45,6 +46,10 @@ main[class^="rsg--content"] {
   .vueds-tabs, .CodeMirror {
     display: none !important;
   }
+}
+
+div[class^="rsg--wrapper"] {
+  padding: 0 theme('spacing.2');
 }
 
 // Resetting margins for Styleguidist
@@ -86,6 +91,8 @@ div[class^="rsg--docs"],
 p[class^="rsg--para"],
 h3[class^="rsg--heading"],
 h4[class^="rsg--heading"] {
+  padding: 0 theme('spacing.2');
+
   max-width: 100%;
   p[class^="rsg--para"] {
     width: 100%;
@@ -196,10 +203,10 @@ div[class^="rsg--sidebar"] {
     text-overflow: ellipsis;
 
     &:hover {
-      @apply bg-blue-5;
+      @apply bg-white;
     }
     &:active {
-      @apply bg-blue-4;
+      @apply bg-blue-5;
     }
   }
 
@@ -216,7 +223,9 @@ div[class^="rsg--sidebar"] {
 
   // Sidebar list
   ul[class^="rsg--list"] {
-    padding-left: 0 !important;
+    @media (min-width: #{theme('screens.sm')}) {
+      padding-left: 0 !important;
+    }
 
     // Sidebar sub-list
     ul {
@@ -233,6 +242,10 @@ div[class^="rsg--sidebar"] {
           @apply flex-grow py-2;
           min-width: 45%;
           line-height: theme('lineHeight.relaxed');
+          a {
+            float: none !important;
+            text-align: center;
+          }
         }
       }
 

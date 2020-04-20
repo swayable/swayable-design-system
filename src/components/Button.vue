@@ -180,29 +180,26 @@ export default {
 
 <docs>
   ```jsx
-  <div class='flex flex-col items-center justify-center'>
-    <Table>
+  <div class='p-5 max-w-full overflow-x-scroll'>
+    <h3 class='typography-4 w-full uppercase text-light-1'>Light Mode</h3>
+    <Table class='pr-5'>
       <template slot="head">
         <TableRow>
           <TableCell head />
+          <TableCell head />
           <TableCell head>
-            Normal
+            custom
           </TableCell>
           <TableCell head>
-            Custom
+            destructive
           </TableCell>
           <TableCell head>
-            Destructive
-          </TableCell>
-          <TableCell head>
-            Disabled
+            disabled
           </TableCell>
         </TableRow>
       </template>
       <TableRow>
-        <TableCell head>
-          <span>Normal</span>
-        </TableCell>
+        <TableCell head />
         <TableCell>
           <Button>Button</Button>
         </TableCell>
@@ -218,7 +215,7 @@ export default {
       </TableRow>
       <TableRow>
         <TableCell head>
-          Small
+          small
         </TableCell>
         <TableCell>
           <Button small>Button</Button>
@@ -235,7 +232,7 @@ export default {
       </TableRow>
       <TableRow>
         <TableCell head>
-          <span>Secondary</span>
+          <span>secondary</span>
         </TableCell>
         <TableCell>
           <Button secondary>Button</Button>
@@ -252,7 +249,7 @@ export default {
       </TableRow>
       <TableRow>
         <TableCell head>
-          Secondary Small
+          secondary small
         </TableCell>
         <TableCell>
           <Button secondary small>Button</Button>
@@ -270,97 +267,91 @@ export default {
     </Table>
   </div>
 
-  <div class='theme-dark-mode flex flex-col items-center jusify-center px-5 pb-10 mt-5'>
-    <h3 class='typography-2 mt-5 w-full text-center'>Dark Mode</h3>
-    <div>
-      <Table>
-        <template slot="head">
-          <TableRow>
-            <TableCell head />
-            <TableCell head>
-              Normal
-            </TableCell>
-            <TableCell head>
-              Custom
-            </TableCell>
-            <TableCell head>
-              Destructive
-            </TableCell>
-            <TableCell head>
-              Disabled
-            </TableCell>
-          </TableRow>
-        </template>
+  <div class='theme-dark-mode mt-1 p-5 max-w-full overflow-x-scroll'>
+    <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
+    <Table class='pr-5'>
+      <template slot="head">
         <TableRow>
+          <TableCell head />
+          <TableCell head />
           <TableCell head>
-            <span>Normal</span>
+            custom
           </TableCell>
-          <TableCell>
-            <Button>Button</Button>
+          <TableCell head>
+            destructive
           </TableCell>
-          <TableCell>
-            <Button custom>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button destructive>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button disabled>Button</Button>
+          <TableCell head>
+            disabled
           </TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell head>
-            Small
-          </TableCell>
-          <TableCell>
-            <Button small>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button small custom>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button small destructive>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button small disabled>Button</Button>
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell head>
-            <span>Secondary</span>
-          </TableCell>
-          <TableCell>
-            <Button secondary>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary custom>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary destructive>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary disabled>Button</Button>
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell head>
-            Secondary Small
-          </TableCell>
-          <TableCell>
-            <Button secondary small>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary small custom>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary small destructive>Button</Button>
-          </TableCell>
-          <TableCell>
-            <Button secondary small disabled>Button</Button>
-          </TableCell>
-        </TableRow>
-      </Table>
-    </div>
+      </template>
+      <TableRow>
+        <TableCell head />
+        <TableCell>
+          <Button>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          small
+        </TableCell>
+        <TableCell>
+          <Button small>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button small disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          <span>secondary</span>
+        </TableCell>
+        <TableCell>
+          <Button secondary>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell head>
+          secondary small
+        </TableCell>
+        <TableCell>
+          <Button secondary small>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small custom>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small destructive>Button</Button>
+        </TableCell>
+        <TableCell>
+          <Button secondary small disabled>Button</Button>
+        </TableCell>
+      </TableRow>
+    </Table>
   </div>
   ```
 </docs>

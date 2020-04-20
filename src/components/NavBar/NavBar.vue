@@ -2,14 +2,14 @@
   <!-- eslint-disable vue/no-v-html -->
   <nav
     v-on-clickaway='closeMenu'
-    class='bg-blue-dark'
+    class='nav-bar'
   >
-    <div class='max-w-full mx-auto px-4 sm:px-6'>
-      <div class='flex justify-between h-13'>
+    <div class='max-w-full mx-auto px-3 md:px-5'>
+      <div class='flex justify-between h-12'>
         <div class='flex'>
           <div class='-ml-2 mr-2 flex items-center md:hidden'>
             <button
-              class='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out'
+              class='inline-flex items-center justify-center p-2 rounded-md hover:bg-blue focus:outline-none focus:bg-blue transition duration-150 ease-in-out'
               @click='menuOpen = !menuOpen'
             >
               <svg
@@ -45,8 +45,7 @@
           <div class='w-6 md:w-auto flex-shrink-0 flex overflow-hidden'>
             <a
               href='/'
-              class='flex items-center'
-              v-html='logo'
+              class=' bg-logo'
             />
           </div>
           <div class='hidden md:flex ml-6 items-center'>
@@ -85,7 +84,7 @@
             <div class='ml-3 relative'>
               <div>
                 <button
-                  class='flex p-1 rounded-full text-grey-lighter focus:text-white focus:outline-none focus:bg-black transition duration-150 ease-in-out'
+                  class='flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
                   @click='menuOpen = !menuOpen'
                 >
                   <Icon
@@ -104,14 +103,14 @@
               >
                 <div
                   v-show='menuOpen'
-                  class='origin-top-right absolute right-0 mt-3 w-64 rounded shadow-lg'
+                  class='origin-top-right absolute right-0 mt-3 w-64 rounded shadow-lg z-50'
                 >
-                  <div class='pb-2 rounded bg-white shadow-xs'>
+                  <div class='pb-2 rounded bg-inherit shadow-xs'>
                     <div class='block px-8 py-6 mb-2'>
                       <div class='text-blue-dark leading-5'>
                         {{ organization }}
                       </div>
-                      <div class='text-sm text-grey-darker leading-4'>
+                      <div class='text-sm leading-4'>
                         {{ user }}
                       </div>
                     </div>
@@ -119,8 +118,8 @@
                       v-for='(displayName, name) in menuLinks'
                       :key='name'
                       :to='{ name }'
-                      class='block px-8 py-4 leading-6 text-lg focus:outline-none hover:text-white focus:text-white transition duration-150 ease-in-out'
-                      :class='displayName === "Log Out" ? "hover:bg-red focus:bg-red text-red" : "hover:bg-blue focus:bg-blue text-blue-dark"'
+                      class='block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out'
+                      :class='{ "logout": displayName === "Log Out" }'
                     >
                       {{ displayName }}
                     </router-link>
@@ -142,12 +141,12 @@
     >
       <div
         v-show='menuOpen'
-        class='md:hidden'
+        class='md:hidden absolute bg-inherit w-full z-50'
       >
         <div class='pb-3'>
           <div
             v-if='Object.keys(links).length'
-            class='px-2 pt-2 pb-3 sm:px-3 border-t border-gray-700'
+            class='px-2 pt-2 pb-3 md:px-3 border-t'
           >
             <NavItem
               v-for='(link, title) in links'
@@ -157,23 +156,23 @@
               {{ title }}
             </NavItem>
           </div>
-          <div class='flex items-center px-5 py-4 border-t border-gray-700'>
-            <div class='text-grey-light flex-shrink-0'>
+          <div class='flex items-center px-5 py-4 border-t'>
+            <div class='text-light-4 flex-shrink-0'>
               <Icon
                 name='user'
                 size='lg'
               />
             </div>
             <div class='ml-3'>
-              <div class='text-grey-light leading-5'>
+              <div class='text-light-4 leading-5'>
                 {{ organization }}
               </div>
-              <div class='text-sm text-grey-darker leading-4'>
+              <div class='text-sm text-dark-5 leading-4'>
                 {{ user }}
               </div>
             </div>
           </div>
-          <div class='px-2 sm:px-3'>
+          <div class='px-2 md:px-3'>
             <NavItem
               v-for='(displayName, name) in menuLinks'
               :key='name'
@@ -191,11 +190,6 @@
 
 <script>
 import tokens from '@/utils/tokens'
-import logo from '@/assets/logo.svg'
-
-const START_RGB = tokens.getColorRGB('pink')
-const END_RGB = tokens.getColorRGB('azure')
-
 import { directive as onClickaway } from 'vue-clickaway'
 
 /**
@@ -212,7 +206,6 @@ export default {
   },
   data() {
     return {
-      logo,
       menuOpen: false,
       menuLinks: {
         tests: 'Tests',
@@ -230,14 +223,40 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.nav-bar {
+  @apply bg-light-6;
+  .bg-logo {
+    @apply w-36 bg-left bg-no-repeat;
+    background-image: url('//images.swayable.com/logos/light.svg?v=1');
+    background-size: 9rem;
+  }
+}
+.theme-dark-mode {
+  .nav-bar {
+    @apply bg-dark-2;
+    .bg-logo {
+      background-image: url('//images.swayable.com/logos/dark.svg?v=1')
+    }
+  }
+}
+</style>
+
 <docs>
   ```jsx
   const links = {
-    Setup: { to: { name: 'Demo' }, active: true },
-    Responses: { to: { name: 'Demo' } },
-    Results: { to: { name: 'Demo' } },
+    Setup: { href: '/#/Component%20Library/NavBar', active: true },
+    Insights: { href: '/#/Component%20Library/NavBar' },
+    Data: { href: '/#/Component%20Library/NavBar' },
   }
-  <div class='mb-64'>
+  <div class='mb-5'>
+    <NavBar :links='links'>
+      <Button>
+        Request New
+      </Button>
+    </NavBar>
+  </div>
+  <div class='mb-24 theme-dark-mode'>
     <NavBar :links='links'>
       <Button>
         Request New

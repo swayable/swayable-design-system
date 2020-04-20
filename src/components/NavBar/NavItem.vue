@@ -2,7 +2,8 @@
   <component
     :is='smartElement'
     v-bind='navigation'
-    :class='classes'
+    class='nav-item px-5 sm:px-4 py-3 sm:ml-1 sm:py-1 rounded text-md sm:leading-5 focus:outline-none transition duration-150 ease-in-out block sm:inline-block cursor-pointer'
+    :class='{ active }'
     v-on='$listeners'
   >
     <slot />
@@ -57,19 +58,36 @@ export default {
       if (this.smartElement === 'a') return { href: this.href }
       return {}
     },
-    classes() {
-      const commonClasses = ['px-5 sm:px-4', 'py-3 sm:py-2', 'rounded', 'text-sm', 'font-medium', 'sm:leading-5', 'focus:outline-none', 'focus:text-white', 'focus:bg-gray-700', 'transition', 'duration-150', 'ease-in-out', 'block', 'sm:inline-block']
-      
-      const activeClasses = ['text-white', 'bg-gray-900']
-      const inactiveClasses = ['sm:ml-2', 'text-grey-light', 'hover:text-white', 'hover:bg-gray-700']
-
-      return this.active
-        ? [...commonClasses, ...activeClasses]
-        : [...commonClasses, ...inactiveClasses]
-    },
   },
 }
 </script>
+
+<style lang="scss">
+.nav-item {
+  &.active {
+    @apply text-blue-3 bg-light-5;
+  }
+  &:not(.active) {
+    @apply text-dark-4;
+    &:hover, &:focus {
+      filter: brightness(120%)
+    }
+    &:active {
+      filter: brightness(160%)
+    }
+  }
+}
+.theme-dark-mode {
+  .nav-item {
+    &.active {
+      @apply text-blue-5 bg-dark-3;
+    }
+    &:not(.active) {
+      @apply text-light-4;
+    }
+  }
+}
+</style>
 
 <docs>
   ```jsx

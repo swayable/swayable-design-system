@@ -83,7 +83,7 @@ module.exports = {
       content: '../docs/components.md',
       components: '../src/components/**/[A-Z]*.vue',
       exampleMode: 'expand',
-      usageMode: 'hide',
+      usageMode: 'expand',
       sectionDepth: 2,
     },
     {

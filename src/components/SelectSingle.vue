@@ -14,7 +14,7 @@
           {{ selected }}
         </span>
         <Icon
-          class='ml-2 text-grey-dark'
+          class='ml-2 text-light-0'
           name='chevron'
           size='xs'
         />
@@ -80,7 +80,7 @@ export default {
     hoverClass() {
       if (this.dark) return 'bg-blue-dark'
       if (this.primary) return 'bg-blue'
-      return 'bg-grey-lighter'
+      return 'bg-light-5'
     },
   },
 }

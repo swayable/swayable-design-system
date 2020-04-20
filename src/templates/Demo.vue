@@ -1,5 +1,5 @@
 <template>
-  <Index>
+  <Index :class='themeClass'>
     <template slot='header'>
       <NavBar
         :links='links'
@@ -50,11 +50,11 @@
 
     <div class='flex min-w-screen-sm'>
       <div class='flex-shrink-0'>
-        <Table>
+        <Table class='merge-r'>
           <template slot='head'>
             <TableRow>
               <TableCell head>
-                <h5 class='text-blue-dark'>
+                <h5>
                   Single
                 </h5>
               </TableCell>
@@ -65,7 +65,7 @@
           </template>
           <TableRow>
             <TableCell class='border-b rounded-bl'>
-              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Alex Morgan</span>
             </TableCell>
             <TableCell class='border-b'>
@@ -74,7 +74,7 @@
           </TableRow>
           <TableRow>
             <TableCell head>
-              <h5 class='text-blue-dark'>
+              <h5>
                 Breakdown
               </h5>
             </TableCell>
@@ -82,7 +82,7 @@
           </TableRow>
           <TableRow>
             <TableCell wrap>
-              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Alex Morgan</span>
             </TableCell>
             <TableCell>
@@ -97,7 +97,7 @@
           </TableRow>
           <TableRow>
             <TableCell head>
-              <h5 class='text-blue-dark'>
+              <h5>
                 Multiple Breakdown
               </h5>
             </TableCell>
@@ -105,7 +105,7 @@
           </TableRow>
           <TableRow>
             <TableCell class='rounded-tl'>
-              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Alex Morgan</span>
             </TableCell>
             <TableCell>
@@ -120,7 +120,7 @@
           </TableRow>
           <TableRow>
             <TableCell>
-              <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+              <span class='px-5 py-1 mr-3 rounded' />
               <span class='font-mono'>Colin Kaepernick</span>
             </TableCell>
             <TableCell>
@@ -136,7 +136,7 @@
         </Table>
       </div>
       <div class='flex-grow'>
-        <Table class='table-fixed w-full'>
+        <Table class='table-fixed w-full merge-l'>
           <template slot='head'>
             <TableRow>
               <TableCell head>
@@ -236,9 +236,9 @@ const stats = [{
   ...sharedProps,
   deltaLabel: '+44.2%',
   baselineLabel: '38.5%',
-  baseline: 0,
-  delta: 10,
-  error: 0.9,
+  baseline: 3.85,
+  delta: 4.42,
+  error: .9,
 },
 {
   ...sharedProps,
@@ -273,7 +273,7 @@ export default {
     },
   },
   data() {
-    const toggleOptions = ['Delta', 'Engagement']
+    const toggleOptions = ['Light Theme', 'Dark Theme']
     const selectedToggle = toggleOptions[0]
     const testOptions = [
       'Nike Dream Crazy',
@@ -290,7 +290,17 @@ export default {
       toggleOptions,
       selectedToggle,
       testOptions,
+      themeClass: '',
     }
+  },
+  watch: {
+    selectedToggle(theme) {
+      if (theme === 'Dark Theme') {
+        this.themeClass = 'theme-dark-mode'
+      } else {
+        this.themeClass = ''
+      }
+    },
   },
 }
 </script>

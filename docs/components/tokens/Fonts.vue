@@ -11,22 +11,22 @@
           :key='weight.weight'
           :class='`p-2 flex-grow font-weight font-${weight.class}`'
         >
-          <div class='max-w-sm rounded overflow-hidden shadow-lg bg-grey-lighter h-full'>
-            <p class='flex border-b p-2 text-black'>
+          <div class='max-w-sm rounded overflow-hidden shadow-lg bg-light-5 h-full'>
+            <p class='flex border-b p-2 text-dark-0'>
               <span class='flex-grow capitalize'>
                 {{ prop.value.split(',')[0].replace(/"/g, '') }}
               </span>
               <span>{{ weight.weight }}</span>
             </p>
 
-            <p class='text-sm m-2 text-black'>
+            <p class='text-sm m-2 text-dark-0'>
               The five boxing wizards jump quickly.
             </p>
             <p class='m-2 mb-4'>
-              <code class='bg-grey-light'>
+              <code class='bg-light-4'>
                 .font-{{ prop.class }}
               </code>
-              <code class='bg-grey-light'>
+              <code class='bg-light-4'>
                 .font-{{ weight.class }}
               </code>
             </p>

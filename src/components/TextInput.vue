@@ -75,7 +75,7 @@ export default {
     },
     variantClasses() {
       return this.disabled
-        ? 'bg-grey-light text-grey-darker cursor-not-allowed disabled'
+        ? 'bg-light-4 text-dark-5 cursor-not-allowed disabled'
         : 'bg-white text-blue-dark focus:shadow-outline focus:border-blue'
     },
   },

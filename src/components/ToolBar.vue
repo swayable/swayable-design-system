@@ -1,5 +1,5 @@
 <template>
-  <nav class='flex flex-col sm:flex-row max-w-full mx-auto px-4 sm:px-6 py-2'>
+  <nav class='flex flex-col sm:flex-row max-w-full mx-auto px-3 sm:px-5 py-2'>
     <div class='flex flex-grow'>
       <slot />
     </div>

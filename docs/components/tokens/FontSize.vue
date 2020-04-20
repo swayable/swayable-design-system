@@ -9,7 +9,7 @@
           <p>
             <code>.text-{{ token.name }}</code>
           </p>
-          <p class='text-grey-darker ml-2 text-sm'>
+          <p class='text-dark-5 ml-2 text-sm'>
             {{ token.size }}
           </p>
         </div>

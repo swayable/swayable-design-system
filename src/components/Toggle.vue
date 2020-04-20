@@ -47,7 +47,7 @@ export default {
       if (option === this.selected) return ''
       
       const classes = ['border-transparent']
-      if (this.disabled) classes.push('text-grey-darker')
+      if (this.disabled) classes.push('text-dark-5')
       return classes
     },
   },

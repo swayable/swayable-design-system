@@ -50,6 +50,25 @@ export default {
     }
   }
 
+  &.merge-r {
+    td { border-right-color: transparent !important }
+    tr:first-child {
+      td:last-child { @apply rounded-none }
+    }
+    tr:last-child {
+      td:last-child { @apply rounded-none }
+    }
+  }
+  &.merge-l {
+    td { border-left-color: transparent !important }
+    tr:first-child {
+      td:first-child { @apply rounded-none }
+    }
+    tr:last-child {
+      td:first-child { @apply rounded-none }
+    }
+  }
+
   td {
     &.merge-t { border-top-color: transparent !important }
     &.merge-r { border-right-color: transparent !important }
@@ -79,7 +98,7 @@ export default {
   </template>
   <TableRow>
     <TableCell>
-      <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+      <span class='bg-light-0 px-5 py-1 mr-3 rounded' />
       <span class='font-mono'>Alex Morgan</span>
     </TableCell>
     <TableCell>
@@ -106,7 +125,7 @@ export default {
   </TableRow>
   <TableRow>
     <TableCell>
-      <span class='bg-grey-dark px-5 py-1 mr-3 rounded' />
+      <span class='bg-light-0 px-5 py-1 mr-3 rounded' />
       <span class='font-mono'>Colin Kaepernick</span>
     </TableCell>
     <TableCell>

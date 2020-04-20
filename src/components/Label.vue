@@ -1,7 +1,7 @@
 <template>
   <component
     :is='element'
-    class='rounded-full inline-block min-w-5 text-center border'
+    class='tag rounded-full inline-block min-w-5 text-center'
     :class='classes'
   >
     <slot />
@@ -10,7 +10,7 @@
 
 <script>
 /**
- * Labels are generally used for contextual information
+ * Display additional information
  */
 export default {
   name: 'Label',
@@ -41,12 +41,21 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.tag { @apply bg-light-2 }
+.theme-dark-mode {
+  .tag { @apply bg-dark-5 }
+}
+</style>
+
 <docs>
   ```jsx
   <Label small>Small</Label>
   <Label>Normal</Label>
-
   <Label small class='bg-orange border-orange-dark text-white font-mono font-semibold'>98,234</Label>
-  <Label class='bg-red text-white border-red-dark'>Tag</Label>
+  <div class='theme-dark-mode mt-1 p-2 pt-1 inline-block'>
+    <Label small>Dark Mode</Label>
+  <div>
+  <div>
   ```
 </docs>

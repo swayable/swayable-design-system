@@ -10,6 +10,7 @@
       <div
         :style='{ background }'
         class='h-full'
+        :class='{ insignificant }'
       />
       <div
         :style='buildArrowStyles("top")'
@@ -28,7 +29,7 @@
     >
       <span class='flex-grow' />
       <span
-        class='bg-black opacity-10'
+        class='errorBar'
         :style='errorBarStyles'
       />
       <span class='flex-grow' />
@@ -162,7 +163,6 @@ export default {
         'bg-inherit',
         'px-px',
         'opacity-75',
-        'color-blue-dark',
         'font-mono',
       ]
     },
@@ -268,7 +268,7 @@ export default {
         : this.baselineLabel
     },
     background() {
-      if (this.insignificant) return 'rgba(0,0,0,0.1)'
+      if (this.insignificant) return null
 
       const gradientPoints = [
         this.baseline / this.scale,
@@ -300,7 +300,20 @@ export default {
 </script>
 
 <style lang="scss">
-.dataLabelLeft { right: calc(100% + theme('spacing.1')) }
+.bar-chart {
+  .dataLabelLeft { right: calc(100% + theme('spacing.1')) }
+  
+  .errorBar, .insignificant  {
+    @apply bg-dark-0 opacity-10;
+  }
+}
+.theme-dark-mode {
+  .bar-chart {
+    .errorBar, .insignificant {
+      @apply bg-white opacity-25;
+    }
+  }
+}
 </style>
 
 <docs>
@@ -332,23 +345,53 @@ export default {
     error: 1.2,
   }
 
-  <h5 class='text-center'>A Quick basic graph</h5>
-  <div class='bg-grey-light py-1 my-1'>
-    <div class='mt-1 bg-inherit'>
-      <BarChart class='mt-px' :delta='25' :error='20' />
-      <BarChartTwo class='mt-px' :delta='25' :error='30' />
-      <BarChart class='mt-px' :delta='0.5' />
-      <BarChart class='mt-px' :delta='100' :error='50' />
-      <BarChart class='mt-px' :delta='50' :error='50' />
-      <BarChart class='mt-px' :baseline='100' :delta='-50' :error='50' />
-      <BarChart class='mt-px' :delta='75' />
+  <div class='bg-light-4 mt-1 p-5 max-w-full overflow-x-scroll'>
+    <h3 class='typography-4 uppercase text-dark-5'>Light MODE</h3>
+    <div class='mt-3 bg-inherit'>
+      <BarChart
+        class='mt-2'
+        deltaLabel='+25%'
+        :delta='25'
+        :error='20'
+      />
+      <BarChart
+        class='mt-2'
+        deltaLabel='+50%'
+        baselineLabel='15'
+        :baseline='15'
+        :delta='50'
+        :error='51'
+        :insignificant='true'
+      />
+      <BarChart class='mt-2' :baseline='55' :delta='-25' :error='5' />
+    </div>
+  </div>
+  <div class='theme-dark-mode mt-1 p-5 pb-7 max-w-full overflow-x-scroll'>
+    <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
+    <div class='mt-3 bg-inherit'>
+      <BarChart
+        class='mt-2'
+        deltaLabel='+25%'
+        :delta='25'
+        :error='20'
+      />
+      <BarChart
+        class='mt-2'
+        deltaLabel='+50%'
+        baselineLabel='15'
+        :baseline='15'
+        :delta='50'
+        :error='51'
+        :insignificant='true'
+      />
+      <BarChart class='mt-2' :baseline='55' :delta='-25' :error='5' />
     </div>
   </div>
   <h5 class='mt-10 text-center'>
     The same data shown in Aligned vs. Absolute baselines
   </h5>
   <div>
-    <div class='bg-grey-light py-1 mt-1'>
+    <div class='bg-light-4 py-1 mt-1'>
       <p class='text-center capitalize'>Aligned Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
@@ -356,14 +399,8 @@ export default {
           class='mt-px'
           v-bind='props1'
         >
-
           This is significant
         </BarChart>
-        <BarChartTwo
-          :alignBaselines='true'
-          class='mt-px'
-          v-bind='props1'
-        />
         <BarChart
           :alignBaselines='true'
           class='mt-px'
@@ -371,24 +408,14 @@ export default {
         >
           This is insignificant
         </BarChart>
-        <BarChartTwo
-          :alignBaselines='true'
-          class='mt-px'
-          v-bind='props2'
-        />
         <BarChart
-          :alignBaselines='true'
-          class='mt-px'
-          v-bind='props3'
-        />
-        <BarChartTwo
           :alignBaselines='true'
           class='mt-px'
           v-bind='props3'
         />
       </div>
     </div>
-    <div class='bg-grey-light py-1 mt-1'>
+    <div class='bg-light-4 py-1 mt-1'>
       <p class='text-center capitalize'>Absolute Baselines</p>
       <div class='mt-2 bg-inherit'>
         <BarChart
@@ -412,7 +439,7 @@ export default {
     otherwise no direction (arrow) will be shown.
   </p>
   <div class='flex mt-2 mb-5'>
-    <BarChart class='bg-grey-light' :baseline='25' :delta='50' />
+    <BarChart class='bg-light-4' :baseline='25' :delta='50' />
     <span>vs.</span>
     <BarChart :baseline='25' :delta='50' />
   </div>

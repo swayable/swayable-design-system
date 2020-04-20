@@ -56,7 +56,7 @@
       <span class='ml-1'>Icon</span>
     </div>
 
-    <div class='mt-10 bg-grey-light'>
+    <div class='mt-10 bg-light-4'>
       <BarChart
         :baseline='20'
         :delta='60'
