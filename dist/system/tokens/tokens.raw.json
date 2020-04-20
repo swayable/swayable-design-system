@@ -5,7 +5,7 @@
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(220, 80, 100)",
-      "order": 13,
+      "order": 36,
       "originalValue": "#dc5064",
       "name": "color_red_dark"
     },
@@ -13,7 +13,7 @@
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(220, 180, 20)",
-      "order": 15,
+      "order": 38,
       "originalValue": "#dcb414",
       "name": "color_orange_light"
     },
@@ -21,47 +21,156 @@
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(80, 120, 220)",
-      "order": 10,
+      "order": 33,
       "originalValue": "#5078dc",
       "name": "color_azure_dark"
     },
-    "color_black": {
+    "color_dark_0": {
       "type": "color",
-      "category": "color-basic",
-      "value": "rgb(0, 0, 0)",
-      "order": 26,
-      "originalValue": "#000000",
-      "name": "color_black"
+      "category": "color-grey-scale",
+      "value": "rgb(18, 18, 22)",
+      "order": 0,
+      "usage": "Background (dark theme).",
+      "originalValue": "hsl(240,10%,8%)",
+      "name": "color_dark_0"
     },
-    "color_grey_darker": {
+    "color_dark_1": {
       "type": "color",
-      "category": "color-basic",
-      "value": "rgb(153, 154, 157)",
+      "category": "color-grey-scale",
+      "value": "rgb(28, 28, 34)",
+      "order": 1,
+      "usage": "Card sub-section (dark theme).",
+      "originalValue": "hsl(240,10%,12%)",
+      "name": "color_dark_1"
+    },
+    "color_dark_2": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(37, 37, 45)",
+      "order": 2,
+      "usage": "Text Primary (light theme). Card (dark theme).",
+      "originalValue": "hsl(240,10%,16%)",
+      "name": "color_dark_2"
+    },
+    "color_dark_3": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(55, 55, 67)",
+      "order": 3,
+      "usage": "Card Hover (dark theme).",
+      "originalValue": "hsl(240,10%,24%)",
+      "name": "color_dark_3"
+    },
+    "color_red_1": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(214, 92, 92)",
       "order": 20,
-      "originalValue": "#999A9D",
-      "name": "color_grey_darker"
+      "usage": "Destructive Action (light theme).",
+      "originalValue": "hsl(360,60%,60%)",
+      "name": "color_red_1"
+    },
+    "color_dark_4": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(73, 73, 90)",
+      "order": 4,
+      "usage": "Text Secondary (light theme). Strokes / Separators (dark theme).",
+      "originalValue": "hsl(240,10%,32%)",
+      "name": "color_dark_4"
     },
     "color_green": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(120, 200, 100)",
-      "order": 7,
+      "order": 30,
       "originalValue": "#78c864",
       "name": "color_green"
+    },
+    "color_red_2": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(219, 112, 112)",
+      "order": 21,
+      "usage": "Destructive Action Hover (light theme).",
+      "originalValue": "hsl(360,60%,65%)",
+      "name": "color_red_2"
+    },
+    "color_blue_1": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(92, 92, 214)",
+      "order": 15,
+      "usage": "Action (light theme).",
+      "originalValue": "hsl(240,60%,60%)",
+      "name": "color_blue_1"
+    },
+    "color_dark_5": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(92, 92, 112)",
+      "order": 5,
+      "originalValue": "hsl(240,10%,40%)",
+      "name": "color_dark_5"
+    },
+    "color_red_3": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(224, 133, 133)",
+      "order": 22,
+      "usage": "Destructive Action Active (light theme). Destructive Action (dark theme).",
+      "originalValue": "hsl(360,60%,70%)",
+      "name": "color_red_3"
+    },
+    "color_blue_2": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(112, 112, 219)",
+      "order": 16,
+      "usage": "Action Hover (light theme).",
+      "originalValue": "hsl(240,60%,65%)",
+      "name": "color_blue_2"
+    },
+    "color_dark_6": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(115, 115, 140)",
+      "order": 6,
+      "usage": "Text Tertiary (light theme).",
+      "originalValue": "hsl(240,10%,50%)",
+      "name": "color_dark_6"
+    },
+    "color_red_4": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(230, 153, 153)",
+      "order": 23,
+      "usage": "Destructive Action Hover (dark theme).",
+      "originalValue": "hsl(360,60%,75%)",
+      "name": "color_red_4"
     },
     "color_azure_light": {
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(40, 160, 220)",
-      "order": 18,
+      "order": 41,
       "originalValue": "#28a0dc",
       "name": "color_azure_light"
+    },
+    "color_blue_3": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(133, 133, 224)",
+      "order": 17,
+      "usage": "Action Active (light theme). Action (dark theme).",
+      "originalValue": "hsl(240,60%,70%)",
+      "name": "color_blue_3"
     },
     "color_rose_dark": {
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(200, 40, 140)",
-      "order": 12,
+      "order": 35,
       "originalValue": "#c8288c",
       "name": "color_rose_dark"
     },
@@ -69,7 +178,7 @@
       "type": "color",
       "category": "color-primary",
       "value": "rgb(220, 160, 40)",
-      "order": 5,
+      "order": 28,
       "originalValue": "#dca028",
       "name": "color_orange"
     },
@@ -77,23 +186,77 @@
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(220, 130, 70)",
-      "order": 14,
+      "order": 37,
       "originalValue": "#dc8246",
       "name": "color_orange_dark"
     },
+    "color_red_5": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(235, 173, 173)",
+      "order": 24,
+      "usage": "Destructive Action Active (dark theme).",
+      "originalValue": "hsl(360,60%,80%)",
+      "name": "color_red_5"
+    },
+    "color_blue_4": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(153, 153, 230)",
+      "order": 18,
+      "usage": "Action Hover (dark theme).",
+      "originalValue": "hsl(240,60%,75%)",
+      "name": "color_blue_4"
+    },
+    "color_light_0": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(143, 143, 163)",
+      "order": 7,
+      "usage": "Text Quarternary (light theme).",
+      "originalValue": "hsl(240,10%,60%)",
+      "name": "color_light_0"
+    },
+    "color_blue_5": {
+      "type": "color",
+      "category": "color-action",
+      "value": "rgb(173, 173, 235)",
+      "order": 19,
+      "usage": "Action Active (dark theme).",
+      "originalValue": "hsl(240,60%,80%)",
+      "name": "color_blue_5"
+    },
+    "color_light_1": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(171, 171, 186)",
+      "order": 8,
+      "originalValue": "hsl(240,10%,70%)",
+      "name": "color_light_1"
+    },
     "color_white": {
       "type": "color",
-      "category": "color-basic",
+      "category": "color-grey-scale",
       "value": "rgb(255, 255, 255)",
-      "order": 25,
-      "originalValue": "#ffffff",
+      "order": 14,
+      "usage": "Card Hover (light theme).  Text Primary (dark theme).",
+      "originalValue": "hsl(240,10%,100%)",
       "name": "color_white"
+    },
+    "color_light_2": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(199, 199, 209)",
+      "order": 9,
+      "usage": "Text Quarternary (dark theme).",
+      "originalValue": "hsl(240,10%,80%)",
+      "name": "color_light_2"
     },
     "color_magenta": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(180, 60, 180)",
-      "order": 2,
+      "order": 26,
       "originalValue": "#b43cb4",
       "name": "color_magenta"
     },
@@ -101,192 +264,156 @@
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(80, 200, 140)",
-      "order": 17,
+      "order": 40,
       "originalValue": "#50c88c",
       "name": "color_green_dark"
+    },
+    "color_light_3": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(221, 221, 227)",
+      "order": 10,
+      "usage": "Strokes / Separators (light theme). Text Tertiary (dark theme).",
+      "originalValue": "hsl(240,10%,88%)",
+      "name": "color_light_3"
+    },
+    "color_light_4": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(230, 230, 234)",
+      "order": 11,
+      "usage": "Background (light theme).",
+      "originalValue": "hsl(240,10%,91%)",
+      "name": "color_light_4"
     },
     "color_yellow": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(200, 200, 20)",
-      "order": 6,
+      "order": 29,
       "originalValue": "#c8c814",
       "name": "color_yellow"
+    },
+    "color_light_5": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(238, 238, 241)",
+      "order": 12,
+      "usage": "Card sub-section (light theme). Text Secondary (dark theme).",
+      "originalValue": "hsl(240,10%,94%)",
+      "name": "color_light_5"
+    },
+    "color_light_6": {
+      "type": "color",
+      "category": "color-grey-scale",
+      "value": "rgb(247, 247, 248)",
+      "order": 13,
+      "usage": "Card (light theme).",
+      "originalValue": "hsl(240,10%,97%)",
+      "name": "color_light_6"
     },
     "color_pink": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(220, 60, 140)",
-      "order": 3,
+      "order": 27,
       "originalValue": "#dc3c8c",
       "name": "color_pink"
-    },
-    "color_grey_light": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(234, 235, 238)",
-      "order": 23,
-      "originalValue": "#EAEBEE",
-      "name": "color_grey_light"
     },
     "color_azure": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(60, 140, 220)",
-      "order": 9,
+      "order": 32,
       "originalValue": "#3c8cdc",
       "name": "color_azure"
-    },
-    "color_red": {
-      "type": "color",
-      "category": "color-primary",
-      "value": "rgb(220, 100, 100)",
-      "order": 4,
-      "originalValue": "#dc6464",
-      "name": "color_red"
-    },
-    "color_blue": {
-      "type": "color",
-      "category": "color-primary",
-      "value": "rgb(100, 100, 220)",
-      "order": 1,
-      "originalValue": "#6464dc",
-      "name": "color_blue"
     },
     "color_purple": {
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(140, 80, 200)",
-      "order": 11,
+      "order": 34,
       "originalValue": "#8c50c8",
       "name": "color_purple"
-    },
-    "color_grey_dark": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(204, 205, 208)",
-      "order": 21,
-      "originalValue": "#CCCDD0",
-      "name": "color_grey_dark"
-    },
-    "color_grey": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(221, 222, 225)",
-      "order": 22,
-      "originalValue": "#DDDEE1",
-      "name": "color_grey"
     },
     "color_green_light": {
       "type": "color",
       "category": "color-secondary",
       "value": "rgb(160, 200, 60)",
-      "order": 16,
+      "order": 39,
       "originalValue": "#a0c83c",
       "name": "color_green_light"
-    },
-    "color_grey_lighter": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(246, 247, 250)",
-      "order": 24,
-      "originalValue": "#F6F7FA",
-      "name": "color_grey_lighter"
-    },
-    "color_blue_dark": {
-      "type": "color",
-      "category": "color-basic",
-      "value": "rgb(40, 48, 64)",
-      "order": 19,
-      "originalValue": "#283040",
-      "name": "color_blue_dark"
     },
     "color_cyan": {
       "type": "color",
       "category": "color-primary",
       "value": "rgb(20, 200, 200)",
-      "order": 8,
+      "order": 31,
       "originalValue": "#14c8c8",
       "name": "color_cyan"
-    },
-    "size_2xl": {
-      "type": "number",
-      "category": "font-size",
-      "token": "2xl",
-      "value": "1.5rem",
-      "originalValue": "1.5rem",
-      "name": "size_2xl"
-    },
-    "size_3xl": {
-      "type": "number",
-      "category": "font-size",
-      "token": "3xl",
-      "value": "1.875rem",
-      "originalValue": "1.875rem",
-      "name": "size_3xl"
     },
     "size_4xl": {
       "type": "number",
       "category": "font-size",
       "token": "4xl",
-      "value": "2.25rem",
-      "originalValue": "2.25rem",
-      "name": "size_4xl"
-    },
-    "size_5xl": {
-      "type": "number",
-      "category": "font-size",
-      "token": "5xl",
       "value": "3rem",
       "originalValue": "3rem",
-      "name": "size_5xl"
+      "name": "size_4xl"
     },
-    "size_6xl": {
+    "size_3xl": {
       "type": "number",
       "category": "font-size",
-      "token": "6xl",
-      "value": "4rem",
-      "originalValue": "4rem",
-      "name": "size_6xl"
+      "token": "3xl",
+      "value": "1.5rem",
+      "originalValue": "1.5rem",
+      "name": "size_3xl"
     },
-    "size_base": {
+    "size_2xl": {
       "type": "number",
       "category": "font-size",
-      "token": "base",
-      "value": "1rem",
-      "originalValue": "1rem",
-      "name": "size_base"
+      "token": "2xl",
+      "value": "1.125rem",
+      "originalValue": "1.125rem",
+      "name": "size_2xl"
     },
     "size_xl": {
       "type": "number",
       "category": "font-size",
       "token": "xl",
-      "value": "1.25rem",
-      "originalValue": "1.25rem",
+      "value": "1rem",
+      "originalValue": "1rem",
       "name": "size_xl"
-    },
-    "size_sm": {
-      "type": "number",
-      "category": "font-size",
-      "token": "sm",
-      "value": "0.875rem",
-      "originalValue": "0.875rem",
-      "name": "size_sm"
     },
     "size_lg": {
       "type": "number",
       "category": "font-size",
       "token": "lg",
-      "value": "1.125rem",
-      "originalValue": "1.125rem",
+      "value": "0.875rem",
+      "originalValue": "0.875rem",
       "name": "size_lg"
+    },
+    "size_md": {
+      "type": "number",
+      "category": "font-size",
+      "token": "md",
+      "value": "0.75rem",
+      "originalValue": "0.75rem",
+      "name": "size_md"
+    },
+    "size_sm": {
+      "type": "number",
+      "category": "font-size",
+      "token": "sm",
+      "value": "0.688rem",
+      "originalValue": "0.688rem",
+      "name": "size_sm"
     },
     "size_xs": {
       "type": "number",
       "category": "font-size",
       "token": "xs",
-      "value": "0.75rem",
-      "originalValue": "0.75rem",
+      "value": "0.625rem",
+      "originalValue": "0.625rem",
       "name": "size_xs"
     }
   }
