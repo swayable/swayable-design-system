@@ -13,13 +13,13 @@ export default {
 <style lang='scss'>
   tbody {
     .table-row td {
-      @apply bg-light-6;
+      @apply bg-light-6 transition-colors ease-in-out duration-75;
     }
   }
   .theme-dark-mode {
     tbody {
       .table-row td {
-        @apply bg-dark-4;
+        @apply bg-dark-2;
       }
     }
   }

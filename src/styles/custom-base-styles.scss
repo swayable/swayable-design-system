@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  @apply bg-light-4 text-dark-2 border-light-3 transition-colors ease-in-out duration-1000;
+  @apply bg-light-4 text-dark-2 border-light-3;
 }
 
 *:focus { @apply outline-none shadow-outline }

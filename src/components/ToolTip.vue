@@ -114,7 +114,8 @@ export default {
 </script>
 
 <style lang="scss">
-$tooltipColor: adjust-color($color-blue-dark, $alpha: -0.1);
+// TODO: dark mode requires some refactoring, but is so-so ok for now
+$tooltipColor: adjust-color($color-dark-3, $alpha: -0.1);
 .tooltip {
   background: $tooltipColor;
   position: relative;
@@ -187,7 +188,7 @@ $tooltipColor: adjust-color($color-blue-dark, $alpha: -0.1);
 
 <docs>
   ```jsx
-  <div class='flex justify-around mb-5'>
+  <div class='flex justify-around mb-5 theme-dark-mode'>
     <ToolTip position='right'>
       <Label>Right</Label>
       <template #tip>

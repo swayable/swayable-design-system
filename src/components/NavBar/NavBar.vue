@@ -9,7 +9,7 @@
         <div class='flex'>
           <div class='-ml-2 mr-2 flex items-center md:hidden'>
             <button
-              class='inline-flex items-center justify-center p-2 rounded-md hover:bg-blue focus:outline-none focus:bg-blue transition duration-150 ease-in-out'
+              class='inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out'
               @click='menuOpen = !menuOpen'
             >
               <svg
@@ -84,7 +84,8 @@
             <div class='ml-3 relative'>
               <div>
                 <button
-                  class='flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
+                  class='openMenu flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
+                  :class='{ active: menuOpen }'
                   @click='menuOpen = !menuOpen'
                 >
                   <Icon
@@ -103,11 +104,14 @@
               >
                 <div
                   v-show='menuOpen'
-                  class='origin-top-right absolute right-0 mt-3 w-64 rounded shadow-lg z-50'
+                  class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
                 >
-                  <div class='pb-2 rounded bg-inherit shadow-xs'>
-                    <div class='block px-8 py-6 mb-2'>
-                      <div class='text-blue-dark leading-5'>
+                  <div class='py-2 rounded shadow-xs'>
+                    <div
+                      v-if='authenticated'
+                      class='block px-8 py-6'
+                    >
+                      <div class='leading-5'>
                         {{ organization }}
                       </div>
                       <div class='text-sm leading-4'>
@@ -118,7 +122,7 @@
                       v-for='(displayName, name) in menuLinks'
                       :key='name'
                       :to='{ name }'
-                      class='block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out'
+                      class='menu-link block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out'
                       :class='{ "logout": displayName === "Log Out" }'
                     >
                       {{ displayName }}
@@ -156,18 +160,21 @@
               {{ title }}
             </NavItem>
           </div>
-          <div class='flex items-center px-5 py-4 border-t'>
-            <div class='text-light-4 flex-shrink-0'>
+          <div
+            v-if='authenticated'
+            class='flex items-center px-5 py-4 border-t'
+          >
+            <div class='flex-shrink-0'>
               <Icon
                 name='user'
                 size='lg'
               />
             </div>
             <div class='ml-3'>
-              <div class='text-light-4 leading-5'>
+              <div class='leading-5'>
                 {{ organization }}
               </div>
-              <div class='text-sm text-dark-5 leading-4'>
+              <div class='text-sm leading-4'>
                 {{ user }}
               </div>
             </div>
@@ -177,7 +184,7 @@
               v-for='(displayName, name) in menuLinks'
               :key='name'
               :to='{ name }'
-              :class='displayName === "Log Out" && "text-red"'
+              :class='{ "logout": displayName === "Log Out" }'
             >
               {{ displayName }}
             </NavItem>
@@ -199,8 +206,8 @@ export default {
   name: 'NavBar',
   directives: { onClickaway },
   props: {
-    user: { type: String, default: 'jane@doe.com'},
-    organization: { type: String, default:'Doe inc'},
+    user: { type: String, required: false },
+    organization: { type: String, required: false },
     links: { type: Object, default: () => ({}) },
     alignRight: { type: Boolean, default: false  },
   },
@@ -214,6 +221,11 @@ export default {
         'sign-out': 'Log Out',
       },
     }
+  },
+  computed: {
+    authenticated() {
+      return !!this.user && !!this.organization
+    },
   },
   methods: {
     closeMenu() {
@@ -231,12 +243,52 @@ export default {
     background-image: url('//images.swayable.com/logos/light.svg?v=1');
     background-size: 9rem;
   }
+  .openMenu {
+    &.active {
+      @apply text-blue-1 bg-light-5;
+    }
+    &:hover { @apply text-blue-1; }
+  }
+  .menu-link {
+    &:hover, &:focus {
+      @apply bg-blue-1 text-white;
+    }
+    &:active {
+      @apply bg-blue-2;
+    }
+  }
+  .logout {
+    @apply text-red-1;
+    @media (min-width: theme('screens.md')) {
+      &:active { @apply bg-red-2 }
+      &:hover, &:focus {
+        @apply bg-red-1 text-white;
+      }
+    }
+  }
 }
 .theme-dark-mode {
   .nav-bar {
     @apply bg-dark-2;
     .bg-logo {
       background-image: url('//images.swayable.com/logos/dark.svg?v=1')
+    }
+    .openMenu {
+      &.active {
+        @apply text-blue-3 bg-dark-3;
+      }
+      &:hover { @apply text-blue-3; }
+    }
+    .menu-link {
+      &:active { @apply bg-blue-4; }
+      &:hover, &:focus { @apply bg-blue-3 text-white }
+    }
+    .logout {
+      @apply text-red-3;
+      @media (min-width: theme('screens.md')) {
+        &:hover, &:focus { @apply bg-red-3 text-white }
+        &:active { @apply bg-red-4 }
+      }
     }
   }
 }
@@ -250,7 +302,7 @@ export default {
     Data: { href: '/#/Component%20Library/NavBar' },
   }
   <div class='mb-5'>
-    <NavBar :links='links'>
+    <NavBar :links='links' user='josh@swayable.com' organization='Swayable'>
       <Button>
         Request New
       </Button>

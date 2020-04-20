@@ -131,10 +131,6 @@ props:
     category: 'color-action'
     order: 24
     usage: 'Destructive Action Active (dark theme).'
-  color_blue_dark: 
-    value: '#283040'
-    category: 'color-primary'
-    order: 25
   color_magenta:
     value: '#b43cb4'
     category: 'color-primary'

@@ -26,7 +26,7 @@ const colors = _reduce(
     acc[color.name.replace(/color_/g, '').replace(/_/g, '-')] = color.originalValue
     return acc
   },
-  {},
+  { transparent: 'rgba(0,0,0,0)' },
 )
 
 const fontSize = _reduce(

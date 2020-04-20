@@ -4,7 +4,7 @@
     v-if='type === "textarea"'
     :disabled='disabled'
     :type='type'
-    class='text-input text-sm p-2 rounded border border-grey leading-tight'
+    class='text-input text-sm p-2 rounded leading-tight'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -14,7 +14,7 @@
     :disabled='disabled'
     :type='type'
     :value='value'
-    class='text-input text-sm p-2 rounded border border-grey leading-tight'
+    class='text-input text-sm p-2 rounded leading-tight'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -75,24 +75,58 @@ export default {
     },
     variantClasses() {
       return this.disabled
-        ? 'bg-light-4 text-dark-5 cursor-not-allowed disabled'
-        : 'bg-white text-blue-dark focus:shadow-outline focus:border-blue'
+        ? 'cursor-not-allowed disabled'
+        : 'bg-card focus:shadow-outline'
     },
   },
 }
 </script>
 
+<style lang="scss">
+  .text-input {
+    @apply text-dark-4 bg-light-6;
+    &[disabled] {
+      @apply text-light-0 bg-light-5;
+    }
+  }
+  .theme-dark-mode {
+    .text-input {
+      @apply text-light-4 bg-dark-2;
+      &[disabled] {
+        @apply text-light-0 bg-dark-1;
+      }
+    }
+  }
+</style>
+
 <docs>
   ```jsx
-  <div class='flex'>
-    <TextInput class='flex-grow m-1' placeholder="Placeholder" />
-    <TextInput class='flex-grow m-1' value="Text Input" />
-    <TextInput class='flex-grow m-1' value="Disabled" disabled />
+  <div class='p-2'>
+    <h3 class='typography-4 w-full uppercase text-light-1'>Light Mode</h3>
+    <div class='flex'>
+      <TextInput class='flex-grow m-1' placeholder="Placeholder" />
+      <TextInput class='flex-grow m-1' value="Text Input" />
+      <TextInput class='flex-grow m-1' value="Disabled" disabled />
+    </div>
+    <div class='flex'>
+      <TextInput class='flex-grow m-1' type="textarea" placeholder="Placeholder" />
+      <TextInput class='flex-grow m-1' type="textarea" value="Text Area" />
+      <TextInput class='flex-grow m-1' value="Disabled" type="textarea" disabled />
+    </div>
   </div>
-  <div class='flex'>
-    <TextInput class='flex-grow m-1' type="textarea" placeholder="Placeholder" />
-    <TextInput class='flex-grow m-1' type="textarea" value="Text Area" />
-    <TextInput class='flex-grow m-1' value="Disabled" type="textarea" disabled />
+
+  <div class='mt-5 theme-dark-mode p-2'>
+    <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
+    <div class='flex'>
+      <TextInput class='flex-grow m-1' placeholder="Placeholder" />
+      <TextInput class='flex-grow m-1' value="Text Input" />
+      <TextInput class='flex-grow m-1' value="Disabled" disabled />
+    </div>
+    <div class='flex'>
+      <TextInput class='flex-grow m-1' type="textarea" placeholder="Placeholder" />
+      <TextInput class='flex-grow m-1' type="textarea" value="Text Area" />
+      <TextInput class='flex-grow m-1' value="Disabled" type="textarea" disabled />
+    </div>
   </div>
   ```
 </docs>

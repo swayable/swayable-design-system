@@ -10,13 +10,13 @@ exports[`BarChart.vue a very basic chart matches the snapshot 1`] = `
   <!---->
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 100%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
 
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 50%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
 
       </div>
     </div>
@@ -27,20 +27,20 @@ exports[`BarChart.vue a very basic chart matches the snapshot 1`] = `
 exports[`BarChart.vue insignificant matches the snapshot 1`] = `
 <div class="bar-chart w-full flex bg-inherit relative font-mono items-center" style="height: 20px;">
   <div class="delta bg-inherit overflow-hidden relative" style="height: 20px; margin-left: 80.11111111111111%; width: 2.6666666666666665%; margin-right: 17.222222222222218%;">
-    <div class="h-full" style="background: rgba(0, 0, 0, 0.1);"></div>
+    <div class="h-full insignificant"></div>
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 13.555555555555554%; left: 73.33333333333333%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 13.555555555555554%; left: 73.33333333333333%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 19.888888888888886%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         -2.4%
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 82.77777777777779%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         ◀ 54.5%
       </div>
     </div>
@@ -55,16 +55,16 @@ exports[`BarChart.vue negative baseline matches the snapshot 1`] = `
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 26.666666666666668%; left: 13.777777777777784%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 26.666666666666668%; left: 13.777777777777784%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 72.88888888888889%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         -14.1%
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 42.77777777777778%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         ◀ 18.5%
       </div>
     </div>
@@ -79,16 +79,16 @@ exports[`BarChart.vue negative delta matches the snapshot 1`] = `
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 26.666666666666668%; left: 13.777777777777784%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 26.666666666666668%; left: 13.777777777777784%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 72.88888888888889%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         -14.1%
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 42.77777777777778%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         ◀ 18.5%
       </div>
     </div>
@@ -103,16 +103,16 @@ exports[`BarChart.vue positive baseline matches the snapshot 1`] = `
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: -4.1111111111111%; left: 104.11111111111111%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: -4.1111111111111%; left: 104.11111111111111%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 35.000000000000014%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         38.5% ▶
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 114.1111111111111%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         +44.2%
       </div>
     </div>
@@ -127,16 +127,16 @@ exports[`BarChart.vue positive delta matches the snapshot 1`] = `
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: -4.1111111111111%; left: 104.11111111111111%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: -4.1111111111111%; left: 104.11111111111111%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 35.000000000000014%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         38.5% ▶
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 114.1111111111111%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         +44.2%
       </div>
     </div>
@@ -151,16 +151,16 @@ exports[`BarChart.vue using a unusual scale matches the snapshot 1`] = `
     <div class="arrow rotate-1/8 h-full bg-inherit absolute" style="width: 20px; top: 50%;"></div>
     <div class="arrow rotate-7/8 h-full bg-inherit absolute" style="width: 20px; bottom: 50%;"></div>
   </div>
-  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 13.555555555555554%; left: 73.33333333333333%;"><span class="flex-grow"></span> <span class="bg-dark-0 opacity-10" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
+  <div class="error absolute h-full flex flex-col items-stretch top-0" style="width: 13.555555555555554%; left: 73.33333333333333%;"><span class="flex-grow"></span> <span class="errorBar" style="height: 6.666666666666667px;"></span> <span class="flex-grow"></span></div>
   <div class="labels absolute w-full h-full flex items-stretch">
     <div class="absolute flex items-center bg-inherit h-full" style="right: 19.888888888888886%;">
-      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="absolute dataLabelLeft data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         -2.4%
       </div>
     </div>
     <!---->
     <div class="absolute flex items-center bg-inherit h-full" style="left: 82.77777777777779%;">
-      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 color-blue-dark font-mono">
+      <div class="ml-1 data-label whitespace-no-wrap text-xs font-semibold bg-inherit px-px opacity-75 font-mono">
         ◀ 54.5%
       </div>
     </div>

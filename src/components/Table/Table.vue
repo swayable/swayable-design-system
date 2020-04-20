@@ -80,76 +80,82 @@ export default {
 
 <docs>
 ```jsx
-<Table>
-  <template slot='head'>
-    <TableRow>
-      <TableCell head>
-        <h5 class='text-blue-dark'>
+const theme = "Light Mode"
+<Toggle
+  :options='["Light Mode", "Dark Mode"]'
+  :selected='theme'
+  @select='s => theme = s'
+/>
+<div :class='{ "theme-dark-mode": theme === "Dark Mode"}' class='mt-5 p-7 pt-0'>
+  <Table>
+    <template slot='head'>
+      <TableRow>
+        <TableCell head>
           Multiple Breakdown
-        </h5>
+        </TableCell>
+        <TableCell head>
+          Segment
+        </TableCell>
+        <TableCell head grow>
+          Brand Lift
+        </TableCell>
+      </TableRow>
+    </template>
+    <TableRow>
+      <TableCell>
+        <span class='px-5 py-1 mr-3 rounded' />
+        <span class='font-mono'>Alex Morgan</span>
       </TableCell>
-      <TableCell head>
-        Segment
+      <TableCell>
+        <span class='font-mono'>Female</span>
       </TableCell>
-      <TableCell head grow>
-        Brand Lift
+      <TableCell grow>
+        <p>Cell 1</p>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 1</p>
       </TableCell>
     </TableRow>
-  </template>
-  <TableRow>
-    <TableCell>
-      <span class='bg-light-0 px-5 py-1 mr-3 rounded' />
-      <span class='font-mono'>Alex Morgan</span>
-    </TableCell>
-    <TableCell>
-      <span class='font-mono'>Female</span>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 1</p>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 1</p>
-    </TableCell>
-  </TableRow>
-  <TableRow>
-    <TableCell class='merge-t' />
-    <TableCell>
-      <span class='font-mono'>Male</span>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 2</p>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 2</p>
-    </TableCell>
-  </TableRow>
-  <TableRow>
-    <TableCell>
-      <span class='bg-light-0 px-5 py-1 mr-3 rounded' />
-      <span class='font-mono'>Colin Kaepernick</span>
-    </TableCell>
-    <TableCell>
-      <span class='font-mono'>Female</span>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 1</p>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 1</p>
-    </TableCell>
-  </TableRow>
-   <TableRow>
-    <TableCell class='merge-t' />
-    <TableCell>
-      <span class='font-mono'>Male</span>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 2</p>
-    </TableCell>
-    <TableCell grow>
-      <p>Cell 2</p>
-    </TableCell>
-  </TableRow>
-</Table>
+    <TableRow>
+      <TableCell class='merge-t' />
+      <TableCell>
+        <span class='font-mono'>Male</span>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 2</p>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 2</p>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>
+        <span class='px-5 py-1 mr-3 rounded' />
+        <span class='font-mono'>Colin Kaepernick</span>
+      </TableCell>
+      <TableCell>
+        <span class='font-mono'>Female</span>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 1</p>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 1</p>
+      </TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell class='merge-t' />
+      <TableCell>
+        <span class='font-mono'>Male</span>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 2</p>
+      </TableCell>
+      <TableCell grow>
+        <p>Cell 2</p>
+      </TableCell>
+    </TableRow>
+  </Table>
+</div>
 ```
 </docs>

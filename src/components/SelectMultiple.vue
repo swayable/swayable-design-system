@@ -2,17 +2,23 @@
   <DropDown
     align='left'
     :open='open'
+    class='select-options'
     @close='open = false'
   >
     <Button
-      custom
-      class='bg-white border rounded'
+      secondary
+      class='bg-card rounded'
       @click='open = !open'
     >
-      <slot />
+      <span
+        class='select-button'
+        :class='{ active }'
+      >
+        <slot />
+      </span>
     </Button>
     <template #dropdown>
-      <div class='flex bg-white flex-col border rounded mt-px'>
+      <div class='flex bg-card flex-col rounded mt-px'>
         <div
           v-for='(item, i) in items'
           :key='item.text'
@@ -28,6 +34,7 @@
           >
             <Icon
               name='check'
+              class='check-icon'
               :class='iconClassForIndex(i)'
               size='xs'
             />
@@ -63,6 +70,10 @@ export default {
      * Includes option to select/deselect all Options
      */
     allowSelectAll: { type: Boolean, default: true },
+    /**
+     * Lights up text in trigger button
+     */
+    active: { type: Boolean, default: false },
   },
   data() {
     const items = this.options.map(option => {
@@ -153,10 +164,10 @@ export default {
     },
     iconClassForIndex(itemIndex) {
       const item = this.items[itemIndex]
-      if (item.selected && item.preview) return 'text-grey'
-      if (item.selected) return 'text-dark-0'
-      if (item.preview) return 'text-dark-5'
-      return 'text-white'
+      if (item.selected && item.preview) return 'selected-preview'
+      if (item.selected) return 'selected'
+      if (item.preview) return 'preview'
+      return 'text-transparent'
     },
     isAllItemIndex(itemIndex) {
       return itemIndex === 0 && this.allowSelectAll
@@ -165,31 +176,59 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.select-options {
+  .select-button {
+    @apply text-dark-4;
+    &.active { @apply text-blue-2 }
+  }
+  .check-icon {
+    &.selected-preview { @apply text-dark-6  }
+    &.selected { @apply text-dark-2 }
+    &.preview { @apply text-light-0 }
+  }
+}
+.theme-dark-mode {
+  .select-button {
+    @apply text-light-4;
+    &.active { @apply text-blue-4 }
+  }
+  .check-icon {
+    &.selected-preview { @apply text-light-3  }
+    &.selected { @apply text-light-6 }
+    &.preview { @apply text-light-2 }
+  }
+}
+</style>
+
 <docs>
   ```jsx
-  const log = values => console.log(values)
+  const active1 = false
+  const active2 = false
   <SelectMultiple
     :options='[
       { value: 1, text: "Select 1", selected: false },
       { value: 2, text: "Select 2", selected: false },
       { value: 3, text: "Select 3", selected: true },
     ]'
-    @change='log'
+    :active='active1'
+    @change='active1 = true'
   >
-    Allow Select All
+    ☀ Light Mode
   </SelectMultiple>
 
-  <SelectMultiple
-    class='ml-3'
-    :options='[
-      { value: 1, text: "Select 1", selected: false },
-      { value: 2, text: "Select 2", selected: false },
-      { value: 3, text: "Select 3", selected: false },
-    ]'
-    :allowSelectAll='false'
-    @change='log'
-  >
-    Disallow Select All
-  </SelectMultiple>
+  <div class='theme-dark-mode p-2 inline-block'>
+    <SelectMultiple
+      :options='[
+        { value: 1, text: "Select 1", selected: false },
+        { value: 2, text: "Select 2", selected: false },
+        { value: 3, text: "Select 3", selected: false },
+      ]'
+      :active='active2'
+      @change='active2 = true'
+    >
+       ☾ Dark Mode
+    </SelectMultiple>
+  </div>
   ```
 </docs>

@@ -77,13 +77,13 @@ img[title='Code Repo'] {
 --------------------------------------------- */
 
 [class^="rsg--heading"], [class^="rsg--heading"] a {
-  color: theme('colors.blue-dark') !important;
+  color: theme('colors.dark-3') !important;
   margin-top: theme('spacing.5') !important;
 }
 
 // // Paragraphs
 html, body, code, [class^="rsg--para"] {
-  color: theme('colors.blue-dark') !important;
+  color: theme('colors.dark-3') !important;
 }
 
 // Type layout adjustments
@@ -467,7 +467,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   letter-spacing: 1px;
   font-size: 0.875rem;
   border-radius: theme('borderRadius.sm');
-  color: theme('colors.blue-dark');
+  color: theme('colors.dark-3');
   position: absolute;
   right: theme('spacing.24');
   top: theme('spacing.32');
@@ -485,7 +485,7 @@ div[class^="rsg--root"] div[class^="rsg--tabs"] {
   }
   &-review {
     background: theme('colors.yellow');
-    color: theme('colors.blue-dark');
+    color: theme('colors.dark-3');
   }
   &-planned {
     background: theme('colors.blue');

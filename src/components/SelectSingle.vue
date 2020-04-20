@@ -1,27 +1,33 @@
 <template>
   <DropDown
+    class='select-options'
     :open='open'
     :align='align'
     @close='open = false'
   >
     <Button
-      custom
-      class='bg-white border rounded'
+      secondary
+      class='bg-card rounded'
       @click='open = !open'
     >
-      <slot>
-        <span class='flex-grow self-center'>
-          {{ selected }}
-        </span>
-        <Icon
-          class='ml-2 text-light-0'
-          name='chevron'
-          size='xs'
-        />
-      </slot>
+      <span
+        class='select-button'
+        :class='{ active }'
+      >
+        <slot>
+          <span class='flex-grow self-center'>
+            {{ selected }}
+          </span>
+          <Icon
+            class='ml-2'
+            name='chevron'
+            size='xs'
+          />
+        </slot>
+      </span>
     </Button>
     <template #dropdown>
-      <div class='bg-white flex-col border -mt-px rounded'>
+      <div class='bg-card flex-col mt-px rounded'>
         <Button
           v-for='option in options'
           :key='option'
@@ -72,16 +78,13 @@ export default {
     selected: {
       type: String,
     },
+    /**
+     * Lights up text in trigger button
+     */
+    active: { type: Boolean, default: false },
   },
   data() {
     return { open: false }
-  },
-  computed: {
-    hoverClass() {
-      if (this.dark) return 'bg-blue-dark'
-      if (this.primary) return 'bg-blue'
-      return 'bg-light-5'
-    },
   },
 }
 </script>
@@ -89,15 +92,32 @@ export default {
 <docs>
   ```jsx
   const options = [
-    "Option 1",
+    "Light Mode",
+    "Option 2",
+    "Option 3",
+  ]
+  const options2 = [
+    "Dark Mode",
     "Option 2",
     "Option 3",
   ]
   let selected = options[0]
+  let selected2 = options2[0]
+  let active = false
+  let active2 = false
   <SelectSingle
     :selected='selected'
     :options='options'
-    @select='option => selected = option'
+    :active='active'
+    @select='option => { selected = option; active = true }'
   />
+  <div class='theme-dark-mode inline-block p-2'>
+    <SelectSingle
+      :selected='selected2'
+      :options='options2'
+      :active='active2'
+      @select='option => { selected2 = option; active2 = true }'
+    />
+  </div>
   ```
 </docs>

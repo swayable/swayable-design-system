@@ -18,7 +18,7 @@
 
 
 /**
- * Shows how to layout and structure a page.
+ * Used as a page wrapper
  */
 export default {
   name: 'Index',

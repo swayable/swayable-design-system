@@ -85,7 +85,6 @@ export default {
         acc[category].push(Token.build(color))
         return acc
       }, {})
-      console.log(colors)
       return colors
     },
   },

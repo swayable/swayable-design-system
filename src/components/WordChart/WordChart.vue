@@ -196,10 +196,23 @@ export default {
   ```jsx
     import example from './exampleText.js'
 
-    <WordChart
-      :text='example.text'
-      :ignoreWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
-      :showDroppedWordCount='true'
-    />
+    <div class='p-2 mt-2'>
+      <h3 class='typography-4 w-full uppercase text-light-1'>Light Mode</h3>
+      <WordChart
+        :text='example.text'
+        :ignoreWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
+        :showDroppedWordCount='true'
+      />
+    </div>
+
+    <div class='theme-dark-mode p-2 mt-2'>
+      <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
+
+      <WordChart
+        :text='example.text'
+        :ignoreWords='["and", "the", "of", "to", "you", "in", "that", "we", "it", "is"]'
+        :showDroppedWordCount='true'
+      />
+    </div>
   ```
 </docs>

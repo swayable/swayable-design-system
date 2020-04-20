@@ -1,3 +1,4 @@
+
 <template>
   <Index :class='themeClass'>
     <template slot='header'>
@@ -152,7 +153,9 @@
               chart
               class='border-b px-14'
             >
-              <BarChart v-bind='stats[0]' />
+              <BarChart v-bind='stats[0]'>
+                Delta {{ stats[0].delta }}
+              </BarChart>
             </TableCell>
             <TableCell
               chart
@@ -307,6 +310,6 @@ export default {
 
 <docs>
   ```jsx
-  <Demo />
+  <Demo class='border-white border' />
   ```
 </docs>
