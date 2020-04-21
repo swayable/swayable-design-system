@@ -1,5 +1,5 @@
 <template>
-  <tr class='table-row bg-inherit w-full'>
+  <tr class='table-row bg-inherit w-full colors-transition'>
     <slot />
   </tr>
 </template>
@@ -12,15 +12,11 @@ export default {
 
 <style lang='scss'>
   tbody {
-    .table-row td {
-      @apply bg-light-6 transition-colors ease-in-out duration-150;
-    }
+    .table-row td { @apply bg-light-6 }
   }
   .theme-dark-mode {
     tbody {
-      .table-row td {
-        @apply bg-dark-2;
-      }
+      .table-row td { @apply bg-dark-2 }
     }
   }
 </style>

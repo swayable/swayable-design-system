@@ -55,7 +55,7 @@ module.exports = {
     {
       name: 'Getting Started',
       content: '../docs/getting-started.md',
-      components: '../docs/components/status/**/[A-Z]*.vue',
+      components: '../docs/components/Components.vue',
       sectionDepth: 1,
       exampleMode: 'hide',
       usageMode: 'hide',
@@ -73,10 +73,15 @@ module.exports = {
       sectionDepth: 1,
       exampleMode: 'hide',
       usageMode: 'hide',
-      components: () => [
-        '../docs/components/tokens/Color.vue',
-        '../docs/components/tokens/FontSize.vue',
-      ],
+      components: '../docs/components/Colors.vue',
+    },
+    {
+      name: 'Utility Classes',
+      content: '../docs/utilities.md',
+      sectionDepth: 1,
+      exampleMode: 'hide',
+      usageMode: 'hide',
+      components: '../docs/components/Utilities.vue',
     },
     {
       name: 'Component Library',

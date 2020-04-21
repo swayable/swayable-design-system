@@ -1,43 +1,11 @@
-Swayable relies on a custom [Tailwindcss theme](https://tailwindcss.com/docs/theme) for our design tokens.
-
-We strongly prefer utlity classes over custom CSS; it helps our designs stay consistent and easily maintained across systems.
+These are the basic components from which all else springs.
 
 ## [Inter Typeface](https://rsms.me/inter/)
 
-Inter is a typeface by [Rasmus Andersson](https://rsms.me/inter/). It's also the standard typeface used in [Tailwind UI](https://tailwindui.com/documentation#optional-add-the-inter-font-family).
+Inter is a typeface by [Rasmus Andersson](https://rsms.me/inter/). It is beautiful, functional, and chock full of features. It's also the standard typeface used in [Tailwind UI](https://tailwindui.com/documentation#optional-add-the-inter-font-family) which has aided in developing our component library.
 
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-1</span>
-  <span class='typography-1'>Banner</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-2</span>
-  <span class='typography-2'>Section Title</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-3</span>
-  <span class='typography-3'>Subtitle</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-4</span>
-  <span class='typography-4'>Big Text</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-5</span>
-  <span class='typography-5'>Default Text</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-6</span>
-  <span class='typography-6'>Field Hint</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-7</span>
-  <span class='typography-7'>Field Title</span>
-</p>
-<p>
-  <span class='block text-md text-red-1 font-mono mt-4'>.typography-8</span>
-  <span class='typography-8'>Description</span>
-</p>
+> Inter is a typeface carefully crafted & designed for computer screens.
+> Inter features a tall x-height to aid in readability of mixed-case and lower-case text. Several OpenType features are provided as well, like contextual alternates that adjusts punctuation depending on the shape of surrounding glyphs, slashed zero for when you need to disambiguate "0" from "o", tabular numbers, etc.
 
 ```
 <color />

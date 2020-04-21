@@ -1,13 +1,14 @@
 /* GLOBAL: INCLUDES
  *
- * It is recommended to only include variables,
- * mixins, etc. in this file, to prevent duplicated
- * CSS in your final, compiled files.
+ * Only include variables, * mixins, etc. in this file,
+ * to prevent duplicated * CSS in compiled files.
+ *
+ * Custom component 
  */
  
 @import '~tailwindcss/base';
 @import '~tailwindcss/components';
 @import '~tailwindcss/utilities';
 
-@import './custom-base-styles';
-@import './custom-utilities';
+@import './base';
+@import './utilities';

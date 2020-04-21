@@ -13,6 +13,10 @@ body {
   padding: 0;
   font-family: 'Inter', sans-serif;
   @apply bg-light-4 text-dark-2 border-light-3;
+
+  .theme-dark-mode, &.theme-dark-mode {
+    @apply bg-dark-0 text-white border-dark-4;
+  }
 }
 
 *:focus { @apply outline-none shadow-outline }
@@ -20,28 +24,4 @@ body {
 pre, code, .font-mono { 
   font-variant: common-ligatures tabular-nums;
   font-feature-settings: 'tnum';
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply font-semibold
-}
-h1 { @apply text-4xl }
-h2 { @apply text-3xl }
-h3 { @apply text-2xl }
-h4 { @apply text-xl }
-h5 { @apply text-lg }
-h6 { @apply text-md }
-
-.bg-card {
-  @apply bg-light-6;
-  &.bg-card-hover:hover { @apply bg-white }
-}
-
-.theme-dark-mode {
-  @apply bg-dark-0 text-white border-dark-4;
-
-  .bg-card {
-    @apply bg-dark-2;
-    &.bg-card-hover:hover { @apply bg-dark-3 }
-  }
 }

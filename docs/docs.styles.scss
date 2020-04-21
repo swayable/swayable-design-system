@@ -2,7 +2,7 @@
  * These are style overrides for Vue Styleguidist
  * (the odd formatting hence most of the classes are dynamic)
  */
-@import '../src/styles/custom-base-styles.scss';
+@import '../src/styles/base.scss';
 
 /* BASE
 --------------------------------------------- */
@@ -26,6 +26,10 @@ h3 {
 }
 [class^="rsg--heading"], h1[class^="rsg--heading"] > * {
   font-style: normal !important;
+}
+
+blockquote[class^="rsg--blockquote"] {
+  @apply rounded-md bg-light-6 border-light-3 text-dark-4 p-5 pb-2 m-0;
 }
 
 // Background of page
@@ -568,7 +572,7 @@ a[href="#private-components"] + ul {
 }
 
 // Hide components under tokens
-a[href="/#/Design%20Tokens"] + ul {
+a[href="/#/Design%20Tokens"] + ul, a[href="/#/Utility%20Classes"] + ul {
   display: none !important;
 }
 

@@ -65,9 +65,9 @@
 
 <script>
 import _filter from 'lodash/filter'
-import Token from '../../decorators/token'
-import tokens from '../../../src/utils/tokens'
-import ToolTip from '../../../src/components/ToolTip'
+import Token from '../decorators/token'
+import tokens from '../../src/utils/tokens'
+import ToolTip from '../../src/components/ToolTip'
 
 /**
  * Blue is often used for links. The Swayable gradient is from Azure to Pink.
