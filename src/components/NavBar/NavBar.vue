@@ -9,7 +9,7 @@
         <div class='flex'>
           <div class='-ml-2 mr-2 flex items-center md:hidden'>
             <button
-              class='inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out'
+              class='openMenu inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out'
               @click='menuOpen = !menuOpen'
             >
               <svg
@@ -237,48 +237,33 @@ export default {
 
 <style lang="scss">
 .nav-bar {
-  @apply bg-light-6;
+  @apply bg-dark-2;
   .bg-logo {
     @apply w-36 bg-left bg-no-repeat;
-    background-image: url('//images.swayable.com/logos/light.svg?v=1');
+    background-image: url('//images.swayable.com/logos/dark.svg?v=1');
     background-size: 9rem;
   }
   .openMenu {
+    @apply text-light-4;
     &.active {
-      @apply text-blue-1 bg-light-5;
+        @apply text-blue-3 bg-dark-3;
     }
-    &:hover { @apply text-blue-1; }
+    &:hover, &:focus { @apply text-blue-3; }
   }
   .menu-link {
-    &:hover, &:focus {
-      @apply bg-blue-1 text-white;
-    }
-    &:active {
-      @apply bg-blue-2;
-    }
+    &:hover, &:focus { @apply bg-blue-1 text-white }
+    &:active { @apply bg-blue-2 }
   }
   .logout {
     @apply text-red-1;
     @media (min-width: theme('screens.md')) {
       &:active { @apply bg-red-2 }
-      &:hover, &:focus {
-        @apply bg-red-1 text-white;
-      }
+      &:hover, &:focus { @apply bg-red-1 text-white }
     }
   }
 }
 .theme-dark-mode {
   .nav-bar {
-    @apply bg-dark-2;
-    .bg-logo {
-      background-image: url('//images.swayable.com/logos/dark.svg?v=1')
-    }
-    .openMenu {
-      &.active {
-        @apply text-blue-3 bg-dark-3;
-      }
-      &:hover { @apply text-blue-3; }
-    }
     .menu-link {
       &:active { @apply bg-blue-4; }
       &:hover, &:focus { @apply bg-blue-3 text-white }

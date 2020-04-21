@@ -1,6 +1,6 @@
 <template>
   <div class='toggle inline-block rounded-md'>
-    <div class='flex p-0.5'>
+    <div class='flex'>
       <slot>
         <template v-for='option in options'>
           <Button
@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 .toggle {
   @apply bg-light-3;
-  .button:not(.color) {
+  .button {
     &:not(:first-child) {
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
@@ -52,7 +52,7 @@ export default {
 }
 .theme-dark-mode {
   .toggle {
-    @apply bg-dark-1;
+    @apply bg-dark-2;
   }
 }
 </style>

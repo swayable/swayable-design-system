@@ -30,7 +30,7 @@ export default {
 
   const options = ['Delta', 'Engagement']
   const selected = options[0]
-  <div class='mb-64'>
+  <div class='mb-64 transition-colors ease-in-out'>
     <ToolBar>
        <SelectMultiple
         :options='[

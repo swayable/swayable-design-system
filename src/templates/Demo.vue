@@ -6,10 +6,13 @@
         :links='links'
         align-right
       >
-        <SelectSingle
-          :options='testOptions'
-          :selected='testOptions[0]'
-        />
+        <span class='theme-dark-mode'>
+          <SelectSingle
+            :small='true'
+            :options='testOptions'
+            :selected='testOptions[0]'
+          />
+        </span>
       </NavBar>
       <ToolBar>
         <SelectMultiple
@@ -310,6 +313,10 @@ export default {
 
 <docs>
   ```jsx
-  <Demo class='border-white border' />
+  <div class='p-3 bg-light-6'>
+    <div class='bg-light-4'>
+      <Demo />
+    </div>
+  </div>
   ```
 </docs>

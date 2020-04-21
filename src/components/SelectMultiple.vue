@@ -7,7 +7,7 @@
   >
     <Button
       secondary
-      class='bg-card rounded'
+      class='rounded'
       @click='open = !open'
     >
       <span
@@ -18,7 +18,7 @@
       </span>
     </Button>
     <template #dropdown>
-      <div class='flex bg-card flex-col rounded mt-px'>
+      <div class='flex select-dropdown border flex-col rounded mt-px'>
         <div
           v-for='(item, i) in items'
           :key='item.text'
@@ -178,6 +178,7 @@ export default {
 
 <style lang="scss">
 .select-options {
+  .select-dropdown { @apply bg-white border-light-3 }
   .select-button {
     @apply text-dark-4;
     &.active { @apply text-blue-2 }
@@ -189,14 +190,17 @@ export default {
   }
 }
 .theme-dark-mode {
-  .select-button {
-    @apply text-light-4;
-    &.active { @apply text-blue-4 }
-  }
-  .check-icon {
-    &.selected-preview { @apply text-light-3  }
-    &.selected { @apply text-light-6 }
-    &.preview { @apply text-light-2 }
+  .select-options {
+    .select-dropdown { @apply bg-dark-2 border-dark-4 }
+    .select-button {
+      @apply text-light-4;
+      &.active { @apply text-blue-4 }
+    }
+    .check-icon {
+      &.selected-preview { @apply text-light-3  }
+      &.selected { @apply text-light-6 }
+      &.preview { @apply text-light-2 }
+    }
   }
 }
 </style>

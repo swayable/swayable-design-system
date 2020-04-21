@@ -65,25 +65,15 @@ export default {
 <style lang="scss">
 .nav-item {
   &.active {
-    @apply text-blue-3 bg-light-5;
+    @apply text-blue-5 bg-dark-3;
   }
   &:not(.active) {
-    @apply text-dark-4;
+    @apply text-light-4;
     &:hover, &:focus {
       filter: brightness(120%)
     }
     &:active {
       filter: brightness(160%)
-    }
-  }
-}
-.theme-dark-mode {
-  .nav-item {
-    &.active {
-      @apply text-blue-5 bg-dark-3;
-    }
-    &:not(.active) {
-      @apply text-light-4;
     }
   }
 }

@@ -8,6 +8,7 @@
     <Button
       secondary
       class='bg-card rounded'
+      :small='small'
       @click='open = !open'
     >
       <span
@@ -15,19 +16,21 @@
         :class='{ active }'
       >
         <slot>
-          <span class='flex-grow self-center'>
-            {{ selected }}
+          <span class='flex'>
+            <span class='flex-grow self-center whitespace-no-wrap'>
+              {{ selected }}
+            </span>
+            <Icon
+              class='ml-2'
+              name='chevron'
+              size='xs'
+            />
           </span>
-          <Icon
-            class='ml-2'
-            name='chevron'
-            size='xs'
-          />
         </slot>
       </span>
     </Button>
     <template #dropdown>
-      <div class='bg-card flex-col mt-px rounded'>
+      <div class='select-dropdown border flex-col mt-px rounded'>
         <Button
           v-for='option in options'
           :key='option'
@@ -82,6 +85,10 @@ export default {
      * Lights up text in trigger button
      */
     active: { type: Boolean, default: false },
+    /**
+     * Is smaller
+     */
+    small: { type: Boolean, default: false },
   },
   data() {
     return { open: false }

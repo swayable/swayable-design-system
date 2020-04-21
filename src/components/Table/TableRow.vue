@@ -13,7 +13,7 @@ export default {
 <style lang='scss'>
   tbody {
     .table-row td {
-      @apply bg-light-6 transition-colors ease-in-out duration-75;
+      @apply bg-light-6 transition-colors ease-in-out duration-150;
     }
   }
   .theme-dark-mode {
