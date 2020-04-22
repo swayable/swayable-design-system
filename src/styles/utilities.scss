@@ -52,12 +52,17 @@
 .text-primary { @apply text-dark-2 }
 
 .bg-active { @apply bg-blue-1 text-white }
-.bg-active-hover { @apply bg-blue-2 text-white }
-.bg-active-selected { @apply bg-blue-3 text-white }
+.bg-action {
+  @apply bg-blue-1 text-white;
+  &:hover, &:focus { @apply bg-blue-2 }
+  &:active { @apply bg-blue-3 }
+}
 
-.bg-destructive { @apply bg-red-1 text-white }
-.bg-destructive-hover { @apply bg-red-2 text-white }
-.bg-destructive-selected { @apply bg-red-3 text-white }
+.bg-destructive {
+  @apply bg-red-1 text-white;
+  &:focus, &:hover { @apply bg-red-2 }
+  &:active { @apply bg-red-3 }
+}
 
 .theme-dark-mode {
   .bg-container { @apply bg-dark-0; }
@@ -74,12 +79,17 @@
   .text-primary { @apply text-light-6 }
 
   .bg-active { @apply bg-blue-3 text-dark-0 }
-  .bg-active-hover { @apply bg-blue-4 text-dark-0 }
-  .bg-active-selected { @apply bg-blue-5 text-dark-0 }
+  .bg-action {
+    @apply bg-blue-3 text-dark-0;
+    &:hover, &:focus { @apply bg-blue-4 }
+    &:active { @apply bg-blue-5 }
+  }
 
-  .bg-destructive { @apply bg-red-3 text-dark-0 }
-  .bg-destructive-hover { @apply bg-red-4 text-dark-0 }
-  .bg-destructive-selected { @apply bg-red-5 text-dark-0 }
+  .bg-destructive {
+    @apply bg-red-3 text-dark-0;
+    &:hover, &:focus { @apply bg-red-4 }
+    &:active { @apply bg-red-5 }
+  }
 }
 
 

@@ -64,11 +64,11 @@ export default {
 
 <style lang="scss">
 .nav-item {
-  &.active {
-    @apply text-blue-5 bg-dark-3;
-  }
+  @apply text-light-5;
+
+  &.active { @apply bg-dark-3 }
+  
   &:not(.active) {
-    @apply text-light-4;
     &:hover, &:focus {
       filter: brightness(120%)
     }

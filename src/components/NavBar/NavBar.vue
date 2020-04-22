@@ -107,25 +107,62 @@
                   class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
                 >
                   <div class='py-2 rounded shadow-xs'>
-                    <div
-                      v-if='authenticated'
-                      class='block px-8 py-6'
-                    >
-                      <div class='leading-5'>
-                        {{ organization }}
-                      </div>
-                      <div class='text-sm leading-4'>
-                        {{ user }}
-                      </div>
+                    <div v-if='authenticated'>
+                      <component
+                        :is='canChangeOrg ? "button" : "div"'
+                        class='block px-8 py-5 text-left w-full'
+                        :class='canChangeOrg ? "menu-link" : "text-tertiary"'
+                        @click='canChangeOrg && $emit("changeOrg")'
+                      >
+                        <div class='leading-5'>
+                          {{ organization }}
+                        </div>
+                        <div class='text-sm leading-4'>
+                          {{ user }}
+                        </div>
+                      </component>
                     </div>
                     <router-link
-                      v-for='(displayName, name) in menuLinks'
-                      :key='name'
-                      :to='{ name }'
-                      class='menu-link block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out'
-                      :class='{ "logout": displayName === "Log Out" }'
+                      class='menu-link'
+                      :to='{ name: "tests" }'
                     >
-                      {{ displayName }}
+                      Tests
+                    </router-link>
+                    <router-link
+                      class='menu-link'
+                      :to='{ name: "library" }'
+                    >
+                      Content
+                    </router-link>
+                    <router-link
+                      class='menu-link'
+                      @click='$emit("changeTheme")'
+                    >
+                      <div class='flex'>
+                        <span class='flex-grow change-dark-mode'>Dark Mode</span>
+                        <span class='flex-grow change-light-mode'>Light Mode</span>
+                        <span class='flex items-center justify-center'>
+                          <svg
+                            width='20'
+                            height='20'
+                            fill='none'
+                            xmlns='http://www.w3.org/2000/svg'
+                          >
+                            <path
+                              d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
+                              stroke='currentColor'
+                              stroke-linecap='round'
+                              stroke-linejoin='round'
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </router-link>
+                    <router-link
+                      :to='{ name: "sign-out" }'
+                      class='sign-out'
+                    >
+                      Sign out
                     </router-link>
                   </div>
                 </div>
@@ -162,31 +199,64 @@
           </div>
           <div
             v-if='authenticated'
-            class='flex items-center px-5 py-4 border-t'
+            class='border-t'
           >
-            <div class='flex-shrink-0'>
-              <Icon
-                name='user'
-                size='lg'
-              />
-            </div>
-            <div class='ml-3'>
-              <div class='leading-5'>
-                {{ organization }}
+            <component
+              :is='canChangeOrg ? "NavItem" : "div"'
+              :element='"button"'
+              class='flex items-center px-5 py-4 w-full rounded-none'
+              :class='canChangeOrg ? "" : "text-light-2"'
+              @click='canChangeOrg && $emit("changeOrg")'
+            >
+              <div class='flex-shrink-0'>
+                <Icon
+                  name='user'
+                  size='lg'
+                />
               </div>
-              <div class='text-sm leading-4'>
-                {{ user }}
+              <div class='ml-3 text-left text-lg'>
+                <div class='leading-5'>
+                  {{ organization }}
+                </div>
+                <div class='text-sm leading-4'>
+                  {{ user }}
+                </div>
               </div>
-            </div>
+            </component>
           </div>
           <div class='px-2 md:px-3'>
+            <NavItem :to='{ name: "tests" }'>
+              Tests
+            </NavItem>
+            <NavItem :to='{ name: "library" }'>
+              Content
+            </NavItem>
+            <NavItem @click='$emit("changeTheme")'>
+              <div class='flex'>
+                <span class='flex-grow change-dark-mode'>Dark Mode</span>
+                <span class='flex-grow change-light-mode'>Light Mode</span>
+                <span class='flex items-center justify-center'>
+                  <svg
+                    width='20'
+                    height='20'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <path
+                      d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
+                      stroke='currentColor'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    />
+                  </svg>
+                </span>
+              </div>
+            </NavItem>
             <NavItem
-              v-for='(displayName, name) in menuLinks'
-              :key='name'
-              :to='{ name }'
-              :class='{ "logout": displayName === "Log Out" }'
+              :to='{ name: "sign-out" }'
+              class='sign-out'
             >
-              {{ displayName }}
+              Sign out
             </NavItem>
           </div>
         </div>
@@ -208,18 +278,13 @@ export default {
   props: {
     user: { type: String, required: false },
     organization: { type: String, required: false },
+    canChangeOrg: { type: Boolean, required: false },
     links: { type: Object, default: () => ({}) },
     alignRight: { type: Boolean, default: false  },
   },
   data() {
     return {
       menuOpen: false,
-      menuLinks: {
-        tests: 'Tests',
-        library: 'Library',
-        preferences: 'Preferences',
-        'sign-out': 'Log Out',
-      },
     }
   },
   computed: {
@@ -245,16 +310,17 @@ export default {
   }
   .openMenu {
     @apply text-light-4;
-    &.active {
-        @apply text-blue-3 bg-dark-3;
-    }
-    &:hover, &:focus { @apply text-blue-3; }
+    &:hover, &:focus { @apply text-blue-5 bg-dark-3; }
+    &.active { @apply text-blue-5 }
+  }
+  .menu-link, .sign-out {
+    @apply block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out;
   }
   .menu-link {
     &:hover, &:focus { @apply bg-blue-1 text-white }
     &:active { @apply bg-blue-2 }
   }
-  .logout {
+  .sign-out {
     @apply text-red-1;
     @media (min-width: theme('screens.md')) {
       &:active { @apply bg-red-2 }
@@ -262,13 +328,31 @@ export default {
     }
   }
 }
+
+:not(.theme-dark-mode) {
+  .change-light-mode {
+    display: none;
+  }
+}
+
 .theme-dark-mode {
+  .change-light-mode {
+    display: block !important;
+  }
+  .change-dark-mode {
+    display: none;
+  }
   .nav-bar {
+    .openMenu {
+      @apply text-light-5;
+      &:hover, &:focus { @apply text-blue-3 }
+      &.active { @apply text-blue-5 bg-dark-3 }
+    }
     .menu-link {
       &:active { @apply bg-blue-4; }
       &:hover, &:focus { @apply bg-blue-3 text-white }
     }
-    .logout {
+    .sign-out {
       @apply text-red-3;
       @media (min-width: theme('screens.md')) {
         &:hover, &:focus { @apply bg-red-3 text-white }
@@ -287,14 +371,14 @@ export default {
     Data: { href: '/#/Component%20Library/NavBar' },
   }
   <div class='mb-5'>
-    <NavBar :links='links' user='josh@swayable.com' organization='Swayable'>
+    <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
       <Button>
         Request New
       </Button>
     </NavBar>
   </div>
   <div class='mb-24 theme-dark-mode'>
-    <NavBar :links='links'>
+    <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
       <Button>
         Request New
       </Button>

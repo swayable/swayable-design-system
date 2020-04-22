@@ -36,13 +36,13 @@
             </TableCell>
 
             <TableCell flush>
-              <div class='flex items-center h-full'>
+              <div class='flex items-center h-full overflow-hidden w-full'>
                 <div class='flex-grow'>
                   <div
+                    class='m-2'
                     :class='
-                      `${group === "border" ? "border m-2 px-1": "px-3 py-3.5"} ${group}-${utility}`
+                      `${group === "border" ? "border px-1": "px-3 py-1.5"} ${group}-${utility}`
                     '
-                    class='truncate'
                     :title='description[0]'
                   >
                     {{ description[0] }}
@@ -52,13 +52,13 @@
             </TableCell>
             
             <TableCell flush>
-              <div class='theme-dark-mode flex items-center h-full'>
+              <div class='theme-dark-mode flex items-center h-full overflow-hidden w-full'>
                 <div class='flex-grow'>
                   <div
+                    class='m-2'
                     :class='
-                      `${group === "border" ? "border m-2 px-1": "px-3 py-3.5"} ${group}-${utility}`
+                      `${group === "border" ? "border px-1": "px-3 py-1.5"} ${group}-${utility}`
                     '
-                    class='truncate'
                     :title='description[1]'
                   >
                     {{ description[1] }}
@@ -102,11 +102,9 @@ export default {
           'card-sub': ['Subsections of cards (additional information)', 'Background color'],
           'disabled': ['Background of disabled/unavailable objects', 'Background color'],
           active: ['Action items', 'Background and font color'],
-          'active-hover': ['For hovering action items', 'Background and font color'],
-          'active-selected': ['For selecting action items', 'Background and font color'],
+          'active': ['Indicates an item is active', 'Background and font color'],
+          'action': ['Indicates an action is possible', 'Background and font color'],
           'destructive': ['Destructive action items (e.g. delete)', 'Background and font color'],
-          'destructive-hover': ['Hovering destructive actions', 'Background and font color'],
-          'destructive-selected': ['Selecting destructive actions', 'Background and font color'],
           'inherit': ['Inherits the parent background', 'Background color'],
         },
         border: {
