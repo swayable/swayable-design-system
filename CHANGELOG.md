@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.17.5](https://github.com/swayable/swayable-design-system/compare/v0.17.4...v0.17.5) (2020-04-22)
+
+
+
 ### [0.17.4](https://github.com/swayable/swayable-design-system/compare/v0.17.3...v0.17.4) (2020-04-21)
 
 
