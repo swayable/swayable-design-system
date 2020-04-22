@@ -36,27 +36,33 @@
             </TableCell>
 
             <TableCell flush>
-              <div
-                :class='
-                  `${group === "border" ? "border": ""}  px-3 py-3.5 ${group}-${utility}`
-                '
-                class='truncate'
-                :title='description[0]'
-              >
-                {{ description[0] }}
+              <div class='flex items-center h-full'>
+                <div class='flex-grow'>
+                  <div
+                    :class='
+                      `${group === "border" ? "border m-2 px-1": "px-3 py-3.5"} ${group}-${utility}`
+                    '
+                    class='truncate'
+                    :title='description[0]'
+                  >
+                    {{ description[0] }}
+                  </div>
+                </div>
               </div>
             </TableCell>
             
             <TableCell flush>
-              <div class='theme-dark-mode'>
-                <div
-                  :class='
-                    `${group === "border" ? "border": ""}  px-3 py-3.5 ${group}-${utility}`
-                  '
-                  class='truncate'
-                  :title='description[1]'
-                >
-                  {{ description[1] }}
+              <div class='theme-dark-mode flex items-center h-full'>
+                <div class='flex-grow'>
+                  <div
+                    :class='
+                      `${group === "border" ? "border m-2 px-1": "px-3 py-3.5"} ${group}-${utility}`
+                    '
+                    class='truncate'
+                    :title='description[1]'
+                  >
+                    {{ description[1] }}
+                  </div>
                 </div>
               </div>
             </TableCell>
@@ -104,7 +110,7 @@ export default {
           'inherit': ['Inherits the parent background', 'Background color'],
         },
         border: {
-          default: ['', 'Stroke color'],
+          default: ['Default border color', 'Stroke color'],
         },
       },
     }
