@@ -73,7 +73,7 @@ module.exports = {
       sectionDepth: 1,
       exampleMode: 'hide',
       usageMode: 'hide',
-      components: '../docs/components/Colors.vue',
+      components: '../docs/components/Color.vue',
     },
     {
       name: 'Utility Classes',

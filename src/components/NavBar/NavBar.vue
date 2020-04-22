@@ -134,8 +134,8 @@
                     >
                       Content
                     </router-link>
-                    <router-link
-                      class='menu-link'
+                    <button
+                      class='menu-link w-full text-left'
                       @click='$emit("changeTheme")'
                     >
                       <div class='flex'>
@@ -157,7 +157,7 @@
                           </svg>
                         </span>
                       </div>
-                    </router-link>
+                    </button>
                     <router-link
                       :to='{ name: "sign-out" }'
                       class='sign-out'
