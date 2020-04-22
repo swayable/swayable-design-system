@@ -107,7 +107,10 @@
                   class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
                 >
                   <div class='py-2 rounded shadow-xs'>
-                    <div v-if='authenticated'>
+                    <div
+                      v-if='authenticated'
+                      class='border-b border-default'
+                    >
                       <component
                         :is='canChangeOrg ? "button" : "div"'
                         class='block px-8 py-5 text-left w-full'
@@ -134,30 +137,40 @@
                     >
                       Content
                     </router-link>
-                    <button
-                      class='menu-link w-full text-left'
-                      @click='$emit("changeTheme")'
-                    >
-                      <div class='flex'>
-                        <span class='flex-grow change-dark-mode'>Dark Mode</span>
-                        <span class='flex-grow change-light-mode'>Light Mode</span>
-                        <span class='flex items-center justify-center'>
-                          <svg
-                            width='20'
-                            height='20'
-                            fill='none'
-                            xmlns='http://www.w3.org/2000/svg'
-                          >
-                            <path
-                              d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
-                              stroke='currentColor'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </button>
+                    <div class='border-default border-t border-b'>
+                      <button
+                        class='menu-link w-full text-left'
+                        @click='$emit("changeTheme")'
+                      >
+                        <div class='flex'>
+                          <span class='flex-grow change-dark-mode'>Dark Mode</span>
+                          <span class='flex-grow change-light-mode'>Light Mode</span>
+                          <span class='flex items-center justify-center'>
+                            <svg
+                              width='24'
+                              height='24'
+                              fill='none'
+                              xmlns='http://www.w3.org/2000/svg'
+                            >
+                              <path
+                                class='change-dark-mode p-px'
+                                d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
+                                stroke='currentColor'
+                                stroke-linecap='round'
+                                stroke-linejoin='round'
+                              />
+                              <path
+                                class='change-light-mode'
+                                d='M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42'
+                                stroke='currentColor'
+                                stroke-linecap='round'
+                                stroke-linejoin='round'
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </button>
+                    </div>
                     <router-link
                       :to='{ name: "sign-out" }'
                       class='sign-out'
@@ -187,7 +200,7 @@
         <div class='pb-3'>
           <div
             v-if='Object.keys(links).length'
-            class='px-2 pt-2 pb-3 md:px-3 border-t'
+            class='px-2 pt-2 pb-3 md:px-3 border-t border-dark-4'
           >
             <NavItem
               v-for='(link, title) in links'
@@ -199,7 +212,7 @@
           </div>
           <div
             v-if='authenticated'
-            class='border-t'
+            class='border-t border-dark-4'
           >
             <component
               :is='canChangeOrg ? "NavItem" : "div"'
@@ -231,19 +244,29 @@
             <NavItem :to='{ name: "library" }'>
               Content
             </NavItem>
+          </div>
+          <div class='border-dark-4 border-t border-b px-2 md:px-3'>
             <NavItem @click='$emit("changeTheme")'>
-              <div class='flex'>
+              <div class='flex items-center'>
                 <span class='flex-grow change-dark-mode'>Dark Mode</span>
                 <span class='flex-grow change-light-mode'>Light Mode</span>
                 <span class='flex items-center justify-center'>
                   <svg
-                    width='20'
-                    height='20'
+                    width='24'
+                    height='24'
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
+                      class='change-dark-mode p-px'
                       d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
+                      stroke='currentColor'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                    />
+                    <path
+                      class='change-light-mode'
+                      d='M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42'
                       stroke='currentColor'
                       stroke-linecap='round'
                       stroke-linejoin='round'
@@ -252,13 +275,13 @@
                 </span>
               </div>
             </NavItem>
-            <NavItem
-              :to='{ name: "sign-out" }'
-              class='sign-out'
-            >
-              Sign out
-            </NavItem>
           </div>
+          <NavItem
+            :to='{ name: "sign-out" }'
+            class='sign-out px-2 md:px-3'
+          >
+            Sign out
+          </NavItem>
         </div>
       </div>
     </transition>

@@ -41,7 +41,10 @@
 .bg-container { @apply bg-light-4 }
 .bg-card-sub { @apply bg-light-5 }
 .bg-card { @apply bg-light-6 }
-.bg-card-hover { @apply bg-white }
+.bg-action-card {
+  @apply bg-light-6;
+  &:hover, &:focus { @apply bg-white cursor-pointer }
+}
 .border-default { @apply border-light-3 }
 
 .bg-disabled { @apply bg-light-2 }
@@ -50,16 +53,17 @@
 .text-tertiary { @apply text-dark-6 }
 .text-secondary { @apply text-dark-4 }
 .text-primary { @apply text-dark-2 }
+.text-disabled { @apply text-light-2 }
 
 .bg-active { @apply bg-blue-1 text-white }
 .bg-action {
-  @apply bg-blue-1 text-white;
+  @apply bg-blue-1 text-white cursor-pointer;
   &:hover, &:focus { @apply bg-blue-2 }
   &:active { @apply bg-blue-3 }
 }
 
 .bg-destructive {
-  @apply bg-red-1 text-white;
+  @apply bg-red-1 text-white cursor-pointer;
   &:focus, &:hover { @apply bg-red-2 }
   &:active { @apply bg-red-3 }
 }
@@ -68,7 +72,10 @@
   .bg-container { @apply bg-dark-0; }
   .bg-card-sub { @apply bg-dark-1; }
   .bg-card { @apply bg-dark-2; }
-  .bg-card-hover { @apply bg-dark-3; }
+  .bg-action-card {
+    @apply bg-dark-2;
+    &:hover { @apply bg-dark-3 }
+  }
   .border-default { @apply border-dark-4; }
   
   .bg-disabled { @apply bg-light-0 }
@@ -77,6 +84,7 @@
   .text-tertiary { @apply text-light-3 }
   .text-secondary { @apply text-light-4 }
   .text-primary { @apply text-light-6 }
+  .text-disabled { @apply text-light-0 }
 
   .bg-active { @apply bg-blue-3 text-dark-0 }
   .bg-action {
