@@ -54,6 +54,18 @@
 .text-secondary { @apply text-dark-4 }
 .text-primary { @apply text-dark-2 }
 .text-disabled { @apply text-light-2 }
+.text-active { @apply text-blue-1 }
+.text-action {
+  @apply text-blue-1 cursor-pointer;
+  &:hover, &:focus { @apply text-blue-2 }
+  &:active { @apply text-blue-3 }
+}
+.text-destructive {
+  @apply text-red-1 cursor-pointer;
+  &:focus, &:hover { @apply text-red-2 }
+  &:active { @apply text-red-3 }
+}
+
 
 .bg-active { @apply bg-blue-1 text-white }
 .bg-action {
@@ -85,6 +97,18 @@
   .text-secondary { @apply text-light-4 }
   .text-primary { @apply text-light-6 }
   .text-disabled { @apply text-light-0 }
+  .text-active { @apply text-blue-3 }
+  .text-action {
+    @apply text-blue-3;
+    &:hover, &:focus { @apply text-blue-4 }
+    &:active { @apply text-blue-5 }
+  }
+
+  .text-destructive {
+    @apply text-red-3;
+    &:hover, &:focus { @apply text-red-4 }
+    &:active { @apply text-red-5 }
+  }
 
   .bg-active { @apply bg-blue-3 text-dark-0 }
   .bg-action {

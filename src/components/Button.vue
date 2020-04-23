@@ -102,14 +102,12 @@ export default {
 
 <style lang="scss">
 .button {
+  max-height: 32px; // this is a bit of a fail but fixes some weirdness where the button is too tall
+
   &:focus { @apply shadow-outline; }
 
   &.small { @apply px-2 py-1.5 text-md leading-3 }
   &:not(.small) { @apply px-3 py-1.5 text-lg leading-5 }
-  &.secondary {
-    // This is a bit of a fail, but the border adds on extra height
-    max-height: 32px;
-  }
   &[disabled] {
     @apply bg-light-3 text-light-0 cursor-not-allowed;
     &.secondary {

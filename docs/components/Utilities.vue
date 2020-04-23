@@ -95,6 +95,9 @@ export default {
           tertiary: ['Additional information', 'Text color'],
           quarternary: ['Meta, etc.', 'Text color'],
           disabled: ['Indicates something unavailable.', 'Text color'],
+          active: ['Indicates active option.', 'Text color'],
+          action: ['Indicates available action.', 'Text color'],
+          destructive: ['Indicates destructive action.', 'Text color'],
         },
         bg: {
           container: ['Page background', 'Background color'],
