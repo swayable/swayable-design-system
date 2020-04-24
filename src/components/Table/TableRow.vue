@@ -1,5 +1,8 @@
 <template>
-  <tr class='table-row bg-inherit w-full colors-transition'>
+  <tr
+    class='table-row w-full colors-transition'
+    :class='{ head, body: !head, last }'
+  >
     <slot />
   </tr>
 </template>
@@ -7,16 +10,22 @@
 <script>
 export default {
   name: 'TableRow',
+  props: {
+    /**
+     *  Applies styles to look like column headers
+     * `true, false`
+     */
+    head: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     *  Rounds the bottom edges
+     */
+    last: {
+      type: Boolean,
+      default: false,
+    },
+  },
 }
 </script>
-
-<style lang='scss'>
-  tbody {
-    .table-row td { @apply bg-light-6 }
-  }
-  .theme-dark-mode {
-    tbody {
-      .table-row td { @apply bg-dark-2 }
-    }
-  }
-</style>

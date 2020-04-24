@@ -56,85 +56,78 @@
       <div class='flex-shrink-0'>
         <Table class='merge-r'>
           <template slot='head'>
-            <TableRow>
-              <TableCell head>
-                <h5>
-                  Single
-                </h5>
-              </TableCell>
-              <TableCell head>
+            <TableRow head>
+              <HeadCell>
+                Single
+              </HeadCell>
+              <HeadCell>
                 Segment
-              </TableCell>
+              </HeadCell>
             </TableRow>
           </template>
-          <TableRow>
-            <TableCell class='border-b rounded-bl'>
-              <span class='px-5 py-1 mr-3 rounded' />
-              <span class='font-mono'>Alex Morgan</span>
-            </TableCell>
-            <TableCell class='border-b'>
-              <span class='font-mono'>Female</span>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell head>
-              <h5>
-                Breakdown
-              </h5>
-            </TableCell>
-            <TableCell head />
-          </TableRow>
-          <TableRow>
-            <TableCell wrap>
-              <span class='px-5 py-1 mr-3 rounded' />
-              <span class='font-mono'>Alex Morgan</span>
+          <TableRow last>
+            <TableCell>
+              Alex Morgan
             </TableCell>
             <TableCell>
-              <span class='font-mono'>Female</span>
+              Female
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell class='merge-t border-b rounded-bl' />
-            <TableCell class='border-b'>
-              <span class='font-mono'>Male</span>
-            </TableCell>
+          <TableRow head>
+            <HeadCell>
+              Breakdown
+            </HeadCell>
+            <HeadCell />
           </TableRow>
           <TableRow>
-            <TableCell head>
-              <h5>
-                Multiple Breakdown
-              </h5>
-            </TableCell>
-            <TableCell head />
-          </TableRow>
-          <TableRow>
-            <TableCell class='rounded-tl'>
-              <span class='px-5 py-1 mr-3 rounded' />
-              <span class='font-mono'>Alex Morgan</span>
+            <TableCell
+              wrap
+              class='merge-b'
+            >
+              Alex Morgan
             </TableCell>
             <TableCell>
-              <span class='font-mono'>Female</span>
+              Female
+            </TableCell>
+          </TableRow>
+          <TableRow last>
+            <TableCell />
+            <TableCell>
+              Male
+            </TableCell>
+          </TableRow>
+          <TableRow head>
+            <HeadCell>
+              Multiple Breakdown
+            </HeadCell>
+            <HeadCell />
+          </TableRow>
+          <TableRow>
+            <TableCell class='merge-b'>
+              Alex Morgan
+            </TableCell>
+            <TableCell>
+              Female
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell class='merge-t' />
+            <TableCell />
             <TableCell>
-              <span class='font-mono'>Male</span>
+              Male
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
-              <span class='px-5 py-1 mr-3 rounded' />
-              <span class='font-mono'>Colin Kaepernick</span>
+            <TableCell class='merge-b'>
+              Colin Kaepernick
             </TableCell>
             <TableCell>
-              <span class='font-mono'>Female</span>
+              Female
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell class='merge-t' />
+            <TableCell />
             <TableCell>
-              <span class='font-mono'>Male</span>
+              Male
             </TableCell>
           </TableRow>
         </Table>
@@ -142,33 +135,28 @@
       <div class='flex-grow'>
         <Table class='table-fixed w-full merge-l'>
           <template slot='head'>
-            <TableRow>
-              <TableCell head>
+            <TableRow head>
+              <HeadCell>
                 Support
-              </TableCell>
-              <TableCell head>
+              </HeadCell>
+              <HeadCell>
                 Mobilization
-              </TableCell>
+              </HeadCell>
             </TableRow>
           </template>
-          <TableRow>
-            <TableCell
-              chart
-              class='border-b px-14'
-            >
+          <TableRow last>
+            <TableCell chart>
               <BarChart v-bind='stats[0]'>
                 Delta {{ stats[0].delta }}
               </BarChart>
             </TableCell>
-            <TableCell
-              chart
-              class='border-b rounded-br'
-            >
+            <TableCell chart>
               <BarChart v-bind='stats[1]' />
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell head />
+          <TableRow head>
+            <HeadCell />
+            <HeadCell />
           </TableRow>
           <TableRow>
             <TableCell chart>
@@ -178,31 +166,23 @@
               <BarChart v-bind='stats[1]' />
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell
-              chart
-              class='border-b'
-            >
+          <TableRow last>
+            <TableCell chart>
               <BarChart v-bind='stats[2]' />
             </TableCell>
-            <TableCell
-              chart
-              class='border-b rounded-br'
-            >
+            <TableCell chart>
               <BarChart v-bind='stats[1]' />
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell head />
+          <TableRow head>
+            <HeadCell />
+            <HeadCell />
           </TableRow>
           <TableRow>
             <TableCell chart>
               <BarChart v-bind='stats[0]' />
             </TableCell>
-            <TableCell
-              chart
-              class='rounded-tr'
-            >
+            <TableCell chart>
               <BarChart v-bind='stats[0]' />
             </TableCell>
           </TableRow>

@@ -1,30 +1,21 @@
 <template>
-  <component
-    :is='element'
-    class='cell text-left h-14'
+  <td
+    class='table-cell bg-card text-left h-12 border-default'
     :class='{
-      "p-2": !flush,
+      "bg-card": !head,
+      "px-4": !flush && !chart,
       "px-15": chart,
       "whitespace-no-wrap": !wrap,
-      "align-bottom": head,
     }'
   >
     <slot />
-  </component>
+  </td>
 </template>
 
 <script>
 export default {
   name: 'TableCell',
   props: {
-    /**
-     * Changes element from td to th
-     * `true, false`
-     */
-    head: {
-      type: Boolean,
-      default: false,
-    },
     /**
      * Optimizes cell to display a BarChart
      * `true, false`
@@ -47,11 +38,6 @@ export default {
     flush: {
       type: Boolean,
       default: false,
-    },
-  },
-  computed: {
-    element() {
-      return this.head ? 'th' : 'td'
     },
   },
 }

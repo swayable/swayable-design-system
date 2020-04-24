@@ -2,8 +2,8 @@
 <template>
   <component
     :is='smartElement'
-    class='button inline-flex items-center rounded-md focus:outline-none transition ease-in-out duration-150'
-    :class='{ destructive, small, secondary, "color": !custom }'
+    class='button inline-flex items-center focus:outline-none transition ease-in-out duration-150'
+    :class='{ destructive, small, secondary, "color rounded-md": !custom }'
     :disabled='disabled'
     v-bind='navigation'
     v-on='$listeners'

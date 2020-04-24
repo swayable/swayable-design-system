@@ -16,64 +16,58 @@ export default {
 </script>
 
 <style lang="scss">
-.theme-dark-mode {
-  .table-table {
-    td {
-      @apply border-dark-4;
-    }
-  }
-}
 .table-table {
-  border-collapse: separate;
   border-spacing: 0;
-  
-  th {
-    @apply text-sm;
+  border-collapse: separate;
+   .table-cell {
+    @apply text-md border-b border-r;
+    &.merge-t { @apply border-t-0 }
+    &.merge-r { @apply border-r-0 }
+    &.merge-b { @apply border-b-0 }
+    &.merge-l { @apply border-l-0 }
   }
 
-  td {
-    @apply border-light-3;
-    @apply border-t;
-    @apply border-l;
-  }
-  tr {
-    td:last-child { @apply border-r }
-    &:first-child {
-      td:first-child { @apply rounded-tl }
-      td:last-child { @apply rounded-tr }
-    }
-    &:last-child {
-      td { @apply border-b; }
-
-      td:first-child { @apply rounded-bl }
-      td:last-child { @apply rounded-br }
-    }
+  .table-cell:first-child {
+    @apply border-r
   }
 
-  &.merge-r {
-    td { border-right-color: transparent !important }
-    tr:first-child {
-      td:last-child { @apply rounded-none }
-    }
-    tr:last-child {
-      td:last-child { @apply rounded-none }
-    }
+  .table-cell + .table-cell {
+    @apply border-r;
   }
-  &.merge-l {
-    td { border-left-color: transparent !important }
-    tr:first-child {
-      td:first-child { @apply rounded-none }
-    }
-    tr:last-child {
-      td:first-child { @apply rounded-none }
+
+  .table-row.body:first-child,
+  .table-row.head + .table-row.body {
+    .table-cell {
+      @apply border-t;
     }
   }
 
-  td {
-    &.merge-t { border-top-color: transparent !important }
-    &.merge-r { border-right-color: transparent !important }
-    &.merge-b { border-bottom-color: transparent !important }
-    &.merge-l { border-left-color: transparent !important }
+  &:not(.merge-r) {
+    tr.body:first-child,
+    tr.head + tr.body {
+      .table-cell:last-child {
+        @apply rounded-tr
+      }
+    }
+    tr.body.last, tr.body:last-child {
+      .table-cell:last-child {
+        @apply rounded-br
+      }
+    }
+  }
+  &:not(.merge-l) {
+    .table-cell:first-child { @apply border-l }
+    tr.body:first-child,
+    tr.head + tr.body {
+      .table-cell:first-child {
+        @apply rounded-tl
+      }
+    }
+    tr.body.last, tr.body:last-child {
+      .table-cell:first-child {
+        @apply rounded-bl
+      }
+    }
   }
 }
 </style>
@@ -89,70 +83,68 @@ const theme = "Light Mode"
 <div :class='{ "theme-dark-mode": theme === "Dark Mode"}' class='mt-5 p-7 pt-0'>
   <Table>
     <template slot='head'>
-      <TableRow>
-        <TableCell head>
+      <TableRow head>
+        <HeadCell>
           Multiple Breakdown
-        </TableCell>
-        <TableCell head>
+        </HeadCell>
+        <HeadCell>
           Segment
-        </TableCell>
-        <TableCell head grow>
+        </HeadCell>
+        <HeadCell>
           Brand Lift
-        </TableCell>
+        </HeadCell>
       </TableRow>
     </template>
     <TableRow>
-      <TableCell>
-        <span class='px-5 py-1 mr-3 rounded' />
-        <span class='font-mono'>Alex Morgan</span>
+      <TableCell class='merge-b'>
+        Alex Morgan
       </TableCell>
       <TableCell>
-        <span class='font-mono'>Female</span>
+        Female
       </TableCell>
-      <TableCell grow>
-        <p>Cell 1</p>
+      <TableCell>
+        Cell 1
       </TableCell>
-      <TableCell grow>
-        <p>Cell 1</p>
+      <TableCell>
+        Cell 1
       </TableCell>
     </TableRow>
     <TableRow>
-      <TableCell class='merge-t' />
+      <TableCell />
       <TableCell>
-        <span class='font-mono'>Male</span>
+        Male
       </TableCell>
-      <TableCell grow>
-        <p>Cell 2</p>
+      <TableCell>
+        Cell 2
       </TableCell>
-      <TableCell grow>
-        <p>Cell 2</p>
+      <TableCell>
+        Cell 2
       </TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>
-        <span class='px-5 py-1 mr-3 rounded' />
-        <span class='font-mono'>Colin Kaepernick</span>
+      <TableCell class='merge-b'>
+        Colin Kaepernick
       </TableCell>
       <TableCell>
-        <span class='font-mono'>Female</span>
+        Female
       </TableCell>
-      <TableCell grow>
-        <p>Cell 1</p>
+      <TableCell>
+        Cell 1
       </TableCell>
-      <TableCell grow>
-        <p>Cell 1</p>
+      <TableCell>
+        Cell 1
       </TableCell>
     </TableRow>
     <TableRow>
-      <TableCell class='merge-t' />
+      <TableCell />
       <TableCell>
-        <span class='font-mono'>Male</span>
+        Male
       </TableCell>
-      <TableCell grow>
-        <p>Cell 2</p>
+      <TableCell>
+        Cell 2
       </TableCell>
-      <TableCell grow>
-        <p>Cell 2</p>
+      <TableCell>
+        Cell 2
       </TableCell>
     </TableRow>
   </Table>
