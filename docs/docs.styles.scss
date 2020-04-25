@@ -53,7 +53,7 @@ main[class^="rsg--content"] {
 }
 
 div[class^="rsg--wrapper"] {
-  padding: 0 theme('spacing.2');
+  padding: 0;
 }
 
 // Resetting margins for Styleguidist
@@ -83,6 +83,7 @@ img[title='Code Repo'] {
 [class^="rsg--heading"], [class^="rsg--heading"] a {
   color: theme('colors.dark-3') !important;
   margin-top: theme('spacing.5') !important;
+  padding: 0 theme('spacing.1');
 }
 
 // // Paragraphs
@@ -95,11 +96,14 @@ div[class^="rsg--docs"],
 p[class^="rsg--para"],
 h3[class^="rsg--heading"],
 h4[class^="rsg--heading"] {
-  padding: 0 theme('spacing.2');
+  padding: 0 theme('spacing.1');
 
   max-width: 100%;
   p[class^="rsg--para"] {
     width: 100%;
+  }
+  @media (max-width: theme('screen.sm')) {
+    padding: 0 theme('spacing.1') !important;
   }
   @media (max-width: 1300px) {
     width: 100%;

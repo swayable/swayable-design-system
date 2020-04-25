@@ -1,1 +1,2 @@
-<path d="M24 6.5H0V5H24V6.5ZM24 8.75H0V16.25H24V8.75ZM24 18.5H0V20H24V18.5Z" />
+<path stroke-linecap="round" stroke-linejoin="round" d="M3.5 4.5h17M3.5 19.5h17"/>
+<rect x="3.5" y="8.5" width="17" height="7" rx=".5" stroke-linecap="round" stroke-linejoin="round"/>

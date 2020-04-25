@@ -6,8 +6,9 @@
     :aria-label='ariaLabel'
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 24 24'
-    class='icon self-center inline-block fill-current'
-    :class='fill'
+    class='icon self-center inline-block'
+    :class='colorType'
+    fill='none'
     v-html='svg'
   />
 </template>
@@ -31,13 +32,6 @@ export default {
       default: 'settings',
     },
     /**
-     * The fill color of the SVG icon.
-     */
-    fill: {
-      type: String,
-      default: 'currentColor',
-    },
-    /**
      * Descriptive text to be read to screenreaders.
      */
     ariaLabel: {
@@ -57,9 +51,9 @@ export default {
      */
     size: {
       type: String,
-      default: 'sm',
+      default: 'md',
       validator: value => {
-        return value.match(/(xs|sm|md|lg)/)
+        return value.match(/(sm|md|lg|xl)/)
       },
     },
   },
@@ -71,11 +65,49 @@ export default {
   computed: {
     sizeNum() {
       return {
-        xs: '12',
         sm: '16',
         md: '24',
-        lg: '48',
+        lg: '32',
+        xl: '48',
       }[this.size]
+    },
+    colorType() {
+      const strokeIcons = [
+        'add',
+        'alert',
+        'arrow',
+        'bar-float',
+        'bar-equal',
+        'bar-distribute',
+        'burger',
+        'check',
+        'checked-circle',
+        'chevron',
+        'close',
+        'cross',
+        'download',
+        'drag',
+        'grid',
+        'edit',
+        'fork',
+        'content',
+        'loading',
+        'play',
+        'radio-off',
+        'remove',
+        'segment',
+        'search',
+        'settings',
+        'active',
+        'trash',
+        'sun',
+        'moon',
+        'logout',
+      ]
+
+      return strokeIcons.includes(this.name)
+        ?'stroke-current'
+        : 'fill-current'
     },
   },
 }
@@ -83,16 +115,74 @@ export default {
 
 <docs>
   ```jsx
-  const icons = [ 'tests', 'metric', 'segment', 'content', 'library', 'respondents', 'active', 'complete', 'bar-distribute', 'bar-equal', 'bar-float', 'check', 'chevron', 'cross', 'download', 'ellipsis', 'ellipsis-active', 'menu', 'tag', 'user']
+  const objects= [
+    'swayable',
+    'tests',
+    'segment',
+    'respondents',
+    'content',
+    'document',
+    'user'
+  ]
+  const status = [
+    'alert',
+    'active',
+    'draft',
+    'loading',
+    'checked-circle',
+    'fork',
+
+  ]
+  const actions = [
+    'add',
+    'remove',
+    'close',
+    'edit',
+    'cross',
+    'play',
+    'search',
+    'trash',
+    'list-first',
+    'list-last',
+    'drag',
+    'arrow',
+    'caret',
+    'chevron',
+    'download',
+    'bar-distribute',
+    'bar-equal',
+    'bar-float',
+    'unchecked',
+    'check',
+    'checked',
+    'radio-off',
+    'radio-on',
+    'ellipsis',
+    'burger',
+    'grid',
+    'settings',
+    'sun',
+    'moon',
+    'logout',
+  ]
+
+  const icons = { objects, status, actions }
  
-  <div class='flex flex-wrap'>
-    <div class='m-2'  v-for='icon in icons'>
-      <ToolTip>
-        <template #tip>
-          <span class='text-sm'>{{ icon }}</span>
-        </template>
-        <Icon :name='icon' size='md' class='text-blue' />
-      </ToolTip>
+  <div class='flex flex-col px-2'>
+    <div
+      v-for='(icons, group) in icons'
+      :key='group'
+    >
+      <h3 class='typography-3 text-tertiary capitalize'>{{ group }}</h3>
+      <div class='flex flex-wrap mt-3 mb-7 text-secondary'>
+        <ToolTip
+          v-for='icon in icons'
+          :key='icon'
+        >
+          <template #tip>{{ icon }}</template>
+          <Icon size='lg' class='m-2' :name='icon' />
+        </ToolTip>
+      </div>
     </div>
   </div>
   ```
