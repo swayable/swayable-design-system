@@ -23,7 +23,7 @@
         >
           <Icon
             name='metric'
-            size='xs'
+            size='sm'
           />
           Metrics
         </SelectMultiple>
@@ -37,7 +37,7 @@
         >
           <Icon
             name='segment'
-            size='xs'
+            size='sm'
           />
           Segments
         </SelectMultiple>

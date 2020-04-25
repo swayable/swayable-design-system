@@ -7,7 +7,6 @@
   >
     <Button
       secondary
-      class='rounded'
       @click='open = !open'
     >
       <span
@@ -18,7 +17,7 @@
       </span>
     </Button>
     <template #dropdown>
-      <div class='flex select-dropdown border flex-col rounded mt-px'>
+      <div class='flex select-dropdown border flex-col rounded-md mt-px'>
         <div
           v-for='(item, i) in items'
           :key='item.text'
@@ -36,7 +35,7 @@
               name='check'
               class='check-icon'
               :class='iconClassForIndex(i)'
-              size='xs'
+              size='sm'
             />
           </button>
           <Button

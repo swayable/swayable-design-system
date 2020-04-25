@@ -7,7 +7,6 @@
   >
     <Button
       secondary
-      class='bg-card rounded'
       :small='small'
       @click='open = !open'
     >
@@ -23,29 +22,29 @@
             <Icon
               class='ml-2'
               name='chevron'
-              size='xs'
+              size='sm'
             />
           </span>
         </slot>
       </span>
     </Button>
     <template #dropdown>
-      <div class='select-dropdown border flex-col mt-px rounded'>
+      <div class='select-dropdown border flex-col mt-px rounded-md'>
         <Button
           v-for='option in options'
           :key='option'
           custom
-          class='flex whitespace-no-wrap pr-3'
+          class='flex whitespace-no-wrap pr-3 w-full text-left'
           @click='$emit("select", option)'
         >
           <Icon
             v-if='selected === option'
             name='check'
-            size='xs'
+            size='sm'
           />
           <span
             class='pl-2 flex-grow'
-            :class='{ "ml-3": selected && selected !== option }'
+            :class='{ "ml-4": selected && selected !== option }'
           >
             {{ option }}
           </span>

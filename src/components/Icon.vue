@@ -88,6 +88,8 @@ export default {
     'segment',
     'respondents',
     'content',
+    'metric',
+    'filter',
     'document',
     'user'
   ]

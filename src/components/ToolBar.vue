@@ -38,7 +38,7 @@ export default {
           { value: 2, text: "Support", selected: false },
         ]'
       >
-        <Icon name='metric' size='xs' />
+        <Icon name='metric' size='sm' />
         Metrics
       </SelectMultiple>
       <SelectMultiple
@@ -49,7 +49,7 @@ export default {
           { value: 3, text: "Urbanicity", selected: true },
         ]'
       >
-        <Icon name='segment' size='xs' />
+        <Icon name='segment' size='sm' />
         Segments
       </SelectMultiple>
       
