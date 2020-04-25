@@ -72,41 +72,8 @@ export default {
       }[this.size]
     },
     colorType() {
-      const strokeIcons = [
-        'add',
-        'alert',
-        'arrow',
-        'bar-float',
-        'bar-equal',
-        'bar-distribute',
-        'burger',
-        'check',
-        'checked-circle',
-        'chevron',
-        'close',
-        'cross',
-        'download',
-        'drag',
-        'grid',
-        'edit',
-        'fork',
-        'content',
-        'loading',
-        'play',
-        'radio-off',
-        'remove',
-        'segment',
-        'search',
-        'settings',
-        'active',
-        'trash',
-        'sun',
-        'moon',
-        'logout',
-      ]
-
-      return strokeIcons.includes(this.name)
-        ?'stroke-current'
+      return this.svg.includes('stroke')
+        ? 'stroke-current'
         : 'fill-current'
     },
   },
@@ -131,7 +98,6 @@ export default {
     'loading',
     'checked-circle',
     'fork',
-
   ]
   const actions = [
     'add',
@@ -164,6 +130,7 @@ export default {
     'sun',
     'moon',
     'logout',
+    'media',
   ]
 
   const icons = { objects, status, actions }
