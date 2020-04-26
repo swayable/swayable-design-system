@@ -26,11 +26,11 @@
             <div class='hidden md:block bg-logo' />
           </router-link>
         </div>
-        <div class='flex flex-grow items-center ml-4'>
+        <div class='flex flex-grow items-center mx-4'>
           <div class='flex flex-grow'>
             <slot />
           </div>
-          <div class='flex flex-shrink-0'>
+          <div class='hidden md:flex flex-shrink-0 ml-4'>
             <slot name='links'>
               <NavItem
                 v-for='(link, title) in links'
@@ -317,17 +317,19 @@ export default {
     Insights: { href: '/#/Component%20Library/NavBar' },
     Data: { href: '/#/Component%20Library/NavBar' },
   }
-  const options = ['Survey 1', 'Survey 2', 'Survey 3']
+  const options = [{ text: 'Survey 1' }, { text: 'Survey 2' }, { text: 'Survey 3' }]
   <div class='mb-5'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
-      <div class='theme-dark-mode bg-transparent'>
-        <AutoComplete small :title='options[0]' :options='options' />
+      <div class='theme-dark-mode bg-transparent flex-grow'>
+        <AutoComplete class='md:max-w-72 w-full' small :title='options[0].text' :options='options' />
       </div>
     </NavBar>
   </div>
   <div class='mb-24 theme-dark-mode'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
-      <AutoComplete small :title='options[0]' :options='options' />
+      <div class='theme-dark-mode bg-transparent flex-grow'>
+        <AutoComplete class='md:max-w-72 w-full' small :title='options[0].text' :options='options' />
+      </div>
     </NavBar>
   </div>
   ```

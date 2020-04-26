@@ -11,8 +11,12 @@
       class='w-full'
       :placeholder='title'
       :small='small'
+      icon-end='caret'
+      icon-size='md'
+      @clickIconEnd='setFocus(-1)'
       @keydown.tab='open = false'
-      @keyup.down='setFocus(0)'
+      @keydown.down='setFocus(0)'
+      @click='open = true'
       @focus='open = true'
       @blur='filter = ""'
     />
@@ -34,8 +38,8 @@
           tabindex='-1'
           :small='small'
           @click='$emit("select", option)'
-          @keyup.up='setFocus(i - 1)'
-          @keyup.down='setFocus(i + 1)'
+          @keydown.up='setFocus(i - 1)'
+          @keydown.down='setFocus(i + 1)'
         >
           <span class='flex-grow'>
             {{ option.text || option }}
@@ -117,13 +121,10 @@ export default {
   },
   methods: {
     setFocus(i) {
-      let target
-      if (i < 0) target = 'text-input'
-      else if(i < this.options.length) target = `option-${i}`
-      
-      if (target) {
-        const ele = this.$refs[target][0]
-        if (ele) ele.$el.focus()
+      if (i < 0) {
+        this.$refs['text-input'].$el.querySelector('input').focus()
+      } else if (i < this.options.length) {
+        this.$refs[`option-${i}`][0].$el.focus()
       }
     },
   },
@@ -132,7 +133,7 @@ export default {
 
 <style lang="scss">
 .auto-complete {
-  .text-input {
+  input {
     &::placeholder {
       color: theme('colors.dark-2');
     }
@@ -144,9 +145,12 @@ export default {
 
 .theme-dark-mode {
   .auto-complete {
-    .text-input {
+    input {
       &::placeholder {
         color: theme('colors.light-6');
+      }
+       &:focus {
+        &::placeholder { color: transparent }
       }
     }
   }
