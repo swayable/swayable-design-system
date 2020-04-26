@@ -34,17 +34,13 @@
           v-for='option in options'
           :key='option'
           custom
-          class='flex whitespace-no-wrap pr-3 w-full text-left'
+          class='flex whitespace-no-wrap w-full text-left'
+          :small='small'
           @click='$emit("select", option)'
         >
-          <Icon
-            v-if='selected === option'
-            name='check'
-            size='sm'
-          />
           <span
-            class='pl-2 flex-grow'
-            :class='{ "ml-4": selected && selected !== option }'
+            class='flex-grow'
+            :class='{ "text-active": selected === option }'
           >
             {{ option }}
           </span>

@@ -57,12 +57,8 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      svg: req('./' + this.name + '.svg'),
-    }
-  },
   computed: {
+    svg() { return req('./' + this.name + '.svg') },
     sizeNum() {
       return {
         sm: '16',

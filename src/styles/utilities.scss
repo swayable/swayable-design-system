@@ -86,7 +86,7 @@
   .bg-card { @apply bg-dark-2; }
   .bg-action-card {
     @apply bg-dark-2;
-    &:hover { @apply bg-dark-3 }
+    &:hover, &:focus { @apply bg-dark-3 }
   }
   .border-default { @apply border-dark-4; }
   

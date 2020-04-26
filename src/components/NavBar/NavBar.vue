@@ -5,52 +5,33 @@
     class='nav-bar'
   >
     <div class='max-w-full mx-auto px-3 md:px-5'>
-      <div class='flex justify-between h-12'>
+      <div class='flex h-12'>
         <div class='flex'>
           <div class='-ml-2 mr-2 flex items-center md:hidden'>
             <button
               class='openMenu inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out'
               @click='menuOpen = !menuOpen'
             >
-              <svg
-                v-show='!menuOpen'
-                class='h-6 w-6'
-                stroke='currentColor'
-                fill='none'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
-                  d='M4 6h16M4 12h16M4 18h16'
-                />
-              </svg>
-              <svg
-                v-show='menuOpen'
-                class='h-6 w-6'
-                stroke='currentColor'
-                fill='none'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
-                  d='M6 18L18 6M6 6l12 12'
-                />
-              </svg>
+              <Icon
+                class='text-light-3'
+                :name='menuOpen ? "cross" : "burger"'
+              />
             </button>
           </div>
-          <div class='w-6 md:w-auto flex-shrink-0 flex overflow-hidden'>
-            <a
-              href='/'
-              class=' bg-logo'
-            />
+          <router-link
+            class='flex-shrink-0 flex items-center'
+            :to='{ name: "tests" }'
+          >
+            <Icon name='swayable' />
+            <div class='hidden md:block bg-logo' />
+          </router-link>
+        </div>
+        <div class='flex flex-grow items-center ml-4'>
+          <div class='flex flex-grow'>
+            <slot />
           </div>
-          <div class='hidden md:flex ml-6 items-center'>
-            <slot v-if='alignRight' />
-            <template v-else>
+          <div class='flex flex-shrink-0'>
+            <slot name='links'>
               <NavItem
                 v-for='(link, title) in links'
                 :key='title'
@@ -58,129 +39,90 @@
               >
                 {{ title }}
               </NavItem>
-            </template>
+            </slot>
           </div>
         </div>
-        <div class='flex items-center'>
-          <div
-            class='flex-shrink-0'
-            :class='alignRight ? "flex md:hidden": "flex"'
-          >
-            <slot />
-          </div>
-          <div
-            v-if='alignRight'
-            class='hidden md:flex flex-shrink-0'
-          >
-            <NavItem
-              v-for='(link, title) in links'
-              :key='title'
-              v-bind='link'
-            >
-              {{ title }}
-            </NavItem>
-          </div>
-          <div class='hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center'>
-            <div class='ml-3 relative'>
-              <div>
-                <button
-                  class='openMenu flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
-                  :class='{ active: menuOpen }'
-                  @click='menuOpen = !menuOpen'
-                >
-                  <Icon
-                    name='user'
-                    size='md'
-                  />
-                </button>
-              </div>
-              <transition
-                enter-active-class='transition ease-out duration-200'
-                leave-active-class='transition ease-in duration-75'
-                enter-class='transform opacity-0 scale-95'
-                enter-to-class='transform opacity-100 scale-100'
-                leave-class='transform opacity-100 scale-100'
-                leave-to-class='transform opacity-0 scale-95'
+        <div class='hidden md:flex ml-4 flex-shrink-0 items-center'>
+          <div class='ml-3 relative'>
+            <div>
+              <button
+                class='openMenu flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
+                :class='{ active: menuOpen }'
+                @click='menuOpen = !menuOpen'
               >
-                <div
-                  v-show='menuOpen'
-                  class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
-                >
-                  <div class='py-2 rounded shadow-xs'>
-                    <div
-                      v-if='authenticated'
-                      class='border-b border-default'
-                    >
-                      <component
-                        :is='canChangeOrg ? "button" : "div"'
-                        class='block px-8 py-5 text-left w-full'
-                        :class='canChangeOrg ? "menu-link" : "text-tertiary"'
-                        @click='canChangeOrg && $emit("changeOrg")'
-                      >
-                        <div class='leading-5'>
-                          {{ organization }}
-                        </div>
-                        <div class='text-sm leading-4'>
-                          {{ user }}
-                        </div>
-                      </component>
-                    </div>
-                    <router-link
-                      class='menu-link'
-                      :to='{ name: "tests" }'
-                    >
-                      Tests
-                    </router-link>
-                    <router-link
-                      class='menu-link'
-                      :to='{ name: "library" }'
-                    >
-                      Content
-                    </router-link>
-                    <div class='border-default border-t border-b'>
-                      <button
-                        class='menu-link w-full text-left'
-                        @click='$emit("changeTheme")'
-                      >
-                        <div class='flex'>
-                          <span class='flex-grow change-dark-mode'>Dark Mode</span>
-                          <span class='flex-grow change-light-mode'>Light Mode</span>
-                          <span class='flex items-center justify-center'>
-                            <svg
-                              width='24'
-                              height='24'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <path
-                                class='change-dark-mode p-px'
-                                d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
-                                stroke='currentColor'
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                              />
-                              <path
-                                class='change-light-mode'
-                                d='M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42'
-                                stroke='currentColor'
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </button>
-                    </div>
-                    <router-link
-                      :to='{ name: "sign-out" }'
-                      class='sign-out'
-                    >
-                      Sign out
-                    </router-link>
-                  </div>
-                </div>
-              </transition>
+                <Icon
+                  name='user'
+                  size='md'
+                />
+              </button>
             </div>
+            <transition
+              enter-active-class='transition ease-out duration-200'
+              leave-active-class='transition ease-in duration-75'
+              enter-class='transform opacity-0 scale-95'
+              enter-to-class='transform opacity-100 scale-100'
+              leave-class='transform opacity-100 scale-100'
+              leave-to-class='transform opacity-0 scale-95'
+            >
+              <div
+                v-show='menuOpen'
+                class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
+              >
+                <div class='py-2 rounded shadow-xs'>
+                  <div
+                    v-if='authenticated'
+                    class='border-b border-default'
+                  >
+                    <component
+                      :is='canChangeOrg ? "button" : "div"'
+                      class='block px-8 py-5 text-left w-full'
+                      :class='canChangeOrg ? "menu-link" : "text-tertiary"'
+                      @click='canChangeOrg && $emit("changeOrg")'
+                    >
+                      <div class='leading-5'>
+                        {{ organization }}
+                      </div>
+                      <div class='text-sm leading-4'>
+                        {{ user }}
+                      </div>
+                    </component>
+                  </div>
+                  <router-link
+                    class='menu-link'
+                    :to='{ name: "tests" }'
+                  >
+                    Tests
+                  </router-link>
+                  <router-link
+                    class='menu-link'
+                    :to='{ name: "library" }'
+                  >
+                    Content
+                  </router-link>
+                  <div class='border-default border-t border-b'>
+                    <button
+                      class='menu-link w-full text-left'
+                      @click='$emit("changeTheme")'
+                    >
+                      <div class='flex items-center change-dark-mode'>
+                        <span class='flex-grow'>Dark Mode</span>
+                        <Icon name='moon' />
+                      </div>
+                      <div class='flex items-center change-light-mode'>
+                        <span class='flex-grow'>Light Mode</span>
+                        <Icon name='sun' />
+                      </div>
+                    </button>
+                  </div>
+                  <router-link
+                    :to='{ name: "sign-out" }'
+                    class='sign-out'
+                  >
+                    Sign out
+                  </router-link>
+                </div>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
@@ -247,41 +189,24 @@
           </div>
           <div class='border-dark-4 border-t border-b px-2 md:px-3'>
             <NavItem @click='$emit("changeTheme")'>
-              <div class='flex items-center'>
-                <span class='flex-grow change-dark-mode'>Dark Mode</span>
-                <span class='flex-grow change-light-mode'>Light Mode</span>
-                <span class='flex items-center justify-center'>
-                  <svg
-                    width='24'
-                    height='24'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      class='change-dark-mode p-px'
-                      d='M19 10.79A9 9 0 119.21 1 7 7 0 0019 10.79v0z'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                    />
-                    <path
-                      class='change-light-mode'
-                      d='M12 17a5 5 0 100-10 5 5 0 000 10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42'
-                      stroke='currentColor'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                    />
-                  </svg>
-                </span>
+              <div class='flex items-center change-dark-mode'>
+                <span class='flex-grow'>Dark Mode</span>
+                <Icon name='moon' />
+              </div>
+              <div class='flex items-center change-light-mode'>
+                <span class='flex-grow'>Light Mode</span>
+                <Icon name='sun' />
               </div>
             </NavItem>
           </div>
-          <NavItem
-            :to='{ name: "sign-out" }'
-            class='sign-out px-2 md:px-3'
-          >
-            Sign out
-          </NavItem>
+          <div class='px-2 md:px-3'>
+            <NavItem
+              :to='{ name: "sign-out" }'
+              class='sign-out'
+            >
+              Sign out
+            </NavItem>
+          </div>
         </div>
       </div>
     </transition>
@@ -303,7 +228,6 @@ export default {
     organization: { type: String, required: false },
     canChangeOrg: { type: Boolean, required: false },
     links: { type: Object, default: () => ({}) },
-    alignRight: { type: Boolean, default: false  },
   },
   data() {
     return {
@@ -327,9 +251,9 @@ export default {
 .nav-bar {
   @apply bg-dark-2;
   .bg-logo {
-    @apply w-36 bg-left bg-no-repeat;
+    @apply bg-right bg-no-repeat h-full;
     background-image: url('//images.swayable.com/logos/dark.svg?v=1');
-    background-size: 9rem;
+    width: 115px;
   }
   .openMenu {
     @apply text-light-4;
@@ -354,16 +278,16 @@ export default {
 
 :not(.theme-dark-mode) {
   .change-light-mode {
-    display: none;
+    display: none !important;
   }
 }
 
 .theme-dark-mode {
   .change-light-mode {
-    display: block !important;
+    display: flex !important;
   }
   .change-dark-mode {
-    display: none;
+    display: none !important;
   }
   .nav-bar {
     .openMenu {
@@ -393,18 +317,17 @@ export default {
     Insights: { href: '/#/Component%20Library/NavBar' },
     Data: { href: '/#/Component%20Library/NavBar' },
   }
+  const options = ['Survey 1', 'Survey 2', 'Survey 3']
   <div class='mb-5'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
-      <Button>
-        Request New
-      </Button>
+      <div class='theme-dark-mode bg-transparent'>
+        <AutoComplete small :title='options[0]' :options='options' />
+      </div>
     </NavBar>
   </div>
   <div class='mb-24 theme-dark-mode'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
-      <Button>
-        Request New
-      </Button>
+      <AutoComplete small :title='options[0]' :options='options' />
     </NavBar>
   </div>
   ```

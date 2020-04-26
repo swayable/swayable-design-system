@@ -4,7 +4,7 @@
     v-if='type === "textarea"'
     :disabled='disabled'
     :type='type'
-    class='text-input text-sm p-2 rounded leading-tight'
+    class='text-input rounded-md leading-tight border border-default'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -14,7 +14,7 @@
     :disabled='disabled'
     :type='type'
     :value='value'
-    class='text-input text-sm p-2 rounded leading-tight'
+    class='text-input rounded-md border border-default'
     :class='variantClasses'
     :placeholder='placeholder'
     v-on='eventBindings'
@@ -62,6 +62,24 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Is smaller
+     */
+    small: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * In error state
+     */
+    error: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Highlighted border
+     */
+    active: { type: Boolean, default: false },
   },
   computed: {
     eventBindings() {
@@ -74,9 +92,18 @@ export default {
       }
     },
     variantClasses() {
-      return this.disabled
+      let border = 'border-default'
+      if (this.active) border = 'border-blue-1'
+      if (this.error) border = 'border-red-1'
+
+      const able = this.disabled
         ? 'cursor-not-allowed disabled'
         : 'bg-card focus:shadow-outline'
+      const size = this.small
+        ? 'px-2 leading-6 text-md'
+        : 'px-2 leading-7 text-lg'
+      const py = (this.type === 'textarea') ? 'py-2' : 'py-px'
+      return `${able} ${size} ${py} ${border}`
     },
   },
 }
@@ -86,14 +113,14 @@ export default {
   .text-input {
     @apply text-dark-4 bg-light-6;
     &[disabled] {
-      @apply text-light-0 bg-light-5;
+      @apply text-light-2 bg-light-4;
     }
   }
   .theme-dark-mode {
     .text-input {
       @apply text-light-4 bg-dark-2;
       &[disabled] {
-        @apply text-light-0 bg-dark-1;
+        @apply text-dark-3 bg-dark-0 border-dark-3;
       }
     }
   }

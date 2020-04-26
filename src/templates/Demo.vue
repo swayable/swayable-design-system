@@ -6,9 +6,9 @@
         :links='links'
         align-right
       >
-        <span class='theme-dark-mode'>
+        <span class='theme-dark-mode bg-transparent'>
           <SelectSingle
-            :small='true'
+            small
             :options='testOptions'
             :selected='testOptions[0]'
           />

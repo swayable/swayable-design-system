@@ -37,6 +37,9 @@ const fontSize = _reduce(
 
 module.exports = {
   important: true,
+  variants: {
+    borderRadius: ['first', 'last'],
+  },
   theme: {
     fontSize,
     fontFamily: {

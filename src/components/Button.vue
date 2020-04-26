@@ -102,12 +102,18 @@ export default {
 
 <style lang="scss">
 .button {
-  max-height: 32px; // this is a bit of a fail but fixes some weirdness where the button is too tall
+  &:focus {
+    @apply shadow-outline relative;
+  }
 
-  &:focus { @apply shadow-outline; }
-
-  &.small { @apply px-2 py-1.5 text-md leading-3 }
-  &:not(.small) { @apply px-3 py-1.5 text-lg leading-5 }
+  &.small {
+    @apply px-2 text-md leading-7;
+    &.secondary { @apply leading-6 py-px }
+  }
+  &:not(.small) {
+    @apply px-3 text-lg leading-8;
+    &.secondary { @apply leading-7 py-px }
+  }
   &[disabled] {
     @apply bg-light-3 text-light-0 cursor-not-allowed;
     &.secondary {
@@ -185,22 +191,22 @@ export default {
     <h3 class='typography-4 w-full uppercase text-light-1'>Light Mode</h3>
     <Table class='pr-5'>
       <template slot="head">
-        <TableRow>
-          <TableCell head />
-          <TableCell head />
-          <TableCell head>
+        <TableRow head>
+          <HeadCell />
+          <HeadCell />
+          <HeadCell>
             custom
-          </TableCell>
-          <TableCell head>
+          </HeadCell>
+          <HeadCell>
             destructive
-          </TableCell>
-          <TableCell head>
+          </HeadCell>
+          <HeadCell>
             disabled
-          </TableCell>
+          </HeadCell>
         </TableRow>
       </template>
       <TableRow>
-        <TableCell head />
+        <HeadCell />
         <TableCell>
           <Button>Button</Button>
         </TableCell>
@@ -215,9 +221,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           small
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button small>Button</Button>
         </TableCell>
@@ -232,9 +238,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           <span>secondary</span>
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button secondary>Button</Button>
         </TableCell>
@@ -249,9 +255,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           secondary small
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button secondary small>Button</Button>
         </TableCell>
@@ -272,22 +278,22 @@ export default {
     <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
     <Table class='pr-5'>
       <template slot="head">
-        <TableRow>
-          <TableCell head />
-          <TableCell head />
-          <TableCell head>
+        <TableRow head>
+          <HeadCell />
+          <HeadCell />
+          <HeadCell>
             custom
-          </TableCell>
-          <TableCell head>
+          </HeadCell>
+          <HeadCell>
             destructive
-          </TableCell>
-          <TableCell head>
+          </HeadCell>
+          <HeadCell>
             disabled
-          </TableCell>
+          </HeadCell>
         </TableRow>
       </template>
       <TableRow>
-        <TableCell head />
+        <HeadCell />
         <TableCell>
           <Button>Button</Button>
         </TableCell>
@@ -302,9 +308,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           small
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button small>Button</Button>
         </TableCell>
@@ -319,9 +325,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           <span>secondary</span>
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button secondary>Button</Button>
         </TableCell>
@@ -336,9 +342,9 @@ export default {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell head>
+        <HeadCell>
           secondary small
-        </TableCell>
+        </HeadCell>
         <TableCell>
           <Button secondary small>Button</Button>
         </TableCell>

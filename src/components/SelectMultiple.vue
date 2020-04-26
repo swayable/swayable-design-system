@@ -7,6 +7,7 @@
   >
     <Button
       secondary
+      :small='small'
       @click='open = !open'
     >
       <span
@@ -17,33 +18,30 @@
       </span>
     </Button>
     <template #dropdown>
-      <div class='flex select-dropdown border flex-col rounded-md mt-px'>
+      <div class='flex select-dropdown border flex-col rounded-md mt-px py-0.5'>
         <div
           v-for='(item, i) in items'
-          :key='item.text'
-          class='flex mt-0.5 mb-0.5'
+          :key='`${item.text}-${item.selected}`'
+          class='flex border-default'
+          :class='{ "border-b": isAllItemIndex(i) }'
         >
           <Button
             custom
             class='pl-3'
-            size='sm'
+            :small='small'
             @click='toggle(i)'
-            @mouseover='togglePreview(i)'
-            @mouseout='clearPreview'
           >
             <Icon
-              name='check'
-              class='check-icon'
-              :class='iconClassForIndex(i)'
+              :name='item.selected ? "checked" : "unchecked"'
+              :class='item.selected ? "text-active" : "text-quarternary"'
               size='sm'
             />
           </button>
           <Button
             custom
             class='text-left flex-grow pl-1 pr-3 whitespace-no-wrap'
+            :small='small'
             @click='select(i)'
-            @mouseover='selectPreview(i)'
-            @mouseout='clearPreview'
           >
             {{ item.text }}
           </Button>
@@ -73,6 +71,10 @@ export default {
      * Lights up text in trigger button
      */
     active: { type: Boolean, default: false },
+    /**
+     * Is smaller
+     */
+    small: { type: Boolean, default: false },
   },
   data() {
     const items = this.options.map(option => {
@@ -81,7 +83,6 @@ export default {
         text: isString ? option : option.text,
         value: isString ? option : option.value,
         selected: isString ? false : option.selected,
-        preview: false,
       }
     })
     if (this.allowSelectAll) {
@@ -89,7 +90,6 @@ export default {
       items.unshift({
         text: 'All',
         value: 'all',
-        preview: false,
         selected: countSelected === items.length,
       })
     }
@@ -114,12 +114,12 @@ export default {
   },
   watch: {
     selectedValues(values) {
+      console.log(values)
       this.$emit('change', values.filter(v => v !== 'all'))
     },
   },
   methods: {
     select(itemIndex) {
-      this.clearPreview()
       const selectAll = this.isAllItemIndex(itemIndex)
       for (let i = 0; i < this.items.length; i++) {
         const selected = selectAll ? true : i === itemIndex
@@ -127,7 +127,6 @@ export default {
       }
     },
     toggle(itemIndex) {
-      this.clearPreview()
       if (this.isAllItemIndex(itemIndex)) {
         const { allSelected } = this
         for (let i = 0; i < this.items.length; i++) {
@@ -136,37 +135,6 @@ export default {
       } else {
         this.items[itemIndex].selected = !this.items[itemIndex].selected
       }
-    },
-    selectPreview(itemIndex) {
-      const previewAll = this.isAllItemIndex(itemIndex)
-      for (let i = 0; i < this.items.length; i++) {
-        const { selected } = this.items[i]
-        const preview = previewAll
-          ? !selected
-          : selected ? i !== itemIndex : i === itemIndex
-        this.items[i].preview = preview
-      }
-    },
-    togglePreview(itemIndex) {
-      if (this.isAllItemIndex(itemIndex)) {
-        const { allSelected } = this
-        for (let i = 0; i < this.items.length; i++)
-          this.items[i].preview = !allSelected && !this.items[i].selected
-      } else {
-        this.items[itemIndex].preview = !this.items[itemIndex].preview
-      }
-    },
-    clearPreview() {
-      for (let i = 0; i < this.items.length; i++) {
-        this.items[i].preview = false
-      }
-    },
-    iconClassForIndex(itemIndex) {
-      const item = this.items[itemIndex]
-      if (item.selected && item.preview) return 'selected-preview'
-      if (item.selected) return 'selected'
-      if (item.preview) return 'preview'
-      return 'text-transparent'
     },
     isAllItemIndex(itemIndex) {
       return itemIndex === 0 && this.allowSelectAll
@@ -182,11 +150,6 @@ export default {
     @apply text-dark-4;
     &.active { @apply text-blue-2 }
   }
-  .check-icon {
-    &.selected-preview { @apply text-dark-6  }
-    &.selected { @apply text-dark-2 }
-    &.preview { @apply text-light-0 }
-  }
 }
 .theme-dark-mode {
   .select-options {
@@ -194,11 +157,6 @@ export default {
     .select-button {
       @apply text-light-4;
       &.active { @apply text-blue-4 }
-    }
-    .check-icon {
-      &.selected-preview { @apply text-light-3  }
-      &.selected { @apply text-light-6 }
-      &.preview { @apply text-light-2 }
     }
   }
 }
