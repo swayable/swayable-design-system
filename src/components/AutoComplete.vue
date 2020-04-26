@@ -3,22 +3,21 @@
     class='auto-complete'
     :open='open'
     :align='align'
-    @close='open = false'
+    @close='doClose'
   >
     <TextInput
       ref='text-input'
       v-model='filter'
       class='w-full'
-      :placeholder='title'
+      :placeholder='placeholder || title'
       :small='small'
       icon-end='caret'
       icon-size='md'
       @clickIconEnd='setFocus(-1)'
-      @keydown.tab='open = false'
+      @keydown.tab='doClose'
       @keydown.down='setFocus(0)'
-      @click='open = true'
-      @focus='open = true'
-      @blur='filter = ""'
+      @click='doOpen'
+      @focus='doOpen'
     />
     <template #dropdown>
       <div class='bg-card border border-default flex-col mt-px rounded-md max-h-64 overflow-x-scroll'>
@@ -30,19 +29,20 @@
         </div>
         <Button
           v-for='(option, i) in filteredOptions'
-          :key='option.text || option'
+          :key='option.title || option'
           :ref='`option-${i}`'
           custom
           v-bind='option'
           class='bg-action-card flex whitespace-no-wrap w-full text-left first:rounded-t-md last:rounded-b-md'
           tabindex='-1'
           :small='small'
-          @click='$emit("select", option)'
+          @click='select(option)'
           @keydown.up='setFocus(i - 1)'
           @keydown.down='setFocus(i + 1)'
+          @keydown.tab='doClose'
         >
           <span class='flex-grow'>
-            {{ option.text || option }}
+            {{ option.title || option }}
           </span>
         </Button>
       </div>
@@ -68,8 +68,8 @@ export default {
   props: {
     /**
      * Populates dropdown. Each option
-     * must have a text attribute (this is displayed).
-     * Include `href` for <a>, or `to` for `<router-link>`
+     * must have a `title` attribute (this is displayed).
+     * Include `href` for `<a>`, or `to` for `<router-link>`
      */
     options: { type: Array, required: true },
     /**
@@ -95,6 +95,7 @@ export default {
     return {
       open: false,
       filter: '',
+      placeholder: null,
     }
   },
   computed: {
@@ -103,7 +104,7 @@ export default {
     },
     filteredOptions() {
       return this.filter.length
-        ? this.options.filter(option => option.text
+        ? this.options.filter(option => option.title
           .toString()
           .toLowerCase()
           .includes(this.filter.toLowerCase()))
@@ -121,11 +122,31 @@ export default {
   },
   methods: {
     setFocus(i) {
-      if (i < 0) {
-        this.$refs['text-input'].$el.querySelector('input').focus()
-      } else if (i < this.options.length) {
-        this.$refs[`option-${i}`][0].$el.focus()
+      try {
+        if (i < 0) {
+          this.$refs['text-input'].$el.querySelector('input').focus()
+        } else if (i < this.options.length) {
+          this.$refs[`option-${i}`][0].$el.focus()
+          this.placeholder = this.options[i].title
+        }
+      } catch(e) {
+        console.error(e)
       }
+    },
+    doOpen() {
+      this.open = true
+      // Prevent the old title from flashing before changing
+      this.placeholder = ' '
+    },
+    select(option) {
+      this.$emit('select', option)
+      this.doClose()
+    },
+    doClose() {
+      this.filter = ''
+      const clearPlaceholder = () => this.placeholder = null
+      this.$nextTick(clearPlaceholder)
+      this.open = false
     },
   },
 }
@@ -162,69 +183,69 @@ export default {
   let title1 = 'Light Mode'
   let title2 = 'Dark Mode'
   const options = [
-    { text: "Option 0" },
-    { text: "Option 1" },
-    { text: "Option 2" },
-    { text: "Option 3" },
-    { text: "Option 4" },
-    { text: "Option 5" },
-    { text: "Option 6" },
-    { text: "Option 7" },
-    { text: "Option 8" },
-    { text: "Option 9" },
-    { text: "Option 10" },
-    { text: "Option 11" },
-    { text: "Option 12" },
-    { text: "Option 13" },
-    { text: "Option 14" },
-    { text: "Option 15" },
-    { text: "Option 16" },
-    { text: "Option 17" },
-    { text: "Option 18" },
-    { text: "Option 19" },
-    { text: "Option 20" },
-    { text: "Option 21" },
-    { text: "Option 22" },
-    { text: "Option 23" },
-    { text: "Option 24" },
-    { text: "Option 25" },
-    { text: "Option 26" },
-    { text: "Option 27" },
-    { text: "Option 28" },
-    { text: "Option 29" },
-    { text: "Option 30" },
-    { text: "Option 31" },
-    { text: "Option 32" },
-    { text: "Option 33" },
-    { text: "Option 34" },
-    { text: "Option 35" },
-    { text: "Option 36" },
-    { text: "Option 37" },
-    { text: "Option 38" },
-    { text: "Option 39" },
-    { text: "Option 40" },
-    { text: "Option 41" },
-    { text: "Option 42" },
-    { text: "Option 43" },
-    { text: "Option 44" },
-    { text: "Option 45" },
-    { text: "Option 46" },
-    { text: "Option 47" },
-    { text: "Option 48" },
-    { text: "Option 49" },
-    { text: "Option 50" },
+    { title: "Option 0" },
+    { title: "Option 1" },
+    { title: "Option 2" },
+    { title: "Option 3" },
+    { title: "Option 4" },
+    { title: "Option 5" },
+    { title: "Option 6" },
+    { title: "Option 7" },
+    { title: "Option 8" },
+    { title: "Option 9" },
+    { title: "Option 10" },
+    { title: "Option 11" },
+    { title: "Option 12" },
+    { title: "Option 13" },
+    { title: "Option 14" },
+    { title: "Option 15" },
+    { title: "Option 16" },
+    { title: "Option 17" },
+    { title: "Option 18" },
+    { title: "Option 19" },
+    { title: "Option 20" },
+    { title: "Option 21" },
+    { title: "Option 22" },
+    { title: "Option 23" },
+    { title: "Option 24" },
+    { title: "Option 25" },
+    { title: "Option 26" },
+    { title: "Option 27" },
+    { title: "Option 28" },
+    { title: "Option 29" },
+    { title: "Option 30" },
+    { title: "Option 31" },
+    { title: "Option 32" },
+    { title: "Option 33" },
+    { title: "Option 34" },
+    { title: "Option 35" },
+    { title: "Option 36" },
+    { title: "Option 37" },
+    { title: "Option 38" },
+    { title: "Option 39" },
+    { title: "Option 40" },
+    { title: "Option 41" },
+    { title: "Option 42" },
+    { title: "Option 43" },
+    { title: "Option 44" },
+    { title: "Option 45" },
+    { title: "Option 46" },
+    { title: "Option 47" },
+    { title: "Option 48" },
+    { title: "Option 49" },
+    { title: "Option 50" },
   ]
   <div class='p-1'>
     <AutoComplete
       :title='title1'
       :options='options'
-      @select='o => title1 = o.text'
+      @select='o => title1 = o.title'
     />
     <div class='theme-dark-mode inline-block p-2'>
       <AutoComplete
         :title='title2'
         :options='options'
-        @select='o => title2 = o.text'
+        @select='o => title2 = o.title'
       />
     </div>
   </div>
