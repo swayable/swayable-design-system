@@ -55,10 +55,12 @@ module.exports = {
       maxWidth: theme => ({
         ...theme('spacing'),
         ...spacing,
+        'screen': '100vw',
       }),
       maxHeight: theme => ({
         ...theme('spacing'),
         ...spacing,
+        'screen': '100vh',
       }),
       minHeight: theme => ({
         ...theme('spacing'),

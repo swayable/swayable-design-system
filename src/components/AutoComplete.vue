@@ -6,51 +6,76 @@
     @close='doClose'
   >
     <TextInput
-      ref='text-input'
+      :ref='`text-input`'
       v-model='filter'
       class='w-full'
       :placeholder='placeholder || title'
       :small='small'
-      icon-end='caret'
-      icon-size='md'
-      @clickIconEnd='setFocus(-1)'
+      :icon-end='icon'
+      icon-size='sm'
+      :no-border='noBorder'
+      @clickIconEnd='clickIcon'
       @keydown.tab='doClose'
-      @keydown.down='setFocus(0)'
+      @keydown.up='setFocus(-1)'
+      @keydown.down='setFocus(1)'
       @click='doOpen'
       @focus='doOpen'
     />
     <template #dropdown>
-      <div class='bg-card border border-default flex-col mt-px rounded-md max-h-64 overflow-x-scroll'>
+      <div
+        ref='options-container'
+        class='bg-card border border-default flex-col mt-px rounded-md max-h-64 overflow-x-scroll'
+      >
         <div
           v-if='noFilterMatch'
           class='w-full text-sm leading-8 text-disabled px-3'
         >
           No Matches
         </div>
-        <Button
-          v-for='(option, i) in filteredOptions'
-          :key='option.title || option'
-          :ref='`option-${i}`'
-          custom
-          v-bind='option'
-          class='bg-action-card flex whitespace-no-wrap w-full text-left first:rounded-t-md last:rounded-b-md'
-          tabindex='-1'
-          :small='small'
-          @click='select(option)'
-          @keydown.up='setFocus(i - 1)'
-          @keydown.down='setFocus(i + 1)'
-          @keydown.tab='doClose'
-        >
-          <span class='flex-grow'>
-            {{ option.title || option }}
-          </span>
-        </Button>
+        <template v-for='group in groups'>
+          <div
+            v-for='(option, i) in filteredGroupedOptions[group]'
+            :key='`${group}-${option.title || option}`'
+          >
+            <div
+              v-if='group !== "undefined" && i === 0'
+              class='px-2 py-1 typography-8 uppercase bg-card-sub tracking-wide text-tertiary'
+            >
+              {{ group }}
+            </div>
+            <Button
+              custom
+              v-bind='bindingsFor(option)'
+              class='bg-action-card w-full text-left'
+              tabindex='-1'
+              :small='small'
+              @click='select(option)'
+              @keydown.up='setFocus(-1)'
+              @keydown.down='setFocus(1)'
+              @keydown.tab='doClose'
+            >
+              <Icon
+                v-if='option.icon'
+                :name='option.icon'
+                class='mr-1 text-tertiary'
+              />
+              <span class='flex-grow md:truncate py-3.5 px-1 typography-7'>
+                {{ option.title || option }}
+              </span>
+              <span class='flex-shrink-0 text-tertiary py-3.5 pr-1 typography-7'>
+                {{ option.meta }}
+              </span>
+            </Button>
+          </div>
+        </template>
       </div>
     </template>
   </DropDown>
 </template>
 
 <script>
+import _sortBy from 'lodash/sortBy'
+import _omit from 'lodash/omit'
 
 const preventPageScroll = function(e) {
   // space and arrow keys
@@ -60,15 +85,18 @@ const preventPageScroll = function(e) {
 }
 
 /**
- * AutoComplete offers typing to search many options
+ * AutoComplete offers typing to search many options.
+ * Options can use title, icon, and group, and
+ * Try using your keyboard arrows to navigate options.
  */
 export default {
   name: 'AutoComplete',
   status: 'ready',
   props: {
     /**
-     * Populates dropdown. Each option
-     * must have a `title` attribute (this is displayed).
+     * Populates dropdown. Can be strings or objects.
+     * If objects, each option must have a `title` attribute (this is displayed).
+     * They also accept icon, group, and meta. Any other attribute will bind to the element.
      * Include `href` for `<a>`, or `to` for `<router-link>`
      */
     options: { type: Array, required: true },
@@ -90,6 +118,16 @@ export default {
      * Is smaller
      */
     small: { type: Boolean, default: false },
+    /**
+     * Removes border
+     */
+    noBorder: { type: Boolean, default: false },
+    /**
+     *  If options have a grouping, specify the order here with an array of group names
+     *  e.g. ['tests', 'content']
+     *  If not provided, they will be sorted alphabetically
+     */
+    groupOrder: { type: Array },
   },
   data() {
     return {
@@ -100,15 +138,36 @@ export default {
   },
   computed: {
     noFilterMatch() {
-      return this.filter.length && !this.filteredOptions.length
+      return this.filter.length && !this.groups.length
     },
-    filteredOptions() {
+    icon() {
       return this.filter.length
-        ? this.options.filter(option => option.title
-          .toString()
-          .toLowerCase()
-          .includes(this.filter.toLowerCase()))
-        : this.options
+        ? 'close'
+        : 'search'
+    },
+    groups() {
+      const filteredGroups = Object.keys(this.filteredGroupedOptions)
+      if (!this.groupOrder) return filteredGroups.sort()
+      else {
+        const lowerCaseGroupOrder = this.groupOrder.map(g => g.toLowerCase())
+        return _sortBy(
+          filteredGroups,
+          g => lowerCaseGroupOrder.indexOf(g.toLowerCase())
+        )
+      }
+    },
+    filteredGroupedOptions() {
+      const inFilter = option => this.optionValue(option)
+        .toString()
+        .toLowerCase()
+        .includes(this.filter.toLowerCase())
+      
+      return this.options.reduce((acc, option) => {
+        if (!inFilter(option)) return acc
+        acc[option.group] = acc[option.group] || []
+        acc[option.group].push(option)
+        return acc
+      }, {})
     },
   },
   watch: {
@@ -121,14 +180,45 @@ export default {
     },
   },
   methods: {
-    setFocus(i) {
+    bindingsFor(option) {
+      if (typeof option === 'string') return {}
+      else return _omit(option, ['group', 'icon'])
+    },
+    optionValue(option) {
+      return option.title ? option.title : option
+    },
+    getTextInput() {
+      return this.$refs['text-input'].$el.querySelector('input')
+    },
+    getButtons() {
+      const container = this.$refs['options-container']
+      return container.querySelectorAll('button, [href]')
+    },
+    setFocus(change) {
+      const textInputEl = this.getTextInput()
       try {
-        if (i < 0) {
-          this.$refs['text-input'].$el.querySelector('input').focus()
-        } else if (i < this.options.length) {
-          this.$refs[`option-${i}`][0].$el.focus()
-          this.placeholder = this.options[i].title
+        const currentFocus = document.activeElement
+        if (!currentFocus) return textInputEl.focus()
+
+        const buttons = Array.from(this.getButtons())
+
+        if (currentFocus === textInputEl) {
+          if (change > 0) {
+            return buttons[0].focus()
+          } else {
+            return buttons[buttons.length - 1].focus()
+          }
         }
+
+        const focusedButtonIndex = buttons.indexOf(currentFocus)
+        if (focusedButtonIndex === -1) return textInputEl.focus()
+
+        const newFocusedButtonIndex = focusedButtonIndex + change
+
+        const newFocusedButton = buttons[newFocusedButtonIndex]
+        if (!newFocusedButton) return textInputEl.focus()
+        
+        return newFocusedButton.focus()
       } catch(e) {
         console.error(e)
       }
@@ -148,30 +238,43 @@ export default {
       this.$nextTick(clearPlaceholder)
       this.open = false
     },
+    clickIcon() {
+      if (this.open) {
+        this.doClose()
+      } else {
+        this.getTextInput().focus()
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss">
 .auto-complete {
-  input {
-    &::placeholder {
-      color: theme('colors.dark-2');
-    }
-    &:focus {
-      &::placeholder { color: transparent }
+  .text-input {
+    input {
+      &::placeholder {
+        opacity: 1;
+        color: theme('colors.dark-2');
+      }
+      &:focus {
+        &::placeholder { color: transparent }
+      }
     }
   }
 }
 
 .theme-dark-mode {
   .auto-complete {
-    input {
-      &::placeholder {
-        color: theme('colors.light-6');
-      }
-       &:focus {
-        &::placeholder { color: transparent }
+    .text-input {
+      input {
+        &::placeholder {
+          opacity: 1;
+          color: theme('colors.light-6');
+        }
+        &:focus {
+          &::placeholder { color: transparent }
+        }
       }
     }
   }
@@ -183,66 +286,40 @@ export default {
   let title1 = 'Light Mode'
   let title2 = 'Dark Mode'
   const options = [
-    { title: "Option 0" },
-    { title: "Option 1" },
-    { title: "Option 2" },
-    { title: "Option 3" },
-    { title: "Option 4" },
-    { title: "Option 5" },
-    { title: "Option 6" },
-    { title: "Option 7" },
-    { title: "Option 8" },
-    { title: "Option 9" },
-    { title: "Option 10" },
-    { title: "Option 11" },
-    { title: "Option 12" },
-    { title: "Option 13" },
-    { title: "Option 14" },
-    { title: "Option 15" },
-    { title: "Option 16" },
-    { title: "Option 17" },
-    { title: "Option 18" },
-    { title: "Option 19" },
-    { title: "Option 20" },
-    { title: "Option 21" },
-    { title: "Option 22" },
-    { title: "Option 23" },
-    { title: "Option 24" },
-    { title: "Option 25" },
-    { title: "Option 26" },
-    { title: "Option 27" },
-    { title: "Option 28" },
-    { title: "Option 29" },
-    { title: "Option 30" },
-    { title: "Option 31" },
-    { title: "Option 32" },
-    { title: "Option 33" },
-    { title: "Option 34" },
-    { title: "Option 35" },
-    { title: "Option 36" },
-    { title: "Option 37" },
-    { title: "Option 38" },
-    { title: "Option 39" },
-    { title: "Option 40" },
-    { title: "Option 41" },
-    { title: "Option 42" },
-    { title: "Option 43" },
-    { title: "Option 44" },
-    { title: "Option 45" },
-    { title: "Option 46" },
-    { title: "Option 47" },
-    { title: "Option 48" },
-    { title: "Option 49" },
-    { title: "Option 50" },
+    { title: "Video 1", icon: "play" , group: 'Content' },
+    { title: "Video 2", icon: "play" , group: 'Content' },
+    { title: "Test 0", icon: "document" , group: 'Tests', meta: '2d'},
+    { title: "Test 1", icon: "document" , group: 'Tests', meta: '3d'},
+    { title: "Test 2", icon: "document" , group: 'Tests', meta: '4d'},
+    { title: "Test 3", icon: "document" , group: 'Tests', meta: '5d'},
+    { title: "Test 4", icon: "document" , group: 'Tests', meta: '6d'},
+    { title: "Test 5", icon: "document" , group: 'Tests', meta: '7d'},
+    { title: "Test 6", icon: "document" , group: 'Tests', meta: '8d'},
+    { title: "Test 7", icon: "document" , group: 'Tests', meta: '9d'},
+    { title: "Test 8", icon: "document" , group: 'Tests', meta: '10d'},
+    { title: "Test 9", icon: "document" , group: 'Tests', meta: '11d'},
   ]
-  <div class='p-1'>
-    <AutoComplete
-      :title='title1'
-      :options='options'
-      @select='o => title1 = o.title'
-    />
+  <div class='p-1 flex flex-col md:flex-row'>
+    <div class='inline-block p-2'>
+      <AutoComplete
+        class='w-full'
+        :options='["This is a very simple case", "Which is perhaps important", "But frankly, a lot more exciting of an AutoComplete could be made - with icons, groupings, and delight."]'
+      />
+    </div>
+    <div class='inline-block p-2'>
+      <AutoComplete
+        small
+        noBorder
+        :title='title1'
+        :options='options'
+        @select='o => title1 = o.title'
+        :groupOrder='["tests", "content"]'
+        class='w-full'
+      />
+    </div>
     <div class='theme-dark-mode inline-block p-2'>
       <AutoComplete
+        class='w-full'
         :title='title2'
         :options='options'
         @select='o => title2 = o.title'

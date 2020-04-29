@@ -1,6 +1,6 @@
 <template>
   <span
-    class='text-input rounded-md border inline-flex relative'
+    class='text-input border rounded-md inline-flex relative'
     :class='wrapperClasses'
   >
     <Button
@@ -100,6 +100,10 @@ export default {
      */
     active: { type: Boolean, default: false },
     /**
+     * Removes border
+     */
+    noBorder: { type: Boolean, default: false },
+    /**
      *  Icon name to show before text
      */
     iconStart: { type: String },
@@ -134,11 +138,13 @@ export default {
       }
     },
     wrapperClasses() {
+      if (this.noBorder) return 'border-bg'
+      
       let border = 'border-default'
       if (this.active) border = 'border-blue-1'
       if (this.error) border = 'border-red-1'
   
-      return `${border}`
+      return border
     },
     inputClasses() {
       const able = this.disabled
@@ -156,15 +162,20 @@ export default {
 <style lang="scss">
   .text-input {
     @apply text-dark-4 bg-light-6;
+    &.border-bg { @apply border-light-6 }
     &[disabled], [disabled] {
       @apply text-light-2 bg-light-4;
+      &.border-bg { @apply border-light-4 }
     }
   }
   .theme-dark-mode {
     .text-input {
-      @apply text-light-4 bg-dark-2;
+      @apply text-light-4 bg-dark-1;
+      &.border-bg { @apply border-dark-1 }
+
       &[disabled], [disabled] {
         @apply text-dark-3 bg-dark-0 border-dark-3;
+        &.border-bg { @apply border-dark-3 }
       }
     }
   }
@@ -173,16 +184,8 @@ export default {
 <docs>
   ```jsx
   <div class='p-2'>
-    <TextInput iconStart='search' iconSize='sm' placeholder="Placeholder" />
-    <TextInput iconEnd='caret' placeholder="Placeholder" />
-
     <h3 class='typography-4 w-full uppercase text-light-1'>Light Mode</h3>
-    <div class='flex -mx-1'>
-      <TextInput small class='flex-grow m-1' placeholder="Placeholder" />
-      <TextInput small class='flex-grow m-1' value="Text Input" />
-      <TextInput small class='flex-grow m-1' value="Disabled" disabled />
-    </div>
-    <div class='flex -mx-1'>
+    <div class='flex flex-col items-stretch md:flex-row md:items-center -mx-1'>
       <TextInput class='flex-grow m-1' placeholder="Placeholder" />
       <TextInput class='flex-grow m-1' value="Text Input" />
       <TextInput class='flex-grow m-1' value="Disabled" disabled />
@@ -191,7 +194,7 @@ export default {
 
   <div class='mt-5 theme-dark-mode p-2'>
     <h3 class='typography-4 uppercase text-dark-5'>DARK MODE</h3>
-    <div class='flex'>
+    <div class='flex flex-col items-stretch md:flex-row md:items-center'>
       <TextInput class='flex-grow m-1' placeholder="Placeholder" />
       <TextInput class='flex-grow m-1' value="Text Input" />
       <TextInput class='flex-grow m-1' value="Disabled" disabled />
