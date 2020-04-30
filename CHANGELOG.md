@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.2](https://github.com/swayable/swayable-design-system/compare/v0.19.1...v0.19.2) (2020-04-30)
+
+
+### Bug Fixes
+
+* mobile dropdown width for small buttons ([1cebff6](https://github.com/swayable/swayable-design-system/commit/1cebff6))
+* tooltip styles ([a7e8105](https://github.com/swayable/swayable-design-system/commit/a7e8105))
+
+
+
 ### [0.19.1](https://github.com/swayable/swayable-design-system/compare/v0.19.0...v0.19.1) (2020-04-30)
 
 
