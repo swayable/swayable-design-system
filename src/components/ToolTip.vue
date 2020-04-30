@@ -15,7 +15,7 @@
       class='absolute z-50'
     >
       <div
-        class='tooltip text-white rounded-lg py-1 px-2 whitespace-no-wrap'
+        class='tooltip text-white rounded py-2 px-3 whitespace-no-wrap'
         :class='classNames'
       >
         <slot name='tip' />
