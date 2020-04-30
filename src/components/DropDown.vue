@@ -11,7 +11,7 @@
       <slot />
     </span>
     <div
-      class='w-full min-w-full md:w-auto md:max-w-screen flex-col z-50'
+      class='min-w-full md:w-auto md:max-w-screen flex-col z-50'
       :class='align ? `absolute ${align}-0` : "relative"'
     >
       <transition
