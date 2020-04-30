@@ -60,7 +60,7 @@
           v-else
           class='hidden md:flex flex-shrink-0 items-center'
         >
-          <div class='ml-3 relative'>
+          <div class='ml-1 relative'>
             <div>
               <button
                 class='openMenu flex p-1 rounded-full focus:outline-none transition duration-150 ease-in-out'
