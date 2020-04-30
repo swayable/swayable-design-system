@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.1](https://github.com/swayable/swayable-design-system/compare/v0.19.0...v0.19.1) (2020-04-30)
+
+
+### Bug Fixes
+
+* autocomplete allows spaces ([164bc30](https://github.com/swayable/swayable-design-system/commit/164bc30))
+
+
+
 ## [0.19.0](https://github.com/swayable/swayable-design-system/compare/v0.18.1...v0.19.0) (2020-04-30)
 
 
