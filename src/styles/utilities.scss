@@ -7,33 +7,38 @@
 // TYPOGRAPHY
 .typography-1 {
   @apply text-4xl font-bold;
-  line-height: 58px;
+  line-height: 56px;
 }
 .typography-2 {
-  @apply text-3xl font-bold;
-  line-height: 29px;
+  @apply font-bold;
+  font-size: 2rem;
+  line-height: 40px;
 }
 .typography-3 {
-  @apply text-2xl font-semibold;
-  line-height: 29px;
+  @apply text-3xl font-bold;
+  line-height: 30px;
 }
 .typography-4 {
-  @apply text-xl;
+  @apply text-2xl;
   line-height: 24px;
 }
 .typography-5 {
+  @apply text-xl;
+  line-height: 24px;
+}
+.typography-6 {
   @apply text-lg;
   line-height: 20px;
 }
-.typography-6 {
+.typography-7 {
   @apply text-md;
   line-height: 14px;
 }
-.typography-7 {
+.typography-8 {
   @apply text-sm;
   line-height: 14px;
 }
-.typography-8 {
+.typography-9 {
   @apply text-xs;
   line-height: 12px;
 }

@@ -7,7 +7,10 @@
     <div class='max-w-full mx-auto px-3 md:px-5'>
       <div class='flex h-12'>
         <div class='flex'>
-          <div class='-ml-2 mr-2 flex items-center md:hidden'>
+          <div
+            v-if='authenticated'
+            class='-ml-2 mr-2 flex items-center md:hidden'
+          >
             <button
               class='openMenu inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out'
               @click='menuOpen = !menuOpen'
@@ -42,7 +45,21 @@
             </slot>
           </div>
         </div>
-        <div class='hidden md:flex ml-4 flex-shrink-0 items-center'>
+        <div
+          v-if='!authenticated'
+          class='flex flex-shrink-0 items-center'
+        >
+          <Button
+            small
+            href='/sign-in'
+          >
+            Sign In
+          </Button>
+        </div>
+        <div
+          v-else
+          class='hidden md:flex flex-shrink-0 items-center'
+        >
           <div class='ml-3 relative'>
             <div>
               <button
@@ -68,58 +85,85 @@
                 v-show='menuOpen'
                 class='origin-top-right absolute bg-card right-0 mt-3 w-64 rounded shadow-lg z-50'
               >
-                <div class='py-2 rounded shadow-xs'>
+                <div class='rounded shadow-xs overflow-hidden'>
                   <div
-                    v-if='authenticated'
-                    class='border-b border-default'
+                    class='py-1'
+                    :class='canChangeOrg ? "" : "bg-card-sub"'
                   >
                     <component
                       :is='canChangeOrg ? "button" : "div"'
-                      class='block px-8 py-5 text-left w-full'
+                      class='block px-8 py-4 text-left w-full'
                       :class='canChangeOrg ? "menu-link" : "text-tertiary"'
                       @click='canChangeOrg && $emit("changeOrg")'
                     >
-                      <div class='leading-5'>
+                      <div class='typography-4'>
                         {{ organization }}
                       </div>
-                      <div class='text-sm leading-4'>
+                      <div class='icon typography-7 text-tertiary'>
                         {{ user }}
                       </div>
                     </component>
                   </div>
-                  <router-link
-                    class='menu-link'
-                    :to='{ name: "tests" }'
-                  >
-                    Tests
-                  </router-link>
-                  <router-link
-                    class='menu-link'
-                    :to='{ name: "library" }'
-                  >
-                    Content
-                  </router-link>
-                  <div class='border-default border-t border-b'>
+                  <div class='border-default border-t py-1'>
+                    <router-link
+                      class='menu-link flex'
+                      :to='{ name: "tests" }'
+                    >
+                      <Icon
+                        name='document'
+                        class='text-tertiary'
+                      />
+                      <span class='typography-4 ml-2'>
+                        Tests
+                      </span>
+                    </router-link>
+                    <router-link
+                      class='menu-link flex'
+                      :to='{ name: "library" }'
+                    >
+                      <Icon
+                        name='media'
+                        class='text-tertiary'
+                      />
+                      <span class='typography-4 ml-2'>
+                        Content
+                      </span>
+                    </router-link>
+                  </div>
+                  <div class='border-default border-t py-1'>
                     <button
                       class='menu-link w-full text-left'
                       @click='$emit("changeTheme")'
                     >
                       <div class='flex items-center change-dark-mode'>
-                        <span class='flex-grow'>Dark Mode</span>
-                        <Icon name='moon' />
+                        <Icon
+                          name='moon'
+                          class='text-tertiary'
+                        />
+                        <span class='typography-4 ml-2'>
+                          Dark Mode
+                        </span>
                       </div>
                       <div class='flex items-center change-light-mode'>
-                        <span class='flex-grow'>Light Mode</span>
-                        <Icon name='sun' />
+                        <Icon
+                          name='sun'
+                          class='text-tertiary'
+                        />
+                        <span class='typography-4 ml-2'>
+                          Light Mode
+                        </span>
                       </div>
                     </button>
+                    <router-link
+                      :to='{ name: "sign-out" }'
+                      class='sign-out flex'
+                    >
+                      <Icon name='logout' />
+                      <span class='typography-4 ml-2'>
+                        Sign Out
+                      </span>
+                    </router-link>
                   </div>
-                  <router-link
-                    :to='{ name: "sign-out" }'
-                    class='sign-out'
-                  >
-                    Sign out
-                  </router-link>
                 </div>
               </div>
             </transition>
@@ -142,14 +186,16 @@
         <div class='pb-3'>
           <div
             v-if='Object.keys(links).length'
-            class='px-2 pt-2 pb-3 md:px-3 border-t border-dark-4'
+            class='px-2 pt-2 pb-3 border-t border-dark-4'
           >
             <NavItem
               v-for='(link, title) in links'
               :key='title'
               v-bind='link'
             >
-              {{ title }}
+              <div class='py-0.5 typography-6'>
+                {{ title }}
+              </div>
             </NavItem>
           </div>
           <div
@@ -159,8 +205,8 @@
             <component
               :is='canChangeOrg ? "NavItem" : "div"'
               :element='"button"'
-              class='flex items-center px-5 py-4 w-full rounded-none'
-              :class='canChangeOrg ? "" : "text-light-2"'
+              class='flex items-center px-4 pb-4 w-full rounded-none'
+              :class='canChangeOrg ? "pt-5" : "text-light-2 bg-dark-1 pt-4"'
               @click='canChangeOrg && $emit("changeOrg")'
             >
               <div class='flex-shrink-0'>
@@ -169,8 +215,8 @@
                   size='lg'
                 />
               </div>
-              <div class='ml-3 text-left text-lg'>
-                <div class='leading-5'>
+              <div class='ml-2 text-left'>
+                <div class='leading-4'>
                   {{ organization }}
                 </div>
                 <div class='text-sm leading-4'>
@@ -179,32 +225,61 @@
               </div>
             </component>
           </div>
-          <div class='px-2 md:px-3'>
+          <div class='px-1 pb-1'>
             <NavItem :to='{ name: "tests" }'>
-              Tests
+              <div class='flex items-center py-1'>
+                <Icon
+                  name='document'
+                  class='text-tertiary'
+                />
+                <span class='typography-6 ml-2'>
+                  Tests
+                </span>
+              </div>
             </NavItem>
             <NavItem :to='{ name: "library" }'>
-              Content
+              <div class='flex items-center py-1'>
+                <Icon
+                  name='media'
+                  class='text-tertiary'
+                />
+                <span class='typography-6 ml-2'>
+                  Content
+                </span>
+              </div>
             </NavItem>
           </div>
-          <div class='border-dark-4 border-t border-b px-2 md:px-3'>
+          <div class='mt-1 pt-1 border-t border-dark-4 px-1'>
             <NavItem @click='$emit("changeTheme")'>
-              <div class='flex items-center change-dark-mode'>
-                <span class='flex-grow'>Dark Mode</span>
-                <Icon name='moon' />
+              <div class='flex items-center change-dark-mode py-1'>
+                <Icon
+                  name='moon'
+                  class='text-tertiary'
+                />
+                <span class='typography-6 ml-2'>
+                  Dark Mode
+                </span>
               </div>
-              <div class='flex items-center change-light-mode'>
-                <span class='flex-grow'>Light Mode</span>
-                <Icon name='sun' />
+              <div class='flex items-center change-light-mode py-1'>
+                <Icon
+                  name='sun'
+                  class='text-tertiary'
+                />
+                <span class='typography-6 ml-2'>
+                  Light Mode
+                </span>
               </div>
             </NavItem>
-          </div>
-          <div class='px-2 md:px-3'>
             <NavItem
               :to='{ name: "sign-out" }'
               class='sign-out'
             >
-              Sign out
+              <div class='flex items-center py-1'>
+                <Icon name='logout' />
+                <span class='typography-6 ml-2'>
+                  Sign Out
+                </span>
+              </div>
             </NavItem>
           </div>
         </div>
@@ -264,7 +339,10 @@ export default {
     @apply block px-8 py-4 leading-6 text-lg transition duration-150 ease-in-out;
   }
   .menu-link {
-    &:hover, &:focus { @apply bg-blue-1 text-white }
+    &:hover, &:focus {
+      @apply bg-blue-1 text-white;
+      .icon { @apply text-white }
+    }
     &:active { @apply bg-blue-2 }
   }
   .sign-out {
@@ -297,7 +375,10 @@ export default {
     }
     .menu-link {
       &:active { @apply bg-blue-4; }
-      &:hover, &:focus { @apply bg-blue-3 text-white }
+      &:hover, &:focus {
+        @apply bg-blue-3 text-white;
+        .icon { @apply text-white }
+      }
     }
     .sign-out {
       @apply text-red-3;
@@ -317,18 +398,18 @@ export default {
     Insights: { href: '/#/Component%20Library/NavBar' },
     Data: { href: '/#/Component%20Library/NavBar' },
   }
-  const options = [{ text: 'Survey 1' }, { text: 'Survey 2' }, { text: 'Survey 3' }]
+  const options = [{ title: 'Survey 1' }, { title: 'Survey 2' }, { title: 'Survey 3' }]
   <div class='mb-5'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
       <div class='theme-dark-mode bg-transparent flex-grow'>
-        <AutoComplete class='md:max-w-72 w-full' small :title='options[0].text' :options='options' />
+        <AutoComplete no-border class='md:max-w-72 w-full' small :title='options[0].title' :options='options' />
       </div>
     </NavBar>
   </div>
   <div class='mb-24 theme-dark-mode'>
     <NavBar :links='links' user='josh@swayable.com' organization='Swayable' :canChangeOrg='true'>
       <div class='theme-dark-mode bg-transparent flex-grow'>
-        <AutoComplete class='md:max-w-72 w-full' small :title='options[0].text' :options='options' />
+        <AutoComplete no-border class='md:max-w-72 w-full' small :title='options[0].title' :options='options' />
       </div>
     </NavBar>
   </div>
