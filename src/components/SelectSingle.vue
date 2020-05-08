@@ -6,21 +6,22 @@
     @close='open = false'
   >
     <Button
+      class='max-w-full'
       secondary
       :small='small'
       @click='open = !open'
     >
       <span
-        class='select-button'
+        class='select-button w-full'
         :class='{ active }'
       >
         <slot>
           <span class='flex'>
-            <span class='flex-grow self-center whitespace-no-wrap'>
+            <span class='flex-grow self-center truncate'>
               {{ selected }}
             </span>
             <Icon
-              class='ml-2'
+              class='ml-2 flex-shrink-0'
               name='chevron'
               size='sm'
             />
