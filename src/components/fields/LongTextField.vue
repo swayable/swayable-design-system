@@ -20,12 +20,15 @@
   </div>
 </template>
 <script>
-import BaseInput from './BaseInput'
+import BaseField from './BaseField'
 export default {
-  name:'LongTextInput',
-  extends: BaseInput,
+  name:'LongTextField',
+  extends: BaseField,
   props: {
-    placeholder: String,
+    placeholder: {
+      type: String,
+      default: 'Answer',
+    },
   },
 }
 </script>
@@ -34,17 +37,12 @@ export default {
 ```jsx
   let inputText
   <div class='p-2'>
-    <h3 class='typography-4 w-full uppercase text-light-1'>
-      Light Mode
-    </h3>
-    <LongTextInput
+    <LongTextField
       id='1'
       name='example'
       :required='true'
-      placeholder="enter text here"
       prompt="How much do you love this input?"
       v-model='inputText'
-      
     />
     <span> {{ inputText }} </span>
   </div>

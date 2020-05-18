@@ -1,6 +1,6 @@
 <script>
 export default {
-  name:'BaseInput',
+  name:'BaseField',
   props: {
     questionId: String,
     name: String,

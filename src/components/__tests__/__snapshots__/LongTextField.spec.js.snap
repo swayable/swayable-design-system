@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match the snapshot renders correctly 1`] = `
+<div class="flex flex-col" id="1">
+  <p class="text-primary typography-5 px-0.5">
+    How much do you love this input?
+  </p>
+  <!---->
+  <textarea-stub placeholder="enter text here" name="example" class="flex-grow mt-1"></textarea-stub>
+</div>
+`;
